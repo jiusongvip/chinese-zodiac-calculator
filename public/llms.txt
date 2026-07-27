@@ -1,0 +1,32 @@
+# Chinese-Zodiac-Calculator.com
+> Free Chinese Zodiac Calculator
+
+## Core Tools
+- Chinese Zodiac Calculator: https://www.chinese-zodiac-calculator.com
+- Compatibility Calculator: https://www.chinese-zodiac-calculator.com/compatibility/
+- Elements Calculator: https://www.chinese-zodiac-calculator.com/elements/
+- BaZi Calculator: https://www.chinese-zodiac-calculator.com/bazi-calculator/
+- Year Chart: https://www.chinese-zodiac-calculator.com/year-chart/
+
+## Zodiac Signs
+- Rat: https://www.chinese-zodiac-calculator.com/signs/rat/
+- Ox: https://www.chinese-zodiac-calculator.com/signs/ox/
+- Tiger: https://www.chinese-zodiac-calculator.com/signs/tiger/
+- Rabbit: https://www.chinese-zodiac-calculator.com/signs/rabbit/
+- Dragon: https://www.chinese-zodiac-calculator.com/signs/dragon/
+- Snake: https://www.chinese-zodiac-calculator.com/signs/snake/
+- Horse: https://www.chinese-zodiac-calculator.com/signs/horse/
+- Goat: https://www.chinese-zodiac-calculator.com/signs/goat/
+- Monkey: https://www.chinese-zodiac-calculator.com/signs/monkey/
+- Rooster: https://www.chinese-zodiac-calculator.com/signs/rooster/
+- Dog: https://www.chinese-zodiac-calculator.com/signs/dog/
+- Pig: https://www.chinese-zodiac-calculator.com/signs/pig/
+
+## Horoscopes & Guides
+- 2026 Yearly Horoscope: https://www.chinese-zodiac-calculator.com/yearly-horoscope/
+- Feng Shui Tips: https://www.chinese-zodiac-calculator.com/feng-shui-tips/
+
+## About
+- About Us: https://www.chinese-zodiac-calculator.com/about/
+- Contact: https://www.chinese-zodiac-calculator.com/contact/
+- Privacy Policy: https://www.chinese-zodiac-calculator.com/privacy-policy/

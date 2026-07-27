@@ -1,0 +1,308 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+---
+
+<BaseLayout
+  title="BaZi Calculator - Four Pillars Guide"
+  description="Calculate your BaZi (Four Pillars of Destiny) with our free tool. Enter your birth year, month, day, and hour to discover your Chinese astrology profile."
+  breadcrumbs={[{label:"Home",href:"/"},{label:"BaZi Calculator",href:"/bazi-calculator"}]}
+  articleSchema={true}
+>
+  <section class="bg-gradient-to-br from-red-50 to-stone-100 px-4 py-16 dark:from-red-950/20 dark:to-stone-950">
+    <div class="mx-auto max-w-[900px] text-center">
+      <h1 class="mb-4 text-4xl font-bold tracking-tight text-stone-900 dark:text-stone-100 sm:text-5xl">
+        BaZi Calculator <span class="text-zodiac-red">(Four Pillars of Destiny)</span>
+      </h1>
+      <p class="mx-auto max-w-[650px] text-lg text-stone-600 dark:text-stone-400">
+        Enter your complete birth information for a deeper Chinese astrology reading
+      </p>
+    </div>
+  </section>
+
+  <section class="px-4 py-12" id="calculator">
+    <div class="mx-auto max-w-[700px]">
+      <div class="rounded-2xl border border-stone-200 bg-white p-6 shadow-sm dark:border-stone-800 dark:bg-stone-900 sm:p-10">
+        <div class="mb-8 grid gap-4 sm:grid-cols-3">
+          <div>
+            <label for="bazi-year" class="mb-1 block text-sm font-medium text-stone-700 dark:text-stone-300">Birth Year</label>
+            <input type="number" id="bazi-year" min="1900" max="2100" value="1990" class="w-full rounded-lg border border-stone-300 bg-stone-50 px-4 py-2.5 text-sm focus:border-zodiac-red focus:outline-none focus:ring-2 focus:ring-red-200 dark:border-stone-600 dark:bg-stone-800 dark:text-stone-200" />
+          </div>
+          <div>
+            <label for="bazi-month" class="mb-1 block text-sm font-medium text-stone-700 dark:text-stone-300">Birth Month</label>
+            <select id="bazi-month" class="w-full rounded-lg border border-stone-300 bg-stone-50 px-4 py-2.5 text-sm focus:border-zodiac-red focus:outline-none focus:ring-2 focus:ring-red-200 dark:border-stone-600 dark:bg-stone-800 dark:text-stone-200">
+              <option value="1">January</option><option value="2">February</option><option value="3">March</option>
+              <option value="4">April</option><option value="5">May</option><option value="6">June</option>
+              <option value="7">July</option><option value="8">August</option><option value="9">September</option>
+              <option value="10">October</option><option value="11">November</option><option value="12">December</option>
+            </select>
+          </div>
+          <div>
+            <label for="bazi-day" class="mb-1 block text-sm font-medium text-stone-700 dark:text-stone-300">Birth Day</label>
+            <input type="number" id="bazi-day" min="1" max="31" value="15" class="w-full rounded-lg border border-stone-300 bg-stone-50 px-4 py-2.5 text-sm focus:border-zodiac-red focus:outline-none focus:ring-2 focus:ring-red-200 dark:border-stone-600 dark:bg-stone-800 dark:text-stone-200" />
+          </div>
+        </div>
+        <div class="mb-6 grid gap-4 sm:grid-cols-2">
+          <div>
+            <label for="bazi-hour" class="mb-1 block text-sm font-medium text-stone-700 dark:text-stone-300">Birth Hour</label>
+            <select id="bazi-hour" class="w-full rounded-lg border border-stone-300 bg-stone-50 px-4 py-2.5 text-sm focus:border-zodiac-red focus:outline-none focus:ring-2 focus:ring-red-200 dark:border-stone-600 dark:bg-stone-800 dark:text-stone-200">
+              <option value="0">23:00–00:59 – Rat Hour (Zi)</option>
+              <option value="1">01:00–02:59 – Ox Hour (Chou)</option>
+              <option value="2">03:00–04:59 – Tiger Hour (Yin)</option>
+              <option value="3">05:00–06:59 – Rabbit Hour (Mao)</option>
+              <option value="4">07:00–08:59 – Dragon Hour (Chen)</option>
+              <option value="5">09:00–10:59 – Snake Hour (Si)</option>
+              <option value="6">11:00–12:59 – Horse Hour (Wu)</option>
+              <option value="7">13:00–14:59 – Goat Hour (Wei)</option>
+              <option value="8">15:00–16:59 – Monkey Hour (Shen)</option>
+              <option value="9">17:00–18:59 – Rooster Hour (You)</option>
+              <option value="10">19:00–20:59 – Dog Hour (Xu)</option>
+              <option value="11">21:00–22:59 – Pig Hour (Hai)</option>
+            </select>
+          </div>
+          <div>
+            <label for="bazi-tz" class="mb-1 block text-sm font-medium text-stone-700 dark:text-stone-300">Timezone</label>
+            <select id="bazi-tz" class="w-full rounded-lg border border-stone-300 bg-stone-50 px-4 py-2.5 text-sm focus:border-zodiac-red focus:outline-none focus:ring-2 focus:ring-red-200 dark:border-stone-600 dark:bg-stone-800 dark:text-stone-200">
+              <option value="-12">UTC-12</option><option value="-11">UTC-11</option><option value="-10">UTC-10</option>
+              <option value="-9">UTC-9</option><option value="-8">UTC-8</option><option value="-7">UTC-7</option>
+              <option value="-6">UTC-6</option><option value="-5">UTC-5</option><option value="-4">UTC-4</option>
+              <option value="-3">UTC-3</option><option value="-2">UTC-2</option><option value="-1">UTC-1</option>
+              <option value="0" selected>UTC卤0</option><option value="1">UTC+1</option><option value="2">UTC+2</option>
+              <option value="3">UTC+3</option><option value="4">UTC+4</option><option value="5">UTC+5</option>
+              <option value="6">UTC+6</option><option value="7">UTC+7</option><option value="8">UTC+8</option>
+              <option value="9">UTC+9</option><option value="10">UTC+10</option><option value="11">UTC+11</option>
+              <option value="12">UTC+12</option>
+            </select>
+          </div>
+        </div>
+        <button id="bazi-btn" class="w-full cursor-pointer rounded-xl bg-zodiac-red px-6 py-3 text-base font-semibold text-white shadow-md transition-all hover:bg-red-700 active:scale-[0.97]">
+          Calculate My BaZi
+        </button>
+      </div>
+
+      <div id="bazi-result" class="mt-8 hidden">
+        <h2 class="mb-6 text-center text-2xl font-bold text-stone-900 dark:text-stone-100">Your Four Pillars</h2>
+        <div class="grid gap-4 sm:grid-cols-4">
+          <div class="rounded-xl border border-stone-200 bg-white p-5 text-center shadow-sm dark:border-stone-800 dark:bg-stone-900">
+            <span class="text-xs font-semibold uppercase tracking-widest text-zodiac-red">Year Pillar</span>
+            <div class="mt-3 text-4xl" id="p-year-icon"></div>
+            <p class="mt-2 text-lg font-bold text-stone-900 dark:text-stone-100" id="p-year-name"></p>
+            <p class="text-sm text-stone-500 dark:text-stone-400" id="p-year-element"></p>
+          </div>
+          <div class="rounded-xl border border-stone-200 bg-white p-5 text-center shadow-sm dark:border-stone-800 dark:bg-stone-900">
+            <span class="text-xs font-semibold uppercase tracking-widest text-zodiac-red">Month Pillar</span>
+            <div class="mt-3 text-4xl" id="p-month-icon"></div>
+            <p class="mt-2 text-lg font-bold text-stone-900 dark:text-stone-100" id="p-month-name"></p>
+            <p class="text-sm text-stone-500 dark:text-stone-400" id="p-month-element"></p>
+          </div>
+          <div class="rounded-xl border border-stone-200 bg-white p-5 text-center shadow-sm dark:border-stone-800 dark:bg-stone-900">
+            <span class="text-xs font-semibold uppercase tracking-widest text-zodiac-red">Day Pillar</span>
+            <div class="mt-3 text-4xl" id="p-day-icon"></div>
+            <p class="mt-2 text-lg font-bold text-stone-900 dark:text-stone-100" id="p-day-name"></p>
+            <p class="text-sm text-stone-500 dark:text-stone-400" id="p-day-element"></p>
+          </div>
+          <div class="rounded-xl border border-stone-200 bg-white p-5 text-center shadow-sm dark:border-stone-800 dark:bg-stone-900">
+            <span class="text-xs font-semibold uppercase tracking-widest text-zodiac-red">Hour Pillar</span>
+            <div class="mt-3 text-4xl" id="p-hour-icon"></div>
+            <p class="mt-2 text-lg font-bold text-stone-900 dark:text-stone-100" id="p-hour-name"></p>
+            <p class="text-sm text-stone-500 dark:text-stone-400" id="p-hour-element"></p>
+          </div>
+        </div>
+        <p class="mt-6 text-center text-xs text-stone-400 dark:text-stone-500">
+          Each pillar consists of a Heavenly Stem (Element) and an Earthly Branch (Animal). Results are simplified for general reference.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-stone-50 px-4 py-16 dark:bg-stone-950">
+    <div class="mx-auto max-w-[800px]">
+      <h2 class="mb-8 text-center text-3xl font-bold text-stone-900 dark:text-stone-100">What Is BaZi?</h2>
+      <div class="space-y-4 text-stone-600 dark:text-stone-400 leading-relaxed">
+        <p>
+          <strong class="text-stone-900 dark:text-stone-200">BaZi</strong> (鍏瓧), also known as the Four Pillars of Destiny, is an ancient Chinese metaphysical system that maps your destiny through four key dimensions of time: the Year, Month, Day, and Hour of your birth.
+        </p>
+        <p>
+          Each pillar contains a <strong class="text-stone-900 dark:text-stone-200">Heavenly Stem</strong> (one of the Five Elements: Wood, Fire, Earth, Metal, Water) and an <strong class="text-stone-900 dark:text-stone-200">Earthly Branch</strong> (one of the 12 zodiac animals). Together, these eight characters form your destiny code.
+        </p>
+        <p>
+          Unlike simple zodiac signs, BaZi reveals how the elements interact in your chart&mdash;showing your personality strengths, challenges, career aptitudes, relationship patterns, and even favorable periods in your life.
+        </p>
+        <p>
+          In traditional Chinese culture, BaZi is used for life planning, compatibility analysis between partners or business associates, selecting auspicious dates, and understanding one&rsquo;s life path.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="px-4 py-16" id="faq">
+    <div class="mx-auto max-w-[800px]">
+      <h2 class="mb-8 text-center text-3xl font-bold text-stone-900 dark:text-stone-100">Frequently Asked Questions</h2>
+      <div class="space-y-4">
+        <details class="group rounded-xl border border-stone-200 bg-white p-5 dark:border-stone-800 dark:bg-stone-900">
+          <summary class="flex cursor-pointer items-center justify-between font-medium text-stone-900 dark:text-stone-100">
+            What is the difference between BaZi and the regular Chinese zodiac?
+            <svg class="h-5 w-5 shrink-0 text-stone-400 transition-transform group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </summary>
+          <p class="mt-3 text-sm text-stone-600 dark:text-stone-400 leading-relaxed">
+            The regular Chinese zodiac only tells you your birth-year animal. BaZi goes much deeper&mdash;it analyzes four pillars (Year, Month, Day, Hour) to reveal interactions between the Five Elements, giving a far more detailed and personalized reading.
+          </p>
+        </details>
+        <details class="group rounded-xl border border-stone-200 bg-white p-5 dark:border-stone-800 dark:bg-stone-900">
+          <summary class="flex cursor-pointer items-center justify-between font-medium text-stone-900 dark:text-stone-100">
+            Do I need my exact birth time?
+            <svg class="h-5 w-5 shrink-0 text-stone-400 transition-transform group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </summary>
+          <p class="mt-3 text-sm text-stone-600 dark:text-stone-400 leading-relaxed">
+            The Hour Pillar refines your chart significantly. Without it, you still get three pillars (about 75% of the reading). If you don&rsquo;t know your birth hour, select an approximate time or leave it at the default.
+          </p>
+        </details>
+        <details class="group rounded-xl border border-stone-200 bg-white p-5 dark:border-stone-800 dark:bg-stone-900">
+          <summary class="flex cursor-pointer items-center justify-between font-medium text-stone-900 dark:text-stone-100">
+            Why does the timezone matter?
+            <svg class="h-5 w-5 shrink-0 text-stone-400 transition-transform group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </summary>
+          <p class="mt-3 text-sm text-stone-600 dark:text-stone-400 leading-relaxed">
+            BaZi is calculated using local solar time. If you were born in a timezone far from UTC+8 (China standard), adjusting the timezone helps align your birth moment with the correct celestial positions used in traditional calculations.
+          </p>
+        </details>
+        <details class="group rounded-xl border border-stone-200 bg-white p-5 dark:border-stone-800 dark:bg-stone-900">
+          <summary class="flex cursor-pointer items-center justify-between font-medium text-stone-900 dark:text-stone-100">
+            Can BaZi predict my future?
+            <svg class="h-5 w-5 shrink-0 text-stone-400 transition-transform group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </summary>
+          <p class="mt-3 text-sm text-stone-600 dark:text-stone-400 leading-relaxed">
+            BaZi is a tool for self-awareness, not deterministic fortune-telling. It highlights your innate tendencies, strengths, and cycles&mdash;helping you make informed decisions. Your choices and efforts remain the most important factors in shaping your life.
+          </p>
+        </details>
+        <details class="group rounded-xl border border-stone-200 bg-white p-5 dark:border-stone-800 dark:bg-stone-900">
+          <summary class="flex cursor-pointer items-center justify-between font-medium text-stone-900 dark:text-stone-100">
+            How accurate is this simplified calculator?
+            <svg class="h-5 w-5 shrink-0 text-stone-400 transition-transform group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </summary>
+          <p class="mt-3 text-sm text-stone-600 dark:text-stone-400 leading-relaxed">
+            This tool provides a simplified introduction to BaZi. A full professional reading uses exact solar terms, true solar time, and advanced elemental interaction analysis. Use this as a starting point to explore the Four Pillars system.
+          </p>
+        </details>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<script is:inline>
+const ANIMALS = [
+  { id: "rat", icon: "馃悁", emoji: "馃悁", element: "Water" },
+  { id: "ox", icon: "馃悅", emoji: "馃悅", element: "Earth" },
+  { id: "tiger", icon: "馃悈", emoji: "馃悈", element: "Wood" },
+  { id: "rabbit", icon: "馃悋", emoji: "馃悋", element: "Wood" },
+  { id: "dragon", icon: "馃悏", emoji: "馃悏", element: "Earth" },
+  { id: "snake", icon: "馃悕", emoji: "馃悕", element: "Fire" },
+  { id: "horse", icon: "馃悗", emoji: "馃悗", element: "Fire" },
+  { id: "goat", icon: "馃悙", emoji: "馃悙", element: "Earth" },
+  { id: "monkey", icon: "馃悞", emoji: "馃悞", element: "Metal" },
+  { id: "rooster", icon: "馃悡", emoji: "馃悡", element: "Metal" },
+  { id: "dog", icon: "馃悤", emoji: "馃悤", element: "Earth" },
+  { id: "pig", icon: "馃悥", emoji: "馃悥", element: "Water" },
+];
+
+const MONTH_ANIMALS = ["ox", "tiger", "rabbit", "dragon", "snake", "horse", "goat", "monkey", "rooster", "dog", "pig", "rat"];
+
+const HOUR_ANIMALS = ["rat", "ox", "tiger", "rabbit", "dragon", "snake", "horse", "goat", "monkey", "rooster", "dog", "pig"];
+
+const HEAVENLY_STEMS = ["Wood", "Wood", "Fire", "Fire", "Earth", "Earth", "Metal", "Metal", "Water", "Water"];
+
+function getYearAnimal(year, month, day) {
+  var idx = (year - 4) % 12;
+  if (idx < 0) idx += 12;
+  if (month < 2 || (month === 2 && day < 4)) {
+    idx = (idx - 1 + 12) % 12;
+  }
+  return ANIMALS[idx];
+}
+
+function getYearElement(year) {
+  var si = (year - 4) % 10;
+  if (si < 0) si += 10;
+  return HEAVENLY_STEMS[si];
+}
+
+function getMonthAnimal(month) {
+  var idx = (month - 1) % 12;
+  var animalId = MONTH_ANIMALS[idx];
+  return ANIMALS.find(function (a) { return a.id === animalId; });
+}
+
+function getMonthElement(year, month) {
+  var yearStem = (year - 4) % 10;
+  if (yearStem < 0) yearStem += 10;
+  var monthStem = (yearStem % 5) * 2 + (month - 1);
+  return HEAVENLY_STEMS[monthStem % 10];
+}
+
+function getDayAnimal(year, month, day) {
+  var d = new Date(year, month - 1, day);
+  var ref = new Date(2000, 0, 1);
+  var diff = Math.floor((d - ref) / 86400000);
+  var idx = ((diff % 12) + 12) % 12;
+  return ANIMALS[idx];
+}
+
+function getDayElement(year, month, day) {
+  var d = new Date(year, month - 1, day);
+  var ref = new Date(2000, 0, 1);
+  var diff = Math.floor((d - ref) / 86400000);
+  var stemIdx = ((diff % 10) + 10) % 10;
+  return HEAVENLY_STEMS[stemIdx];
+}
+
+function getHourAnimal(hourIdx) {
+  var animalId = HOUR_ANIMALS[hourIdx];
+  return ANIMALS.find(function (a) { return a.id === animalId; });
+}
+
+function getHourElement(dayStemIdx, hourIdx) {
+  var ratios = [0, 2, 4, 6, 8, 0, 2, 4, 6, 8];
+  var offset = (dayStemIdx % 5) * 2;
+  var stemIdx = (offset + ratios[hourIdx]) % 10;
+  return HEAVENLY_STEMS[stemIdx];
+}
+
+function calculate() {
+  var year = parseInt(document.getElementById("bazi-year").value, 10);
+  var month = parseInt(document.getElementById("bazi-month").value, 10);
+  var day = parseInt(document.getElementById("bazi-day").value, 10);
+  var hour = parseInt(document.getElementById("bazi-hour").value, 10);
+
+  var ya = getYearAnimal(year, month, day);
+  var ye = getYearElement(year);
+  var ma = getMonthAnimal(month);
+  var me = getMonthElement(year, month);
+  var da = getDayAnimal(year, month, day);
+  var de = getDayElement(year, month, day);
+  var ha = getHourAnimal(hour);
+  var he = getHourElement((((new Date(year, month - 1, day) - new Date(2000, 0, 1)) / 86400000) % 10 + 10) % 10, hour);
+
+  var cap = function (s) { return s.charAt(0).toUpperCase() + s.slice(1); };
+
+  document.getElementById("p-year-icon").textContent = ya.emoji;
+  document.getElementById("p-year-name").textContent = cap(ya.id);
+  document.getElementById("p-year-element").textContent = ye + " " + ya.element;
+
+  document.getElementById("p-month-icon").textContent = ma.emoji;
+  document.getElementById("p-month-name").textContent = cap(ma.id);
+  document.getElementById("p-month-element").textContent = me + " " + ma.element;
+
+  document.getElementById("p-day-icon").textContent = da.emoji;
+  document.getElementById("p-day-name").textContent = cap(da.id);
+  document.getElementById("p-day-element").textContent = de + " " + da.element;
+
+  document.getElementById("p-hour-icon").textContent = ha.emoji;
+  document.getElementById("p-hour-name").textContent = cap(ha.id);
+  document.getElementById("p-hour-element").textContent = he + " " + ha.element;
+
+  document.getElementById("bazi-result").classList.remove("hidden");
+  document.getElementById("bazi-result").scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
+document.getElementById("bazi-btn").addEventListener("click", calculate);
+</script>

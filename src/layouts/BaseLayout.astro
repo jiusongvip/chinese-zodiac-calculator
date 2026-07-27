@@ -1,0 +1,254 @@
+---
+import "../styles/global.css";
+
+export interface Props {
+  title: string;
+  description: string;
+  breadcrumbs?: { label: string; href: string }[];
+  noindex?: boolean;
+  schema?: Record<string, unknown> | Record<string, unknown>[];
+  articleSchema?: boolean;
+  websiteSchema?: boolean;
+  datePublished?: string;
+  dateModified?: string;
+  ogImage?: string;
+}
+
+const { title, description, breadcrumbs, noindex, schema, articleSchema, websiteSchema, datePublished, dateModified, ogImage } = Astro.props;
+const canonicalUrl = `https://www.chinese-zodiac-calculator.com${Astro.url.pathname}`;
+const ogImageUrl = ogImage || "https://www.chinese-zodiac-calculator.com/og-default.svg";
+const year = new Date().getFullYear();
+
+const breadcrumbSchema = breadcrumbs?.length ? {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": breadcrumbs.map((bc, i) => ({
+    "@type": "ListItem",
+    "position": i + 1,
+    "name": bc.label,
+    "item": `https://www.chinese-zodiac-calculator.com${bc.href}`
+  }))
+} : null;
+
+const websiteSchemaObj = websiteSchema ? {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Chinese-Zodiac-Calculator.com",
+  "url": "https://www.chinese-zodiac-calculator.com",
+  "description": "Free Chinese Zodiac Calculator — Discover your animal sign, element, personality traits, and compatibility."
+} : null;
+
+const articleSchemaObj = articleSchema ? {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": title,
+  "description": description,
+  "url": canonicalUrl,
+  "datePublished": datePublished || "2026-01-01",
+  "dateModified": dateModified || "2026-07-24",
+  "author": {
+    "@type": "Person",
+    "name": "Chinese-Zodiac-Calculator.com Editorial Team",
+    "url": "https://www.chinese-zodiac-calculator.com/about",
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Chinese-Zodiac-Calculator.com",
+    "url": "https://www.chinese-zodiac-calculator.com",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.chinese-zodiac-calculator.com/logo.svg"
+    }
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": ogImageUrl
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": canonicalUrl
+  }
+} : null;
+---
+
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title} | Chinese-Zodiac-Calculator.com</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalUrl} />
+    <meta property="og:title" content={`${title} | Chinese-Zodiac-Calculator.com`} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={`${title} | Chinese-Zodiac-Calculator.com`} />
+    <meta name="twitter:description" content={description} />
+    {noindex && <meta name="robots" content="noindex" />}
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Chinese-Zodiac-Calculator.com",
+        "url": "https://www.chinese-zodiac-calculator.com",
+        "logo": "https://www.chinese-zodiac-calculator.com/logo.svg"
+      }
+    </script>
+    {breadcrumbSchema && <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)}></script>}
+    {websiteSchemaObj && <script type="application/ld+json" set:html={JSON.stringify(websiteSchemaObj)}></script>}
+    {articleSchemaObj && <script type="application/ld+json" set:html={JSON.stringify(articleSchemaObj)}></script>}
+    {schema && <script type="application/ld+json" set:html={JSON.stringify(Array.isArray(schema) ? schema : [schema])}></script>}
+    <link rel="alternate" type="application/rss+xml" title="Chinese-Zodiac-Calculator.com — Chinese Zodiac Guide" href="/rss.xml" />
+  </head>
+  <body>
+    <nav class="sticky top-0 z-50 border-b border-stone-200 bg-white/95 backdrop-blur-sm dark:border-stone-800 dark:bg-stone-950/95">
+      <div class="mx-auto flex h-16 max-w-[1200px] items-center justify-between px-4 lg:px-6">
+        <a href="/" class="inline-flex items-center gap-2 no-underline hover:opacity-80 transition-opacity" aria-label="Chinese-Zodiac-Calculator.com home">
+          <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="18" cy="18" r="16" stroke="#DC2626" stroke-width="2" fill="rgba(220,38,38,0.08)"></circle>
+            <circle cx="12" cy="12" r="3" fill="#DC2626"></circle>
+            <circle cx="24" cy="12" r="3" fill="#DC2626"></circle>
+            <circle cx="18" cy="24" r="3" fill="#DC2626"></circle>
+            <path d="M12 12L24 12L18 24Z" stroke="#B8860B" stroke-width="1.5" fill="none" stroke-linejoin="round"></path>
+            <path d="M12 22C14 18 22 18 24 22" stroke="#B8860B" stroke-width="1.5" fill="none"></path>
+          </svg>
+          <span class="font-semibold text-zodiac-ink dark:text-stone-200 text-lg tracking-tight">Zodiac<span class="text-zodiac-red">Calc</span></span>
+        </a>
+        <div class="hidden items-center gap-6 lg:gap-8 md:flex">
+          <a href="/" class="text-sm font-medium text-stone-600 transition-colors hover:text-zodiac-red dark:text-stone-400 dark:hover:text-zodiac-red">Calculator</a>
+          <div class="relative group">
+            <button class="text-sm font-medium text-stone-600 transition-colors hover:text-zodiac-red dark:text-stone-400 dark:hover:text-zodiac-red cursor-pointer flex items-center gap-1">Zodiac Signs <svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button>
+            <div class="absolute top-full left-0 mt-1 w-48 rounded-lg border border-stone-200 bg-white shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all dark:border-stone-700 dark:bg-stone-900 z-50">
+              <a href="/signs/rat" class="block px-4 py-2 text-sm text-stone-600 hover:bg-red-50 hover:text-zodiac-red dark:text-stone-400 dark:hover:bg-red-900/20 dark:hover:text-zodiac-red rounded-t-lg">Rat</a>
+              <a href="/signs/ox" class="block px-4 py-2 text-sm text-stone-600 hover:bg-red-50 hover:text-zodiac-red dark:text-stone-400 dark:hover:bg-red-900/20 dark:hover:text-zodiac-red">Ox</a>
+              <a href="/signs/tiger" class="block px-4 py-2 text-sm text-stone-600 hover:bg-red-50 hover:text-zodiac-red dark:text-stone-400 dark:hover:bg-red-900/20 dark:hover:text-zodiac-red">Tiger</a>
+              <a href="/signs/rabbit" class="block px-4 py-2 text-sm text-stone-600 hover:bg-red-50 hover:text-zodiac-red dark:text-stone-400 dark:hover:bg-red-900/20 dark:hover:text-zodiac-red">Rabbit</a>
+              <a href="/signs/dragon" class="block px-4 py-2 text-sm text-stone-600 hover:bg-red-50 hover:text-zodiac-red dark:text-stone-400 dark:hover:bg-red-900/20 dark:hover:text-zodiac-red">Dragon</a>
+              <a href="/signs/snake" class="block px-4 py-2 text-sm text-stone-600 hover:bg-red-50 hover:text-zodiac-red dark:text-stone-400 dark:hover:bg-red-900/20 dark:hover:text-zodiac-red">Snake</a>
+              <a href="/signs/horse" class="block px-4 py-2 text-sm text-stone-600 hover:bg-red-50 hover:text-zodiac-red dark:text-stone-400 dark:hover:bg-red-900/20 dark:hover:text-zodiac-red">Horse</a>
+              <a href="/signs/goat" class="block px-4 py-2 text-sm text-stone-600 hover:bg-red-50 hover:text-zodiac-red dark:text-stone-400 dark:hover:bg-red-900/20 dark:hover:text-zodiac-red">Goat</a>
+              <a href="/signs/monkey" class="block px-4 py-2 text-sm text-stone-600 hover:bg-red-50 hover:text-zodiac-red dark:text-stone-400 dark:hover:bg-red-900/20 dark:hover:text-zodiac-red">Monkey</a>
+              <a href="/signs/rooster" class="block px-4 py-2 text-sm text-stone-600 hover:bg-red-50 hover:text-zodiac-red dark:text-stone-400 dark:hover:bg-red-900/20 dark:hover:text-zodiac-red">Rooster</a>
+              <a href="/signs/dog" class="block px-4 py-2 text-sm text-stone-600 hover:bg-red-50 hover:text-zodiac-red dark:text-stone-400 dark:hover:bg-red-900/20 dark:hover:text-zodiac-red">Dog</a>
+              <a href="/signs/pig" class="block px-4 py-2 text-sm text-stone-600 hover:bg-red-50 hover:text-zodiac-red dark:text-stone-400 dark:hover:bg-red-900/20 dark:hover:text-zodiac-red rounded-b-lg">Pig</a>
+            </div>
+          </div>
+          <a href="/compatibility" class="text-sm font-medium text-stone-600 transition-colors hover:text-zodiac-red dark:text-stone-400 dark:hover:text-zodiac-red">Compatibility</a>
+          <a href="/elements" class="text-sm font-medium text-stone-600 transition-colors hover:text-zodiac-red dark:text-stone-400 dark:hover:text-zodiac-red">Elements</a>
+          <a href="/yearly-horoscope" class="text-sm font-medium text-stone-600 transition-colors hover:text-zodiac-red dark:text-stone-400 dark:hover:text-zodiac-red">Horoscope</a>
+        </div>
+        <button class="flex items-center gap-2 text-sm text-stone-600 md:hidden dark:text-stone-400" aria-label="Toggle navigation" aria-controls="mobile-nav" aria-expanded="false" id="nav-toggle">Menu</button>
+      </div>
+      <div id="mobile-nav" class="hidden border-t border-stone-200 px-4 pb-4 dark:border-stone-800" role="navigation" aria-label="Mobile navigation">
+        <a href="/" class="block py-2 text-sm text-stone-600 dark:text-stone-400">Calculator</a>
+        <div class="py-2 border-b border-stone-100 dark:border-stone-800">
+          <span class="text-xs font-semibold uppercase tracking-widest text-stone-400">Zodiac Signs</span>
+          <div class="mt-1 grid grid-cols-2 gap-1">
+            <a href="/signs/rat" class="block py-1.5 text-sm text-stone-600 dark:text-stone-400">Rat</a>
+            <a href="/signs/ox" class="block py-1.5 text-sm text-stone-600 dark:text-stone-400">Ox</a>
+            <a href="/signs/tiger" class="block py-1.5 text-sm text-stone-600 dark:text-stone-400">Tiger</a>
+            <a href="/signs/rabbit" class="block py-1.5 text-sm text-stone-600 dark:text-stone-400">Rabbit</a>
+            <a href="/signs/dragon" class="block py-1.5 text-sm text-stone-600 dark:text-stone-400">Dragon</a>
+            <a href="/signs/snake" class="block py-1.5 text-sm text-stone-600 dark:text-stone-400">Snake</a>
+            <a href="/signs/horse" class="block py-1.5 text-sm text-stone-600 dark:text-stone-400">Horse</a>
+            <a href="/signs/goat" class="block py-1.5 text-sm text-stone-600 dark:text-stone-400">Goat</a>
+            <a href="/signs/monkey" class="block py-1.5 text-sm text-stone-600 dark:text-stone-400">Monkey</a>
+            <a href="/signs/rooster" class="block py-1.5 text-sm text-stone-600 dark:text-stone-400">Rooster</a>
+            <a href="/signs/dog" class="block py-1.5 text-sm text-stone-600 dark:text-stone-400">Dog</a>
+            <a href="/signs/pig" class="block py-1.5 text-sm text-stone-600 dark:text-stone-400">Pig</a>
+          </div>
+        </div>
+        <a href="/compatibility" class="block py-2 text-sm text-stone-600 dark:text-stone-400">Compatibility</a>
+        <a href="/elements" class="block py-2 text-sm text-stone-600 dark:text-stone-400">Elements</a>
+        <a href="/year-chart" class="block py-2 text-sm text-stone-600 dark:text-stone-400">Year Chart</a>
+        <a href="/yearly-horoscope" class="block py-2 text-sm text-stone-600 dark:text-stone-400">Horoscope</a>
+        <a href="/feng-shui-tips" class="block py-2 text-sm text-stone-600 dark:text-stone-400">Feng Shui</a>
+        <a href="/about" class="block py-2 text-sm text-stone-600 dark:text-stone-400">About</a>
+      </div>
+    </nav>
+    <script is:inline>
+      var toggle = document.getElementById('nav-toggle');
+      var mobileNav = document.getElementById('mobile-nav');
+      if (toggle && mobileNav) {
+        toggle.addEventListener('click', function () {
+          var expanded = mobileNav.classList.toggle('hidden');
+          toggle.setAttribute('aria-expanded', String(!expanded));
+        });
+      }
+    </script>
+
+    <main class="flex-1">
+      {breadcrumbs && breadcrumbs.length > 0 && (
+        <nav aria-label="Breadcrumb" class="mx-auto max-w-[1200px] px-4 pt-4 lg:px-6">
+          <ol class="flex flex-wrap items-center gap-1.5 text-xs text-stone-400 dark:text-stone-500">
+            {breadcrumbs.map((bc, i) => (
+              <li class="flex items-center gap-1.5">
+                {i > 0 && <span aria-hidden="true">/</span>}
+                {i === breadcrumbs.length - 1 ? (
+                  <span class="text-stone-600 dark:text-stone-300 font-medium">{bc.label}</span>
+                ) : (
+                  <a href={bc.href} class="hover:text-zodiac-red dark:hover:text-zodiac-red transition-colors">{bc.label}</a>
+                )}
+              </li>
+            ))}
+          </ol>
+        </nav>
+      )}
+      <slot />
+    </main>
+
+    <footer class="border-t border-stone-200 bg-stone-100 dark:border-stone-800 dark:bg-stone-900">
+      <div class="mx-auto max-w-[1200px] px-4 py-12 lg:px-6">
+        <div class="grid grid-cols-2 gap-8 md:grid-cols-4">
+          <div class="col-span-2 md:col-span-1">
+            <a href="/" class="text-lg font-semibold tracking-tight text-stone-900 dark:text-stone-100">Zodiac<span class="text-zodiac-red">Calc</span></a>
+            <p class="mt-2 text-sm text-stone-500 dark:text-stone-400 max-w-[30ch]">Discover your Chinese zodiac sign, element, personality, and compatibility — all in one place.</p>
+          </div>
+          <div>
+            <h4 class="mb-3 text-xs font-semibold uppercase tracking-widest text-stone-500 dark:text-stone-400">Tools</h4>
+            <ul class="space-y-2">
+              <li><a href="/" class="text-sm text-stone-600 transition-colors hover:text-zodiac-red dark:text-stone-400 dark:hover:text-zodiac-red">Zodiac Calculator</a></li>
+              <li><a href="/compatibility" class="text-sm text-stone-600 transition-colors hover:text-zodiac-red dark:text-stone-400 dark:hover:text-zodiac-red">Compatibility</a></li>
+              <li><a href="/elements" class="text-sm text-stone-600 transition-colors hover:text-zodiac-red dark:text-stone-400 dark:hover:text-zodiac-red">Elements</a></li>
+              <li><a href="/year-chart" class="text-sm text-stone-600 transition-colors hover:text-zodiac-red dark:text-stone-400 dark:hover:text-zodiac-red">Year Chart</a></li>
+              <li><a href="/bazi-calculator" class="text-sm text-stone-600 transition-colors hover:text-zodiac-red dark:text-stone-400 dark:hover:text-zodiac-red">BaZi Calculator</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="mb-3 text-xs font-semibold uppercase tracking-widest text-stone-500 dark:text-stone-400">Zodiac Signs</h4>
+            <ul class="space-y-2">
+              <li><a href="/signs/rat" class="text-sm text-stone-600 transition-colors hover:text-zodiac-red dark:text-stone-400 dark:hover:text-zodiac-red">Rat</a></li>
+              <li><a href="/signs/ox" class="text-sm text-stone-600 transition-colors hover:text-zodiac-red dark:text-stone-400 dark:hover:text-zodiac-red">Ox</a></li>
+              <li><a href="/signs/tiger" class="text-sm text-stone-600 transition-colors hover:text-zodiac-red dark:text-stone-400 dark:hover:text-zodiac-red">Tiger</a></li>
+              <li><a href="/signs/rabbit" class="text-sm text-stone-600 transition-colors hover:text-zodiac-red dark:text-stone-400 dark:hover:text-zodiac-red">Rabbit</a></li>
+              <li><a href="/signs/dragon" class="text-sm text-stone-600 transition-colors hover:text-zodiac-red dark:text-stone-400 dark:hover:text-zodiac-red">Dragon</a></li>
+              <li><a href="/signs/snake" class="text-sm text-stone-600 transition-colors hover:text-zodiac-red dark:text-stone-400 dark:hover:text-zodiac-red">Snake</a></li>
+              <li><a href="/signs/horse" class="text-sm text-stone-600 transition-colors hover:text-zodiac-red dark:text-stone-400 dark:hover:text-zodiac-red">Horse</a></li>
+              <li><a href="/signs/goat" class="text-sm text-stone-600 transition-colors hover:text-zodiac-red dark:text-stone-400 dark:hover:text-zodiac-red">Goat</a></li>
+              <li><a href="/signs/monkey" class="text-sm text-stone-600 transition-colors hover:text-zodiac-red dark:text-stone-400 dark:hover:text-zodiac-red">Monkey</a></li>
+              <li><a href="/signs/rooster" class="text-sm text-stone-600 transition-colors hover:text-zodiac-red dark:text-stone-400 dark:hover:text-zodiac-red">Rooster</a></li>
+              <li><a href="/signs/dog" class="text-sm text-stone-600 transition-colors hover:text-zodiac-red dark:text-stone-400 dark:hover:text-zodiac-red">Dog</a></li>
+              <li><a href="/signs/pig" class="text-sm text-stone-600 transition-colors hover:text-zodiac-red dark:text-stone-400 dark:hover:text-zodiac-red">Pig</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="mb-3 text-xs font-semibold uppercase tracking-widest text-stone-500 dark:text-stone-400">More</h4>
+            <ul class="space-y-2">
+              <li><a href="/yearly-horoscope" class="text-sm text-stone-600 transition-colors hover:text-zodiac-red dark:text-stone-400 dark:hover:text-zodiac-red">Yearly Horoscope</a></li>
+              <li><a href="/feng-shui-tips" class="text-sm text-stone-600 transition-colors hover:text-zodiac-red dark:text-stone-400 dark:hover:text-zodiac-red">Feng Shui Tips</a></li>
+              <li><a href="/about" class="text-sm text-stone-600 transition-colors hover:text-zodiac-red dark:text-stone-400 dark:hover:text-zodiac-red">About</a></li>
+              <li><a href="/contact" class="text-sm text-stone-600 transition-colors hover:text-zodiac-red dark:text-stone-400 dark:hover:text-zodiac-red">Contact</a></li>
+              <li><a href="/privacy-policy" class="text-sm text-stone-600 transition-colors hover:text-zodiac-red dark:text-stone-400 dark:hover:text-zodiac-red">Privacy</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="mt-10 border-t border-stone-200 pt-6 dark:border-stone-800">
+          <p class="text-xs text-stone-500 dark:text-stone-500">&copy; {year} Chinese-Zodiac-Calculator.com. Content is for entertainment and informational purposes only.</p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

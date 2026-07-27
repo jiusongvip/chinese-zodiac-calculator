@@ -1,0 +1,380 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { getCompatibility, ZODIAC_ANIMALS } from "../data/zodiac";
+---
+
+<BaseLayout
+  title="Chinese Zodiac Compatibility Guide"
+  description="Check the compatibility between any two Chinese zodiac signs. Discover the best love matches, clashing pairs, and relationship tips from our guide."
+  breadcrumbs={[{label:"Home",href:"/"},{label:"Compatibility",href:"/compatibility"}]}
+  articleSchema={true}
+>
+  <section class="mx-auto max-w-[1200px] px-4 py-16 lg:px-6 text-center">
+    <h1 class="text-4xl font-bold tracking-tight text-zodiac-ink sm:text-5xl">Chinese Zodiac Compatibility Calculator</h1>
+    <p class="mt-4 text-lg text-stone-600">Select two signs to see how well they match</p>
+  </section>
+
+  <section class="mx-auto max-w-[1200px] px-4 pb-16 lg:px-6">
+    <div class="mx-auto max-w-2xl rounded-2xl border border-stone-200 bg-white p-8 shadow-sm">
+      <div class="grid gap-6 sm:grid-cols-2">
+        <div>
+          <label for="sign1" class="mb-2 block text-sm font-medium text-stone-700">First Zodiac Sign</label>
+          <select id="sign1" class="w-full rounded-xl border border-stone-300 bg-white px-4 py-3 text-stone-900 outline-none transition-colors focus:border-zodiac-red focus:ring-2 focus:ring-red-100"></select>
+        </div>
+        <div>
+          <label for="sign2" class="mb-2 block text-sm font-medium text-stone-700">Second Zodiac Sign</label>
+          <select id="sign2" class="w-full rounded-xl border border-stone-300 bg-white px-4 py-3 text-stone-900 outline-none transition-colors focus:border-zodiac-red focus:ring-2 focus:ring-red-100"></select>
+        </div>
+      </div>
+      <button id="check-btn" class="mt-6 w-full cursor-pointer rounded-xl bg-zodiac-red px-6 py-3 text-base font-semibold text-white transition-colors hover:bg-red-700">Check Compatibility</button>
+      <div id="result" class="mt-8 hidden">
+        <div class="rounded-xl border border-stone-200 bg-zodiac-cream p-6 text-center">
+          <div class="flex items-center justify-center gap-3 text-lg font-semibold text-stone-800">
+            <span id="result-sign1"></span>
+            <span class="text-stone-400">&amp;</span>
+            <span id="result-sign2"></span>
+          </div>
+          <div id="result-stars" class="mt-3 text-2xl"></div>
+          <span id="result-label" class="mt-2 inline-block rounded-full px-4 py-1 text-sm font-semibold"></span>
+          <p id="result-desc" class="mt-4 text-stone-600 leading-relaxed"></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-stone-50">
+    <div class="mx-auto max-w-[1200px] px-4 py-16 lg:px-6">
+      <h2 class="text-3xl font-bold tracking-tight text-zodiac-ink text-center">Compatibility Matrix</h2>
+      <p class="mt-2 text-center text-stone-600">A quick overview of how every zodiac sign pairs with each other</p>
+      <div class="mt-8 overflow-x-auto">
+        <table class="w-full min-w-[600px] border-collapse text-sm">
+          <thead>
+            <tr>
+              <th class="p-2 text-left font-semibold text-stone-600"></th>
+              {ZODIAC_ANIMALS.map((a) => (
+                <th class="p-2 text-center font-semibold text-stone-700 capitalize">{a.id}</th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {ZODIAC_ANIMALS.map((row, ri) => (
+              <tr>
+                <td class="p-2 font-semibold text-stone-700 capitalize whitespace-nowrap">{row.id}</td>
+                {ZODIAC_ANIMALS.map((col, ci) => {
+                  if (ri === ci) {
+                    return <td class="p-2 text-center rounded" style="background:#f5f5f4">—</td>;
+                  }
+                  const result = getCompatibility(row.id, col.id);
+                  if (result.score === 5) {
+                    return <td class="p-2 text-center rounded" style="background:#dcfce7;color:#166534;font-weight:600">★</td>;
+                  }
+                  if (result.score === 1) {
+                    return <td class="p-2 text-center rounded" style="background:#fee2e2;color:#991b1b;font-weight:600">☆</td>;
+                  }
+                  return <td class="p-2 text-center rounded" style="background:#fef9c3;color:#854d0e">●</td>;
+                })}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <div class="mt-4 flex flex-wrap justify-center gap-6 text-sm text-stone-600">
+        <span class="inline-flex items-center gap-2"><span class="inline-block h-4 w-4 rounded" style="background:#dcfce7"></span> Best Match</span>
+        <span class="inline-flex items-center gap-2"><span class="inline-block h-4 w-4 rounded" style="background:#fef9c3"></span> Neutral Match</span>
+        <span class="inline-flex items-center gap-2"><span class="inline-block h-4 w-4 rounded" style="background:#fee2e2"></span> Challenging Match</span>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="mx-auto max-w-[1200px] px-4 py-16 lg:px-6">
+      <h2 class="text-3xl font-bold tracking-tight text-zodiac-ink text-center">Best &amp; Worst Matches</h2>
+      <p class="mt-2 text-center text-stone-600">Discover which zodiac pairings are most harmonious and which require extra effort</p>
+      <div class="mt-10 grid gap-8 md:grid-cols-2">
+        <div>
+          <h3 class="text-xl font-semibold text-zodiac-ink flex items-center gap-2"><span class="text-2xl">&#x1F31F;</span> Best Matches</h3>
+          <p class="mt-1 text-sm text-stone-500">These pairings share natural chemistry and mutual understanding.</p>
+          <ul class="mt-4 space-y-3">
+            <li class="rounded-xl border border-stone-200 bg-white p-4"><strong class="text-zodiac-ink">Rat + Dragon:</strong> <span class="text-stone-600">An ambitious power couple. Both are confident and driven, building success together through mutual respect and shared goals.</span></li>
+            <li class="rounded-xl border border-stone-200 bg-white p-4"><strong class="text-zodiac-ink">Rat + Monkey:</strong> <span class="text-stone-600">A playful, intellectually stimulating pair. Their clever banter and shared wit keep the relationship fresh and exciting.</span></li>
+            <li class="rounded-xl border border-stone-200 bg-white p-4"><strong class="text-zodiac-ink">Ox + Snake:</strong> <span class="text-stone-600">A calm, deeply loyal match. The Ox provides stability while the Snake offers wisdom and strategic thinking.</span></li>
+            <li class="rounded-xl border border-stone-200 bg-white p-4"><strong class="text-zodiac-ink">Tiger + Horse:</strong> <span class="text-stone-600">An adventurous, high-energy duo. Both love freedom and action, making them natural partners in exploration.</span></li>
+            <li class="rounded-xl border border-stone-200 bg-white p-4"><strong class="text-zodiac-ink">Dragon + Rooster:</strong> <span class="text-stone-600">A confident and successful pair. The Dragon dreams big and the Rooster handles the details — a perfect execution team.</span></li>
+            <li class="rounded-xl border border-stone-200 bg-white p-4"><strong class="text-zodiac-ink">Rabbit + Goat:</strong> <span class="text-stone-600">A gentle, artistic match. Both value harmony and beauty, creating a peaceful and nurturing home together.</span></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-xl font-semibold text-zodiac-ink flex items-center gap-2"><span class="text-2xl">&#x26A0;</span> Challenging Matches</h3>
+          <p class="mt-1 text-sm text-stone-500">These pairings face natural friction but can succeed with understanding and compromise.</p>
+          <ul class="mt-4 space-y-3">
+            <li class="rounded-xl border border-stone-200 bg-white p-4"><strong class="text-zodiac-ink">Rat + Horse:</strong> <span class="text-stone-600">The Rat is cautious and detail-oriented while the Horse is impulsive and freedom-loving. Their pacing and priorities often clash.</span></li>
+            <li class="rounded-xl border border-stone-200 bg-white p-4"><strong class="text-zodiac-ink">Ox + Goat:</strong> <span class="text-stone-600">The Ox values routine and blunt honesty, while the Goat is sensitive and artistic. Misunderstandings arise from their different emotional languages.</span></li>
+            <li class="rounded-xl border border-stone-200 bg-white p-4"><strong class="text-zodiac-ink">Tiger + Monkey:</strong> <span class="text-stone-600">Both are clever and competitive, but their strong personalities can lead to power struggles and a battle of wills.</span></li>
+            <li class="rounded-xl border border-stone-200 bg-white p-4"><strong class="text-zodiac-ink">Rabbit + Rooster:</strong> <span class="text-stone-600">The Rabbit craves peace and quiet while the Rooster is direct and critical. Their communication styles are fundamentally different.</span></li>
+            <li class="rounded-xl border border-stone-200 bg-white p-4"><strong class="text-zodiac-ink">Dragon + Dog:</strong> <span class="text-stone-600">The Dragon is bold and visionary, the Dog is loyal and practical. The Dragon may seem arrogant to the Dog, while the Dog seems pessimistic to the Dragon.</span></li>
+            <li class="rounded-xl border border-stone-200 bg-white p-4"><strong class="text-zodiac-ink">Snake + Pig:</strong> <span class="text-stone-600">The Snake is private and analytical, the Pig is open and trusting. Their contrasting approaches to intimacy can create distance.</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-stone-50">
+    <div class="mx-auto max-w-[800px] px-4 py-16 lg:px-6">
+      <h2 class="text-3xl font-bold tracking-tight text-zodiac-ink text-center">Frequently Asked Questions</h2>
+      <div class="mt-8 space-y-4">
+        <details class="group cursor-pointer rounded-xl border border-stone-200 bg-white p-6">
+          <summary class="flex items-center justify-between text-lg font-semibold text-zodiac-ink [&::-webkit-details-marker]:hidden">
+            What is Chinese zodiac compatibility?
+            <svg class="h-5 w-5 text-stone-400 transition-transform group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </summary>
+          <p class="mt-4 text-stone-600 leading-relaxed">Chinese zodiac compatibility is a traditional system that evaluates how well two animal signs relate to each other based on their personality traits, elemental influences, and the 12-year cycle of the Chinese zodiac. This system is often used to assess romantic relationships, friendships, and business partnerships. It draws from Chinese astrology principles that have been observed and refined over thousands of years.</p>
+        </details>
+        <details class="group cursor-pointer rounded-xl border border-stone-200 bg-white p-6">
+          <summary class="flex items-center justify-between text-lg font-semibold text-zodiac-ink [&::-webkit-details-marker]:hidden">
+            Which signs are most compatible?
+            <svg class="h-5 w-5 text-stone-400 transition-transform group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </summary>
+          <p class="mt-4 text-stone-600 leading-relaxed">The most compatible pairings are signs that are four years apart in the zodiac cycle. These are called the "secret friends" or "best match" pairs. The classic best matches include Rat with Dragon and Monkey, Ox with Snake and Rooster, and Tiger with Horse and Dog. These pairs share complementary traits and balanced elemental energies that create natural harmony. The full matrix above shows how every sign relates to every other sign.</p>
+        </details>
+        <details class="group cursor-pointer rounded-xl border border-stone-200 bg-white p-6">
+          <summary class="flex items-center justify-between text-lg font-semibold text-zodiac-ink [&::-webkit-details-marker]:hidden">
+            Can incompatible signs have a good relationship?
+            <svg class="h-5 w-5 text-stone-400 transition-transform group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </summary>
+          <p class="mt-4 text-stone-600 leading-relaxed">Absolutely. Chinese zodiac compatibility is a guide, not a rule. Every relationship is unique and shaped by individual personalities, life experiences, and mutual effort. Signs that are considered "challenging" can build deeply rewarding relationships by understanding their differences and working through them. In fact, some of the strongest partnerships are formed between signs that push each other to grow. Use compatibility as a tool for self-awareness, not a limitation.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<script is:inline>
+(function () {
+  const animals = [
+    { id: 'rat', name: 'Rat' },
+    { id: 'ox', name: 'Ox' },
+    { id: 'tiger', name: 'Tiger' },
+    { id: 'rabbit', name: 'Rabbit' },
+    { id: 'dragon', name: 'Dragon' },
+    { id: 'snake', name: 'Snake' },
+    { id: 'horse', name: 'Horse' },
+    { id: 'goat', name: 'Goat' },
+    { id: 'monkey', name: 'Monkey' },
+    { id: 'rooster', name: 'Rooster' },
+    { id: 'dog', name: 'Dog' },
+    { id: 'pig', name: 'Pig' }
+  ];
+
+  var compatData = {
+    rat: { best: ['dragon', 'monkey', 'ox'], worst: ['horse', 'goat', 'rabbit'] },
+    ox: { best: ['rat', 'snake', 'rooster'], worst: ['horse', 'dog', 'goat'] },
+    tiger: { best: ['horse', 'dog', 'pig'], worst: ['monkey', 'snake'] },
+    rabbit: { best: ['goat', 'pig', 'dog'], worst: ['rat', 'rooster', 'dragon'] },
+    dragon: { best: ['rat', 'monkey', 'rooster'], worst: ['rabbit', 'dog', 'ox'] },
+    snake: { best: ['ox', 'rooster', 'monkey'], worst: ['tiger', 'pig', 'horse'] },
+    horse: { best: ['tiger', 'goat', 'dog'], worst: ['rat', 'ox', 'snake'] },
+    goat: { best: ['rabbit', 'horse', 'pig'], worst: ['rat', 'ox', 'dog'] },
+    monkey: { best: ['rat', 'dragon', 'snake'], worst: ['tiger', 'pig', 'horse'] },
+    rooster: { best: ['ox', 'snake', 'dragon'], worst: ['rabbit', 'dog', 'rat'] },
+    dog: { best: ['tiger', 'rabbit', 'horse'], worst: ['ox', 'dragon', 'goat'] },
+    pig: { best: ['rabbit', 'goat', 'tiger'], worst: ['snake', 'monkey', 'pig'] }
+  };
+
+  var descriptions = {
+    best: {
+      rat_dragon: 'An ambitious power couple. Both are confident and driven, building success together through mutual respect and shared goals.',
+      rat_monkey: 'A playful, intellectually stimulating pair. Their clever banter and shared wit keep the relationship fresh and exciting.',
+      rat_ox: 'A practical and grounded match. The Rat provides resourcefulness while the Ox offers steadfast reliability and loyalty.',
+      ox_snake: 'A calm, deeply loyal match. The Ox provides stability while the Snake offers wisdom and strategic thinking.',
+      ox_rooster: 'A hardworking and detail-oriented pair. Together they create a well-organized and prosperous life.',
+      tiger_horse: 'An adventurous, high-energy duo. Both love freedom and action, making them natural partners in exploration.',
+      tiger_dog: 'A loyal and protective pair. They share a strong sense of justice and will always have each other\'s backs.',
+      tiger_pig: 'A warm and generous match. The Tiger brings excitement while the Pig brings comfort and affection.',
+      rabbit_goat: 'A gentle, artistic match. Both value harmony and beauty, creating a peaceful and nurturing home together.',
+      rabbit_pig: 'A kind and compassionate pair. They understand each other\'s emotional needs and build a loving bond.',
+      rabbit_dog: 'A faithful and honest connection. Both value loyalty and create a safe, trustworthy relationship.',
+      dragon_rat: 'A dynamic and powerful union. Both are ambitious and inspire each other to reach greater heights.',
+      dragon_monkey: 'A creative and charismatic pair. Their combined talents and confidence attract success and admiration.',
+      dragon_rooster: 'A confident and successful pair. The Dragon dreams big and the Rooster handles the details — a perfect execution team.',
+      snake_ox: 'A steady and wise partnership. The Snake brings intuition and the Ox provides unshakeable stability.',
+      snake_rooster: 'An analytical and efficient match. Both are sharp-minded and work well together toward shared goals.',
+      snake_monkey: 'A clever and strategic duo. They communicate on a high intellectual level and solve problems effortlessly.',
+      horse_tiger: 'A passionate and freedom-loving pair. They share an adventurous spirit and zest for life.',
+      horse_goat: 'A creative and affectionate match. The Horse provides energy while the Goat adds warmth and artistry.',
+      horse_dog: 'An honest and active pair. Both are straightforward and enjoy an energetic, outdoorsy lifestyle together.',
+      goat_rabbit: 'A soft and harmonious union. Both appreciate beauty, art, and a peaceful domestic life.',
+      goat_horse: 'A warm and supportive pair. The Goat\'s tenderness balances the Horse\'s adventurous nature beautifully.',
+      goat_pig: 'A gentle and generous match. Both are kind-hearted and create a cozy, loving environment.',
+      monkey_rat: 'A witty and resourceful pair. Their shared intelligence and humor make life an exciting game.',
+      monkey_dragon: 'A bold and visionary duo. Together they can achieve anything they set their minds to.',
+      monkey_snake: 'A deep and intellectual connection. Both are strategic thinkers who understand each other intuitively.',
+      rooster_ox: 'A dependable and efficient pair. They share strong work ethics and build security together.',
+      rooster_snake: 'A sophisticated and perceptive match. Both appreciate precision and have excellent judgment.',
+      rooster_dragon: 'A glamorous and ambitious union. Together they command attention and achieve great things.',
+      dog_tiger: 'A courageous and loyal pair. They share strong values and will fight for what they believe in.',
+      dog_rabbit: 'A calm and faithful match. The Dog provides protection while the Rabbit brings peace to the home.',
+      dog_horse: 'An active and honest pair. Both are straightforward and enjoy a life filled with movement and purpose.',
+      pig_rabbit: 'A sweet and nurturing connection. Both are gentle souls who prioritize harmony and comfort.',
+      pig_goat: 'A warm and artistic match. They create a beautiful life filled with creativity, kindness, and good food.',
+      pig_tiger: 'An exciting yet comforting pair. The Tiger brings adventure while the Pig offers unconditional support.'
+    },
+    neutral: 'This is a neutral compatibility pairing. While there are no major conflicts, the relationship may require conscious effort to build deep understanding. With mutual respect and open communication, this pair can develop a strong and balanced bond over time.',
+    worst: {
+      rat_horse: 'The Rat is cautious and detail-oriented while the Horse is impulsive and freedom-loving. Their pacing and priorities often clash.',
+      rat_goat: 'The Rat is practical and direct, while the Goat is sensitive and dreamy. Their different worldviews can lead to frustration.',
+      rat_rabbit: 'The Rat is ambitious and assertive, while the Rabbit prefers peace and quiet. Their social styles are fundamentally at odds.',
+      ox_horse: 'The Ox values routine and stability, but the Horse craves freedom and spontaneity. Their lifestyles pull in opposite directions.',
+      ox_dog: 'Both are stubborn in their own ways. The Ox is rigid in methods while the Dog is rigid in principles, leading to deadlock.',
+      ox_goat: 'The Ox values routine and blunt honesty, while the Goat is sensitive and artistic. Misunderstandings arise from their different emotional languages.',
+      tiger_monkey: 'Both are clever and competitive, but their strong personalities can lead to power struggles and a battle of wills.',
+      tiger_snake: 'The Tiger is bold and direct while the Snake is subtle and strategic. Their approaches to life are almost opposite.',
+      rabbit_rat: 'The Rabbit craves harmony and calm, while the Rat is restless and ambitious. Their energy levels and needs differ significantly.',
+      rabbit_rooster: 'The Rabbit craves peace and quiet while the Rooster is direct and critical. Their communication styles are fundamentally different.',
+      rabbit_dragon: 'The Rabbit is gentle and reserved, while the Dragon is fiery and demanding. The Rabbit may feel overwhelmed by the Dragon\'s intensity.',
+      dragon_rabbit: 'The Dragon is bold and visionary while the Rabbit is cautious and comfort-seeking. The Dragon may seem overwhelming to the sensitive Rabbit.',
+      dragon_dog: 'The Dragon is bold and visionary, the Dog is loyal and practical. The Dragon may seem arrogant to the Dog, while the Dog seems pessimistic to the Dragon.',
+      dragon_ox: 'Both are strong-willed and stubborn. The Dragon wants to lead with vision while the Ox insists on tradition — a clash of egos.',
+      snake_tiger: 'The Snake is private and analytical, the Tiger is open and impulsive. Their contrasting approaches to decision-making create friction.',
+      snake_pig: 'The Snake is private and analytical, the Pig is open and trusting. Their contrasting approaches to intimacy can create distance.',
+      snake_horse: 'The Snake is cautious and strategic, the Horse is reckless and spontaneous. Their different risk tolerances cause tension.',
+      horse_rat: 'The Horse gallops ahead while the Rat plans every step. Their natural rhythms are completely out of sync.',
+      horse_ox: 'The Horse wants freedom and adventure; the Ox wants routine and stability. Neither is willing to bend easily.',
+      horse_snake: 'The Horse lives in the moment while the Snake thinks several moves ahead. Patience becomes a major issue.',
+      goat_rat: 'The Goat is sensitive and artistic, the Rat is pragmatic and blunt. Their emotional languages are hard to reconcile.',
+      goat_ox: 'The Goat needs appreciation and tenderness; the Ox gives practicality and tough love. Both feel misunderstood.',
+      goat_dog: 'The Goat is optimistic and carefree, while the Dog is anxious and serious. Their outlooks on life create a persistent mood gap.',
+      monkey_tiger: 'Both are strong personalities who love to lead. The Monkey uses wit, the Tiger uses force — neither backs down easily.',
+      monkey_pig: 'The Monkey is clever and mischievous, while the Pig is honest and trusting. The Monkey\'s games may hurt the sincere Pig.',
+      monkey_horse: 'The Monkey is a strategist who plans carefully, while the Horse acts on impulse. Their decision-making styles clash.',
+      rooster_rabbit: 'The Rooster is blunt and critical, the Rabbit is sensitive and harmony-seeking. Words can wound easily here.',
+      rooster_dog: 'The Rooster speaks his mind freely while the Dog is anxious and cautious. Their communication creates unnecessary stress.',
+      rooster_rat: 'Both are clever but competitive. The Rooster\'s pride and the Rat\'s resourcefulness can turn into a rivalry rather than a partnership.',
+      dog_ox: 'Both are stubborn and set in their ways. The Dog follows his conscience while the Ox follows his habits — they rarely align.',
+      dog_dragon: 'The Dog is grounded and skeptical, the Dragon is grandiose and optimistic. Their worldviews are fundamentally incompatible.',
+      dog_goat: 'The Dog is protective and anxious, while the Goat is gentle and carefree. The Dog\'s worry can smother the Goat\'s lightness.',
+      pig_snake: 'The Pig is open-hearted and trusting, the Snake is private and guarded. Trust is a recurring challenge in this pairing.',
+      pig_monkey: 'The Pig is honest and straightforward, while the Monkey loves clever tricks. The Pig may feel deceived or manipulated.',
+      pig_pig: 'Two Pigs together may struggle with overindulgence and lack of direction. Neither provides the structure the other needs.'
+    }
+  };
+
+  function capitalize(str) {
+    return str.charAt(0).toUpperCase() + str.slice(1);
+  }
+
+  function populateSelects() {
+    var s1 = document.getElementById('sign1');
+    var s2 = document.getElementById('sign2');
+    if (!s1 || !s2) return;
+    var html = '<option value="">Select a sign</option>';
+    for (var i = 0; i < animals.length; i++) {
+      html += '<option value="' + animals[i].id + '">' + animals[i].name + '</option>';
+    }
+    s1.innerHTML = html;
+    s2.innerHTML = html;
+  }
+
+  function getCompat(sign1, sign2) {
+    var data = compatData[sign1];
+    if (!data) return { score: 0, label: 'Unknown' };
+    if (data.best.indexOf(sign2) !== -1) return { score: 5, label: 'Best Match' };
+    if (data.worst.indexOf(sign2) !== -1) return { score: 1, label: 'Challenging Match' };
+    return { score: 3, label: 'Neutral Match' };
+  }
+
+  function getDescription(sign1, sign2, result) {
+    var key;
+    if (result.label === 'Best Match') {
+      key = sign1 + '_' + sign2;
+      if (descriptions.best[key]) return descriptions.best[key];
+      key = sign2 + '_' + sign1;
+      if (descriptions.best[key]) return descriptions.best[key];
+      return 'A naturally harmonious pairing. These two signs share complementary traits and build a strong, supportive connection.';
+    }
+    if (result.label === 'Challenging Match') {
+      key = sign1 + '_' + sign2;
+      if (descriptions.worst[key]) return descriptions.worst[key];
+      key = sign2 + '_' + sign1;
+      if (descriptions.worst[key]) return descriptions.worst[key];
+      return 'This pairing faces natural friction. With patience, understanding, and open communication, these differences can become strengths.';
+    }
+    return descriptions.neutral;
+  }
+
+  function getStarColor(score) {
+    if (score === 5) return '#16a34a';
+    if (score === 1) return '#dc2626';
+    return '#ca8a04';
+  }
+
+  function getLabelClass(label) {
+    if (label === 'Best Match') return 'bg-green-100 text-green-800';
+    if (label === 'Challenging Match') return 'bg-red-100 text-red-800';
+    return 'bg-yellow-100 text-yellow-800';
+  }
+
+  function checkCompatibility() {
+    var s1 = document.getElementById('sign1');
+    var s2 = document.getElementById('sign2');
+    var result = document.getElementById('result');
+    var rs1 = document.getElementById('result-sign1');
+    var rs2 = document.getElementById('result-sign2');
+    var rStars = document.getElementById('result-stars');
+    var rLabel = document.getElementById('result-label');
+    var rDesc = document.getElementById('result-desc');
+
+    if (!s1 || !s2 || !result || !rs1 || !rs2 || !rStars || !rLabel || !rDesc) return;
+
+    var val1 = s1.value;
+    var val2 = s2.value;
+
+    if (!val1 || !val2) {
+      alert('Please select both zodiac signs.');
+      return;
+    }
+
+    if (val1 === val2) {
+      alert('Please select two different zodiac signs.');
+      return;
+    }
+
+    var compat = getCompat(val1, val2);
+    var name1 = capitalize(val1);
+    var name2 = capitalize(val2);
+
+    rs1.textContent = name1;
+    rs2.textContent = name2;
+
+    rStars.textContent = '';
+    for (var i = 0; i < 5; i++) {
+      var star = document.createElement('span');
+      if (i < compat.score) {
+        star.textContent = '\u2605';
+        star.style.color = getStarColor(compat.score);
+      } else {
+        star.textContent = '\u2606';
+        star.style.color = '#d4d4d4';
+      }
+      star.className = 'inline-block mx-0.5';
+      rStars.appendChild(star);
+    }
+
+    rLabel.textContent = compat.label;
+    rLabel.className = 'mt-2 inline-block rounded-full px-4 py-1 text-sm font-semibold ' + getLabelClass(compat.label);
+
+    rDesc.textContent = getDescription(val1, val2, compat);
+
+    result.classList.remove('hidden');
+    result.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    populateSelects();
+    var btn = document.getElementById('check-btn');
+    if (btn) {
+      btn.addEventListener('click', checkCompatibility);
+    }
+  });
+})();
+</script>

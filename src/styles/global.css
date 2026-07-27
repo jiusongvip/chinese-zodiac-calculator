@@ -1,0 +1,52 @@
+@import "@fontsource/geist-sans/400.css";
+@import "@fontsource/geist-sans/500.css";
+@import "@fontsource/geist-sans/600.css";
+@import "@fontsource/geist-sans/700.css";
+@import "@fontsource/geist-mono/400.css";
+@import "@fontsource/geist-mono/500.css";
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Geist Sans", "sans-serif";
+  --font-mono: "Geist Mono", "monospace";
+  --color-zodiac-red: #DC2626;
+  --color-zodiac-gold: #B8860B;
+  --color-zodiac-cream: #FDF8F0;
+  --color-zodiac-ink: #1A1410;
+}
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+}
+
+article h1 {
+  font-size: 1.875rem;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  color: var(--color-zodiac-ink);
+}
+
+article h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  color: var(--color-zodiac-ink);
+}
+
+@media (prefers-color-scheme: dark) {
+  article h1, article h2 {
+    color: var(--color-stone-100);
+  }
+}
+
+strong {
+  font-weight: 600;
+}

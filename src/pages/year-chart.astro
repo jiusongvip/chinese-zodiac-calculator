@@ -1,0 +1,191 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { ZODIAC_YEARS, ZODIAC_ANIMALS } from "../data/zodiac";
+---
+
+<BaseLayout
+  title="Chinese Zodiac Year Chart Reference Guide"
+  description="Complete Chinese zodiac years chart from 1900 to 2043. Find your animal sign, element, and yin yang by birth year with our easy-to-read reference guide."
+  breadcrumbs={[{label:"Home",href:"/"},{label:"Year Chart",href:"/year-chart"}]}
+  articleSchema={true}
+>
+  <article class="mx-auto max-w-[1200px] px-4 py-12 lg:px-6 lg:py-16">
+    <!-- Hero -->
+    <div class="mb-16 text-center">
+      <h1 class="mb-3 text-4xl font-bold tracking-tight text-zodiac-ink dark:text-stone-100 lg:text-5xl">Chinese Zodiac Year Chart</h1>
+      <p class="mx-auto max-w-2xl text-lg text-stone-500 dark:text-stone-400">Complete reference table from 1900 to 2043</p>
+    </div>
+
+    <!-- Quick Lookup -->
+    <section class="mb-20">
+      <h2 class="mb-6 text-2xl font-semibold tracking-tight text-zodiac-ink dark:text-stone-100">Quick Year Lookup</h2>
+      <div class="rounded-xl border border-stone-200 bg-white p-6 dark:border-stone-700 dark:bg-stone-900">
+        <div class="flex flex-col gap-4 sm:flex-row sm:items-end">
+          <div class="flex-1">
+            <label for="year-select" class="mb-1.5 block text-sm font-medium text-stone-600 dark:text-stone-400">Select a year</label>
+            <select id="year-select" class="w-full rounded-lg border border-stone-300 bg-white px-4 py-2.5 text-stone-900 focus:border-zodiac-red focus:outline-none focus:ring-2 focus:ring-zodiac-red/20 dark:border-stone-600 dark:bg-stone-800 dark:text-stone-100">
+              {
+                Array.from({ length: 2043 - 1900 + 1 }, (_, i) => 1900 + i).map((y) => (
+                  <option value={y}>{y}</option>
+                ))
+              }
+            </select>
+          </div>
+          <button id="lookup-btn" class="shrink-0 cursor-pointer rounded-lg bg-zodiac-red px-6 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-zodiac-red/40">Look Up</button>
+        </div>
+        <div id="lookup-result" class="mt-4 hidden rounded-lg bg-stone-50 p-4 text-center dark:bg-stone-800"></div>
+      </div>
+    </section>
+
+    <!-- Full Year Chart -->
+    <section class="mb-20">
+      <h2 class="mb-6 text-2xl font-semibold tracking-tight text-zodiac-ink dark:text-stone-100">Full Zodiac Year Chart (1900–2043)</h2>
+      <div class="overflow-x-auto rounded-xl border border-stone-200 dark:border-stone-700">
+        <table class="w-full text-left text-sm">
+          <thead>
+            <tr class="border-b border-stone-200 bg-stone-100 dark:border-stone-700 dark:bg-stone-800">
+              <th class="px-4 py-3 font-semibold text-stone-600 dark:text-stone-300 lg:px-6">Animal</th>
+              <th class="px-4 py-3 font-semibold text-stone-600 dark:text-stone-300 lg:px-6">Years</th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              ZODIAC_ANIMALS.sort((a, b) => a.rank - b.rank).map((animal, _i) => {
+                const entry = ZODIAC_YEARS.find((e) => e.animal === animal.id);
+                const years = entry ? entry.years : [];
+                return (
+                  <tr class="border-b border-stone-100 last:border-0 dark:border-stone-800">
+                    <td class="px-4 py-3 lg:px-6">
+                      <div class="flex items-center gap-3">
+                        <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-red-50 text-lg font-semibold text-zodiac-red dark:bg-red-900/30">{animal.chinese}</span>
+                        <span class="font-medium capitalize text-zodiac-ink dark:text-stone-100">{animal.id}</span>
+                      </div>
+                    </td>
+                    <td class="px-4 py-3 lg:px-6">
+                      <div class="flex flex-wrap gap-1.5">
+                        {years.map((y) => (
+                          <span class="inline-block rounded-md bg-stone-100 px-2.5 py-1 text-xs font-medium text-stone-600 dark:bg-stone-800 dark:text-stone-400">{y}</span>
+                        ))}
+                      </div>
+                    </td>
+                  </tr>
+                );
+              })
+            }
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="mb-8">
+      <h2 class="mb-6 text-2xl font-semibold tracking-tight text-zodiac-ink dark:text-stone-100">Frequently Asked Questions</h2>
+      <div class="space-y-4">
+        <details class="group rounded-xl border border-stone-200 bg-white p-5 dark:border-stone-700 dark:bg-stone-900">
+          <summary class="flex cursor-pointer items-center justify-between font-medium text-zodiac-ink dark:text-stone-100">
+            What is my Chinese zodiac animal?
+            <svg class="h-4 w-4 shrink-0 text-stone-400 transition-transform group-open:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+          </summary>
+          <p class="mt-3 text-sm leading-relaxed text-stone-500 dark:text-stone-400">Find the year you were born in the chart above. The animal associated with that year is your Chinese zodiac sign. If you were born in January or early February, check the Chinese New Year date — he zodiac animal changes with the lunar new year, not January 1.</p>
+        </details>
+        <details class="group rounded-xl border border-stone-200 bg-white p-5 dark:border-stone-700 dark:bg-stone-900">
+          <summary class="flex cursor-pointer items-center justify-between font-medium text-zodiac-ink dark:text-stone-100">
+            Why are years grouped by animal?
+            <svg class="h-4 w-4 shrink-0 text-stone-400 transition-transform group-open:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+          </summary>
+          <p class="mt-3 text-sm leading-relaxed text-stone-500 dark:text-stone-400">The Chinese zodiac follows a 12-year cycle, with each year assigned a different animal. This cycle repeats every 12 years, so the same animal appears every 12 years (e.g., the Year of the Dragon occurs in 2012, 2024, 2036, etc.).</p>
+        </details>
+        <details class="group rounded-xl border border-stone-200 bg-white p-5 dark:border-stone-700 dark:bg-stone-900">
+          <summary class="flex cursor-pointer items-center justify-between font-medium text-zodiac-ink dark:text-stone-100">
+            What about the Chinese New Year cutoff?
+            <svg class="h-4 w-4 shrink-0 text-stone-400 transition-transform group-open:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+          </summary>
+          <p class="mt-3 text-sm leading-relaxed text-stone-500 dark:text-stone-400">If you were born before the Chinese New Year in your birth year, your zodiac animal is actually from the previous year. For example, someone born on January 20, 2024 (before the Lunar New Year on February 10) is a Rabbit, not a Dragon. Use our <a href="/" class="font-medium text-zodiac-red underline-offset-2 hover:underline">Zodiac Calculator</a> for precise results.</p>
+        </details>
+        <details class="group rounded-xl border border-stone-200 bg-white p-5 dark:border-stone-700 dark:bg-stone-900">
+          <summary class="flex cursor-pointer items-center justify-between font-medium text-zodiac-ink dark:text-stone-100">
+            Which zodiac animal is the luckiest?
+            <svg class="h-4 w-4 shrink-0 text-stone-400 transition-transform group-open:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+          </summary>
+          <p class="mt-3 text-sm leading-relaxed text-stone-500 dark:text-stone-400">In Chinese culture, the Dragon is traditionally considered the most auspicious sign, symbolizing power, success, and good fortune. However, "luck" depends on how well your sign's traits align with your personal circumstances. Every animal has unique strengths and favorable years.</p>
+        </details>
+      </div>
+    </section>
+  </article>
+</BaseLayout>
+
+<script is:inline>
+(function () {
+  var yearsData = {
+    rat: [1912, 1924, 1936, 1948, 1960, 1972, 1984, 1996, 2008, 2020, 2032],
+    ox: [1913, 1925, 1937, 1949, 1961, 1973, 1985, 1997, 2009, 2021, 2033],
+    tiger: [1914, 1926, 1938, 1950, 1962, 1974, 1986, 1998, 2010, 2022, 2034],
+    rabbit: [1915, 1927, 1939, 1951, 1963, 1975, 1987, 1999, 2011, 2023, 2035],
+    dragon: [1916, 1928, 1940, 1952, 1964, 1976, 1988, 2000, 2012, 2024, 2036],
+    snake: [1917, 1929, 1941, 1953, 1965, 1977, 1989, 2001, 2013, 2025, 2037],
+    horse: [1918, 1930, 1942, 1954, 1966, 1978, 1990, 2002, 2014, 2026, 2038],
+    goat: [1919, 1931, 1943, 1955, 1967, 1979, 1991, 2003, 2015, 2027, 2039],
+    monkey: [1920, 1932, 1944, 1956, 1968, 1980, 1992, 2004, 2016, 2028, 2040],
+    rooster: [1921, 1933, 1945, 1957, 1969, 1981, 1993, 2005, 2017, 2029, 2041],
+    dog: [1922, 1934, 1946, 1958, 1970, 1982, 1994, 2006, 2018, 2030, 2042],
+    pig: [1923, 1935, 1947, 1959, 1971, 1983, 1995, 2007, 2019, 2031, 2043]
+  };
+
+  var yearToAnimal = {};
+  for (var animal in yearsData) {
+    if (yearsData.hasOwnProperty(animal)) {
+      var years = yearsData[animal];
+      for (var i = 0; i < years.length; i++) {
+        yearToAnimal[years[i]] = animal;
+      }
+    }
+  }
+
+  var animalEmoji = {
+    rat: "\u{1F400}", ox: "\u{1F402}", tiger: "\u{1F405}", rabbit: "\u{1F407}",
+    dragon: "\u{1F409}", snake: "\u{1F40D}", horse: "\u{1F40E}", goat: "\u{1F410}",
+    monkey: "\u{1F412}", rooster: "\u{1F413}", dog: "\u{1F415}", pig: "\u{1F416}"
+  };
+
+  var select = document.getElementById("year-select");
+  var btn = document.getElementById("lookup-btn");
+  var result = document.getElementById("lookup-result");
+
+  var currentYear = new Date().getFullYear();
+
+  if (select) {
+    for (var y = 1900; y <= 2043; y++) {
+      var opt = document.createElement("option");
+      opt.value = y;
+      opt.textContent = y;
+      select.appendChild(opt);
+    }
+    if (currentYear >= 1900 && currentYear <= 2043) {
+      select.value = currentYear;
+    }
+  }
+
+  function lookup() {
+    var year = parseInt(select ? select.value : currentYear, 10);
+    var animal = yearToAnimal[year];
+    if (animal && result) {
+      var emoji = animalEmoji[animal] || "";
+      var name = animal.charAt(0).toUpperCase() + animal.slice(1);
+      result.className = "mt-4 rounded-lg bg-stone-50 p-4 text-center dark:bg-stone-800";
+      result.innerHTML =
+        '<p class="text-lg font-medium text-zodiac-ink dark:text-stone-100">' +
+        emoji + " " + name + ' <span class="text-stone-500 dark:text-stone-400">(' + year + ')</span></p>' +
+        '<p class="mt-1 text-sm text-stone-500 dark:text-stone-400">The Year of the ' + name + ' in the Chinese zodiac.</p>';
+    }
+  }
+
+  if (btn) {
+    btn.addEventListener("click", lookup);
+  }
+  if (select) {
+    select.addEventListener("keydown", function (e) {
+      if (e.key === "Enter") lookup();
+    });
+  }
+})();
+</script>

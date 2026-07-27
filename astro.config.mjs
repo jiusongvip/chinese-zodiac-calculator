@@ -1,5 +1,23 @@
-// @ts-check
 import { defineConfig } from 'astro/config';
+import sitemap from '@astrojs/sitemap';
+import tailwindcss from '@tailwindcss/vite';
 
-// https://astro.build/config
-export default defineConfig({});
+export default defineConfig({
+  site: 'https://www.chinese-zodiac-calculator.com',
+  trailingSlash: 'never',
+  integrations: [sitemap({
+    lastmod: new Date(),
+    changefreq: 'weekly',
+    priority: 0.7,
+    serialize: (item) => {
+      if (item.url === 'https://www.chinese-zodiac-calculator.com') {
+        item.priority = 1.0;
+        item.changefreq = 'daily';
+      }
+      return item;
+    }
+  })],
+  vite: {
+    plugins: [tailwindcss()],
+  },
+});

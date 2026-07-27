@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1A1410"/>
+      <stop offset="100%" stop-color="#2D1F1A"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#DC2626"/>
+      <stop offset="100%" stop-color="#B8860B"/>
+    </linearGradient>
+  </defs>
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <!-- Decorative circles -->
+  <circle cx="100" cy="100" r="200" fill="rgba(220,38,38,0.05)"/>
+  <circle cx="1100" cy="530" r="250" fill="rgba(184,134,11,0.05)"/>
+  <circle cx="600" cy="315" r="300" fill="rgba(220,38,38,0.03)"/>
+  <!-- Zodiac symbol ornaments -->
+  <text x="80" y="140" font-size="40" fill="rgba(220,38,38,0.15)" font-family="serif">é¼?ç‰?è™?å…?/text>
+  <text x="80" y="180" font-size="40" fill="rgba(220,38,38,0.10)" font-family="serif">é¾?è›?é©?ç¾?/text>
+  <text x="80" y="220" font-size="40" fill="rgba(220,38,38,0.07)" font-family="serif">çŒ?é¸?ç‹?çŒ?/text>
+  <text x="980" y="510" font-size="40" fill="rgba(184,134,11,0.15)" font-family="serif">é¼?ç‰?è™?å…?/text>
+  <text x="980" y="550" font-size="40" fill="rgba(184,134,11,0.10)" font-family="serif">é¾?è›?é©?ç¾?/text>
+  <text x="980" y="590" font-size="40" fill="rgba(184,134,11,0.07)" font-family="serif">çŒ?é¸?ç‹?çŒ?/text>
+  <!-- Brand -->
+  <text x="600" y="200" text-anchor="middle" font-family="sans-serif" font-size="72" font-weight="bold" fill="#FFFFFF" letter-spacing="2">Chinese Zodiac</text>
+  <text x="600" y="260" text-anchor="middle" font-family="sans-serif" font-size="28" fill="#B8860B" letter-spacing="4">CHINESE ZODIAC CALCULATOR</text>
+  <!-- Divider -->
+  <line x1="350" y1="300" x2="850" y2="300" stroke="url(#accent)" stroke-width="2"/>
+  <!-- Description -->
+  <text x="600" y="350" text-anchor="middle" font-family="sans-serif" font-size="22" fill="#A0938B" letter-spacing="1">Discover Your Animal Sign â€?Element â€?Compatibility</text>
+  <!-- CTA pill -->
+  <rect x="440" y="390" width="320" height="52" rx="26" fill="#DC2626"/>
+  <text x="600" y="424" text-anchor="middle" font-family="sans-serif" font-size="20" font-weight="bold" fill="#FFFFFF" letter-spacing="1">chinese-zodiac-calculator.com</text>
+  <!-- Zodiac emoji row -->
+  <text x="600" y="520" text-anchor="middle" font-size="36">ğŸ€ğŸ‚ğŸ…ğŸ‡ğŸ‰ğŸğŸğŸğŸ’ğŸ“ğŸ•ğŸ–</text>
+</svg>

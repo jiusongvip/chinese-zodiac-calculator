@@ -1,0 +1,139 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { ELEMENTS } from "../data/zodiac";
+
+const getElement = (el: string): { years: number[]; color: string; traits: string } => (ELEMENTS as Record<string, { years: number[]; color: string; traits: string }>)[el];
+
+const elementTips = {
+  Wood: {
+    direction: "East",
+    colors: ["Green", "Brown"],
+    tips: [
+      "Place live plants in the east corner of your home to activate growth energy and career expansion.",
+      "Use wooden furniture and bamboo accents to strengthen your natural vitality.",
+      "Avoid metal objects in your bedroom — hey can disrupt Wood's gentle, expanding energy.",
+    ],
+  },
+  Fire: {
+    direction: "South",
+    colors: ["Red", "Purple", "Orange"],
+    tips: [
+      "Light candles or place a warm lamp in the south sector of your living room to boost recognition and fame luck.",
+      "Display red decor elements — ushions, curtains, or artwork — o invite passion and visibility.",
+      "Keep your TV and electronics in the south area to activate Fire energy through heat and light.",
+    ],
+  },
+  Earth: {
+    direction: "Center",
+    colors: ["Yellow", "Beige", "Terracotta"],
+    tips: [
+      "Use ceramic vases, stone decor, and square shapes to ground your space and promote stability.",
+      "Place a bowl of crystals or gemstones in the center of your home to harmonize relationships.",
+      "Avoid blue and black in your workspace — ater weakens Earth energy and can scatter your focus.",
+    ],
+  },
+  Metal: {
+    direction: "West",
+    colors: ["White", "Gold", "Silver"],
+    tips: [
+      "Install wind chimes in the west window to attract helpful people and mentorship opportunities.",
+      "Use round mirrors and metal-framed art to amplify precision and clarity in decision-making.",
+      "Declutter your home office regularly — etal thrives in order and suffocates in chaos.",
+    ],
+  },
+  Water: {
+    direction: "North",
+    colors: ["Blue", "Black"],
+    tips: [
+      "Place a small fountain or aquarium in the north area of your home to invite wealth flow.",
+      "Use curved shapes and mirrors to direct Water energy gently — void flooding a room with dark tones.",
+      "Keep your bathroom door closed and the toilet lid down to prevent wealth from draining away.",
+    ],
+  },
+};
+
+const faqs = [
+  { q: "Can I use feng shui without knowing my zodiac element?", a: "Absolutely. While element-based feng shui is powerful, general principles like decluttering, good lighting, and balanced furniture placement benefit everyone regardless of their sign." },
+  { q: "How often should I update my feng shui arrangements?", a: "Major adjustments can be made annually with the Chinese New Year. Minor tweaks — ike adding seasonal colors or clearing clutter — an be done monthly or seasonally." },
+  { q: "Do I need to follow all tips for my element at once?", a: "No. Start with one or two changes that feel most natural. Feng shui is about harmony, not stress. Gradually incorporate more adjustments as you feel comfortable." },
+  { q: "Can feng shui really improve my luck?", a: "Feng shui creates an environment that supports your intentions. It removes obstacles and invites positive chi, which can improve focus, mood, and opportunity — ut it works best alongside practical effort." },
+  { q: "What is the most important feng shui rule?", a: "Clear the clutter. Stagnant energy in a cluttered space blocks opportunity and drains vitality. This single practice has the most immediate and noticeable impact on your home's energy." },
+];
+---
+
+<BaseLayout
+  title="Chinese Zodiac Feng Shui Tips Guide"
+  description="Discover feng shui principles based on your Chinese zodiac sign and element. Practical tips for home decor, career success, and harmonious relationships."
+  breadcrumbs={[{ label: "Home", href: "/" }, { label: "Feng Shui", href: "/feng-shui-tips" }]}
+  articleSchema={true}
+>
+  <section class="mx-auto max-w-[1200px] px-4 py-12 lg:px-6 lg:py-16">
+    <div class="mx-auto mb-12 max-w-[720px] text-center">
+      <h1 class="mb-4 text-3xl font-bold tracking-tight text-stone-900 dark:text-stone-100 sm:text-4xl">Feng Shui Tips for Each <span class="text-[#DC2626]">Zodiac Sign</span></h1>
+      <p class="text-base leading-relaxed text-stone-600 dark:text-stone-400">Harmonize your environment with ancient feng shui wisdom tailored to your Chinese zodiac element. Simple adjustments can unlock better energy in your home, career, and relationships.</p>
+    </div>
+
+    {Object.entries(elementTips).map(([element, data], idx) => {
+      const elem = getElement(element);
+      return (
+        <section class={`mb-12 ${idx > 0 ? "border-t border-stone-200 pt-12 dark:border-stone-700" : ""}`}>
+          <div class="mb-6 flex flex-wrap items-center gap-4">
+            <span class="inline-flex h-10 w-10 items-center justify-center rounded-full text-lg font-bold" style={`background-color: ${elem.color}20; color: ${elem.color};`}>{element[0]}</span>
+            <div>
+              <h2 class="text-xl font-bold text-stone-900 dark:text-stone-100">{element} Element</h2>
+              <p class="text-sm text-stone-500 dark:text-stone-400">{elem.traits}</p>
+            </div>
+          </div>
+
+          <div class="mb-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            <div class="rounded-lg border border-stone-200 bg-white p-4 dark:border-stone-700 dark:bg-stone-800">
+              <h3 class="mb-1 text-xs font-semibold uppercase tracking-widest text-[#DC2626]">Lucky Direction</h3>
+              <p class="text-sm text-stone-700 dark:text-stone-300">{data.direction}</p>
+            </div>
+            <div class="rounded-lg border border-stone-200 bg-white p-4 dark:border-stone-700 dark:bg-stone-800">
+              <h3 class="mb-1 text-xs font-semibold uppercase tracking-widest text-[#DC2626]">Home Colors</h3>
+              <div class="flex flex-wrap gap-2">
+                {data.colors.map((c) => (
+                  <span class="rounded-full bg-stone-100 px-3 py-1 text-xs text-stone-700 dark:bg-stone-700 dark:text-stone-300">{c}</span>
+                ))}
+              </div>
+            </div>
+            <div class="sm:col-span-2 lg:col-span-1">
+              <h3 class="mb-1 text-xs font-semibold uppercase tracking-widest text-[#DC2626]">Element Color</h3>
+              <div class="flex items-center gap-2">
+                <span class="inline-block h-4 w-4 rounded-full border border-stone-300" style={`background-color: ${elem.color};`}></span>
+                <span class="text-sm text-stone-600 dark:text-stone-400">{elem.color}</span>
+              </div>
+            </div>
+          </div>
+
+          <ul class="space-y-3">
+            {data.tips.map((tip) => (
+              <li class="flex items-start gap-3 rounded-lg border border-stone-100 bg-stone-50 p-4 dark:border-stone-700 dark:bg-stone-800/50">
+                <span class="mt-0.5 shrink-0 text-lg">&#10003;</span>
+                <span class="text-sm leading-relaxed text-stone-600 dark:text-stone-400">{tip}</span>
+              </li>
+            ))}
+          </ul>
+        </section>
+      );
+    })}
+  </section>
+
+  <section class="border-t border-stone-200 bg-stone-50 dark:border-stone-800 dark:bg-stone-900/50">
+    <div class="mx-auto max-w-[800px] px-4 py-12 lg:px-6 lg:py-16">
+      <h2 class="mb-8 text-2xl font-bold text-stone-900 dark:text-stone-100 text-center">Frequently Asked Questions</h2>
+      <div class="space-y-4">
+        {faqs.map((faq) => (
+          <details class="group cursor-pointer rounded-lg border border-stone-200 bg-white p-5 dark:border-stone-700 dark:bg-stone-800">
+            <summary class="flex items-center justify-between text-sm font-semibold text-stone-900 dark:text-stone-100 [&::-webkit-details-marker]:hidden">
+              {faq.q}
+              <svg class="h-4 w-4 shrink-0 text-stone-400 transition-transform group-open:rotate-180" viewBox="0 0 16 16" fill="none"><path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            </summary>
+            <p class="mt-3 text-sm leading-relaxed text-stone-600 dark:text-stone-400">{faq.a}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
