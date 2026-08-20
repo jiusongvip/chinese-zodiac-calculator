@@ -1,24 +1,9 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { ZODIAC_ANIMALS, ELEMENTS } from "../data/zodiac";
+import { ZODIAC_ANIMALS, ELEMENTS, HOROSCOPES_2026 } from "../data/zodiac";
 
 const getElement = (el: string): { years: number[]; color: string; traits: string } => (ELEMENTS as Record<string, { years: number[]; color: string; traits: string }>)[el];
-const getHoroscope = (id: string): string => (horoscopes as Record<string, string>)[id];
-
-const horoscopes = {
-  rat: "The Rat shines in 2026 with career opportunities driven by quick thinking. Focus on networking to unlock financial gains.",
-  ox: "Steady progress awaits the Ox in 2026. Your patience pays off professionally, but guard against stubbornness in relationships.",
-  tiger: "2026 brings bold energy for the Tiger. Take calculated risks in love and career — ortune favors the brave this year.",
-  rabbit: "A harmonious year for the Rabbit. Prioritize self-care and family; financial stability comes through cautious planning.",
-  dragon: "The Dragon soars in 2026 with creative breakthroughs. Career expansion is favored, but watch your health amid the excitement.",
-  snake: "Wisdom guides the Snake this year. Strategic moves in investments yield results. Trust your intuition in romantic matters.",
-  horse: "As the ruling sign of 2026, the Horse enjoys a powerful year. Leadership opportunities abound; channel your fiery energy wisely.",
-  goat: "A year of gentle growth for the Goat. Artistic pursuits flourish. Strengthen relationships through open communication.",
-  monkey: "2026 rewards the Monkey's cleverness. New ventures succeed. Stay adaptable — nexpected changes bring hidden blessings.",
-  rooster: "Precision and diligence elevate the Rooster in 2026. Career recognition arrives. Balance ambition with family time.",
-  dog: "Loyalty brings rewards for the Dog this year. Legal and financial matters resolve favorably. Nurture your closest bonds.",
-  pig: "The Pig enjoys abundance in 2026. Travel and education bring joy. Guard against overindulgence; maintain healthy routines.",
-};
+const horoscopes = HOROSCOPES_2026;
 
 const faqs = [
   { q: "When does the Year of the Horse 2026 begin?", a: "The Chinese New Year for 2026 falls on February 17, 2026. Anyone born after this date belongs to the Horse sign. Those born before are still considered Snakes from the previous cycle." },
@@ -34,16 +19,18 @@ const faqs = [
   description="Read your 2026 Chinese zodiac horoscope with free annual predictions for all 12 signs covering career, love, health, and wealth. Plan your year ahead."
   breadcrumbs={[{ label: "Home", href: "/" }, { label: "Horoscope", href: "/yearly-horoscope" }]}
   articleSchema={true}
+  faqSchema={faqs}
+  dateModified="2026-08-19"
 >
   <section class="mx-auto max-w-[1200px] px-4 py-12 lg:px-6 lg:py-16">
     <div class="mx-auto mb-12 max-w-[720px] text-center">
-      <h1 class="mb-4 text-3xl font-bold tracking-tight text-stone-900 dark:text-stone-100 sm:text-4xl">2026 Year of the <span class="text-[#DC2626]">Horse</span> — odiac Horoscopes</h1>
+      <h1 class="mb-4 text-3xl font-bold tracking-tight text-stone-900 dark:text-stone-100 sm:text-4xl">2026 Year of the <span class="text-[#DC2626]">Horse</span> — Chinese Zodiac Horoscopes</h1>
       <p class="text-base leading-relaxed text-stone-600 dark:text-stone-400">Fire Horse 2026 brings bold energy, transformation, and opportunity for all twelve signs. Discover what the year holds for your career, love life, health, and finances.</p>
     </div>
 
     <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
       {ZODIAC_ANIMALS.map((animal) => {
-        const preview = getHoroscope(animal.id);
+        const preview = horoscopes[animal.id as keyof typeof horoscopes];
         const elem = getElement(animal.element);
         return (
           <article class="group rounded-xl border border-stone-200 bg-white p-6 shadow-sm transition-all hover:shadow-md hover:border-[#DC2626]/30 dark:border-stone-700 dark:bg-stone-800 dark:hover:border-[#DC2626]/50">
@@ -52,7 +39,7 @@ const faqs = [
               <span class="rounded-full px-3 py-1 text-xs font-medium" style={`background-color: ${elem.color}20; color: ${elem.color};`}>{animal.element}</span>
             </div>
             <p class="mb-4 text-sm leading-relaxed text-stone-600 dark:text-stone-400">{preview}</p>
-            <a href={`/signs/${animal.id}/`} class="inline-flex items-center gap-1 text-sm font-medium text-[#DC2626] hover:underline">Read full horoscope &rarr;</a>
+            <a href={`/signs/${animal.id}`} class="inline-flex items-center gap-1 text-sm font-medium text-[#DC2626] hover:underline">Read full profile &rarr;</a>
           </article>
         );
       })}

@@ -8,6 +8,7 @@ import { ZODIAC_YEARS, ZODIAC_ANIMALS } from "../data/zodiac";
   description="Complete Chinese zodiac years chart from 1900 to 2043. Find your animal sign, element, and yin yang by birth year with our easy-to-read reference guide."
   breadcrumbs={[{label:"Home",href:"/"},{label:"Year Chart",href:"/year-chart"}]}
   articleSchema={true}
+  dateModified="2026-08-19"
 >
   <article class="mx-auto max-w-[1200px] px-4 py-12 lg:px-6 lg:py-16">
     <!-- Hero -->
@@ -153,16 +154,9 @@ import { ZODIAC_YEARS, ZODIAC_ANIMALS } from "../data/zodiac";
 
   var currentYear = new Date().getFullYear();
 
-  if (select) {
-    for (var y = 1900; y <= 2043; y++) {
-      var opt = document.createElement("option");
-      opt.value = y;
-      opt.textContent = y;
-      select.appendChild(opt);
-    }
-    if (currentYear >= 1900 && currentYear <= 2043) {
-      select.value = currentYear;
-    }
+  // The options are server-rendered above; just pre-select the current year.
+  if (select && currentYear >= 1900 && currentYear <= 2043) {
+    select.value = String(currentYear);
   }
 
   function lookup() {

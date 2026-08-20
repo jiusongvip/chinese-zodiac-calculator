@@ -1,6 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { ZODIAC_ANIMALS, ZODIAC_YEARS, LUCKY_THINGS, COMPATIBILITY } from "../data/zodiac";
+import { ZODIAC_ANIMALS, ZODIAC_YEARS, LUCKY_THINGS, COMPATIBILITY, ZODIAC_LUNAR_RANGES, HOROSCOPES_2026 } from "../data/zodiac";
 import CompatibilityMatrix from "../components/CompatibilityMatrix.astro";
 
 const animals = ZODIAC_ANIMALS;
@@ -17,6 +17,18 @@ const monthAbbr = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","
 
 const zodiacYears = ZODIAC_YEARS;
 const compatData = COMPATIBILITY;
+const lunarRanges = ZODIAC_LUNAR_RANGES;
+const horoscopes2026 = HOROSCOPES_2026;
+
+const faqs = [
+  { q: "What is the Chinese zodiac?", a: "The Chinese zodiac (生肖, shēngxiào) is a 12-year cycle where each year is represented by an animal. Based on the lunar calendar, it has been used for centuries in Chinese culture to interpret personality, predict fortune, and determine compatibility. Unlike the Western zodiac which follows monthly dates, the Chinese zodiac follows lunar years." },
+  { q: "How do I find my Chinese zodiac sign?", a: "Simply enter your birth date into the calculator above. It will determine your animal sign based on the lunar new year calendar. Using only the year can be about 10% inaccurate for people born in January or February — our full birth date calculator handles this automatically using accurate Chinese New Year dates from 1900 to 2035." },
+  { q: "What are the 12 Chinese zodiac animals in order?", a: "The 12 animals in order are: Rat (#1), Ox (#2), Tiger (#3), Rabbit (#4), Dragon (#5), Snake (#6), Horse (#7), Goat (#8), Monkey (#9), Rooster (#10), Dog (#11), and Pig (#12). Each animal has unique personality traits, elemental associations, and compatibility patterns. The Dragon is the only mythical creature in the cycle." },
+  { q: "What is the difference between zodiac sign and element?", a: "Your zodiac sign is determined by the 12-year animal cycle (what year you were born). Your element — Wood, Fire, Earth, Metal, or Water — follows a separate 10-year Heavenly Stem cycle. Together, your animal and element create a more detailed personality profile. For example, a Wood Rat differs from a Fire Rat, though both share core Rat traits. Use our <a href=\"/elements\" class=\"font-medium text-zodiac-red underline-offset-2 hover:underline\">Elements Calculator</a> to learn more." },
+  { q: "Which zodiac signs are most compatible?", a: "Best matches are usually signs four years apart in the zodiac cycle. Classic pairings include Rat with Dragon and Monkey, Ox with Snake and Rooster, Tiger with Horse and Dog, and Rabbit with Goat and Pig. Use our <a href=\"/compatibility\" class=\"font-medium text-zodiac-red underline-offset-2 hover:underline\">Compatibility Calculator</a> to check any two signs, or browse the compatibility matrix above." },
+  { q: "When does Chinese New Year 2026 start?", a: "The 2026 Chinese New Year begins on <strong>February 17, 2026</strong>, marking the start of the Year of the Fire Horse. Anyone born on or after this date belongs to the Horse sign. Those born earlier in 2026 (Jan 1 – Feb 16) are still Snakes. Check our <a href=\"/year-chart\" class=\"font-medium text-zodiac-red underline-offset-2 hover:underline\">Year Chart</a> for a complete reference of all 12 signs." },
+  { q: "Does the zodiac sign change at Lichun or Lunar New Year?", a: "There are two conventions. The mainstream method (used by this calculator and by most Chinese astrology guides) changes the sign on the Lunar New Year (the first day of the Chinese calendar). A smaller school of thought uses Lichun (Start of Spring, around February 4), the first of the 24 solar terms, as the boundary. The difference only affects people born between approximately February 4 and the Lunar New Year date. If you were born in this window, your sign depends on which convention you follow — most modern interpretations use the Lunar New Year." },
+];
 
 const newYearDates = [
   { year: 2020, date: "Jan 25", animal: "Rat" },
@@ -47,6 +59,10 @@ function capitalize(s: string) {
   description="Free Chinese Zodiac Calculator. Enter your birth date to find your animal sign, element, and lucky items. Accurate lunar calendar results from 1900 to 2035."
   breadcrumbs={[{ label: "Home", href: "/" }]}
   websiteSchema={true}
+  webApp={true}
+  faqSchema={faqs}
+  ogImage="/og/home.png"
+  dateModified="2026-08-19"
 >
   <!-- ===== HERO CALCULATOR ===== -->
   <section class="bg-gradient-to-br from-red-50 to-stone-100 px-4 py-16 dark:from-red-950/20 dark:to-stone-950">
@@ -228,39 +244,48 @@ function capitalize(s: string) {
 
   <!-- ===== YEAR REFERENCE TABLE ===== -->
   <section class="border-t border-stone-200 bg-stone-50 px-4 py-16 dark:border-stone-800 dark:bg-stone-950">
-    <div class="mx-auto max-w-[800px]">
+    <div class="mx-auto max-w-[900px]">
       <h2 class="mb-2 text-center text-3xl font-bold tracking-tight text-zodiac-ink dark:text-stone-100">Zodiac Years Reference</h2>
-      <p class="mb-8 text-center text-stone-500 dark:text-stone-400">Complete list of Chinese zodiac signs by birth year</p>
+      <p class="mb-8 text-center text-stone-500 dark:text-stone-400">Complete list of Chinese zodiac signs by birth year, with exact lunar calendar dates</p>
       <div class="overflow-x-auto rounded-xl border border-stone-200 dark:border-stone-700">
-        <table class="w-full min-w-[500px] text-sm">
+        <table class="w-full min-w-[600px] text-sm">
           <thead>
             <tr class="border-b border-stone-200 bg-stone-100 dark:border-stone-700 dark:bg-stone-800">
               <th class="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-stone-500 dark:text-stone-400">#</th>
               <th class="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-stone-500 dark:text-stone-400">Sign</th>
-              <th class="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-stone-500 dark:text-stone-400">Years</th>
-              <th class="px-4 py-3 text-right text-xs font-semibold uppercase tracking-wider text-stone-500 dark:text-stone-400">Recent</th>
+              <th class="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-stone-500 dark:text-stone-400">Recent Lunar Year Ranges</th>
             </tr>
           </thead>
           <tbody>
-            {zodiacYears.map((y) => (
-              <tr class="border-b border-stone-100 transition-colors hover:bg-white dark:border-stone-800 dark:hover:bg-stone-800/50">
-                <td class="px-4 py-3 text-stone-400 dark:text-stone-500">{y.animal === "rat" ? 1 : animals.find(a => a.id === y.animal)?.rank}</td>
-                <td class="px-4 py-3">
-                  <a href={`/signs/${y.animal}`} class="font-medium capitalize text-zodiac-ink no-underline transition-colors hover:text-zodiac-red dark:text-stone-200 dark:hover:text-zodiac-red">
-                    {animals.find(a => a.id === y.animal)?.chinese} {capitalize(y.animal)}
-                  </a>
-                </td>
-                <td class="px-4 py-3 text-stone-600 dark:text-stone-400">{y.years[0]}&ndash;{y.years[y.years.length - 1]}</td>
-                <td class="px-4 py-3 text-right">
-                  <span class="inline-block rounded-full bg-zodiac-red/10 px-3 py-0.5 text-xs font-semibold text-zodiac-red">{y.years[y.years.length - 1]}</span>
-                </td>
-              </tr>
-            ))}
+            {zodiacYears.map((y) => {
+              const entry = lunarRanges.find((e) => e.animal === y.animal);
+              const recent = entry ? entry.ranges.slice(-3).reverse() : [];
+              return (
+                <tr class="border-b border-stone-100 transition-colors hover:bg-white dark:border-stone-800 dark:hover:bg-stone-800/50">
+                  <td class="px-4 py-3 text-stone-400 dark:text-stone-500">{y.animal === "rat" ? 1 : animals.find(a => a.id === y.animal)?.rank}</td>
+                  <td class="px-4 py-3">
+                    <a href={`/signs/${y.animal}`} class="font-medium capitalize text-zodiac-ink no-underline transition-colors hover:text-zodiac-red dark:text-stone-200 dark:hover:text-zodiac-red">
+                      {animals.find(a => a.id === y.animal)?.chinese} {capitalize(y.animal)}
+                    </a>
+                  </td>
+                  <td class="px-4 py-3">
+                    <div class="space-y-0.5">
+                      {recent.map((r) => (
+                        <p class="text-xs text-stone-600 dark:text-stone-400">
+                          <span class="inline-block w-14 font-medium text-zodiac-red">{r.year}</span> {r.start}, {r.year} &ndash; {r.end}, {r.year + 1}
+                        </p>
+                      ))}
+                    </div>
+                    <p class="mt-1 text-[11px] text-stone-400 dark:text-stone-500">All years: {y.years.join(", ")}</p>
+                  </td>
+                </tr>
+              );
+            })}
           </tbody>
         </table>
       </div>
       <p class="mt-4 text-center text-xs text-stone-400 dark:text-stone-500">
-        Click any sign to see its full personality profile, compatibility, and horoscope.
+        Each range runs from one Chinese New Year to the next. Click any sign to see its full personality profile, compatibility, and horoscope.
       </p>
     </div>
   </section>
@@ -305,54 +330,85 @@ function capitalize(s: string) {
   <!-- ===== COMPATIBILITY MATRIX ===== -->
   <CompatibilityMatrix />
 
+  <!-- ===== 2026 FIRE HORSE YEAR ===== -->
+  <section class="border-t border-stone-200 px-4 py-16 dark:border-stone-800">
+    <div class="mx-auto max-w-[900px]">
+      <h2 class="mb-2 text-center text-3xl font-bold tracking-tight text-zodiac-ink dark:text-stone-100">2026: The Year of the Fire Horse</h2>
+      <p class="mx-auto mb-10 max-w-[620px] text-center text-stone-500 dark:text-stone-400">
+        The Fire Horse year begins on February 17, 2026 — a year of bold momentum, passion, and change.
+      </p>
+      <div class="rounded-2xl border border-stone-200 bg-white p-6 shadow-sm dark:border-stone-800 dark:bg-stone-900 sm:p-8">
+        <p class="text-sm leading-relaxed text-stone-600 dark:text-stone-400">
+          2026 is the Year of the Fire Horse (丙午). Fire is the element of passion, energy, and transformation; the Horse brings movement, freedom, and speed. Together they create one of the most dynamic years in the Chinese zodiac cycle — a year that rewards courage, decisive action, and new beginnings. Traditionally, the Fire Horse year is seen as intense: relationships deepen quickly, careers accelerate, and those who dare to move fast can achieve remarkable progress. It also calls for balance — unchecked fire burns, so pacing yourself matters more than ever.
+        </p>
+      </div>
+      <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {animals.map((a) => (
+          <a href={`/signs/${a.id}`} class="group flex items-start gap-3 rounded-xl border border-stone-200 bg-white p-4 shadow-sm transition-all hover:-translate-y-0.5 hover:border-zodiac-red/30 hover:shadow-md dark:border-stone-700 dark:bg-stone-900">
+            <span class="mt-0.5 text-2xl leading-none">{a.chinese}</span>
+            <span class="flex-1">
+              <span class="block text-sm font-semibold capitalize text-zodiac-ink dark:text-stone-100">{a.id} — 2026</span>
+              <span class="mt-1 block text-xs leading-relaxed text-stone-500 dark:text-stone-400">{horoscopes2026[a.id as keyof typeof horoscopes2026]}</span>
+            </span>
+          </a>
+        ))}
+      </div>
+      <p class="mt-8 text-center">
+        <a href="/yearly-horoscope" class="inline-flex items-center gap-1 rounded-lg bg-zodiac-red px-6 py-3 text-sm font-semibold text-white shadow-md transition-all hover:bg-red-700 hover:shadow-lg active:scale-[0.97]">Read All 2026 Horoscopes &rarr;</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- ===== ZODIAC CULTURE ===== -->
+  <section class="border-t border-stone-200 bg-stone-50 px-4 py-16 dark:border-stone-800 dark:bg-stone-950">
+    <div class="mx-auto max-w-[900px]">
+      <h2 class="mb-2 text-center text-3xl font-bold tracking-tight text-zodiac-ink dark:text-stone-100">Explore Chinese Zodiac Culture</h2>
+      <p class="mb-10 text-center text-stone-500 dark:text-stone-400">Go beyond the calculator — understand the stories and traditions behind your sign</p>
+      <div class="grid gap-5 sm:grid-cols-3">
+        <a href="/ben-ming-nian" class="group rounded-xl border border-stone-200 bg-white p-6 shadow-sm transition-all hover:-translate-y-1 hover:border-zodiac-red/30 hover:shadow-md dark:border-stone-700 dark:bg-stone-900">
+          <h3 class="text-lg font-semibold text-zodiac-ink transition-colors group-hover:text-zodiac-red dark:text-stone-100">Ben Ming Nian <span class="text-sm font-normal text-stone-400 dark:text-stone-500">(本命年)</span></h3>
+          <p class="mt-2 text-sm leading-relaxed text-stone-600 dark:text-stone-400">Your zodiac year of birth returns every 12 years. What it means, when it starts, and why red is the traditional shield.</p>
+          <span class="mt-4 inline-block text-sm font-medium text-zodiac-red">Learn more &rarr;</span>
+        </a>
+        <a href="/tai-sui" class="group rounded-xl border border-stone-200 bg-white p-6 shadow-sm transition-all hover:-translate-y-1 hover:border-zodiac-red/30 hover:shadow-md dark:border-stone-700 dark:bg-stone-900">
+          <h3 class="text-lg font-semibold text-zodiac-ink transition-colors group-hover:text-zodiac-red dark:text-stone-100">Tai Sui <span class="text-sm font-normal text-stone-400 dark:text-stone-500">(太岁)</span></h3>
+          <p class="mt-2 text-sm leading-relaxed text-stone-600 dark:text-stone-400">Which signs offend the Grand Duke in 2026 — Horse, Rat, Ox, Rabbit — and how tradition says to reconcile.</p>
+          <span class="mt-4 inline-block text-sm font-medium text-zodiac-red">Learn more &rarr;</span>
+        </a>
+        <a href="/zodiac-origin" class="group rounded-xl border border-stone-200 bg-white p-6 shadow-sm transition-all hover:-translate-y-1 hover:border-zodiac-red/30 hover:shadow-md dark:border-stone-700 dark:bg-stone-900">
+          <h3 class="text-lg font-semibold text-zodiac-ink transition-colors group-hover:text-zodiac-red dark:text-stone-100">Zodiac Origin</h3>
+          <p class="mt-2 text-sm leading-relaxed text-stone-600 dark:text-stone-400">The Great Race legend, why the Rat came first, why the Cat is missing — and the real 2,000-year history.</p>
+          <span class="mt-4 inline-block text-sm font-medium text-zodiac-red">Learn more &rarr;</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
   <!-- ===== FAQ ===== -->
   <section class="border-t border-stone-200 bg-stone-50 px-4 py-16 dark:border-stone-800 dark:bg-stone-950">
     <div class="mx-auto max-w-[700px]">
       <h2 class="mb-8 text-center text-3xl font-bold tracking-tight text-zodiac-ink dark:text-stone-100">Frequently Asked Questions</h2>
       <div class="space-y-3">
-        <details class="group rounded-xl border border-stone-200 bg-white p-5 transition-shadow hover:shadow-sm dark:border-stone-700 dark:bg-stone-900">
-          <summary class="flex cursor-pointer items-center justify-between font-medium text-zodiac-ink dark:text-stone-100">
-            What is the Chinese zodiac?
-            <svg class="h-4 w-4 shrink-0 text-stone-400 transition-transform group-open:rotate-180" viewBox="0 0 16 16" fill="none"><path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-          </summary>
-          <p class="mt-3 text-sm leading-relaxed text-stone-600 dark:text-stone-400">The Chinese zodiac (生肖, shēngxiào) is a 12-year cycle where each year is represented by an animal. Based on the lunar calendar, it has been used for centuries in Chinese culture to interpret personality, predict fortune, and determine compatibility. Unlike the Western zodiac which follows monthly dates, the Chinese zodiac follows lunar years.</p>
-        </details>
-        <details class="group rounded-xl border border-stone-200 bg-white p-5 transition-shadow hover:shadow-sm dark:border-stone-700 dark:bg-stone-900">
-          <summary class="flex cursor-pointer items-center justify-between font-medium text-zodiac-ink dark:text-stone-100">
-            How do I find my Chinese zodiac sign?
-            <svg class="h-4 w-4 shrink-0 text-stone-400 transition-transform group-open:rotate-180" viewBox="0 0 16 16" fill="none"><path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-          </summary>
-          <p class="mt-3 text-sm leading-relaxed text-stone-600 dark:text-stone-400">Simply enter your birth date into the calculator above. It will determine your animal sign based on the lunar new year calendar. Using only the year can be about 10% inaccurate for people born in January or February — our full birth date calculator handles this automatically using accurate Chinese New Year dates from 1900 to 2035.</p>
-        </details>
-        <details class="group rounded-xl border border-stone-200 bg-white p-5 transition-shadow hover:shadow-sm dark:border-stone-700 dark:bg-stone-900">
-          <summary class="flex cursor-pointer items-center justify-between font-medium text-zodiac-ink dark:text-stone-100">
-            What are the 12 Chinese zodiac animals in order?
-            <svg class="h-4 w-4 shrink-0 text-stone-400 transition-transform group-open:rotate-180" viewBox="0 0 16 16" fill="none"><path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-          </summary>
-          <p class="mt-3 text-sm leading-relaxed text-stone-600 dark:text-stone-400">The 12 animals in order are: Rat (#1), Ox (#2), Tiger (#3), Rabbit (#4), Dragon (#5), Snake (#6), Horse (#7), Goat (#8), Monkey (#9), Rooster (#10), Dog (#11), and Pig (#12). Each animal has unique personality traits, elemental associations, and compatibility patterns. The Dragon is the only mythical creature in the cycle.</p>
-        </details>
-        <details class="group rounded-xl border border-stone-200 bg-white p-5 transition-shadow hover:shadow-sm dark:border-stone-700 dark:bg-stone-900">
-          <summary class="flex cursor-pointer items-center justify-between font-medium text-zodiac-ink dark:text-stone-100">
-            What is the difference between zodiac sign and element?
-            <svg class="h-4 w-4 shrink-0 text-stone-400 transition-transform group-open:rotate-180" viewBox="0 0 16 16" fill="none"><path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-          </summary>
-          <p class="mt-3 text-sm leading-relaxed text-stone-600 dark:text-stone-400">Your zodiac sign is determined by the 12-year animal cycle (what year you were born). Your element — Wood, Fire, Earth, Metal, or Water — follows a separate 10-year Heavenly Stem cycle. Together, your animal and element create a more detailed personality profile. For example, a Wood Rat differs from a Fire Rat, though both share core Rat traits. Use our <a href="/elements" class="font-medium text-zodiac-red underline-offset-2 hover:underline">Elements Calculator</a> to learn more.</p>
-        </details>
-        <details class="group rounded-xl border border-stone-200 bg-white p-5 transition-shadow hover:shadow-sm dark:border-stone-700 dark:bg-stone-900">
-          <summary class="flex cursor-pointer items-center justify-between font-medium text-zodiac-ink dark:text-stone-100">
-            Which zodiac signs are most compatible?
-            <svg class="h-4 w-4 shrink-0 text-stone-400 transition-transform group-open:rotate-180" viewBox="0 0 16 16" fill="none"><path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-          </summary>
-          <p class="mt-3 text-sm leading-relaxed text-stone-600 dark:text-stone-400">Best matches are usually signs four years apart in the zodiac cycle. Classic pairings include Rat with Dragon and Monkey, Ox with Snake and Rooster, Tiger with Horse and Dog, and Rabbit with Goat and Pig. Use our <a href="/compatibility" class="font-medium text-zodiac-red underline-offset-2 hover:underline">Compatibility Calculator</a> to check any two signs, or browse the compatibility matrix above.</p>
-        </details>
-        <details class="group rounded-xl border border-stone-200 bg-white p-5 transition-shadow hover:shadow-sm dark:border-stone-700 dark:bg-stone-900">
-          <summary class="flex cursor-pointer items-center justify-between font-medium text-zodiac-ink dark:text-stone-100">
-            When does Chinese New Year 2026 start?
-            <svg class="h-4 w-4 shrink-0 text-stone-400 transition-transform group-open:rotate-180" viewBox="0 0 16 16" fill="none"><path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-          </summary>
-          <p class="mt-3 text-sm leading-relaxed text-stone-600 dark:text-stone-400">The 2026 Chinese New Year begins on <strong>February 17, 2026</strong>, marking the start of the Year of the Fire Horse. Anyone born on or after this date belongs to the Horse sign. Those born earlier in 2026 (Jan 1 &ndash; Feb 16) are still Snakes. Check our <a href="/year-chart" class="font-medium text-zodiac-red underline-offset-2 hover:underline">Year Chart</a> for a complete reference of all 12 signs.</p>
-        </details>
+        {faqs.map((f) => (
+          <details class="group rounded-xl border border-stone-200 bg-white p-5 transition-shadow hover:shadow-sm dark:border-stone-700 dark:bg-stone-900">
+            <summary class="flex cursor-pointer items-center justify-between font-medium text-zodiac-ink dark:text-stone-100">
+              {f.q}
+              <svg class="h-4 w-4 shrink-0 text-stone-400 transition-transform group-open:rotate-180" viewBox="0 0 16 16" fill="none"><path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            </summary>
+            <p class="mt-3 text-sm leading-relaxed text-stone-600 dark:text-stone-400" set:html={f.a}></p>
+          </details>
+        ))}
       </div>
+    </div>
+  </section>
+
+  <!-- ===== EDITORIAL NOTE ===== -->
+  <section class="border-t border-stone-200 bg-white px-4 py-10 dark:border-stone-800 dark:bg-stone-900">
+    <div class="mx-auto max-w-[700px] text-center">
+      <p class="text-xs font-medium uppercase tracking-widest text-stone-400">Last updated: August 19, 2026</p>
+      <p class="mt-3 text-sm leading-relaxed text-stone-500 dark:text-stone-400">
+        Written and reviewed by the <a href="/about" class="font-medium text-zodiac-red underline-offset-2 hover:underline">Chinese-Zodiac-Calculator.com Editorial Team</a>. Calculations use the traditional Chinese lunar calendar with official Chinese New Year dates from 1900 to 2035. Zodiac readings are provided for entertainment, educational, and informational purposes only.
+      </p>
     </div>
   </section>
 </BaseLayout>

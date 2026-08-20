@@ -9,15 +9,19 @@ export interface Props {
   schema?: Record<string, unknown> | Record<string, unknown>[];
   articleSchema?: boolean;
   websiteSchema?: boolean;
+  faqSchema?: { q: string; a: string }[];
+  webApp?: boolean;
   datePublished?: string;
   dateModified?: string;
   ogImage?: string;
 }
 
-const { title, description, breadcrumbs, noindex, schema, articleSchema, websiteSchema, datePublished, dateModified, ogImage } = Astro.props;
+const { title, description, breadcrumbs, noindex, schema, articleSchema, websiteSchema, faqSchema, webApp, datePublished, dateModified, ogImage } = Astro.props;
 const canonicalUrl = `https://www.chinese-zodiac-calculator.com${Astro.url.pathname}`;
-const ogImageUrl = ogImage || "https://www.chinese-zodiac-calculator.com/og-default.svg";
+const ogImageInput = ogImage || "/og/home.png";
+const ogImageUrl = ogImageInput.startsWith("http") ? ogImageInput : `https://www.chinese-zodiac-calculator.com${ogImageInput}`;
 const year = new Date().getFullYear();
+const lastUpdated = dateModified || "2026-08-19";
 
 const breadcrumbSchema = breadcrumbs?.length ? {
   "@context": "https://schema.org",
@@ -38,6 +42,27 @@ const websiteSchemaObj = websiteSchema ? {
   "description": "Free Chinese Zodiac Calculator — Discover your animal sign, element, personality traits, and compatibility."
 } : null;
 
+const faqSchemaObj = faqSchema && faqSchema.length > 0 ? {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqSchema.map((f) => ({
+    "@type": "Question",
+    "name": f.q,
+    "acceptedAnswer": { "@type": "Answer", "text": f.a }
+  }))
+} : null;
+
+const webAppSchemaObj = webApp ? {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Chinese Zodiac Calculator",
+  "url": "https://www.chinese-zodiac-calculator.com",
+  "applicationCategory": "ReferenceApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "description": "Free Chinese Zodiac Calculator — enter your birth date to find your animal sign, element, personality traits, lucky items, and compatibility."
+} : null;
+
 const articleSchemaObj = articleSchema ? {
   "@context": "https://schema.org",
   "@type": "Article",
@@ -45,7 +70,7 @@ const articleSchemaObj = articleSchema ? {
   "description": description,
   "url": canonicalUrl,
   "datePublished": datePublished || "2026-01-01",
-  "dateModified": dateModified || "2026-07-24",
+  "dateModified": lastUpdated,
   "author": {
     "@type": "Person",
     "name": "Chinese-Zodiac-Calculator.com Editorial Team",
@@ -100,6 +125,8 @@ const articleSchemaObj = articleSchema ? {
     {breadcrumbSchema && <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)}></script>}
     {websiteSchemaObj && <script type="application/ld+json" set:html={JSON.stringify(websiteSchemaObj)}></script>}
     {articleSchemaObj && <script type="application/ld+json" set:html={JSON.stringify(articleSchemaObj)}></script>}
+    {faqSchemaObj && <script type="application/ld+json" set:html={JSON.stringify(faqSchemaObj)}></script>}
+    {webAppSchemaObj && <script type="application/ld+json" set:html={JSON.stringify(webAppSchemaObj)}></script>}
     {schema && <script type="application/ld+json" set:html={JSON.stringify(Array.isArray(schema) ? schema : [schema])}></script>}
     <link rel="alternate" type="application/rss+xml" title="Chinese-Zodiac-Calculator.com — Chinese Zodiac Guide" href="/rss.xml" />
   </head>
@@ -139,6 +166,15 @@ const articleSchemaObj = articleSchema ? {
           <a href="/compatibility" class="text-sm font-medium text-stone-600 transition-colors hover:text-zodiac-red dark:text-stone-400 dark:hover:text-zodiac-red">Compatibility</a>
           <a href="/elements" class="text-sm font-medium text-stone-600 transition-colors hover:text-zodiac-red dark:text-stone-400 dark:hover:text-zodiac-red">Elements</a>
           <a href="/yearly-horoscope" class="text-sm font-medium text-stone-600 transition-colors hover:text-zodiac-red dark:text-stone-400 dark:hover:text-zodiac-red">Horoscope</a>
+          <div class="relative group">
+            <button class="text-sm font-medium text-stone-600 transition-colors hover:text-zodiac-red dark:text-stone-400 dark:hover:text-zodiac-red cursor-pointer flex items-center gap-1">Learn <svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button>
+            <div class="absolute top-full left-0 mt-1 w-52 rounded-lg border border-stone-200 bg-white shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all dark:border-stone-700 dark:bg-stone-900 z-50">
+              <a href="/zodiac-origin" class="block px-4 py-2 text-sm text-stone-600 hover:bg-red-50 hover:text-zodiac-red dark:text-stone-400 dark:hover:bg-red-900/20 dark:hover:text-zodiac-red rounded-t-lg">Zodiac Origin</a>
+              <a href="/ben-ming-nian" class="block px-4 py-2 text-sm text-stone-600 hover:bg-red-50 hover:text-zodiac-red dark:text-stone-400 dark:hover:bg-red-900/20 dark:hover:text-zodiac-red">Ben Ming Nian</a>
+              <a href="/tai-sui" class="block px-4 py-2 text-sm text-stone-600 hover:bg-red-50 hover:text-zodiac-red dark:text-stone-400 dark:hover:bg-red-900/20 dark:hover:text-zodiac-red">Tai Sui</a>
+              <a href="/feng-shui-tips" class="block px-4 py-2 text-sm text-stone-600 hover:bg-red-50 hover:text-zodiac-red dark:text-stone-400 dark:hover:bg-red-900/20 dark:hover:text-zodiac-red rounded-b-lg">Feng Shui Tips</a>
+            </div>
+          </div>
         </div>
         <button class="flex items-center gap-2 text-sm text-stone-600 md:hidden dark:text-stone-400" aria-label="Toggle navigation" aria-controls="mobile-nav" aria-expanded="false" id="nav-toggle">Menu</button>
       </div>
@@ -166,6 +202,9 @@ const articleSchemaObj = articleSchema ? {
         <a href="/year-chart" class="block py-2 text-sm text-stone-600 dark:text-stone-400">Year Chart</a>
         <a href="/yearly-horoscope" class="block py-2 text-sm text-stone-600 dark:text-stone-400">Horoscope</a>
         <a href="/feng-shui-tips" class="block py-2 text-sm text-stone-600 dark:text-stone-400">Feng Shui</a>
+        <a href="/zodiac-origin" class="block py-2 text-sm text-stone-600 dark:text-stone-400">Zodiac Origin</a>
+        <a href="/ben-ming-nian" class="block py-2 text-sm text-stone-600 dark:text-stone-400">Ben Ming Nian</a>
+        <a href="/tai-sui" class="block py-2 text-sm text-stone-600 dark:text-stone-400">Tai Sui</a>
         <a href="/about" class="block py-2 text-sm text-stone-600 dark:text-stone-400">About</a>
       </div>
     </nav>
@@ -239,6 +278,9 @@ const articleSchemaObj = articleSchema ? {
             <ul class="space-y-2">
               <li><a href="/yearly-horoscope" class="text-sm text-stone-600 transition-colors hover:text-zodiac-red dark:text-stone-400 dark:hover:text-zodiac-red">Yearly Horoscope</a></li>
               <li><a href="/feng-shui-tips" class="text-sm text-stone-600 transition-colors hover:text-zodiac-red dark:text-stone-400 dark:hover:text-zodiac-red">Feng Shui Tips</a></li>
+              <li><a href="/zodiac-origin" class="text-sm text-stone-600 transition-colors hover:text-zodiac-red dark:text-stone-400 dark:hover:text-zodiac-red">Zodiac Origin</a></li>
+              <li><a href="/ben-ming-nian" class="text-sm text-stone-600 transition-colors hover:text-zodiac-red dark:text-stone-400 dark:hover:text-zodiac-red">Ben Ming Nian</a></li>
+              <li><a href="/tai-sui" class="text-sm text-stone-600 transition-colors hover:text-zodiac-red dark:text-stone-400 dark:hover:text-zodiac-red">Tai Sui</a></li>
               <li><a href="/about" class="text-sm text-stone-600 transition-colors hover:text-zodiac-red dark:text-stone-400 dark:hover:text-zodiac-red">About</a></li>
               <li><a href="/contact" class="text-sm text-stone-600 transition-colors hover:text-zodiac-red dark:text-stone-400 dark:hover:text-zodiac-red">Contact</a></li>
               <li><a href="/privacy-policy" class="text-sm text-stone-600 transition-colors hover:text-zodiac-red dark:text-stone-400 dark:hover:text-zodiac-red">Privacy</a></li>

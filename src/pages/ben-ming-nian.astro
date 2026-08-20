@@ -1,0 +1,188 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { ZODIAC_ANIMALS, ZODIAC_YEARS } from "../data/zodiac";
+
+const benMingNianDescriptions: Record<string, string> = {
+  rat: "For Rats, Ben Ming Nian years (2020, 2032) bring heightened activity and opportunity, but also the risk of burnout. The Rat's natural resourcefulness helps it navigate the year's ups and downs — focus on steady pacing rather than sprinting.",
+  ox: "Oxen face their zodiac year (2021, 2033) with characteristic endurance. Tradition says the Ox's stubbornness is amplified during Ben Ming Nian, so flexibility and patience with others matter more than ever.",
+  tiger: "Tigers experience their year (2022, 2034) with amplified boldness and impulsiveness. The energy is powerful for career moves, but impulsiveness should be checked — think twice before major decisions.",
+  rabbit: "Rabbits (2023, 2035) find their Ben Ming Nian brings emotional sensitivity to the surface. Protect your peace, avoid conflict, and lean on close friends — harmony is your strongest asset this year.",
+  dragon: "Dragons (2024, 2036) shine in their own year with extra confidence and presence. The risk is overreach: with great momentum comes the need for grounded planning and attention to health.",
+  snake: "Snakes (2025, 2037) experience heightened intuition during Ben Ming Nian. Trust your instincts, but guard against overthinking — decisive action, not analysis paralysis, defines a good year.",
+  horse: "2026 is the Horse's Ben Ming Nian — and it is also a Fire Horse year, a rare double intensity. Horses should channel their energy into clear goals, pace themselves, and pay extra attention to health and finances.",
+  goat: "Goats (2027, 2039) find their zodiac year brings creative inspiration but also emotional turbulence. Self-care, stable routines, and trusted companions help Goats turn the year's energy into gentle growth.",
+  monkey: "Monkeys (2028, 2040) have natural advantages in their year — wit and adaptability. The challenge is focus: with so many opportunities, choosing the right ones is what makes Ben Ming Nian a success.",
+  rooster: "Roosters (2029, 2041) experience a year of scrutiny during Ben Ming Nian — careers and reputations are in the spotlight. Precision, punctuality, and quiet confidence carry Roosters through.",
+  dog: "Dogs (2030, 2042) find their loyalty tested during Ben Ming Nian. Relationships and legal matters deserve extra care; the Dog's integrity is its best protection through the year.",
+  pig: "Pigs (2031, 2043) enjoy a warm Ben Ming Nian year of comfort and connection. Guard against overindulgence and keep healthy routines — generosity to others should start with self-care.",
+};
+
+const redTraditions = [
+  { item: "Red belt (红腰带)", meaning: "The most iconic Ben Ming Nian item. Worn around the waist from Chinese New Year's Eve, the red belt symbolically ties good luck to your body and blocks misfortune." },
+  { item: "Red socks (红袜子)", meaning: "Wearing red socks keeps the protection underfoot — wherever you walk, you carry the year's protective energy with you." },
+  { item: "Red underwear (红内衣)", meaning: "Worn closest to the body, red undergarments are believed to shield your personal energy field from the turbulence of your zodiac year." },
+  { item: "Red bracelet or string (红绳)", meaning: "A red string bracelet — often tied by an elder or a friend — is a simple, discreet way to carry protection every day." },
+];
+
+const faqs = [
+  { q: "What is Ben Ming Nian (本命年)?", a: "Ben Ming Nian literally means \"year of one's birth sign.\" It occurs every 12 years, when the Chinese zodiac animal of your birth year returns to rule the year — for example, 2026 (Horse year) is the Ben Ming Nian for everyone born in a Horse year. Tradition holds that your zodiac sign \"takes its turn in power\" during this year, which can bring both opportunity and turbulence." },
+  { q: "Is Ben Ming Nian really unlucky?", a: "Traditional belief says the year brings more ups and downs than usual — greater highs but also greater lows, plus more interference from Tai Sui (the Grand Duke of the year). Modern interpretations add that the \"self-referencing\" energy of your own sign can amplify existing personality traits. The practical view: Ben Ming Nian is not doomed, but it rewards extra care with finances, health, and major decisions." },
+  { q: "When does Ben Ming Nian start and end?", a: "Ben Ming Nian follows the lunar calendar, not the Gregorian one. It begins on Chinese New Year's Eve — traditionally the most important moment for putting on red clothing — and runs until the next Chinese New Year's Eve. For 2026 Horse-year people, the period runs from February 16, 2026 (eve) through February 5, 2027." },
+  { q: "Why do people wear red during Ben Ming Nian?", a: "In Chinese culture, red symbolizes fire, vitality, and the ability to repel evil spirits (a demon named Nian was said to fear the color red). During a zodiac year when your sign's energy is unsettled, red items — belts, socks, underwear, and strings — act as a visible and personal shield, keeping misfortune away and protecting your health and fortune." },
+  { q: "How is Ben Ming Nian related to Tai Sui?", a: "Ben Ming Nian is the most common form of offending Tai Sui (犯太岁): when your sign is the same as the year's sign, you are said to \"stand in front of\" (值) the Grand Duke. The other forms are clashing (冲), harming (害), and breaking (破) the year's energy. See our <a href=\"/tai-sui\" class=\"font-medium text-zodiac-red underline-offset-2 hover:underline\">Tai Sui guide</a> to check which form applies to your sign in 2026." },
+  { q: "What should I avoid in my Ben Ming Nian?", a: "Traditional advice for the year: avoid impulsive investments and gambling, postpone unnecessary surgery if possible, drive carefully (travel safety is a recurring theme), avoid major conflicts with authority figures, and keep your health checkups regular. None of these are prohibitions — they are reminders that the year rewards caution and planning." },
+];
+
+const zodiacEntries = ZODIAC_ANIMALS.map((a) => {
+  const years = ZODIAC_YEARS.find((y) => y.animal === a.id)?.years || [];
+  return { ...a, years };
+});
+---
+
+<BaseLayout
+  title="Ben Ming Nian (本命年) — Your Zodiac Year of Birth: Meaning, Traditions & Advice"
+  description="What is Ben Ming Nian (本命年)? Learn the meaning of your zodiac year of birth, when it starts, why people wear red, and practical advice for navigating the year."
+  breadcrumbs={[{ label: "Home", href: "/" }, { label: "Ben Ming Nian", href: "/ben-ming-nian" }]}
+  articleSchema={true}
+  faqSchema={faqs}
+  dateModified="2026-08-19"
+  ogImage="/og/ben-ming-nian.png"
+>
+  <article class="mx-auto max-w-[1000px] px-4 py-12 lg:px-6 lg:py-16">
+    <!-- Hero -->
+    <header class="text-center">
+      <h1 class="text-3xl font-bold tracking-tight text-zodiac-ink dark:text-stone-100 md:text-4xl">
+        Ben Ming Nian <span class="text-zodiac-red">(本命年)</span> — Your Zodiac Year of Birth
+      </h1>
+      <p class="mx-auto mt-3 max-w-[680px] text-base leading-relaxed text-stone-500 dark:text-stone-400">
+        Every 12 years, your birth sign returns to rule the Chinese zodiac. In 2026, that means the Horse — but what does Ben Ming Nian really mean, and why do millions wear red?
+      </p>
+    </header>
+
+    <!-- What is Ben Ming Nian -->
+    <section class="mt-12">
+      <h2 class="text-2xl font-semibold tracking-tight text-zodiac-ink dark:text-stone-100">What Is Ben Ming Nian?</h2>
+      <div class="mt-4 space-y-4 rounded-2xl border border-stone-200 bg-white p-6 shadow-sm dark:border-stone-700 dark:bg-stone-800 sm:p-8">
+        <p class="text-base leading-relaxed text-stone-600 dark:text-stone-300">
+          <strong class="text-zodiac-ink dark:text-stone-100">Ben Ming Nian</strong> (本命年, literally "the year of one's original destiny") is the Chinese zodiac year that matches your birth sign. It arrives once every 12 years: if you were born in a Rat year, every Rat year — 2020, 2032, 2044 — is your Ben Ming Nian.
+        </p>
+        <p class="text-base leading-relaxed text-stone-600 dark:text-stone-300">
+          The concept comes from the idea that your zodiac animal "takes the throne" during its own year. In Chinese astrology, this is called <strong class="text-zodiac-ink dark:text-stone-100">值太岁 (Zhí Tàisuì)</strong> — standing directly before the Grand Duke of the year, Tai Sui. Standing before a king is a delicate position: close to power, but easy to offend. This is why Ben Ming Nian is traditionally seen as a year of <em>extremes</em> — great opportunity paired with heightened risk, a time when careful behavior and protective traditions matter most.
+        </p>
+        <p class="text-base leading-relaxed text-stone-600 dark:text-stone-300">
+          The most famous Ben Ming Nian tradition is wearing red — red belts, red socks, red underwear, and red strings. Red symbolizes fire and vitality, and in legend it is the color that frightens away the Nian monster. During your zodiac year, red acts as a personal shield: visible protection for a year when your sign's energy is considered unsettled.
+        </p>
+      </div>
+    </section>
+
+    <!-- When does it start -->
+    <section class="mt-12 rounded-2xl bg-stone-50 p-6 dark:bg-stone-800/50 sm:p-8">
+      <h2 class="text-2xl font-semibold tracking-tight text-zodiac-ink dark:text-stone-100">When Does Ben Ming Nian Start?</h2>
+      <p class="mt-3 text-base leading-relaxed text-stone-600 dark:text-stone-300">
+        Ben Ming Nian follows the <strong class="text-zodiac-ink dark:text-stone-100">lunar calendar</strong>. It begins on <strong class="text-zodiac-ink dark:text-stone-100">Chinese New Year's Eve</strong> — the traditional moment to put on your red items — and ends on the next New Year's Eve. For the 2026 Horse year, that window runs from <strong class="text-zodiac-ink dark:text-stone-100">February 16, 2026 to February 5, 2027</strong>. Don't use January 1 as your boundary; people born in January or early February 2026 are still Snake-year people until Chinese New Year.
+      </p>
+      <p class="mt-3 text-sm text-stone-500 dark:text-stone-400">
+        Not sure of your sign? Use our <a href="/" class="font-medium text-zodiac-red underline-offset-2 hover:underline">Chinese zodiac calculator</a> with your exact birth date.
+      </p>
+    </section>
+
+    <!-- 12 signs table -->
+    <section class="mt-12">
+      <h2 class="text-2xl font-semibold tracking-tight text-zodiac-ink dark:text-stone-100">Your Ben Ming Nian Years &amp; What to Expect</h2>
+      <p class="mt-2 text-sm text-stone-500 dark:text-stone-400">
+        Find your sign below, or jump straight to your <a href="/signs/rat" class="font-medium text-zodiac-red underline-offset-2 hover:underline">sign profile</a> for the full picture.
+      </p>
+      <div class="mt-6 space-y-4">
+        {zodiacEntries.map((entry) => (
+          <div class="rounded-2xl border border-stone-200 bg-white p-6 shadow-sm dark:border-stone-700 dark:bg-stone-800">
+            <div class="flex flex-wrap items-center gap-3">
+              <span class="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-zodiac-cream text-2xl dark:bg-stone-700">{entry.chinese}</span>
+              <h3 class="text-lg font-semibold capitalize text-zodiac-ink dark:text-stone-100">{entry.id} — Ben Ming Nian Years: {entry.years.slice(-4).join(", ")}</h3>
+            </div>
+            <p class="mt-3 text-sm leading-relaxed text-stone-600 dark:text-stone-300">{benMingNianDescriptions[entry.id]}</p>
+            <p class="mt-3 text-xs text-stone-400 dark:text-stone-500">
+              All Ben Ming Nian years: {entry.years.join(", ")} · <a href={`/signs/${entry.id}`} class="font-medium text-zodiac-red underline-offset-2 hover:underline">Full {entry.id} profile &rarr;</a>
+            </p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Red traditions -->
+    <section class="mt-12">
+      <h2 class="text-2xl font-semibold tracking-tight text-zodiac-ink dark:text-stone-100">Why Red? The Classic Ben Ming Nian Traditions</h2>
+      <p class="mt-2 text-sm text-stone-500 dark:text-stone-400">
+        Red is the color of fire, vitality, and warding off evil. These are the traditional items people prepare before their zodiac year begins.
+      </p>
+      <div class="mt-6 grid gap-4 sm:grid-cols-2">
+        {redTraditions.map((t) => (
+          <div class="rounded-xl border border-stone-200 bg-white p-5 shadow-sm dark:border-stone-700 dark:bg-stone-800">
+            <h3 class="text-sm font-semibold text-zodiac-red">{t.item}</h3>
+            <p class="mt-2 text-sm leading-relaxed text-stone-600 dark:text-stone-300">{t.meaning}</p>
+          </div>
+        ))}
+      </div>
+      <p class="mt-4 text-sm leading-relaxed text-stone-500 dark:text-stone-400">
+        Many families also give red envelopes (hongbao), hang red couplets, and burn incense at the temple to greet the year. The important thing is the intention: entering your zodiac year with awareness and a protective mindset.
+      </p>
+    </section>
+
+    <!-- Practical advice -->
+    <section class="mt-12 rounded-2xl bg-stone-50 p-6 dark:bg-stone-800/50 sm:p-8">
+      <h2 class="text-2xl font-semibold tracking-tight text-zodiac-ink dark:text-stone-100">Practical Advice for Your Ben Ming Nian</h2>
+      <div class="mt-4 grid gap-4 sm:grid-cols-2">
+        <div class="rounded-xl border border-stone-200 bg-white p-5 dark:border-stone-700 dark:bg-stone-800">
+          <h3 class="text-sm font-semibold text-zodiac-ink dark:text-stone-100">Mind your finances</h3>
+          <p class="mt-2 text-sm leading-relaxed text-stone-600 dark:text-stone-300">Avoid impulsive investments, gambling, and big loans. The year rewards conservative planning and emergency funds over speculation.</p>
+        </div>
+        <div class="rounded-xl border border-stone-200 bg-white p-5 dark:border-stone-700 dark:bg-stone-800">
+          <h3 class="text-sm font-semibold text-zodiac-ink dark:text-stone-100">Watch your health</h3>
+          <p class="mt-2 text-sm leading-relaxed text-stone-600 dark:text-stone-300">Schedule regular checkups and don't postpone small symptoms. Health is the traditional priority of the year — for the Horse in 2026, pace your energy carefully.</p>
+        </div>
+        <div class="rounded-xl border border-stone-200 bg-white p-5 dark:border-stone-700 dark:bg-stone-800">
+          <h3 class="text-sm font-semibold text-zodiac-ink dark:text-stone-100">Stay safe on the road</h3>
+          <p class="mt-2 text-sm leading-relaxed text-stone-600 dark:text-stone-300">Travel and commuting feature prominently in Ben Ming Nian folklore. Drive defensively, avoid late-night solo trips, and keep your vehicle maintained.</p>
+        </div>
+        <div class="rounded-xl border border-stone-200 bg-white p-5 dark:border-stone-700 dark:bg-stone-800">
+          <h3 class="text-sm font-semibold text-zodiac-ink dark:text-stone-100">Keep relationships calm</h3>
+          <p class="mt-2 text-sm leading-relaxed text-stone-600 dark:text-stone-300">Conflict with colleagues, family, or partners is said to flare more easily in your zodiac year. Choose your battles, communicate clearly, and apologize quickly.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Related -->
+    <section class="mt-12">
+      <h2 class="text-2xl font-semibold tracking-tight text-zodiac-ink dark:text-stone-100">Dive Deeper</h2>
+      <div class="mt-4 grid gap-4 sm:grid-cols-3">
+        <a href="/tai-sui" class="group rounded-xl border border-stone-200 bg-white p-5 shadow-sm transition-all hover:-translate-y-0.5 hover:border-zodiac-red/30 hover:shadow-md dark:border-stone-700 dark:bg-stone-800">
+          <h3 class="text-sm font-semibold text-zodiac-ink transition-colors group-hover:text-zodiac-red dark:text-stone-100">Tai Sui Guide</h3>
+          <p class="mt-2 text-xs leading-relaxed text-stone-500 dark:text-stone-400">Which signs offend the Grand Duke in 2026, and how to reconcile with him.</p>
+        </a>
+        <a href="/yearly-horoscope" class="group rounded-xl border border-stone-200 bg-white p-5 shadow-sm transition-all hover:-translate-y-0.5 hover:border-zodiac-red/30 hover:shadow-md dark:border-stone-700 dark:bg-stone-800">
+          <h3 class="text-sm font-semibold text-zodiac-ink transition-colors group-hover:text-zodiac-red dark:text-stone-100">2026 Horoscopes</h3>
+          <p class="mt-2 text-xs leading-relaxed text-stone-500 dark:text-stone-400">Annual predictions for all 12 signs in the Fire Horse year.</p>
+        </a>
+        <a href="/year-chart" class="group rounded-xl border border-stone-200 bg-white p-5 shadow-sm transition-all hover:-translate-y-0.5 hover:border-zodiac-red/30 hover:shadow-md dark:border-stone-700 dark:bg-stone-800">
+          <h3 class="text-sm font-semibold text-zodiac-ink transition-colors group-hover:text-zodiac-red dark:text-stone-100">Year Chart</h3>
+          <p class="mt-2 text-xs leading-relaxed text-stone-500 dark:text-stone-400">Every zodiac year from 1900 to 2043 with exact lunar ranges.</p>
+        </a>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="mt-12">
+      <h2 class="text-2xl font-semibold tracking-tight text-zodiac-ink dark:text-stone-100">Frequently Asked Questions</h2>
+      <div class="mt-6 space-y-3">
+        {faqs.map((f) => (
+          <details class="group rounded-xl border border-stone-200 bg-white p-5 transition-shadow hover:shadow-sm dark:border-stone-700 dark:bg-stone-800">
+            <summary class="flex cursor-pointer items-center justify-between font-medium text-zodiac-ink dark:text-stone-100">
+              {f.q}
+              <svg class="h-4 w-4 shrink-0 text-stone-400 transition-transform group-open:rotate-180" viewBox="0 0 16 16" fill="none"><path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            </summary>
+            <p class="mt-3 text-sm leading-relaxed text-stone-600 dark:text-stone-400" set:html={f.a}></p>
+          </details>
+        ))}
+      </div>
+    </section>
+  </article>
+</BaseLayout>
