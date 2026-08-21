@@ -4,35 +4,52 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
 <BaseLayout
   title="About Chinese-Zodiac-Calculator.com - Chinese Zodiac Guide"
-  description="Learn about Chinese-Zodiac-Calculator.com, the free Chinese zodiac calculator. Discover your animal sign, element, personality, and compatibility through our easy tools."
+  description="Learn about Chinese-Zodiac-Calculator.com, the free Chinese zodiac calculator. Discover how our tools work, how content is verified and updated, and the sources behind our zodiac guides."
   breadcrumbs={[{ label: "Home", href: "/" }, { label: "About", href: "/about" }]}
 >
   <section class="mx-auto max-w-[800px] px-4 py-12 lg:px-6 lg:py-16">
     <h1 class="mb-6 text-3xl font-bold tracking-tight text-stone-900 dark:text-stone-100 sm:text-4xl">About <span class="text-[#DC2626]">Chinese-Zodiac-Calculator.com</span></h1>
 
     <div class="prose prose-stone max-w-none dark:prose-invert">
-      <p class="text-base leading-relaxed text-stone-600 dark:text-stone-400">Chinese-Zodiac-Calculator.com is a free online tool that helps you discover your Chinese zodiac animal sign, element, personality traits, compatibility, and more — all based on your birth date.</p>
+      <p class="text-base leading-relaxed text-stone-600 dark:text-stone-400">Chinese-Zodiac-Calculator.com is a free online tool that helps you discover your Chinese zodiac animal sign, element, personality traits, compatibility, and more — all based on your birth date. The site is built for casual readers and serious learners alike: one-minute answers for the curious, and referenced detail for anyone who wants to dig deeper.</p>
 
       <h2 class="mt-8 text-xl font-semibold text-stone-900 dark:text-stone-100">Our Mission</h2>
-      <p class="text-base leading-relaxed text-stone-600 dark:text-stone-400">We believe that ancient Chinese zodiac wisdom should be accessible to everyone. Our mission is to provide accurate, easy-to-understand readings that help you gain insight into your personality, relationships, and life path — at no cost.</p>
+      <p class="text-base leading-relaxed text-stone-600 dark:text-stone-400">We believe ancient Chinese zodiac wisdom should be accessible to everyone. Our mission is to provide accurate, easy-to-understand readings that help you gain insight into your personality, relationships, and life path — at no cost, with no sign-up, and no paywall. All tools are free and work instantly in your browser.</p>
 
-      <h2 class="mt-8 text-xl font-semibold text-stone-900 dark:text-stone-100">How It Works</h2>
-      <p class="text-base leading-relaxed text-stone-600 dark:text-stone-400">Our calculator uses traditional Chinese lunar calendar algorithms to determine your zodiac animal and element. Unlike many other calculators, we account for the lunar new year transition date, ensuring your sign is calculated correctly even if you were born in January or February.</p>
+      <h2 class="mt-8 text-xl font-semibold text-stone-900 dark:text-stone-100">How Our Calculator Works</h2>
+      <p class="text-base leading-relaxed text-stone-600 dark:text-stone-400">Our calculator uses the traditional Chinese lunar calendar: your animal sign is determined by the lunar year of your birth, not the Gregorian year. Because the Chinese New Year falls between late January and mid-February each year, we publish exact lunar date ranges for every zodiac year, so a person born in early February can verify whether they belong to the previous year&#8217;s sign. The same lunar basis powers our Year Chart, Elements guide, and BaZi Calculator (Four Pillars), which combines your birth year, month, day, and hour.</p>
+
+      <h2 class="mt-8 text-xl font-semibold text-stone-900 dark:text-stone-100">Editorial &amp; Accuracy Standards</h2>
+      <p class="text-base leading-relaxed text-stone-600 dark:text-stone-400">Every page on this site is written and reviewed by our editorial team before publishing. Our content standards:</p>
+      <ul class="mt-2 space-y-2 text-stone-600 dark:text-stone-400">
+        <li class="flex items-start gap-2 text-sm"><span class="text-[#DC2626]">&#10003;</span> <span><strong class="text-stone-900 dark:text-stone-100">Lunar dates are computed</strong>, not guessed — every zodiac year range on the site is tied to the actual Chinese New Year date.</span></li>
+        <li class="flex items-start gap-2 text-sm"><span class="text-[#DC2626]">&#10003;</span> <span><strong class="text-stone-900 dark:text-stone-100">Cultural claims are checked</strong> against publicly available references, including <a href="https://www.britannica.com/topic/Chinese-zodiac" rel="noopener" class="font-medium text-zodiac-red underline-offset-2 hover:underline">Encyclopaedia Britannica</a> and academic sources on Chinese calendar tradition.</span></li>
+        <li class="flex items-start gap-2 text-sm"><span class="text-[#DC2626]">&#10003;</span> <span><strong class="text-stone-900 dark:text-stone-100">Structure is data-driven</strong> — the 12 sign pages, compatibility matrix, and year charts are generated from one shared dataset, so facts never contradict each other across pages.</span></li>
+        <li class="flex items-start gap-2 text-sm"><span class="text-[#DC2626]">&#10003;</span> <span><strong class="text-stone-900 dark:text-stone-100">Mistakes get fixed fast</strong> — we review reader feedback and correct factual errors with a visible update date on the page.</span></li>
+      </ul>
+
+      <h2 class="mt-8 text-xl font-semibold text-stone-900 dark:text-stone-100">Content Updates</h2>
+      <p class="text-base leading-relaxed text-stone-600 dark:text-stone-400">Annual horoscopes are refreshed at the start of each lunar year, and cultural guides (Ben Ming Nian, Tai Sui, and the zodiac origin story) are reviewed as new scholarship or reader questions surface. Each page carries a <em>dateModified</em> entry, so you can see exactly when it was last updated.</p>
 
       <h2 class="mt-8 text-xl font-semibold text-stone-900 dark:text-stone-100">What We Offer</h2>
       <ul class="mt-2 space-y-2 text-stone-600 dark:text-stone-400">
-        <li class="flex items-start gap-2 text-sm"><span class="text-[#DC2626]">&#10003;</span> <span><strong class="text-stone-900 dark:text-stone-100">Zodiac Calculator</strong> — instantly find your animal sign and element.</span></li>
-        <li class="flex items-start gap-2 text-sm"><span class="text-[#DC2626]">&#10003;</span> <span><strong class="text-stone-900 dark:text-stone-100">Compatibility Checker</strong> — see how your sign matches with others.</span></li>
-        <li class="flex items-start gap-2 text-sm"><span class="text-[#DC2626]">&#10003;</span> <span><strong class="text-stone-900 dark:text-stone-100">Element Guide</strong> — learn about the five elements and their influence.</span></li>
-        <li class="flex items-start gap-2 text-sm"><span class="text-[#DC2626]">&#10003;</span> <span><strong class="text-stone-900 dark:text-stone-100">Yearly Horoscopes</strong> — read annual predictions for all 12 signs.</span></li>
-        <li class="flex items-start gap-2 text-sm"><span class="text-[#DC2626]">&#10003;</span> <span><strong class="text-stone-900 dark:text-stone-100">Feng Shui Tips</strong> — harmonize your home based on your element.</span></li>
+        <li class="flex items-start gap-2 text-sm"><span class="text-[#DC2626]">&#10003;</span> <span><strong class="text-stone-900 dark:text-stone-100"><a href="/" class="font-medium text-zodiac-red underline-offset-2 hover:underline">Zodiac Calculator</a></strong> — instantly find your animal sign and element from your birth date.</span></li>
+        <li class="flex items-start gap-2 text-sm"><span class="text-[#DC2626]">&#10003;</span> <span><strong class="text-stone-900 dark:text-stone-100"><a href="/compatibility" class="font-medium text-zodiac-red underline-offset-2 hover:underline">Compatibility Checker</a></strong> — see how any two signs match in love and friendship.</span></li>
+        <li class="flex items-start gap-2 text-sm"><span class="text-[#DC2626]">&#10003;</span> <span><strong class="text-stone-900 dark:text-stone-100"><a href="/elements" class="font-medium text-zodiac-red underline-offset-2 hover:underline">Element Guide</a></strong> — learn about the five elements and how your birth year element refines your sign.</span></li>
+        <li class="flex items-start gap-2 text-sm"><span class="text-[#DC2626]">&#10003;</span> <span><strong class="text-stone-900 dark:text-stone-100"><a href="/year-chart" class="font-medium text-zodiac-red underline-offset-2 hover:underline">Year Chart</a></strong> — the full lunar-year-to-animal reference table.</span></li>
+        <li class="flex items-start gap-2 text-sm"><span class="text-[#DC2626]">&#10003;</span> <span><strong class="text-stone-900 dark:text-stone-100"><a href="/bazi-calculator" class="font-medium text-zodiac-red underline-offset-2 hover:underline">BaZi Calculator</a></strong> — a Four Pillars reading built on your complete birth date and time.</span></li>
+        <li class="flex items-start gap-2 text-sm"><span class="text-[#DC2626]">&#10003;</span> <span><strong class="text-stone-900 dark:text-stone-100"><a href="/yearly-horoscope" class="font-medium text-zodiac-red underline-offset-2 hover:underline">Yearly Horoscopes</a></strong> — annual predictions for all 12 signs.</span></li>
+        <li class="flex items-start gap-2 text-sm"><span class="text-[#DC2626]">&#10003;</span> <span><strong class="text-stone-900 dark:text-stone-100"><a href="/feng-shui-tips" class="font-medium text-zodiac-red underline-offset-2 hover:underline">Feng Shui Tips</a></strong> — practical ways to harmonize your space by element.</span></li>
       </ul>
 
+      <h2 class="mt-8 text-xl font-semibold text-stone-900 dark:text-stone-100">References</h2>
+      <p class="text-base leading-relaxed text-stone-600 dark:text-stone-400">Key public references used in our guides: <a href="https://www.britannica.com/topic/Chinese-zodiac" rel="noopener" class="font-medium text-zodiac-red underline-offset-2 hover:underline">Encyclopaedia Britannica — Chinese zodiac</a>, <a href="https://en.wikipedia.org/wiki/Chinese_zodiac" rel="noopener" class="font-medium text-zodiac-red underline-offset-2 hover:underline">Wikipedia — Chinese zodiac</a>, and <a href="https://en.wikipedia.org/wiki/Sexagenary_cycle" rel="noopener" class="font-medium text-zodiac-red underline-offset-2 hover:underline">Wikipedia — Sexagenary cycle</a> for the stem-branch calendar. We link to these so you can verify our cultural claims yourself.</p>
+
       <h2 class="mt-8 text-xl font-semibold text-stone-900 dark:text-stone-100">Our Team</h2>
-      <p class="text-base leading-relaxed text-stone-600 dark:text-stone-400">Chinese-Zodiac-Calculator.com is built by a small team of developers, astrological researchers, and feng shui enthusiasts who share a passion for Chinese metaphysics. We combine traditional knowledge with modern technology to deliver the best zodiac experience on the web.</p>
+      <p class="text-base leading-relaxed text-stone-600 dark:text-stone-400">Chinese-Zodiac-Calculator.com is built and maintained by a small team of developers, writers, and researchers with a shared interest in Chinese calendar systems and metaphysics. We combine traditional sources with modern web engineering to keep the site fast, free, and factually consistent. Questions about a specific page, a correction, or a feature request? Reach out through our <a href="/contact" class="font-medium text-zodiac-red underline-offset-2 hover:underline">contact page</a> — real humans read every message.</p>
 
       <h2 class="mt-8 text-xl font-semibold text-stone-900 dark:text-stone-100">Accuracy &amp; Disclaimer</h2>
-      <p class="text-base leading-relaxed text-stone-600 dark:text-stone-400">While we strive for maximum accuracy in our calculations, Chinese zodiac readings are for entertainment, educational, and informational purposes only. Decisions about your life, career, relationships, and health should always be made with careful personal consideration.</p>
+      <p class="text-base leading-relaxed text-stone-600 dark:text-stone-400">While we strive for maximum accuracy in our calculations, Chinese zodiac readings are for entertainment, educational, and informational purposes only. They are not a substitute for professional financial, medical, legal, or psychological advice. Decisions about your life, career, relationships, and health should always be made with careful personal consideration.</p>
     </div>
   </section>
 </BaseLayout>

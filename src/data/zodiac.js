@@ -36,6 +36,107 @@ export const ELEMENTS = {
   Earth: { years: [1958, 1959, 1968, 1969, 1978, 1979, 1988, 1989, 1998, 1999, 2008, 2009, 2018, 2019, 2028, 2029], color: '#C4A46C', traits: 'Practical, stable, nurturing' },
 };
 
+// Heavenly-stem element of the six most recent birth years for each animal (60-year cycle).
+// Derived from the sexagenary cycle: stem element (Jia/Yi=Wood, Bing/Ding=Fire, Wu/Ji=Earth, Geng/Xin=Metal, Ren/Gui=Water) + earthly branch animal.
+export const BORN_ERAS = {
+  rat: [
+    { year: 1960, stem: '庚', element: 'Metal' },
+    { year: 1972, stem: '壬', element: 'Water' },
+    { year: 1984, stem: '甲', element: 'Wood' },
+    { year: 1996, stem: '丙', element: 'Fire' },
+    { year: 2008, stem: '戊', element: 'Earth' },
+    { year: 2020, stem: '庚', element: 'Metal' },
+  ],
+  ox: [
+    { year: 1961, stem: '辛', element: 'Metal' },
+    { year: 1973, stem: '癸', element: 'Water' },
+    { year: 1985, stem: '乙', element: 'Wood' },
+    { year: 1997, stem: '丁', element: 'Fire' },
+    { year: 2009, stem: '己', element: 'Earth' },
+    { year: 2021, stem: '辛', element: 'Metal' },
+  ],
+  tiger: [
+    { year: 1962, stem: '壬', element: 'Water' },
+    { year: 1974, stem: '甲', element: 'Wood' },
+    { year: 1986, stem: '丙', element: 'Fire' },
+    { year: 1998, stem: '戊', element: 'Earth' },
+    { year: 2010, stem: '庚', element: 'Metal' },
+    { year: 2022, stem: '壬', element: 'Water' },
+  ],
+  rabbit: [
+    { year: 1963, stem: '癸', element: 'Water' },
+    { year: 1975, stem: '乙', element: 'Wood' },
+    { year: 1987, stem: '丁', element: 'Fire' },
+    { year: 1999, stem: '己', element: 'Earth' },
+    { year: 2011, stem: '辛', element: 'Metal' },
+    { year: 2023, stem: '癸', element: 'Water' },
+  ],
+  dragon: [
+    { year: 1964, stem: '甲', element: 'Wood' },
+    { year: 1976, stem: '丙', element: 'Fire' },
+    { year: 1988, stem: '戊', element: 'Earth' },
+    { year: 2000, stem: '庚', element: 'Metal' },
+    { year: 2012, stem: '壬', element: 'Water' },
+    { year: 2024, stem: '甲', element: 'Wood' },
+  ],
+  snake: [
+    { year: 1965, stem: '乙', element: 'Wood' },
+    { year: 1977, stem: '丁', element: 'Fire' },
+    { year: 1989, stem: '己', element: 'Earth' },
+    { year: 2001, stem: '辛', element: 'Metal' },
+    { year: 2013, stem: '癸', element: 'Water' },
+    { year: 2025, stem: '乙', element: 'Wood' },
+  ],
+  horse: [
+    { year: 1966, stem: '丙', element: 'Fire' },
+    { year: 1978, stem: '戊', element: 'Earth' },
+    { year: 1990, stem: '庚', element: 'Metal' },
+    { year: 2002, stem: '壬', element: 'Water' },
+    { year: 2014, stem: '甲', element: 'Wood' },
+    { year: 2026, stem: '丙', element: 'Fire' },
+  ],
+  goat: [
+    { year: 1955, stem: '乙', element: 'Wood' },
+    { year: 1967, stem: '丁', element: 'Fire' },
+    { year: 1979, stem: '己', element: 'Earth' },
+    { year: 1991, stem: '辛', element: 'Metal' },
+    { year: 2003, stem: '癸', element: 'Water' },
+    { year: 2015, stem: '乙', element: 'Wood' },
+  ],
+  monkey: [
+    { year: 1956, stem: '丙', element: 'Fire' },
+    { year: 1968, stem: '戊', element: 'Earth' },
+    { year: 1980, stem: '庚', element: 'Metal' },
+    { year: 1992, stem: '壬', element: 'Water' },
+    { year: 2004, stem: '甲', element: 'Wood' },
+    { year: 2016, stem: '丙', element: 'Fire' },
+  ],
+  rooster: [
+    { year: 1957, stem: '丁', element: 'Fire' },
+    { year: 1969, stem: '己', element: 'Earth' },
+    { year: 1981, stem: '辛', element: 'Metal' },
+    { year: 1993, stem: '癸', element: 'Water' },
+    { year: 2005, stem: '乙', element: 'Wood' },
+    { year: 2017, stem: '丁', element: 'Fire' },
+  ],
+  dog: [
+    { year: 1958, stem: '戊', element: 'Earth' },
+    { year: 1970, stem: '庚', element: 'Metal' },
+    { year: 1982, stem: '壬', element: 'Water' },
+    { year: 1994, stem: '甲', element: 'Wood' },
+    { year: 2006, stem: '丙', element: 'Fire' },
+    { year: 2018, stem: '戊', element: 'Earth' },
+  ],
+  pig: [
+    { year: 1959, stem: '己', element: 'Earth' },
+    { year: 1971, stem: '辛', element: 'Metal' },
+    { year: 1983, stem: '癸', element: 'Water' },
+    { year: 1995, stem: '乙', element: 'Wood' },
+    { year: 2007, stem: '丁', element: 'Fire' },
+    { year: 2019, stem: '己', element: 'Earth' },
+  ],
+};
+
 export const COMPATIBILITY = {
   rat: { best: ['dragon', 'monkey', 'ox'], worst: ['horse', 'goat', 'rabbit'] },
   ox: { best: ['rat', 'snake', 'rooster'], worst: ['horse', 'dog', 'goat'] },

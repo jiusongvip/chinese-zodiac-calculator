@@ -10,10 +10,10 @@ import BaseLayout from "../layouts/BaseLayout.astro";
   <section class="mx-auto max-w-[640px] px-4 py-12 lg:px-6 lg:py-16">
     <div class="mb-8 text-center">
       <h1 class="mb-3 text-3xl font-bold tracking-tight text-stone-900 dark:text-stone-100 sm:text-4xl">Contact <span class="text-[#DC2626]">Us</span></h1>
-      <p class="text-base text-stone-600 dark:text-stone-400">Have a question, suggestion, or feedback? We&#8217;d love to hear from you. Fill out the form below and we&#8217;ll get back to you within 24 hours.</p>
+      <p class="text-base text-stone-600 dark:text-stone-400">Have a question, suggestion, or feedback? We&#8217;d love to hear from you. Use the form below and we&#8217;ll get back to you within 24 hours — or email us directly at <a href="mailto:hello@chinese-zodiac-calculator.com" class="font-medium text-zodiac-red underline-offset-2 hover:underline">hello@chinese-zodiac-calculator.com</a>.</p>
     </div>
 
-    <form class="space-y-5" onsubmit="alert('Thank you for reaching out! We typically respond within 24 hours.'); return false;">
+    <form id="contact-form" class="space-y-5">
       <div>
         <label for="name" class="mb-1 block text-sm font-medium text-stone-700 dark:text-stone-300">Name</label>
         <input type="text" id="name" name="name" required class="w-full rounded-lg border border-stone-300 bg-white px-4 py-2.5 text-sm text-stone-900 placeholder-stone-400 outline-none transition-colors focus:border-[#DC2626] focus:ring-2 focus:ring-[#DC2626]/20 dark:border-stone-600 dark:bg-stone-800 dark:text-stone-100 dark:placeholder-stone-500" placeholder="Your name" />
@@ -29,6 +29,28 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       <button type="submit" class="w-full rounded-lg bg-[#DC2626] px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#B91C1C] focus:outline-none focus:ring-2 focus:ring-[#DC2626]/40">Send Message</button>
     </form>
 
-    <p class="mt-4 text-center text-xs text-stone-500 dark:text-stone-500">We typically respond within 24 hours.</p>
+    <p class="mt-4 text-center text-xs text-stone-500 dark:text-stone-500">
+      Submitting opens your email app with the message pre-filled — no data is stored on our server. We typically respond within 24 hours.
+    </p>
   </section>
+
+  <script is:inline>
+    // Static-site contact form: compose a mailto link from the form fields.
+    // No backend required; swap for Formspree/Netlify Forms if a server-side endpoint is added later.
+    (function () {
+      var form = document.getElementById("contact-form");
+      if (!form) return;
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        var name = document.getElementById("name").value.trim();
+        var email = document.getElementById("email").value.trim();
+        var message = document.getElementById("message").value.trim();
+        var subject = "Website contact from " + (name || "a visitor");
+        var body = message + "\n\n— " + name + " (" + email + ")";
+        window.location.href =
+          "mailto:hello@chinese-zodiac-calculator.com?subject=" +
+          encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
+      });
+    })();
+  </script>
 </BaseLayout>

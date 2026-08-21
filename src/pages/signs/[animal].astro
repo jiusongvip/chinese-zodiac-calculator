@@ -1,6 +1,6 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import { ZODIAC_ANIMALS, ELEMENTS, LUCKY_THINGS, COMPATIBILITY, ZODIAC_LUNAR_RANGES, SIGN_PROFILES, HOROSCOPES_2026, SIGN_META } from "../../data/zodiac";
+import { ZODIAC_ANIMALS, ELEMENTS, LUCKY_THINGS, COMPATIBILITY, ZODIAC_LUNAR_RANGES, SIGN_PROFILES, HOROSCOPES_2026, SIGN_META, BORN_ERAS } from "../../data/zodiac";
 
 export async function getStaticPaths() {
   return ZODIAC_ANIMALS.map((animal) => ({
@@ -15,6 +15,7 @@ const lucky = LUCKY_THINGS[currentAnimal.id as keyof typeof LUCKY_THINGS];
 const compat = COMPATIBILITY[currentAnimal.id as keyof typeof COMPATIBILITY];
 const horoscope = HOROSCOPES_2026[currentAnimal.id as keyof typeof HOROSCOPES_2026];
 const rangeEntry = ZODIAC_LUNAR_RANGES.find((e) => e.animal === currentAnimal.id)!;
+const bornEras = BORN_ERAS[currentAnimal.id as keyof typeof BORN_ERAS];
 const displayName = currentAnimal.id.charAt(0).toUpperCase() + currentAnimal.id.slice(1);
 const signMeta = SIGN_META[currentAnimal.id as keyof typeof SIGN_META];
 const elem = ELEMENTS[currentAnimal.element as keyof typeof ELEMENTS];
@@ -166,6 +167,36 @@ const faqs = [
       <p class="mt-4 text-center text-xs text-stone-400 dark:text-stone-500">
         Born between Jan 1 and the Chinese New Year? Use the <a href="/" class="font-medium text-zodiac-red underline-offset-2 hover:underline">calculator</a> with your full birth date for a precise result.
       </p>
+
+      <div class="mt-8 rounded-2xl border border-stone-200 bg-stone-50 p-6 dark:border-stone-800 dark:bg-stone-900/50">
+        <h3 class="mb-2 text-lg font-bold tracking-tight text-zodiac-ink dark:text-stone-100">Your Birth Year Element</h3>
+        <p class="mb-4 text-sm leading-relaxed text-stone-600 dark:text-stone-400">
+          Your animal sign stays the same for life, but each birth year also carries its own heavenly-stem element — Wood, Fire, Earth, Metal, or Water. A {bornEras[bornEras.length - 2].year} Fire {displayName} and a {bornEras[bornEras.length - 1].year} {bornEras[bornEras.length - 1].element} {displayName} share the same sign, yet the element shapes how that nature shows up in personality and fortune.
+        </p>
+        <div class="overflow-x-auto rounded-xl border border-stone-200 bg-white dark:border-stone-700 dark:bg-stone-900">
+          <table class="w-full min-w-[420px] text-sm">
+            <thead>
+              <tr class="border-b border-stone-200 bg-stone-100 dark:border-stone-700 dark:bg-stone-800">
+                <th class="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-stone-500 dark:text-stone-400">Birth Year</th>
+                <th class="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-stone-500 dark:text-stone-400">Element</th>
+                <th class="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-stone-500 dark:text-stone-400">Trait Focus</th>
+              </tr>
+            </thead>
+            <tbody>
+              {bornEras.map((e) => (
+                <tr class="border-b border-stone-100 last:border-b-0 transition-colors hover:bg-stone-50 dark:border-stone-800 dark:hover:bg-stone-800/50">
+                  <td class="px-4 py-3 font-medium text-zodiac-red">{e.year}</td>
+                  <td class="px-4 py-3 text-stone-700 dark:text-stone-300">{e.stem} · {e.element}</td>
+                  <td class="px-4 py-3 text-stone-500 dark:text-stone-400">{ELEMENTS[e.element as keyof typeof ELEMENTS].traits}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p class="mt-4 text-xs leading-relaxed text-stone-500 dark:text-stone-400">
+          The stem-and-branch cycle repeats every 60 years. For a deeper look at how your element shapes your year, month, day, and hour of birth, try the <a href="/bazi-calculator" class="font-medium text-zodiac-red underline-offset-2 hover:underline">BaZi Calculator</a> or explore the <a href="/elements" class="font-medium text-zodiac-red underline-offset-2 hover:underline">five elements</a> in detail.
+        </p>
+      </div>
     </div>
   </section>
 
