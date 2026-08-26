@@ -1,9 +1,16 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { ZODIAC_ANIMALS, ELEMENTS, HOROSCOPES_2026 } from "../data/zodiac";
+import { ZODIAC_ANIMALS, ELEMENTS, HOROSCOPES_2026_DETAIL } from "../data/zodiac";
 
 const getElement = (el: string): { years: number[]; color: string; traits: string } => (ELEMENTS as Record<string, { years: number[]; color: string; traits: string }>)[el];
-const horoscopes = HOROSCOPES_2026;
+const horoscopes = HOROSCOPES_2026_DETAIL;
+
+const areas = [
+  { key: "career", label: "Career" },
+  { key: "love", label: "Love" },
+  { key: "health", label: "Health" },
+  { key: "wealth", label: "Wealth" },
+] as const;
 
 const faqs = [
   { q: "When does the Year of the Horse 2026 begin?", a: "The Chinese New Year for 2026 falls on February 17, 2026. Anyone born after this date belongs to the Horse sign. Those born before are still considered Snakes from the previous cycle." },
@@ -33,13 +40,21 @@ const faqs = [
         const preview = horoscopes[animal.id as keyof typeof horoscopes];
         const elem = getElement(animal.element);
         return (
-          <article class="group rounded-xl border border-stone-200 bg-white p-6 shadow-sm transition-all hover:shadow-md hover:border-[#DC2626]/30 dark:border-stone-700 dark:bg-stone-800 dark:hover:border-[#DC2626]/50">
+          <article class="flex flex-col rounded-xl border border-stone-200 bg-white p-6 shadow-sm transition-all hover:shadow-md hover:border-[#DC2626]/30 dark:border-stone-700 dark:bg-stone-800 dark:hover:border-[#DC2626]/50">
             <div class="mb-3 flex items-center justify-between">
               <span class="text-2xl font-bold text-stone-900 dark:text-stone-100 capitalize">{animal.chinese} {animal.id}</span>
               <span class="rounded-full px-3 py-1 text-xs font-medium" style={`background-color: ${elem.color}20; color: ${elem.color};`}>{animal.element}</span>
             </div>
-            <p class="mb-4 text-sm leading-relaxed text-stone-600 dark:text-stone-400">{preview}</p>
-            <a href={`/signs/${animal.id}`} class="inline-flex items-center gap-1 text-sm font-medium text-[#DC2626] hover:underline">Read full profile &rarr;</a>
+            <p class="mb-4 text-sm leading-relaxed text-stone-600 dark:text-stone-400">{preview.summary}</p>
+            <dl class="mb-5 space-y-3">
+              {areas.map((area) => (
+                <div>
+                  <dt class="text-xs font-semibold uppercase tracking-widest text-[#DC2626]">{area.label}</dt>
+                  <dd class="mt-0.5 text-sm leading-relaxed text-stone-600 dark:text-stone-400">{preview[area.key]}</dd>
+                </div>
+              ))}
+            </dl>
+            <a href={`/signs/${animal.id}`} class="mt-auto inline-flex items-center gap-1 text-sm font-medium text-[#DC2626] hover:underline">Read full profile &rarr;</a>
           </article>
         );
       })}

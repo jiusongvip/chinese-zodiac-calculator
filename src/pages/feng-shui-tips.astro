@@ -8,46 +8,61 @@ const elementTips = {
   Wood: {
     direction: "East",
     colors: ["Green", "Brown"],
+    intro: "Wood energy grows upward like a tree — it feeds ambition, new beginnings, and family harmony. Nurture it with living things and soft, natural textures.",
     tips: [
       "Place live plants in the east corner of your home to activate growth energy and career expansion.",
       "Use wooden furniture and bamboo accents to strengthen your natural vitality.",
-      "Avoid metal objects in your bedroom — They can disrupt Wood's gentle, expanding energy."
+      "Avoid metal objects in your bedroom — They can disrupt Wood's gentle, expanding energy.",
+      "Add a green houseplant to your desk or workspace; living greenery renews your creativity during demanding stretches.",
+      "Hang landscape art of forests or mountains in the east sector to symbolize steady, upward growth.",
     ],
   },
   Fire: {
     direction: "South",
     colors: ["Red", "Purple", "Orange"],
+    intro: "Fire energy radiates warmth, visibility, and passion. It powers reputation, recognition, and enthusiasm — but it must be directed, not left to blaze unchecked.",
     tips: [
       "Light candles or place a warm lamp in the south sector of your living room to boost recognition and fame luck.",
       "Display red decor elements — cushions, curtains, or artwork — To invite passion and visibility.",
       "Keep your TV and electronics in the south area to activate Fire energy through heat and light.",
+      "Use triangle shapes and pointed decor sparingly — they intensify Fire, so balance them with soft, round pieces.",
+      "Keep your south-facing windows clean and unobstructed so sunlight and Fire energy flow freely into the room.",
     ],
   },
   Earth: {
     direction: "Center",
     colors: ["Yellow", "Beige", "Terracotta"],
+    intro: "Earth energy grounds, stabilizes, and nourishes. It supports health, relationships, and steady progress — the calm center around which everything else revolves.",
     tips: [
       "Use ceramic vases, stone decor, and square shapes to ground your space and promote stability.",
       "Place a bowl of crystals or gemstones in the center of your home to harmonize relationships.",
-      "Avoid blue and black in your workspace — Water weakens Earth energy and can scatter your focus."
+      "Avoid blue and black in your workspace — Water weakens Earth energy and can scatter your focus.",
+      "Introduce warm earth tones — terracotta pots, clay tableware, ochre throws — in the center of your home.",
+      "Keep the center of your home clear of clutter; a clean core anchors the energy of every room around it.",
     ],
   },
   Metal: {
     direction: "West",
     colors: ["White", "Gold", "Silver"],
+    intro: "Metal energy is precise, sharp, and orderly. It governs clarity, discipline, and helpful connections — thriving where structure and refinement rule.",
     tips: [
       "Install wind chimes in the west window to attract helpful people and mentorship opportunities.",
       "Use round mirrors and metal-framed art to amplify precision and clarity in decision-making.",
-      "Declutter your home office regularly — Metal thrives in order and suffocates in chaos."
+      "Declutter your home office regularly — Metal thrives in order and suffocates in chaos.",
+      "Display white or metallic accents in the west sector — silver trays, gold-framed mirrors, metal sculptures.",
+      "Replace broken or tarnished metal objects; damaged metal weakens your decision-making energy.",
     ],
   },
   Water: {
     direction: "North",
     colors: ["Blue", "Black"],
+    intro: "Water energy flows, adapts, and connects. It governs wisdom, communication, and wealth — moving smoothly around obstacles rather than forcing through them.",
     tips: [
       "Place a small fountain or aquarium in the north area of your home to invite wealth flow.",
       "Use curved shapes and mirrors to direct Water energy gently — Avoid flooding a room with dark tones.",
       "Keep your bathroom door closed and the toilet lid down to prevent wealth from draining away.",
+      "Add flowing fabric — curtains, silk throws, or a wave-pattern rug — in blue tones to keep energy moving.",
+      "Position your desk so you can see the door while working; Water signs perform best with clear sightlines and open space.",
     ],
   },
 };
@@ -84,6 +99,8 @@ const faqs = [
               <p class="text-sm text-stone-500 dark:text-stone-400">{elem.traits}</p>
             </div>
           </div>
+
+          <p class="mb-6 max-w-[760px] text-sm leading-relaxed text-stone-600 dark:text-stone-400">{data.intro}</p>
 
           <div class="mb-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             <div class="rounded-lg border border-stone-200 bg-white p-4 dark:border-stone-700 dark:bg-stone-800">

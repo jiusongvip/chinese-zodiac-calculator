@@ -313,6 +313,95 @@ export const HOROSCOPES_2026 = {
   pig: "The Pig enjoys abundance in 2026. Travel and education bring joy. Guard against overindulgence; maintain healthy routines.",
 };
 
+// Detailed 2026 horoscope by life area, used by the yearly-horoscope overview page.
+// The summary mirrors HOROSCOPES_2026 (also shown on sign pages); the four areas add depth without duplication.
+export const HOROSCOPES_2026_DETAIL = {
+  rat: {
+    summary: "The Rat shines in 2026 with career opportunities driven by quick thinking. Focus on networking to unlock financial gains.",
+    career: "Networking pays off for the Rat — attend industry events and reconnect with past colleagues, because opportunities arrive through people rather than job postings.",
+    love: "Single Rats may meet someone promising through work connections. Committed Rats should schedule quality time, as busy periods tempt you to drift apart.",
+    health: "Your energy holds steady, but late-night work sessions will catch up. Protect your sleep schedule and add short walks to your daily routine.",
+    wealth: "Financial gains come through side projects and smart negotiation. Avoid impulse purchases in spring, when spending temptations peak.",
+  },
+  ox: {
+    summary: "Steady progress awaits the Ox in 2026. Your patience pays off professionally, but guard against stubbornness in relationships.",
+    career: "Steady, visible progress marks the Ox year — take on leadership roles even if they feel premature; your diligence will be noticed.",
+    love: "Your patience strengthens bonds, but avoid being overly stubborn in disagreements. Compromise early keeps small issues from growing.",
+    health: "Physical routines built now will carry you through the year. Watch your posture and schedule regular stretching to counter long desk hours.",
+    wealth: "Slow and steady wins: automatic savings and conservative investments outperform risky bets in 2026. Review subscriptions and cut waste.",
+  },
+  tiger: {
+    summary: "2026 brings bold energy for the Tiger. Take calculated risks in love and career — fortune favors the brave this year.",
+    career: "Bold moves are rewarded for the Tiger — pitch ambitious projects and volunteer for high-visibility assignments. Your courage sets you apart.",
+    love: "Passion runs high, but check impulsiveness. Grand gestures work best when paired with consistent, small acts of care.",
+    health: "Your fiery energy needs an outlet — intense workouts channel it productively. Beware of burnout from overcommitting.",
+    wealth: "Calculated risks can pay off, especially mid-year. Set aside emergency funds before any large purchases.",
+  },
+  rabbit: {
+    summary: "A harmonious year for the Rabbit. Prioritize self-care and family; financial stability comes through cautious planning.",
+    career: "A quieter, steadier path suits the Rabbit — refine skills and deepen expertise rather than chasing promotions. Recognition follows competence.",
+    love: "Home and family take center stage. Nurturing relationships brings deep satisfaction; don't neglect your own needs in the process.",
+    health: "Gentle routines like yoga or tai chi suit your constitution. Prioritize rest; your sensitive nature absorbs stress easily.",
+    wealth: "Cautious planning delivers stability — build a budget buffer and avoid speculative investments. Small consistent savings compound well.",
+  },
+  dragon: {
+    summary: "The Dragon soars in 2026 with creative breakthroughs. Career expansion is favored, but watch your health amid the excitement.",
+    career: "Creative breakthroughs mark the Dragon's year — lead projects that showcase originality. Your reputation grows through visible innovation.",
+    love: "Your charisma attracts admirers, but depth matters more than drama. Invest in honest conversations with your partner.",
+    health: "Excitement can push you past your limits. Schedule recovery time deliberately; monitor stress and avoid skipping meals.",
+    wealth: "Expansion is favored, but manage cash flow carefully. Invest in skills and tools that multiply your earning potential.",
+  },
+  snake: {
+    summary: "Wisdom guides the Snake this year. Strategic moves in investments yield results. Trust your intuition in romantic matters.",
+    career: "Strategic moves win the Snake's year — research thoroughly before acting, and position yourself where your analytical edge shines.",
+    love: "Intuition guides romance well in 2026. Trust your instincts, but communicate openly rather than reading minds.",
+    health: "Your tendency to keep things inside affects your body. Journaling, massage, and breathing exercises release stored tension.",
+    wealth: "Your investment instincts are sharp — but verify facts before acting. Diversify rather than concentrating on one bet.",
+  },
+  horse: {
+    summary: "As the ruling sign of 2026, the Horse enjoys a powerful year. Leadership opportunities abound; channel your fiery energy wisely.",
+    career: "As the year's ruling sign, the Horse commands attention — accept leadership offers and public roles; your presence inspires others.",
+    love: "Your magnetism is at its peak. Channel fiery energy into deepening one meaningful bond rather than spreading it thin.",
+    health: "High momentum risks burnout. Balance intense activity with proper meals, hydration, and early nights.",
+    wealth: "Income rises, but so do expenses. Lock in gains, avoid lifestyle inflation, and plan for a strong finish to the year.",
+  },
+  goat: {
+    summary: "A year of gentle growth for the Goat. Artistic pursuits flourish. Strengthen relationships through open communication.",
+    career: "Artistic and creative pursuits flourish for the Goat — bring aesthetics and empathy into your work; they become your edge.",
+    love: "Open communication deepens bonds. Express your needs gently rather than expecting others to guess them.",
+    health: "Creative flow nourishes you; schedule time for hobbies. Gentle movement keeps your energy balanced.",
+    wealth: "Steady income is secure, but avoid financing impulsive purchases. Seek advice before major financial commitments.",
+  },
+  monkey: {
+    summary: "2026 rewards the Monkey's cleverness. New ventures succeed. Stay adaptable — unexpected changes bring hidden blessings.",
+    career: "The Monkey's cleverness unlocks new ventures — pitch innovative ideas and embrace change. Adaptability is your superpower in 2026.",
+    love: "Playfulness attracts, but consistency builds trust. Show up reliably; humor works best when paired with dependability.",
+    health: "Your active mind needs physical release. Regular exercise prevents mental clutter and improves focus.",
+    wealth: "Unexpected gains may appear, but so do unexpected costs. Maintain a buffer and verify every deal before signing.",
+  },
+  rooster: {
+    summary: "Precision and diligence elevate the Rooster in 2026. Career recognition arrives. Balance ambition with family time.",
+    career: "Precision elevates the Rooster — polish your craft and showcase your attention to detail. Recognition arrives for visible quality.",
+    love: "Balance ambition with family time. Small rituals — shared meals, weekend walks — keep bonds strong.",
+    health: "Your discipline supports great routines. Avoid perfectionism-driven stress; schedule genuine downtime.",
+    wealth: "Your meticulous planning pays off. Keep organized records and review investments quarterly.",
+  },
+  dog: {
+    summary: "Loyalty brings rewards for the Dog this year. Legal and financial matters resolve favorably. Nurture your closest bonds.",
+    career: "Loyalty and integrity open doors for the Dog — legal, regulatory, and partnership matters resolve in your favor. Trust is your currency.",
+    love: "Your closest bonds deepen. Be open to new connections too; this year rewards both stability and welcome surprises.",
+    health: "Your vigilance can tip into worry. Meditation and outdoor time restore calm; watch tension in your shoulders and jaw.",
+    wealth: "Favorable resolutions improve finances. Consolidate debts and build a safety net for peace of mind.",
+  },
+  pig: {
+    summary: "The Pig enjoys abundance in 2026. Travel and education bring joy. Guard against overindulgence; maintain healthy routines.",
+    career: "Travel and learning enrich the Pig's year — seek training, certifications, or international exposure. New knowledge multiplies your value.",
+    love: "Joy and generosity define your relationships in 2026. Shared experiences — trips, classes, celebrations — strengthen bonds.",
+    health: "Pleasure temptations need balance. Maintain healthy routines and moderate indulgences; regular activity keeps you vibrant.",
+    wealth: "Abundance flows, but guard against overindulgence spending. Automate savings before lifestyle upgrades.",
+  },
+};
+
 export function getZodiacByDate(year, month, day) {
   let animalIndex = (year - 4) % 12;
   if (animalIndex < 0) animalIndex += 12;
