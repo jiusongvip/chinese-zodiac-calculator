@@ -65,65 +65,107 @@ function capitalize(s: string) {
   dateModified="2026-08-19"
 >
   <!-- ===== HERO CALCULATOR ===== -->
-  <section class="bg-gradient-to-br from-red-50 to-stone-100 px-4 py-16 dark:from-red-950/20 dark:to-stone-950">
-    <div class="mx-auto max-w-[700px] text-center">
-      <h1 class="mb-4 text-4xl font-bold tracking-tight text-zodiac-ink dark:text-stone-100 sm:text-5xl">
-        Chinese Zodiac <span class="text-zodiac-red">Calculator</span>
+  <section class="relative overflow-hidden bg-zodiac-cream px-4 pb-16 pt-14 dark:bg-stone-950 sm:pt-16">
+    <!-- 装饰层：顶部金线 + 光晕 + 汉字水印 + 底部回纹 -->
+    <div class="pointer-events-none absolute inset-0" aria-hidden="true">
+      <div class="absolute inset-x-0 top-0 h-[3px] bg-gradient-to-r from-transparent via-zodiac-gold/70 to-transparent"></div>
+      <div class="absolute -left-44 -top-44 h-[30rem] w-[30rem] rounded-full bg-zodiac-red/10 blur-3xl dark:bg-zodiac-red/10"></div>
+      <div class="absolute -bottom-52 -right-52 h-[34rem] w-[34rem] rounded-full bg-zodiac-gold/15 blur-3xl dark:bg-zodiac-gold/10"></div>
+      <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 select-none opacity-[0.05] dark:opacity-[0.04]" style="font-family: var(--font-cn)">
+        <span class="text-[20rem] font-black leading-none tracking-tight text-zodiac-red sm:text-[26rem]">生肖</span>
+      </div>
+      <svg class="absolute bottom-0 left-1/2 h-6 w-[420px] max-w-full -translate-x-1/2 text-zodiac-gold/25" viewBox="0 0 420 24" fill="none">
+        <path d="M0 12h10v-10h10v10h10v-10h10v10h10v-10h10v10h10v-10h10v10h10v-10h10v10h10v-10h10v10h10v-10h10v10h10v-10h10v10h10v-10h10v10h10v-10h10v10h10v-10h10v10h10v-10h10v10h10v-10h10v10h10v-10h10v10h10v-10h10v10h10v-10h10v10h10v-10h10v10h20" stroke="currentColor" stroke-width="1.5"/>
+      </svg>
+    </div>
+
+    <div class="relative mx-auto max-w-[880px] text-center">
+      <!-- Eyebrow：印章 + 生肖 -->
+      <p class="mb-6 flex items-center justify-center gap-3 text-[11px] font-semibold uppercase tracking-[0.35em] text-zodiac-gold">
+        <span class="h-px w-10 bg-gradient-to-r from-transparent to-zodiac-gold/70"></span>
+        <span class="inline-flex items-center justify-center rounded-[5px] bg-zodiac-red px-2 py-1 text-xs font-bold tracking-widest text-white shadow-md shadow-red-900/20" style="font-family: var(--font-cn)">生肖</span>
+        <span class="hidden sm:inline">Shengxiao</span>
+        <span class="h-px w-10 bg-gradient-to-l from-transparent to-zodiac-gold/70"></span>
+      </p>
+
+      <h1 class="font-display text-5xl font-bold leading-[1.05] tracking-tight text-zodiac-ink dark:text-stone-100 sm:text-[4.25rem]">
+        Chinese Zodiac
+        <span class="block bg-gradient-to-r from-zodiac-deep via-zodiac-red to-zodiac-bronze bg-clip-text pb-1 text-transparent">Calculator</span>
       </h1>
-      <p class="mx-auto mb-8 max-w-[550px] text-lg text-stone-600 dark:text-stone-400">
+      <p class="mx-auto mt-6 max-w-[560px] text-lg leading-relaxed text-stone-600 dark:text-stone-400">
         Enter your birth date to discover your animal sign, element, personality traits, and lucky items.
       </p>
 
-      <div class="mx-auto max-w-[550px] rounded-2xl border border-stone-200 bg-white p-6 shadow-sm dark:border-stone-800 dark:bg-stone-900 sm:p-8">
-        <!-- Tabs -->
-        <div class="mb-6 flex rounded-lg border border-stone-200 bg-stone-50 p-1 dark:border-stone-700 dark:bg-stone-800" role="tablist">
-          <button id="tab-year" class="calc-tab flex-1 rounded-md px-4 py-2 text-sm font-semibold text-white bg-zodiac-red shadow-sm transition-all" role="tab" aria-selected="true" data-mode="year">By Year</button>
-          <button id="tab-date" class="calc-tab flex-1 rounded-md px-4 py-2 text-sm font-semibold text-stone-600 transition-all hover:text-zodiac-red dark:text-stone-400 dark:hover:text-zodiac-red" role="tab" aria-selected="false" data-mode="date">By Birth Date</button>
-        </div>
+      <!-- 计算器：红金渐变描边卡片 -->
+      <div class="relative mx-auto mt-10 max-w-[560px]">
+        <div class="rounded-3xl bg-gradient-to-br from-zodiac-gold/50 via-zodiac-red/25 to-zodiac-gold/50 p-[1.5px] shadow-xl shadow-red-900/10 dark:shadow-black/40">
+          <div class="rounded-[calc(1.5rem-1.5px)] bg-white p-6 dark:bg-stone-900 sm:p-7">
+            <!-- Tabs -->
+            <div class="mb-6 flex rounded-xl border border-zodiac-gold/25 bg-zodiac-cream p-1 dark:border-stone-700 dark:bg-stone-800" role="tablist">
+              <button id="tab-year" class="calc-tab flex-1 cursor-pointer rounded-lg px-4 py-2 text-sm font-semibold text-white bg-zodiac-red shadow-sm transition-all" role="tab" aria-selected="true" data-mode="year">By Year</button>
+              <button id="tab-date" class="calc-tab flex-1 cursor-pointer rounded-lg px-4 py-2 text-sm font-semibold text-stone-600 transition-all hover:text-zodiac-red dark:text-stone-400 dark:hover:text-zodiac-red" role="tab" aria-selected="false" data-mode="date">By Birth Date</button>
+            </div>
 
-        <!-- Year Mode Input -->
-        <div id="input-year" class="calc-input">
-          <label for="calc-year-only" class="mb-2 block text-left text-sm font-medium text-stone-700 dark:text-stone-300">Enter your birth year:</label>
-          <input id="calc-year-only" type="number" value={currentYear - 20} min={minYear} max={maxYear}
-            class="w-full rounded-lg border border-stone-300 bg-stone-50 px-4 py-2.5 text-center text-lg font-semibold focus:border-zodiac-red focus:outline-none focus:ring-2 focus:ring-red-200 dark:border-stone-600 dark:bg-stone-800 dark:text-stone-200" />
-        </div>
+            <!-- Year Mode Input -->
+            <div id="input-year" class="calc-input">
+              <label for="calc-year-only" class="mb-2 block text-left text-sm font-medium text-stone-700 dark:text-stone-300">Enter your birth year:</label>
+              <input id="calc-year-only" type="number" value={currentYear - 20} min={minYear} max={maxYear}
+                class="w-full rounded-lg border border-zodiac-gold/25 bg-zodiac-cream/50 px-4 py-2.5 text-center text-lg font-semibold focus:border-zodiac-red focus:outline-none focus:ring-2 focus:ring-red-200 dark:border-stone-600 dark:bg-stone-800 dark:text-stone-200" />
+            </div>
 
-        <!-- Date Mode Input -->
-        <div id="input-date" class="calc-input hidden">
-          <div class="grid gap-4 sm:grid-cols-3">
-            <div>
-              <label for="calc-month" class="mb-1 block text-left text-sm font-medium text-stone-700 dark:text-stone-300">Month</label>
-              <select id="calc-month" class="w-full rounded-lg border border-stone-300 bg-stone-50 px-3 py-2.5 text-sm focus:border-zodiac-red focus:outline-none focus:ring-2 focus:ring-red-200 dark:border-stone-600 dark:bg-stone-800 dark:text-stone-200">
-                {months.map((m, i) => (
-                  <option value={i + 1}>{m}</option>
-                ))}
-              </select>
+            <!-- Date Mode Input -->
+            <div id="input-date" class="calc-input hidden">
+              <div class="grid gap-4 sm:grid-cols-3">
+                <div>
+                  <label for="calc-month" class="mb-1 block text-left text-sm font-medium text-stone-700 dark:text-stone-300">Month</label>
+                  <select id="calc-month" class="w-full rounded-lg border border-zodiac-gold/25 bg-zodiac-cream/50 px-3 py-2.5 text-sm focus:border-zodiac-red focus:outline-none focus:ring-2 focus:ring-red-200 dark:border-stone-600 dark:bg-stone-800 dark:text-stone-200">
+                    {months.map((m, i) => (
+                      <option value={i + 1}>{m}</option>
+                    ))}
+                  </select>
+                </div>
+                <div>
+                  <label for="calc-day" class="mb-1 block text-left text-sm font-medium text-stone-700 dark:text-stone-300">Day</label>
+                  <select id="calc-day" class="w-full rounded-lg border border-zodiac-gold/25 bg-zodiac-cream/50 px-3 py-2.5 text-sm focus:border-zodiac-red focus:outline-none focus:ring-2 focus:ring-red-200 dark:border-stone-600 dark:bg-stone-800 dark:text-stone-200">
+                    {days.map((d) => (
+                      <option value={d}>{d}</option>
+                    ))}
+                  </select>
+                </div>
+                <div>
+                  <label for="calc-year" class="mb-1 block text-left text-sm font-medium text-stone-700 dark:text-stone-300">Year</label>
+                  <select id="calc-year" class="w-full rounded-lg border border-zodiac-gold/25 bg-zodiac-cream/50 px-3 py-2.5 text-sm focus:border-zodiac-red focus:outline-none focus:ring-2 focus:ring-red-200 dark:border-stone-600 dark:bg-stone-800 dark:text-stone-200">
+                    {yearList.map((y) => (
+                      <option value={y} selected={y === currentYear - 20}>{y}</option>
+                    ))}
+                  </select>
+                </div>
+              </div>
+              <p class="mt-3 text-left text-xs text-stone-400 dark:text-stone-500">
+                People born before Chinese New Year belong to the previous year's sign.
+              </p>
             </div>
-            <div>
-              <label for="calc-day" class="mb-1 block text-left text-sm font-medium text-stone-700 dark:text-stone-300">Day</label>
-              <select id="calc-day" class="w-full rounded-lg border border-stone-300 bg-stone-50 px-3 py-2.5 text-sm focus:border-zodiac-red focus:outline-none focus:ring-2 focus:ring-red-200 dark:border-stone-600 dark:bg-stone-800 dark:text-stone-200">
-                {days.map((d) => (
-                  <option value={d}>{d}</option>
-                ))}
-              </select>
-            </div>
-            <div>
-              <label for="calc-year" class="mb-1 block text-left text-sm font-medium text-stone-700 dark:text-stone-300">Year</label>
-              <select id="calc-year" class="w-full rounded-lg border border-stone-300 bg-stone-50 px-3 py-2.5 text-sm focus:border-zodiac-red focus:outline-none focus:ring-2 focus:ring-red-200 dark:border-stone-600 dark:bg-stone-800 dark:text-stone-200">
-                {yearList.map((y) => (
-                  <option value={y} selected={y === currentYear - 20}>{y}</option>
-                ))}
-              </select>
-            </div>
+
+            <button id="calc-btn" class="mt-5 w-full cursor-pointer rounded-xl bg-gradient-to-r from-zodiac-deep via-zodiac-red to-zodiac-deep px-6 py-3.5 text-base font-semibold text-white shadow-lg shadow-red-900/25 transition-all hover:shadow-xl hover:brightness-110 active:scale-[0.97]">
+              Find My Zodiac &rarr;
+            </button>
           </div>
-          <p class="mt-3 text-left text-xs text-stone-400 dark:text-stone-500">
-            People born before Chinese New Year belong to the previous year's sign.
-          </p>
         </div>
+      </div>
 
-        <button id="calc-btn" class="mt-5 w-full cursor-pointer rounded-xl bg-zodiac-red px-6 py-3 text-base font-semibold text-white shadow-md transition-all hover:bg-red-700 hover:shadow-lg active:scale-[0.97]">
-          Find My Zodiac &rarr;
-        </button>
+      <!-- 12 生肖汉字圆章带 -->
+      <div class="mx-auto mt-12 max-w-[780px]">
+        <div class="grid grid-cols-6 gap-x-2 gap-y-6 sm:grid-cols-12">
+          {animals.map((a) => (
+            <a href={`/signs/${a.id}`} class="group flex flex-col items-center gap-1.5 no-underline">
+              <span class="flex h-11 w-11 items-center justify-center rounded-full border-[1.5px] border-zodiac-gold/40 bg-white/85 text-lg font-bold text-zodiac-ink shadow-sm transition-all duration-300 group-hover:-translate-y-1 group-hover:border-zodiac-red group-hover:bg-zodiac-red group-hover:text-white group-hover:shadow-md dark:border-zodiac-gold/30 dark:bg-stone-800 dark:text-stone-200 dark:group-hover:border-zodiac-red dark:group-hover:bg-zodiac-red dark:group-hover:text-white" style="font-family: var(--font-cn)">
+                {a.chinese}
+              </span>
+              <span class="text-[10px] font-medium uppercase tracking-wider text-stone-500 transition-colors group-hover:text-zodiac-red dark:text-stone-400">{a.id}</span>
+            </a>
+          ))}
+        </div>
+        <p class="mt-5 text-center text-[11px] tracking-wide text-stone-400 dark:text-stone-500">Click any sign to explore its full personality profile</p>
       </div>
     </div>
   </section>
@@ -131,9 +173,10 @@ function capitalize(s: string) {
   <!-- ===== RESULT SECTION ===== -->
   <section id="result-section" class="px-4 py-12 hidden">
     <div class="mx-auto max-w-[800px]">
-      <div id="result-card" class="result-card rounded-2xl border border-stone-200 bg-white p-6 shadow-sm dark:border-stone-800 dark:bg-stone-900 sm:p-10">
+      <div id="result-card" class="result-card relative overflow-hidden rounded-2xl border border-zodiac-gold/30 bg-white p-6 shadow-xl shadow-red-900/10 dark:border-zodiac-gold/20 dark:bg-stone-900 sm:p-10">
+        <div class="pointer-events-none absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-zodiac-deep via-zodiac-red to-zodiac-bronze" aria-hidden="true"></div>
         <div class="flex flex-col items-center text-center sm:flex-row sm:items-start sm:text-left sm:gap-8">
-          <div id="result-icon" class="mb-4 sm:mb-0 flex h-32 w-32 items-center justify-center rounded-2xl bg-zodiac-cream text-6xl dark:bg-stone-800"></div>
+          <div id="result-icon" class="mb-4 sm:mb-0 flex h-32 w-32 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-zodiac-cream to-amber-50 text-6xl ring-2 ring-zodiac-gold/40 dark:from-stone-800 dark:to-stone-800 dark:ring-zodiac-gold/30"></div>
           <div class="flex-1">
             <div class="mb-1 stagger-1">
               <h2 class="text-3xl font-bold tracking-tight text-zodiac-ink dark:text-stone-100" id="result-name"></h2>
@@ -142,33 +185,33 @@ function capitalize(s: string) {
             <div class="mt-3 flex flex-wrap items-center justify-center gap-2 sm:justify-start stagger-2">
               <span id="result-element" class="inline-flex items-center gap-1.5 rounded-full bg-zodiac-red/10 px-3.5 py-1.5 text-sm font-medium text-zodiac-red"></span>
               <span id="result-yinyang" class="inline-flex items-center gap-1.5 rounded-full bg-amber-50 px-3.5 py-1.5 text-sm font-medium text-amber-700 dark:bg-amber-900/20 dark:text-amber-400"></span>
-              <span id="result-rank" class="inline-flex items-center gap-1.5 rounded-full bg-stone-100 px-3.5 py-1.5 text-sm font-medium text-stone-600 dark:bg-stone-800 dark:text-stone-400"></span>
+              <span id="result-rank" class="inline-flex items-center gap-1.5 rounded-full bg-zodiac-gold/15 px-3.5 py-1.5 text-sm font-medium text-zodiac-bronze dark:bg-zodiac-gold/10 dark:text-amber-400"></span>
             </div>
             <div id="result-tags" class="mt-3 flex flex-wrap gap-2 stagger-3"></div>
           </div>
         </div>
 
         <div class="mt-8 grid gap-4 sm:grid-cols-3 stagger-1">
-          <div class="rounded-xl border border-stone-200 bg-stone-50 p-5 dark:border-stone-700 dark:bg-stone-800/50">
+          <div class="rounded-xl border border-zodiac-gold/20 bg-zodiac-cream/70 p-5 dark:border-stone-700 dark:bg-stone-800/50">
             <h3 class="mb-3 text-xs font-semibold uppercase tracking-widest text-zodiac-red">Lucky Numbers</h3>
             <div class="flex flex-wrap gap-2" id="result-numbers"></div>
           </div>
-          <div class="rounded-xl border border-stone-200 bg-stone-50 p-5 dark:border-stone-700 dark:bg-stone-800/50">
+          <div class="rounded-xl border border-zodiac-gold/20 bg-zodiac-cream/70 p-5 dark:border-stone-700 dark:bg-stone-800/50">
             <h3 class="mb-3 text-xs font-semibold uppercase tracking-widest text-zodiac-red">Lucky Colors</h3>
             <div class="flex flex-wrap gap-2" id="result-colors"></div>
           </div>
-          <div class="rounded-xl border border-stone-200 bg-stone-50 p-5 dark:border-stone-700 dark:bg-stone-800/50">
+          <div class="rounded-xl border border-zodiac-gold/20 bg-zodiac-cream/70 p-5 dark:border-stone-700 dark:bg-stone-800/50">
             <h3 class="mb-3 text-xs font-semibold uppercase tracking-widest text-zodiac-red">Lucky Flowers</h3>
             <div class="flex flex-wrap gap-2" id="result-flowers"></div>
           </div>
         </div>
 
         <div class="mt-5 grid gap-4 sm:grid-cols-2 stagger-2">
-          <div class="rounded-xl border border-stone-200 bg-stone-50 p-5 dark:border-stone-700 dark:bg-stone-800/50">
+          <div class="rounded-xl border border-zodiac-gold/15 bg-zodiac-cream/60 p-5 dark:border-zodiac-gold/10 dark:bg-stone-800/50">
             <h3 class="mb-2 text-xs font-semibold uppercase tracking-widest text-green-700 dark:text-green-400">Best Matches</h3>
             <div class="flex flex-wrap gap-2" id="result-best"></div>
           </div>
-          <div class="rounded-xl border border-stone-200 bg-stone-50 p-5 dark:border-stone-700 dark:bg-stone-800/50">
+          <div class="rounded-xl border border-zodiac-gold/15 bg-zodiac-cream/60 p-5 dark:border-zodiac-gold/10 dark:bg-stone-800/50">
             <h3 class="mb-2 text-xs font-semibold uppercase tracking-widest text-red-600 dark:text-red-400">Challenging Matches</h3>
             <div class="flex flex-wrap gap-2" id="result-worst"></div>
           </div>
@@ -180,25 +223,30 @@ function capitalize(s: string) {
   </section>
 
   <!-- ===== HOW IT WORKS ===== -->
-  <section class="border-t border-stone-200 bg-stone-50 px-4 py-16 dark:border-stone-800 dark:bg-stone-950">
+  <section class="border-t border-zodiac-gold/15 bg-zodiac-cream/70 px-4 py-16 dark:border-stone-800 dark:bg-stone-950">
     <div class="mx-auto max-w-[900px]">
-      <h2 class="mb-2 text-center text-3xl font-bold tracking-tight text-zodiac-ink dark:text-stone-100">How It Works</h2>
+      <div class="mb-8 flex items-center justify-center gap-3">
+        <span class="h-px w-8 bg-gradient-to-r from-transparent to-zodiac-gold/60"></span>
+        <span class="text-[11px] font-semibold uppercase tracking-[0.3em] text-zodiac-gold">3 Simple Steps</span>
+        <span class="h-px w-8 bg-gradient-to-l from-transparent to-zodiac-gold/60"></span>
+      </div>
+      <h2 class="mb-3 text-center font-display text-3xl font-bold tracking-tight text-zodiac-ink dark:text-stone-100 sm:text-4xl">How It Works</h2>
       <p class="mb-10 text-center text-stone-500 dark:text-stone-400">
         Three simple steps to discover your Chinese zodiac profile
       </p>
       <div class="grid gap-6 sm:grid-cols-3">
-        <div class="rounded-xl border border-stone-200 bg-white p-6 text-center transition-all hover:shadow-md dark:border-stone-700 dark:bg-stone-900">
-          <span class="inline-flex h-12 w-12 items-center justify-center rounded-full bg-zodiac-red/10 text-2xl font-bold text-zodiac-red">1</span>
+        <div class="rounded-2xl border border-zodiac-gold/25 bg-white p-6 text-center shadow-sm transition-all hover:-translate-y-1 hover:border-zodiac-red/40 hover:shadow-md dark:border-zodiac-gold/20 dark:bg-stone-900">
+          <span class="inline-flex h-12 w-12 items-center justify-center rounded-full bg-zodiac-deep text-2xl font-bold text-white shadow-md shadow-red-900/20 ring-2 ring-zodiac-gold/40">1</span>
           <h3 class="mt-4 text-lg font-semibold text-zodiac-ink dark:text-stone-100">Enter Your Birth Date</h3>
           <p class="mt-2 text-sm leading-relaxed text-stone-600 dark:text-stone-400">Choose a quick year lookup or full birth date with automatic lunar calendar correction — accurate from 1900.</p>
         </div>
-        <div class="rounded-xl border border-stone-200 bg-white p-6 text-center transition-all hover:shadow-md dark:border-stone-700 dark:bg-stone-900">
-          <span class="inline-flex h-12 w-12 items-center justify-center rounded-full bg-zodiac-red/10 text-2xl font-bold text-zodiac-red">2</span>
+        <div class="rounded-2xl border border-zodiac-gold/25 bg-white p-6 text-center shadow-sm transition-all hover:-translate-y-1 hover:border-zodiac-red/40 hover:shadow-md dark:border-zodiac-gold/20 dark:bg-stone-900">
+          <span class="inline-flex h-12 w-12 items-center justify-center rounded-full bg-zodiac-deep text-2xl font-bold text-white shadow-md shadow-red-900/20 ring-2 ring-zodiac-gold/40">2</span>
           <h3 class="mt-4 text-lg font-semibold text-zodiac-ink dark:text-stone-100">Discover Your Sign</h3>
           <p class="mt-2 text-sm leading-relaxed text-stone-600 dark:text-stone-400">Get your animal sign, Chinese character, element, yin/yang, personality tags, lucky items, and compatibility matches instantly.</p>
         </div>
-        <div class="rounded-xl border border-stone-200 bg-white p-6 text-center transition-all hover:shadow-md dark:border-stone-700 dark:bg-stone-900">
-          <span class="inline-flex h-12 w-12 items-center justify-center rounded-full bg-zodiac-red/10 text-2xl font-bold text-zodiac-red">3</span>
+        <div class="rounded-2xl border border-zodiac-gold/25 bg-white p-6 text-center shadow-sm transition-all hover:-translate-y-1 hover:border-zodiac-red/40 hover:shadow-md dark:border-zodiac-gold/20 dark:bg-stone-900">
+          <span class="inline-flex h-12 w-12 items-center justify-center rounded-full bg-zodiac-deep text-2xl font-bold text-white shadow-md shadow-red-900/20 ring-2 ring-zodiac-gold/40">3</span>
           <h3 class="mt-4 text-lg font-semibold text-zodiac-ink dark:text-stone-100">Explore Deeper</h3>
           <p class="mt-2 text-sm leading-relaxed text-stone-600 dark:text-stone-400">Dive into full personality profiles, detailed compatibility analysis, yearly horoscopes, and feng shui tips for your sign.</p>
         </div>
@@ -209,30 +257,28 @@ function capitalize(s: string) {
   <!-- ===== ZODIAC GALLERY ===== -->
   <section class="px-4 py-16">
     <div class="mx-auto max-w-[1200px]">
-      <h2 class="mb-2 text-center text-3xl font-bold tracking-tight text-zodiac-ink dark:text-stone-100">The 12 Chinese Zodiac Signs</h2>
+      <div class="mb-8 flex items-center justify-center gap-3">
+        <span class="h-px w-8 bg-gradient-to-r from-transparent to-zodiac-gold/60"></span>
+        <span class="text-[11px] font-semibold uppercase tracking-[0.3em] text-zodiac-gold">十二生肖 · Shēngxiào</span>
+        <span class="h-px w-8 bg-gradient-to-l from-transparent to-zodiac-gold/60"></span>
+      </div>
+      <h2 class="mb-3 text-center font-display text-3xl font-bold tracking-tight text-zodiac-ink dark:text-stone-100 sm:text-4xl">The 12 Chinese Zodiac Signs</h2>
       <p class="mb-10 text-center text-stone-500 dark:text-stone-400">Click any sign to explore its complete personality profile</p>
       <div class="grid gap-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6">
         {animals.map((a) => {
           const yeardata = zodiacYears.find((y) => y.animal === a.id);
           const recentYears = yeardata?.years?.slice(-3) || [];
-          const lucky = LUCKY_THINGS[a.id as keyof typeof LUCKY_THINGS];
           return (
             <a
               href={`/signs/${a.id}`}
-              class="group block rounded-xl border border-stone-200 bg-white p-5 text-center shadow-sm transition-all hover:-translate-y-1 hover:border-zodiac-red/30 hover:shadow-md dark:border-stone-700 dark:bg-stone-900 dark:hover:border-zodiac-red/40"
+              class="group flex flex-col items-center rounded-2xl border border-zodiac-gold/25 bg-white/90 p-5 text-center shadow-sm transition-all hover:-translate-y-1 hover:border-zodiac-red/40 hover:shadow-md dark:border-zodiac-gold/20 dark:bg-stone-900 dark:hover:border-zodiac-red/40"
             >
-              <span class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-stone-100 text-xs font-bold text-stone-400 dark:bg-stone-800">#{a.rank}</span>
-              <span class="mt-2 block text-3xl">{a.chinese}</span>
-              <h3 class="mt-2 text-base font-semibold capitalize text-zodiac-ink transition-colors group-hover:text-zodiac-red dark:text-stone-100">{a.id}</h3>
-              <p class="mt-1 text-xs text-stone-500 dark:text-stone-400">{a.element} &middot; {a.yinYang}</p>
+              <span class="flex h-14 w-14 items-center justify-center rounded-full border-2 border-zodiac-gold/40 bg-zodiac-cream text-2xl font-bold text-zodiac-ink transition-all duration-300 group-hover:-translate-y-0.5 group-hover:border-zodiac-red group-hover:bg-zodiac-red group-hover:text-white dark:bg-stone-800 dark:text-stone-200" style="font-family: var(--font-cn)">{a.chinese}</span>
+              <h3 class="mt-3 text-base font-semibold capitalize text-zodiac-ink transition-colors group-hover:text-zodiac-red dark:text-stone-100">{a.id}</h3>
+              <p class="mt-1 text-xs text-stone-500 dark:text-stone-400">{a.element} &middot; {a.yinYang} &middot; #{a.rank}</p>
               {recentYears.length > 0 && (
-                <p class="mt-2 text-[11px] text-stone-400 dark:text-stone-500">
-                  {recentYears.join(", ")}
-                </p>
-              )}
-              {lucky && (
-                <p class="mt-1 text-[11px] text-stone-400 dark:text-stone-500">
-                  Lucky #{lucky.numbers.join(", ")}
+                <p class="mt-2 text-[11px] tracking-wide text-zodiac-gold/80 dark:text-zodiac-gold/70">
+                  {recentYears.join(" · ")}
                 </p>
               )}
             </a>
@@ -243,17 +289,22 @@ function capitalize(s: string) {
   </section>
 
   <!-- ===== YEAR REFERENCE TABLE ===== -->
-  <section class="border-t border-stone-200 bg-stone-50 px-4 py-16 dark:border-stone-800 dark:bg-stone-950">
+  <section class="border-t border-zodiac-gold/15 bg-zodiac-cream/70 px-4 py-16 dark:border-stone-800 dark:bg-stone-950">
     <div class="mx-auto max-w-[900px]">
-      <h2 class="mb-2 text-center text-3xl font-bold tracking-tight text-zodiac-ink dark:text-stone-100">Zodiac Years Reference</h2>
+      <div class="mb-8 flex items-center justify-center gap-3">
+        <span class="h-px w-8 bg-gradient-to-r from-transparent to-zodiac-gold/60"></span>
+        <span class="text-[11px] font-semibold uppercase tracking-[0.3em] text-zodiac-gold">Lunar Calendar</span>
+        <span class="h-px w-8 bg-gradient-to-l from-transparent to-zodiac-gold/60"></span>
+      </div>
+      <h2 class="mb-3 text-center font-display text-3xl font-bold tracking-tight text-zodiac-ink dark:text-stone-100 sm:text-4xl">Zodiac Years Reference</h2>
       <p class="mb-8 text-center text-stone-500 dark:text-stone-400">Complete list of Chinese zodiac signs by birth year, with exact lunar calendar dates</p>
-      <div class="overflow-x-auto rounded-xl border border-stone-200 dark:border-stone-700">
+      <div class="overflow-x-auto rounded-xl border border-zodiac-gold/25 shadow-sm dark:border-zodiac-gold/20">
         <table class="w-full min-w-[600px] text-sm">
           <thead>
-            <tr class="border-b border-stone-200 bg-stone-100 dark:border-stone-700 dark:bg-stone-800">
-              <th class="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-stone-500 dark:text-stone-400">#</th>
-              <th class="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-stone-500 dark:text-stone-400">Sign</th>
-              <th class="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-stone-500 dark:text-stone-400">Recent Lunar Year Ranges</th>
+            <tr class="border-b border-zodiac-gold/30 bg-zodiac-deep">
+              <th class="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-white/85">#</th>
+              <th class="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-white/85">Sign</th>
+              <th class="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-white/85">Recent Lunar Year Ranges</th>
             </tr>
           </thead>
           <tbody>
@@ -261,7 +312,7 @@ function capitalize(s: string) {
               const entry = lunarRanges.find((e) => e.animal === y.animal);
               const recent = entry ? entry.ranges.slice(-3).reverse() : [];
               return (
-                <tr class="border-b border-stone-100 transition-colors hover:bg-white dark:border-stone-800 dark:hover:bg-stone-800/50">
+                <tr class="border-b border-zodiac-gold/15 transition-colors hover:bg-zodiac-cream/60 dark:border-zodiac-gold/10 dark:hover:bg-stone-800/50">
                   <td class="px-4 py-3 text-stone-400 dark:text-stone-500">{y.animal === "rat" ? 1 : animals.find(a => a.id === y.animal)?.rank}</td>
                   <td class="px-4 py-3">
                     <a href={`/signs/${y.animal}`} class="font-medium capitalize text-zodiac-ink no-underline transition-colors hover:text-zodiac-red dark:text-stone-200 dark:hover:text-zodiac-red">
@@ -293,22 +344,27 @@ function capitalize(s: string) {
   <!-- ===== LUNAR NEW YEAR CALENDAR ===== -->
   <section class="px-4 py-16">
     <div class="mx-auto max-w-[600px]">
-      <h2 class="mb-2 text-center text-3xl font-bold tracking-tight text-zodiac-ink dark:text-stone-100">Chinese New Year Dates</h2>
+      <div class="mb-8 flex items-center justify-center gap-3">
+        <span class="h-px w-8 bg-gradient-to-r from-transparent to-zodiac-gold/60"></span>
+        <span class="text-[11px] font-semibold uppercase tracking-[0.3em] text-zodiac-gold">Chinese New Year</span>
+        <span class="h-px w-8 bg-gradient-to-l from-transparent to-zodiac-gold/60"></span>
+      </div>
+      <h2 class="mb-3 text-center font-display text-3xl font-bold tracking-tight text-zodiac-ink dark:text-stone-100 sm:text-4xl">Chinese New Year Dates</h2>
       <p class="mb-8 text-center text-stone-500 dark:text-stone-400">
         The zodiac sign changes on the lunar new year. Find the exact date here.
       </p>
-      <div class="overflow-x-auto rounded-xl border border-stone-200 dark:border-stone-700">
+      <div class="overflow-x-auto rounded-xl border border-zodiac-gold/25 shadow-sm dark:border-zodiac-gold/20">
         <table class="w-full min-w-[400px] text-sm">
           <thead>
-            <tr class="border-b border-stone-200 bg-stone-100 dark:border-stone-700 dark:bg-stone-800">
-              <th class="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-stone-500 dark:text-stone-400">Year</th>
-              <th class="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-stone-500 dark:text-stone-400">New Year Date</th>
-              <th class="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-stone-500 dark:text-stone-400">Zodiac Sign</th>
+            <tr class="border-b border-zodiac-gold/30 bg-zodiac-deep">
+              <th class="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-white/85">Year</th>
+              <th class="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-white/85">New Year Date</th>
+              <th class="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-white/85">Zodiac Sign</th>
             </tr>
           </thead>
           <tbody>
             {newYearDates.map((n) => (
-              <tr class={`border-b border-stone-100 transition-colors last:border-b-0 hover:bg-stone-50 dark:border-stone-800 dark:hover:bg-stone-800/50 ${n.year === currentYear ? "bg-zodiac-red/5 font-medium" : ""}`}>
+              <tr class={`border-b border-zodiac-gold/15 transition-colors last:border-b-0 hover:bg-zodiac-cream/60 dark:border-zodiac-gold/10 dark:hover:bg-stone-800/50 ${n.year === currentYear ? "bg-zodiac-red/5 font-medium" : ""}`}>
                 <td class="px-4 py-3 text-stone-700 dark:text-stone-300">{n.year}</td>
                 <td class="px-4 py-3 text-stone-600 dark:text-stone-400">{n.date}</td>
                 <td class="px-4 py-3">
@@ -331,21 +387,26 @@ function capitalize(s: string) {
   <CompatibilityMatrix />
 
   <!-- ===== 2026 FIRE HORSE YEAR ===== -->
-  <section class="border-t border-stone-200 px-4 py-16 dark:border-stone-800">
+  <section class="border-t border-zodiac-gold/15 px-4 py-16 dark:border-zodiac-gold/10 dark:bg-stone-800">
     <div class="mx-auto max-w-[900px]">
-      <h2 class="mb-2 text-center text-3xl font-bold tracking-tight text-zodiac-ink dark:text-stone-100">2026: The Year of the Fire Horse</h2>
+      <div class="mb-8 flex items-center justify-center gap-3">
+        <span class="h-px w-8 bg-gradient-to-r from-transparent to-zodiac-gold/60"></span>
+        <span class="text-[11px] font-semibold uppercase tracking-[0.3em] text-zodiac-gold">丙午 · Fire Horse</span>
+        <span class="h-px w-8 bg-gradient-to-l from-transparent to-zodiac-gold/60"></span>
+      </div>
+      <h2 class="mb-3 text-center font-display text-3xl font-bold tracking-tight text-zodiac-ink dark:text-stone-100 sm:text-4xl">2026: The Year of the Fire Horse</h2>
       <p class="mx-auto mb-10 max-w-[620px] text-center text-stone-500 dark:text-stone-400">
         The Fire Horse year begins on February 17, 2026 — a year of bold momentum, passion, and change.
       </p>
-      <div class="rounded-2xl border border-stone-200 bg-white p-6 shadow-sm dark:border-stone-800 dark:bg-stone-900 sm:p-8">
+      <div class="rounded-2xl border border-zodiac-gold/25 bg-white p-6 shadow-sm dark:border-zodiac-gold/20 dark:bg-stone-900 sm:p-8">
         <p class="text-sm leading-relaxed text-stone-600 dark:text-stone-400">
           2026 is the Year of the Fire Horse (丙午). Fire is the element of passion, energy, and transformation; the Horse brings movement, freedom, and speed. Together they create one of the most dynamic years in the Chinese zodiac cycle — a year that rewards courage, decisive action, and new beginnings. Traditionally, the Fire Horse year is seen as intense: relationships deepen quickly, careers accelerate, and those who dare to move fast can achieve remarkable progress. It also calls for balance — unchecked fire burns, so pacing yourself matters more than ever.
         </p>
       </div>
       <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {animals.map((a) => (
-          <a href={`/signs/${a.id}`} class="group flex items-start gap-3 rounded-xl border border-stone-200 bg-white p-4 shadow-sm transition-all hover:-translate-y-0.5 hover:border-zodiac-red/30 hover:shadow-md dark:border-stone-700 dark:bg-stone-900">
-            <span class="mt-0.5 text-2xl leading-none">{a.chinese}</span>
+          <a href={`/signs/${a.id}`} class="group flex items-start gap-3 rounded-xl border border-zodiac-gold/25 bg-white p-4 shadow-sm transition-all hover:-translate-y-0.5 hover:border-zodiac-red/40 hover:shadow-md dark:border-zodiac-gold/20 dark:bg-stone-900">
+            <span class="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-zodiac-gold/40 bg-zodiac-cream text-xl leading-none text-zodiac-ink transition-colors group-hover:bg-zodiac-red group-hover:text-white dark:bg-stone-800 dark:text-stone-200" style="font-family: var(--font-cn)">{a.chinese}</span>
             <span class="flex-1">
               <span class="block text-sm font-semibold capitalize text-zodiac-ink dark:text-stone-100">{a.id} — 2026</span>
               <span class="mt-1 block text-xs leading-relaxed text-stone-500 dark:text-stone-400">{horoscopes2026[a.id as keyof typeof horoscopes2026]}</span>
@@ -360,23 +421,31 @@ function capitalize(s: string) {
   </section>
 
   <!-- ===== ZODIAC CULTURE ===== -->
-  <section class="border-t border-stone-200 bg-stone-50 px-4 py-16 dark:border-stone-800 dark:bg-stone-950">
+  <section class="border-t border-zodiac-gold/15 bg-zodiac-cream/70 px-4 py-16 dark:border-stone-800 dark:bg-stone-950">
     <div class="mx-auto max-w-[900px]">
-      <h2 class="mb-2 text-center text-3xl font-bold tracking-tight text-zodiac-ink dark:text-stone-100">Explore Chinese Zodiac Culture</h2>
+      <div class="mb-8 flex items-center justify-center gap-3">
+        <span class="h-px w-8 bg-gradient-to-r from-transparent to-zodiac-gold/60"></span>
+        <span class="text-[11px] font-semibold uppercase tracking-[0.3em] text-zodiac-gold">文化 · Wénhuà</span>
+        <span class="h-px w-8 bg-gradient-to-l from-transparent to-zodiac-gold/60"></span>
+      </div>
+      <h2 class="mb-3 text-center font-display text-3xl font-bold tracking-tight text-zodiac-ink dark:text-stone-100 sm:text-4xl">Explore Chinese Zodiac Culture</h2>
       <p class="mb-10 text-center text-stone-500 dark:text-stone-400">Go beyond the calculator — understand the stories and traditions behind your sign</p>
       <div class="grid gap-5 sm:grid-cols-3">
-        <a href="/ben-ming-nian" class="group rounded-xl border border-stone-200 bg-white p-6 shadow-sm transition-all hover:-translate-y-1 hover:border-zodiac-red/30 hover:shadow-md dark:border-stone-700 dark:bg-stone-900">
-          <h3 class="text-lg font-semibold text-zodiac-ink transition-colors group-hover:text-zodiac-red dark:text-stone-100">Ben Ming Nian <span class="text-sm font-normal text-stone-400 dark:text-stone-500">(本命年)</span></h3>
+        <a href="/ben-ming-nian" class="group rounded-xl border border-zodiac-gold/25 bg-white p-6 shadow-sm transition-all hover:-translate-y-1 hover:border-zodiac-red/40 hover:shadow-md dark:border-zodiac-gold/20 dark:bg-stone-900">
+          <span class="inline-flex h-10 w-10 items-center justify-center rounded-md bg-zodiac-red text-lg font-bold text-white shadow-md shadow-red-900/20" style="font-family: var(--font-cn)">本</span>
+          <h3 class="mt-3 text-lg font-semibold text-zodiac-ink transition-colors group-hover:text-zodiac-red dark:text-stone-100">Ben Ming Nian <span class="text-sm font-normal text-stone-400 dark:text-stone-500">(本命年)</span></h3>
           <p class="mt-2 text-sm leading-relaxed text-stone-600 dark:text-stone-400">Your zodiac year of birth returns every 12 years. What it means, when it starts, and why red is the traditional shield.</p>
           <span class="mt-4 inline-block text-sm font-medium text-zodiac-red">Learn more &rarr;</span>
         </a>
-        <a href="/tai-sui" class="group rounded-xl border border-stone-200 bg-white p-6 shadow-sm transition-all hover:-translate-y-1 hover:border-zodiac-red/30 hover:shadow-md dark:border-stone-700 dark:bg-stone-900">
-          <h3 class="text-lg font-semibold text-zodiac-ink transition-colors group-hover:text-zodiac-red dark:text-stone-100">Tai Sui <span class="text-sm font-normal text-stone-400 dark:text-stone-500">(太岁)</span></h3>
+        <a href="/tai-sui" class="group rounded-xl border border-zodiac-gold/25 bg-white p-6 shadow-sm transition-all hover:-translate-y-1 hover:border-zodiac-red/40 hover:shadow-md dark:border-zodiac-gold/20 dark:bg-stone-900">
+          <span class="inline-flex h-10 w-10 items-center justify-center rounded-md bg-zodiac-red text-lg font-bold text-white shadow-md shadow-red-900/20" style="font-family: var(--font-cn)">太</span>
+          <h3 class="mt-3 text-lg font-semibold text-zodiac-ink transition-colors group-hover:text-zodiac-red dark:text-stone-100">Tai Sui <span class="text-sm font-normal text-stone-400 dark:text-stone-500">(太岁)</span></h3>
           <p class="mt-2 text-sm leading-relaxed text-stone-600 dark:text-stone-400">Which signs offend the Grand Duke in 2026 — Horse, Rat, Ox, Rabbit — and how tradition says to reconcile.</p>
           <span class="mt-4 inline-block text-sm font-medium text-zodiac-red">Learn more &rarr;</span>
         </a>
-        <a href="/zodiac-origin" class="group rounded-xl border border-stone-200 bg-white p-6 shadow-sm transition-all hover:-translate-y-1 hover:border-zodiac-red/30 hover:shadow-md dark:border-stone-700 dark:bg-stone-900">
-          <h3 class="text-lg font-semibold text-zodiac-ink transition-colors group-hover:text-zodiac-red dark:text-stone-100">Zodiac Origin</h3>
+        <a href="/zodiac-origin" class="group rounded-xl border border-zodiac-gold/25 bg-white p-6 shadow-sm transition-all hover:-translate-y-1 hover:border-zodiac-red/40 hover:shadow-md dark:border-zodiac-gold/20 dark:bg-stone-900">
+          <span class="inline-flex h-10 w-10 items-center justify-center rounded-md bg-zodiac-red text-lg font-bold text-white shadow-md shadow-red-900/20" style="font-family: var(--font-cn)">缘</span>
+          <h3 class="mt-3 text-lg font-semibold text-zodiac-ink transition-colors group-hover:text-zodiac-red dark:text-stone-100">Zodiac Origin</h3>
           <p class="mt-2 text-sm leading-relaxed text-stone-600 dark:text-stone-400">The Great Race legend, why the Rat came first, why the Cat is missing — and the real 2,000-year history.</p>
           <span class="mt-4 inline-block text-sm font-medium text-zodiac-red">Learn more &rarr;</span>
         </a>
@@ -385,12 +454,17 @@ function capitalize(s: string) {
   </section>
 
   <!-- ===== FAQ ===== -->
-  <section class="border-t border-stone-200 bg-stone-50 px-4 py-16 dark:border-stone-800 dark:bg-stone-950">
+  <section class="border-t border-zodiac-gold/15 bg-zodiac-cream/70 px-4 py-16 dark:border-stone-800 dark:bg-stone-950">
     <div class="mx-auto max-w-[700px]">
-      <h2 class="mb-8 text-center text-3xl font-bold tracking-tight text-zodiac-ink dark:text-stone-100">Frequently Asked Questions</h2>
+      <div class="mb-5 flex items-center justify-center gap-3">
+        <span class="h-px w-8 bg-gradient-to-r from-transparent to-zodiac-gold/60"></span>
+        <span class="text-[11px] font-semibold uppercase tracking-[0.3em] text-zodiac-gold">常见问题 · FAQ</span>
+        <span class="h-px w-8 bg-gradient-to-l from-transparent to-zodiac-gold/60"></span>
+      </div>
+      <h2 class="mb-8 text-center font-display text-3xl font-bold tracking-tight text-zodiac-ink dark:text-stone-100 sm:text-4xl">Frequently Asked Questions</h2>
       <div class="space-y-3">
         {faqs.map((f) => (
-          <details class="group rounded-xl border border-stone-200 bg-white p-5 transition-shadow hover:shadow-sm dark:border-stone-700 dark:bg-stone-900">
+          <details class="group rounded-xl border border-zodiac-gold/25 bg-white p-5 transition-shadow hover:border-zodiac-red/30 hover:shadow-sm dark:border-zodiac-gold/20 dark:bg-stone-900">
             <summary class="flex cursor-pointer items-center justify-between font-medium text-zodiac-ink dark:text-stone-100">
               {f.q}
               <svg class="h-4 w-4 shrink-0 text-stone-400 transition-transform group-open:rotate-180" viewBox="0 0 16 16" fill="none"><path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
@@ -403,7 +477,7 @@ function capitalize(s: string) {
   </section>
 
   <!-- ===== EDITORIAL NOTE ===== -->
-  <section class="border-t border-stone-200 bg-white px-4 py-10 dark:border-stone-800 dark:bg-stone-900">
+  <section class="border-t border-zodiac-gold/15 bg-white px-4 py-10 dark:border-zodiac-gold/10 dark:bg-stone-900">
     <div class="mx-auto max-w-[700px] text-center">
       <p class="text-xs font-medium uppercase tracking-widest text-stone-400">Last updated: August 19, 2026</p>
       <p class="mt-3 text-sm leading-relaxed text-stone-500 dark:text-stone-400">
@@ -621,7 +695,7 @@ function capitalize(s: string) {
     colEl.innerHTML = "";
     lucky.colors.forEach(function(c) {
       var span = document.createElement("span");
-      span.className = "rounded-md bg-stone-100 px-3 py-1.5 text-xs font-medium text-stone-700 dark:bg-stone-800 dark:text-stone-300";
+      span.className = "rounded-md bg-zodiac-gold/15 px-3 py-1.5 text-xs font-medium text-zodiac-bronze dark:bg-zodiac-gold/10 dark:text-amber-400";
       span.textContent = c;
       colEl.appendChild(span);
     });
@@ -642,7 +716,7 @@ function capitalize(s: string) {
     compat.best.forEach(function(b) {
       var a = document.createElement("a");
       a.href = "/signs/" + b;
-      a.className = "inline-flex items-center gap-1 rounded-full bg-green-50 px-3 py-1 text-xs font-medium text-green-700 no-underline transition-colors hover:bg-green-100 dark:bg-green-900/20 dark:text-green-400 dark:hover:bg-green-900/30";
+      a.className = "inline-flex items-center gap-1 rounded-full bg-zodiac-gold/15 px-3 py-1 text-xs font-medium text-zodiac-bronze no-underline transition-colors hover:bg-zodiac-gold/25 dark:bg-zodiac-gold/10 dark:text-amber-400 dark:hover:bg-zodiac-gold/20";
       a.innerHTML = EMOJI[b] + " " + capitalize(b);
       bestEl.appendChild(a);
     });
@@ -663,7 +737,7 @@ function capitalize(s: string) {
     ctaEl.innerHTML =
       '<a href="/signs/' + animal.id + '" class="inline-flex items-center gap-1 rounded-lg bg-zodiac-red px-5 py-2.5 text-sm font-semibold text-white transition-all hover:bg-red-700 hover:shadow-md active:scale-[0.97]">Read Full Profile &rarr;</a>' +
       '<a href="/compatibility" class="inline-flex items-center gap-1 rounded-lg border border-zodiac-red px-5 py-2.5 text-sm font-semibold text-zodiac-red transition-all hover:bg-red-50 hover:shadow-sm active:scale-[0.97] dark:hover:bg-red-900/20">Check Compatibility &rarr;</a>' +
-      '<a href="/yearly-horoscope" class="inline-flex items-center gap-1 rounded-lg border border-stone-300 px-5 py-2.5 text-sm font-semibold text-stone-700 transition-all hover:bg-stone-50 hover:shadow-sm active:scale-[0.97] dark:border-stone-600 dark:text-stone-300 dark:hover:bg-stone-800">2026 Horoscope &rarr;</a>';
+      '<a href="/yearly-horoscope" class="inline-flex items-center gap-1 rounded-lg border border-zodiac-gold/25 px-5 py-2.5 text-sm font-semibold text-zodiac-bronze transition-all hover:bg-zodiac-gold/10 hover:shadow-sm active:scale-[0.97] dark:border-zodiac-gold/15 dark:text-amber-400 dark:hover:bg-zodiac-gold/10">2026 Horoscope &rarr;</a>';
 
     // Show with animation reset
     var section = document.getElementById("result-section");

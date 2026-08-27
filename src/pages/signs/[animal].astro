@@ -46,21 +46,33 @@ const faqs = [
   ogImage={`/og/${currentAnimal.id}.png`}
 >
   <!-- ===== HERO ===== -->
-  <section class="bg-gradient-to-br from-red-50 to-stone-100 px-4 py-14 dark:from-red-950/20 dark:to-stone-950">
-    <div class="mx-auto max-w-[760px] text-center">
-      <div class="mb-4 flex items-center justify-center gap-3">
-        <span class="inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-zodiac-cream text-5xl dark:bg-stone-800">{currentAnimal.chinese}</span>
+  <section class="relative overflow-hidden bg-zodiac-cream px-4 py-16 dark:bg-stone-950">
+    <div class="pointer-events-none absolute inset-0" aria-hidden="true">
+      <div class="absolute inset-x-0 top-0 h-[3px] bg-gradient-to-r from-transparent via-zodiac-gold/70 to-transparent"></div>
+      <div class="absolute -top-32 left-1/2 h-72 w-[42rem] -translate-x-1/2 rounded-full bg-zodiac-red/15 blur-3xl"></div>
+      <div class="absolute -bottom-40 left-1/2 h-72 w-[42rem] -translate-x-1/2 rounded-full bg-zodiac-gold/20 blur-3xl"></div>
+      <span class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 select-none text-[24rem] font-bold leading-none text-zodiac-red/[0.04]" style="font-family: var(--font-cn)">{currentAnimal.chinese}</span>
+    </div>
+    <div class="relative mx-auto max-w-[760px] text-center">
+      <div class="mb-6 flex items-center justify-center gap-3">
+        <span class="h-px w-10 bg-gradient-to-r from-transparent to-zodiac-gold/70"></span>
+        <span class="inline-flex items-center justify-center rounded-[5px] bg-zodiac-red px-2 py-1 text-xs font-bold tracking-widest text-white shadow-md shadow-red-900/20" style="font-family: var(--font-cn)">生肖</span>
+        <span class="hidden text-[11px] font-semibold uppercase tracking-[0.35em] text-zodiac-gold sm:inline">Shēngxiào · {displayName}</span>
+        <span class="h-px w-10 bg-gradient-to-l from-transparent to-zodiac-gold/70"></span>
       </div>
-      <h1 class="mb-2 text-4xl font-bold tracking-tight text-zodiac-ink dark:text-stone-100 sm:text-5xl capitalize">
-        The {displayName}: <span class="text-zodiac-red">{signMeta.h1Tagline}</span>
+      <div class="mb-5 flex items-center justify-center">
+        <span class="inline-flex h-20 w-20 items-center justify-center rounded-full border-2 border-zodiac-gold/40 bg-zodiac-cream text-5xl font-bold text-zodiac-deep shadow-md shadow-red-900/10 dark:border-zodiac-gold/20 dark:bg-stone-900 dark:text-zodiac-gold" style="font-family: var(--font-cn)">{currentAnimal.chinese}</span>
+      </div>
+      <h1 class="mb-3 font-display text-4xl font-bold tracking-tight text-zodiac-ink dark:text-stone-100 sm:text-5xl capitalize">
+        The {displayName}: <span class="bg-gradient-to-r from-zodiac-deep via-zodiac-red to-zodiac-bronze bg-clip-text pb-1 text-transparent">{signMeta.h1Tagline}</span>
       </h1>
-      <p class="mb-4 text-lg text-stone-500 dark:text-stone-400">
+      <p class="mb-5 text-base text-stone-500 dark:text-stone-400">
         {currentAnimal.chinese} · {PINYIN[currentAnimal.id]} — the {currentAnimal.rank === 1 ? "1st" : currentAnimal.rank === 2 ? "2nd" : currentAnimal.rank === 3 ? "3rd" : `${currentAnimal.rank}th`} sign of the zodiac
       </p>
       <div class="flex flex-wrap items-center justify-center gap-2">
-        <span class="rounded-full bg-zodiac-red/10 px-3.5 py-1.5 text-sm font-medium text-zodiac-red">{currentAnimal.element} Element</span>
-        <span class="rounded-full bg-amber-50 px-3.5 py-1.5 text-sm font-medium text-amber-700 dark:bg-amber-900/20 dark:text-amber-400">{currentAnimal.yinYang}</span>
-        <span class="rounded-full bg-stone-100 px-3.5 py-1.5 text-sm font-medium text-stone-600 dark:bg-stone-800 dark:text-stone-400">#{currentAnimal.rank}</span>
+        <span class="rounded-full border border-zodiac-gold/30 bg-white/70 px-3.5 py-1.5 text-sm font-medium text-zodiac-deep dark:bg-stone-900/70 dark:text-zodiac-gold">{currentAnimal.element} Element</span>
+        <span class="rounded-full border border-zodiac-gold/30 bg-white/70 px-3.5 py-1.5 text-sm font-medium text-zodiac-deep dark:bg-stone-900/70 dark:text-zodiac-gold">{currentAnimal.yinYang}</span>
+        <span class="rounded-full border border-zodiac-gold/30 bg-white/70 px-3.5 py-1.5 text-sm font-medium text-zodiac-deep dark:bg-stone-900/70 dark:text-zodiac-gold">#{currentAnimal.rank} Sign</span>
       </div>
     </div>
   </section>
@@ -68,15 +80,15 @@ const faqs = [
   <!-- ===== PERSONALITY ===== -->
   <section class="px-4 py-14">
     <div class="mx-auto max-w-[800px]">
-      <h2 class="mb-6 text-2xl font-bold tracking-tight text-zodiac-ink dark:text-stone-100">{displayName} Personality</h2>
-      <div class="rounded-2xl border border-stone-200 bg-white p-6 shadow-sm dark:border-stone-800 dark:bg-stone-900 sm:p-8">
+      <h2 class="mb-6 font-display text-2xl font-bold tracking-tight text-zodiac-ink dark:text-stone-100">{displayName} Personality</h2>
+      <div class="rounded-2xl border border-zodiac-gold/25 bg-white p-6 shadow-md shadow-red-900/10 dark:border-zodiac-gold/15 dark:bg-stone-900 sm:p-8">
         <p class="text-base leading-relaxed text-stone-600 dark:text-stone-400">{profile.personality}</p>
         <div class="mt-6 grid gap-3 sm:grid-cols-2">
-          <div class="rounded-xl border border-stone-200 bg-stone-50 p-5 dark:border-stone-700 dark:bg-stone-800/50">
+          <div class="rounded-xl border border-zodiac-gold/15 bg-zodiac-cream/60 p-5 dark:border-zodiac-gold/10 dark:bg-stone-800/50">
             <h3 class="mb-2 text-xs font-semibold uppercase tracking-widest text-zodiac-red">Love &amp; Relationships</h3>
             <p class="text-sm leading-relaxed text-stone-600 dark:text-stone-400">{profile.love}</p>
           </div>
-          <div class="rounded-xl border border-stone-200 bg-stone-50 p-5 dark:border-stone-700 dark:bg-stone-800/50">
+          <div class="rounded-xl border border-zodiac-gold/15 bg-zodiac-cream/60 p-5 dark:border-zodiac-gold/10 dark:bg-stone-800/50">
             <h3 class="mb-2 text-xs font-semibold uppercase tracking-widest text-green-700 dark:text-green-400">Career &amp; Money</h3>
             <p class="text-sm leading-relaxed text-stone-600 dark:text-stone-400">{profile.career}</p>
           </div>
@@ -86,11 +98,11 @@ const faqs = [
   </section>
 
   <!-- ===== LUCKY THINGS + MATCHES ===== -->
-  <section class="border-t border-stone-200 bg-stone-50 px-4 py-14 dark:border-stone-800 dark:bg-stone-950">
+  <section class="border-t border-zodiac-gold/15 bg-zodiac-cream/70 px-4 py-14 dark:border-zodiac-gold/10 dark:bg-stone-950">
     <div class="mx-auto max-w-[800px]">
-      <h2 class="mb-6 text-2xl font-bold tracking-tight text-zodiac-ink dark:text-stone-100">{displayName} Lucky Items &amp; Matches</h2>
+      <h2 class="mb-6 font-display text-2xl font-bold tracking-tight text-zodiac-ink dark:text-stone-100">{displayName} Lucky Items &amp; Matches</h2>
       <div class="grid gap-4 sm:grid-cols-3">
-        <div class="rounded-xl border border-stone-200 bg-white p-5 dark:border-stone-700 dark:bg-stone-900">
+        <div class="rounded-xl border border-zodiac-gold/25 bg-white p-5 shadow-sm shadow-red-900/5 dark:border-zodiac-gold/15 dark:bg-stone-900">
           <h3 class="mb-3 text-xs font-semibold uppercase tracking-widest text-zodiac-red">Lucky Numbers</h3>
           <div class="flex flex-wrap gap-2">
             {lucky.numbers.map((n) => (
@@ -98,15 +110,15 @@ const faqs = [
             ))}
           </div>
         </div>
-        <div class="rounded-xl border border-stone-200 bg-white p-5 dark:border-stone-700 dark:bg-stone-900">
+        <div class="rounded-xl border border-zodiac-gold/25 bg-white p-5 shadow-sm shadow-red-900/5 dark:border-zodiac-gold/15 dark:bg-stone-900">
           <h3 class="mb-3 text-xs font-semibold uppercase tracking-widest text-zodiac-red">Lucky Colors</h3>
           <div class="flex flex-wrap gap-2">
             {lucky.colors.map((c) => (
-              <span class="rounded-md bg-stone-100 px-3 py-1.5 text-xs font-medium text-stone-700 dark:bg-stone-800 dark:text-stone-300">{c}</span>
+              <span class="rounded-md bg-zodiac-gold/15 px-3 py-1.5 text-xs font-medium text-zodiac-bronze dark:bg-zodiac-gold/10 dark:text-amber-400">{c}</span>
             ))}
           </div>
         </div>
-        <div class="rounded-xl border border-stone-200 bg-white p-5 dark:border-stone-700 dark:bg-stone-900">
+        <div class="rounded-xl border border-zodiac-gold/25 bg-white p-5 shadow-sm shadow-red-900/5 dark:border-zodiac-gold/15 dark:bg-stone-900">
           <h3 class="mb-3 text-xs font-semibold uppercase tracking-widest text-zodiac-red">Lucky Flowers</h3>
           <div class="flex flex-wrap gap-2">
             {lucky.flowers.map((f) => (
@@ -116,15 +128,15 @@ const faqs = [
         </div>
       </div>
       <div class="mt-4 grid gap-4 sm:grid-cols-2">
-        <div class="rounded-xl border border-stone-200 bg-white p-5 dark:border-stone-700 dark:bg-stone-900">
-          <h3 class="mb-3 text-xs font-semibold uppercase tracking-widest text-green-700 dark:text-green-400">Best Matches</h3>
+        <div class="rounded-xl border border-zodiac-gold/25 bg-white p-5 shadow-sm shadow-red-900/5 dark:border-zodiac-gold/15 dark:bg-stone-900">
+          <h3 class="mb-3 text-xs font-semibold uppercase tracking-widest text-zodiac-bronze dark:text-amber-400">Best Matches</h3>
           <div class="flex flex-wrap gap-2">
             {compat.best.map((b) => (
-              <a href={`/signs/${b}`} class="inline-flex items-center gap-1 rounded-full bg-green-50 px-3 py-1 text-xs font-medium text-green-700 no-underline transition-colors hover:bg-green-100 dark:bg-green-900/20 dark:text-green-400 dark:hover:bg-green-900/30">{b.charAt(0).toUpperCase() + b.slice(1)}</a>
+              <a href={`/signs/${b}`} class="inline-flex items-center gap-1 rounded-full bg-zodiac-gold/15 px-3 py-1 text-xs font-medium text-zodiac-bronze no-underline transition-colors hover:bg-zodiac-gold/25 dark:bg-zodiac-gold/10 dark:text-amber-400 dark:hover:bg-zodiac-gold/20">{b.charAt(0).toUpperCase() + b.slice(1)}</a>
             ))}
           </div>
         </div>
-        <div class="rounded-xl border border-stone-200 bg-white p-5 dark:border-stone-700 dark:bg-stone-900">
+        <div class="rounded-xl border border-zodiac-gold/25 bg-white p-5 shadow-sm shadow-red-900/5 dark:border-zodiac-gold/15 dark:bg-stone-900">
           <h3 class="mb-3 text-xs font-semibold uppercase tracking-widest text-red-600 dark:text-red-400">Challenging Matches</h3>
           <div class="flex flex-wrap gap-2">
             {compat.worst.map((w) => (
@@ -142,21 +154,21 @@ const faqs = [
   <!-- ===== BIRTH YEARS ===== -->
   <section class="px-4 py-14">
     <div class="mx-auto max-w-[800px]">
-      <h2 class="mb-6 text-2xl font-bold tracking-tight text-zodiac-ink dark:text-stone-100">{displayName} Birth Years</h2>
+      <h2 class="mb-6 font-display text-2xl font-bold tracking-tight text-zodiac-ink dark:text-stone-100">{displayName} Birth Years</h2>
       <p class="mb-6 text-sm text-stone-500 dark:text-stone-400">
         The {displayName} year runs from one Chinese New Year to the next, not from January 1. Use the exact lunar ranges below to confirm your sign.
       </p>
-      <div class="overflow-x-auto rounded-xl border border-stone-200 dark:border-stone-700">
+      <div class="overflow-x-auto rounded-xl border border-zodiac-gold/25 shadow-md shadow-red-900/10 dark:border-zodiac-gold/15">
         <table class="w-full min-w-[500px] text-sm">
           <thead>
-            <tr class="border-b border-stone-200 bg-stone-100 dark:border-stone-700 dark:bg-stone-800">
-              <th class="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-stone-500 dark:text-stone-400">Year</th>
-              <th class="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-stone-500 dark:text-stone-400">Lunar Year Range</th>
+            <tr class="border-b border-zodiac-deep bg-zodiac-deep">
+              <th class="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-white/85">Year</th>
+              <th class="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-white/85">Lunar Year Range</th>
             </tr>
           </thead>
           <tbody>
             {rangeEntry.ranges.slice(-6).reverse().map((r) => (
-              <tr class="border-b border-stone-100 last:border-b-0 transition-colors hover:bg-stone-50 dark:border-stone-800 dark:hover:bg-stone-800/50">
+              <tr class="border-b border-zodiac-gold/15 last:border-b-0 transition-colors hover:bg-zodiac-cream/60 dark:border-zodiac-gold/10 dark:hover:bg-stone-800/50">
                 <td class="px-4 py-3 font-medium text-zodiac-red">{r.year}</td>
                 <td class="px-4 py-3 text-stone-600 dark:text-stone-400">{r.start}, {r.year} &ndash; {r.end}, {r.year + 1}</td>
               </tr>
@@ -168,23 +180,23 @@ const faqs = [
         Born between Jan 1 and the Chinese New Year? Use the <a href="/" class="font-medium text-zodiac-red underline-offset-2 hover:underline">calculator</a> with your full birth date for a precise result.
       </p>
 
-      <div class="mt-8 rounded-2xl border border-stone-200 bg-stone-50 p-6 dark:border-stone-800 dark:bg-stone-900/50">
+      <div class="mt-8 rounded-2xl border border-zodiac-gold/25 bg-zodiac-cream/60 p-6 shadow-md shadow-red-900/10 dark:border-zodiac-gold/15 dark:bg-stone-900/50">
         <h3 class="mb-2 text-lg font-bold tracking-tight text-zodiac-ink dark:text-stone-100">Your Birth Year Element</h3>
         <p class="mb-4 text-sm leading-relaxed text-stone-600 dark:text-stone-400">
           Your animal sign stays the same for life, but each birth year also carries its own heavenly-stem element — Wood, Fire, Earth, Metal, or Water. A {bornEras[bornEras.length - 2].year} Fire {displayName} and a {bornEras[bornEras.length - 1].year} {bornEras[bornEras.length - 1].element} {displayName} share the same sign, yet the element shapes how that nature shows up in personality and fortune.
         </p>
-        <div class="overflow-x-auto rounded-xl border border-stone-200 bg-white dark:border-stone-700 dark:bg-stone-900">
+        <div class="overflow-x-auto rounded-xl border border-zodiac-gold/25 bg-white shadow-md shadow-red-900/10 dark:border-zodiac-gold/15 dark:bg-stone-900">
           <table class="w-full min-w-[420px] text-sm">
             <thead>
-              <tr class="border-b border-stone-200 bg-stone-100 dark:border-stone-700 dark:bg-stone-800">
-                <th class="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-stone-500 dark:text-stone-400">Birth Year</th>
-                <th class="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-stone-500 dark:text-stone-400">Element</th>
-                <th class="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-stone-500 dark:text-stone-400">Trait Focus</th>
+              <tr class="border-b border-zodiac-deep bg-zodiac-deep">
+                <th class="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-white/85">Birth Year</th>
+                <th class="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-white/85">Element</th>
+                <th class="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-white/85">Trait Focus</th>
               </tr>
             </thead>
             <tbody>
               {bornEras.map((e) => (
-                <tr class="border-b border-stone-100 last:border-b-0 transition-colors hover:bg-stone-50 dark:border-stone-800 dark:hover:bg-stone-800/50">
+                <tr class="border-b border-zodiac-gold/15 last:border-b-0 transition-colors hover:bg-zodiac-cream/60 dark:border-zodiac-gold/10 dark:hover:bg-stone-800/50">
                   <td class="px-4 py-3 font-medium text-zodiac-red">{e.year}</td>
                   <td class="px-4 py-3 text-stone-700 dark:text-stone-300">{e.stem} · {e.element}</td>
                   <td class="px-4 py-3 text-stone-500 dark:text-stone-400">{ELEMENTS[e.element as keyof typeof ELEMENTS].traits}</td>
@@ -201,10 +213,10 @@ const faqs = [
   </section>
 
   <!-- ===== 2026 HOROSCOPE ===== -->
-  <section class="border-t border-stone-200 bg-stone-50 px-4 py-14 dark:border-stone-800 dark:bg-stone-950">
+  <section class="border-t border-zodiac-gold/15 bg-zodiac-cream/70 px-4 py-14 dark:border-zodiac-gold/10 dark:bg-stone-950">
     <div class="mx-auto max-w-[800px]">
-      <h2 class="mb-6 text-2xl font-bold tracking-tight text-zodiac-ink dark:text-stone-100">{displayName} — 2026 Horoscope</h2>
-      <div class="rounded-2xl border border-stone-200 bg-white p-6 shadow-sm dark:border-stone-800 dark:bg-stone-900 sm:p-8">
+      <h2 class="mb-6 font-display text-2xl font-bold tracking-tight text-zodiac-ink dark:text-stone-100">{displayName} — 2026 Horoscope</h2>
+      <div class="rounded-2xl border border-zodiac-gold/25 bg-white p-6 shadow-md shadow-red-900/10 dark:border-zodiac-gold/15 dark:bg-stone-900 sm:p-8">
         <p class="text-base leading-relaxed text-stone-600 dark:text-stone-400">{horoscope}</p>
         <p class="mt-4 text-sm leading-relaxed text-stone-500 dark:text-stone-400">
           2026 is the Year of the Fire Horse, which begins February 17, 2026. For deeper annual guidance covering career, love, health, and wealth, explore the full <a href="/yearly-horoscope" class="font-medium text-zodiac-red underline-offset-2 hover:underline">2026 horoscope guide</a> or calculate your personal <a href="/bazi-calculator" class="font-medium text-zodiac-red underline-offset-2 hover:underline">BaZi chart</a>.
@@ -216,11 +228,11 @@ const faqs = [
   <!-- ===== ALL SIGNS ===== -->
   <section class="px-4 py-14">
     <div class="mx-auto max-w-[900px]">
-      <h2 class="mb-6 text-center text-2xl font-bold tracking-tight text-zodiac-ink dark:text-stone-100">Explore All 12 Zodiac Signs</h2>
+      <h2 class="mb-6 text-center font-display text-2xl font-bold tracking-tight text-zodiac-ink dark:text-stone-100">Explore All 12 Zodiac Signs</h2>
       <div class="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
         {otherAnimals.map((a) => (
-          <a href={`/signs/${a.id}`} class="group flex items-center gap-3 rounded-xl border border-stone-200 bg-white px-4 py-3 shadow-sm transition-all hover:-translate-y-0.5 hover:border-zodiac-red/30 hover:shadow-md dark:border-stone-700 dark:bg-stone-900">
-            <span class="text-xl">{a.chinese}</span>
+          <a href={`/signs/${a.id}`} class="group flex items-center gap-3 rounded-xl border border-zodiac-gold/25 bg-white px-4 py-3 shadow-sm transition-all hover:-translate-y-0.5 hover:border-zodiac-red/40 hover:shadow-md dark:border-zodiac-gold/15 dark:bg-stone-900">
+            <span class="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full border-2 border-zodiac-gold/40 bg-zodiac-cream text-base font-bold text-zodiac-deep transition-colors group-hover:border-zodiac-red/60 group-hover:bg-zodiac-red group-hover:text-white dark:bg-stone-900 dark:text-zodiac-gold" style="font-family: var(--font-cn)">{a.chinese}</span>
             <span class="text-sm font-medium capitalize text-zodiac-ink transition-colors group-hover:text-zodiac-red dark:text-stone-100">{a.id}</span>
           </a>
         ))}
@@ -229,12 +241,12 @@ const faqs = [
   </section>
 
   <!-- ===== FAQ ===== -->
-  <section class="border-t border-stone-200 bg-stone-50 px-4 py-14 dark:border-stone-800 dark:bg-stone-950">
+  <section class="border-t border-zodiac-gold/15 bg-zodiac-cream/70 px-4 py-14 dark:border-zodiac-gold/10 dark:bg-stone-950">
     <div class="mx-auto max-w-[700px]">
-      <h2 class="mb-8 text-center text-2xl font-bold tracking-tight text-zodiac-ink dark:text-stone-100">Frequently Asked Questions</h2>
+      <h2 class="mb-8 text-center font-display text-2xl font-bold tracking-tight text-zodiac-ink dark:text-stone-100">Frequently Asked Questions</h2>
       <div class="space-y-3">
         {faqs.map((f) => (
-          <details class="group rounded-xl border border-stone-200 bg-white p-5 transition-shadow hover:shadow-sm dark:border-stone-700 dark:bg-stone-900">
+          <details class="group rounded-xl border border-zodiac-gold/25 bg-white p-5 shadow-sm shadow-red-900/5 transition-shadow hover:shadow-md dark:border-zodiac-gold/15 dark:bg-stone-900">
             <summary class="flex cursor-pointer items-center justify-between font-medium text-zodiac-ink dark:text-stone-100">
               {f.q}
               <svg class="h-4 w-4 shrink-0 text-stone-400 transition-transform group-open:rotate-180" viewBox="0 0 16 16" fill="none"><path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>

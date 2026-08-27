@@ -30,13 +30,26 @@ const faqs = [
   dateModified="2026-08-19"
   ogImage="/og/compatibility.png"
 >
-  <section class="mx-auto max-w-[1200px] px-4 py-16 lg:px-6 text-center">
-    <h1 class="text-4xl font-bold tracking-tight text-zodiac-ink sm:text-5xl">Chinese Zodiac Compatibility Calculator</h1>
-    <p class="mt-4 text-lg text-stone-600">Select two signs to see how well they match</p>
+  <section class="relative overflow-hidden bg-zodiac-cream px-4 py-16 text-center lg:px-6 dark:bg-stone-950">
+    <div class="pointer-events-none absolute inset-0" aria-hidden="true">
+      <div class="absolute inset-x-0 top-0 h-[3px] bg-gradient-to-r from-transparent via-zodiac-gold/70 to-transparent"></div>
+      <div class="absolute -left-44 -top-44 h-[26rem] w-[26rem] rounded-full bg-zodiac-red/10 blur-3xl dark:bg-zodiac-red/10"></div>
+      <div class="absolute -bottom-52 -right-52 h-[30rem] w-[30rem] rounded-full bg-zodiac-gold/15 blur-3xl dark:bg-zodiac-gold/10"></div>
+    </div>
+    <div class="relative">
+      <div class="mb-6 flex items-center justify-center gap-3">
+        <span class="h-px w-10 bg-gradient-to-r from-transparent to-zodiac-gold/70"></span>
+        <span class="inline-flex items-center justify-center rounded-[5px] bg-zodiac-red px-2 py-1 text-xs font-bold tracking-widest text-white shadow-md shadow-red-900/20" style="font-family: var(--font-cn)">缘</span>
+        <span class="hidden text-[11px] font-semibold uppercase tracking-[0.35em] text-zodiac-gold sm:inline">Yuánfèn</span>
+        <span class="h-px w-10 bg-gradient-to-l from-transparent to-zodiac-gold/70"></span>
+      </div>
+      <h1 class="font-display text-4xl font-bold tracking-tight text-zodiac-ink sm:text-5xl">Chinese Zodiac <span class="bg-gradient-to-r from-zodiac-deep via-zodiac-red to-zodiac-bronze bg-clip-text pb-1 text-transparent">Compatibility</span> Calculator</h1>
+      <p class="mt-4 text-lg text-stone-600">Select two signs to see how well they match</p>
+    </div>
   </section>
 
   <section class="mx-auto max-w-[1200px] px-4 pb-16 lg:px-6">
-    <div class="mx-auto max-w-2xl rounded-2xl border border-stone-200 bg-white p-8 shadow-sm">
+    <div class="mx-auto max-w-2xl rounded-2xl border border-zodiac-gold/25 bg-white p-8 shadow-md shadow-red-900/10 dark:border-zodiac-gold/20 dark:bg-stone-900">
       <div class="grid gap-6 sm:grid-cols-2">
         <div>
           <label for="sign1" class="mb-2 block text-sm font-medium text-stone-700">First Zodiac Sign</label>
@@ -49,7 +62,7 @@ const faqs = [
       </div>
       <button id="check-btn" class="mt-6 w-full cursor-pointer rounded-xl bg-zodiac-red px-6 py-3 text-base font-semibold text-white transition-colors hover:bg-red-700">Check Compatibility</button>
       <div id="result" class="mt-8 hidden">
-        <div class="rounded-xl border border-stone-200 bg-zodiac-cream p-6 text-center">
+        <div class="rounded-xl border border-zodiac-gold/25 bg-zodiac-cream p-6 text-center shadow-md shadow-red-900/10">
           <div class="flex items-center justify-center gap-3 text-lg font-semibold text-stone-800">
             <span id="result-sign1"></span>
             <span class="text-stone-400">&amp;</span>
@@ -63,9 +76,9 @@ const faqs = [
     </div>
   </section>
 
-  <section class="bg-stone-50">
+  <section class="bg-zodiac-cream/70 dark:bg-stone-950">
     <div class="mx-auto max-w-[1200px] px-4 py-16 lg:px-6">
-      <h2 class="text-3xl font-bold tracking-tight text-zodiac-ink text-center">Compatibility Matrix</h2>
+      <h2 class="text-center font-display text-3xl font-bold tracking-tight text-zodiac-ink">Compatibility Matrix</h2>
       <p class="mt-2 text-center text-stone-600">A quick overview of how every zodiac sign pairs with each other</p>
       <div class="mt-8 overflow-x-auto">
         <table class="w-full min-w-[600px] border-collapse text-sm">
@@ -116,24 +129,24 @@ const faqs = [
           <h3 class="text-xl font-semibold text-zodiac-ink flex items-center gap-2"><span class="text-2xl">&#x1F31F;</span> Best Matches</h3>
           <p class="mt-1 text-sm text-stone-500">These pairings share natural chemistry and mutual understanding.</p>
           <ul class="mt-4 space-y-3">
-            <li class="rounded-xl border border-stone-200 bg-white p-4"><strong class="text-zodiac-ink">Rat + Dragon:</strong> <span class="text-stone-600">An ambitious power couple. Both are confident and driven, building success together through mutual respect and shared goals.</span></li>
-            <li class="rounded-xl border border-stone-200 bg-white p-4"><strong class="text-zodiac-ink">Rat + Monkey:</strong> <span class="text-stone-600">A playful, intellectually stimulating pair. Their clever banter and shared wit keep the relationship fresh and exciting.</span></li>
-            <li class="rounded-xl border border-stone-200 bg-white p-4"><strong class="text-zodiac-ink">Ox + Snake:</strong> <span class="text-stone-600">A calm, deeply loyal match. The Ox provides stability while the Snake offers wisdom and strategic thinking.</span></li>
-            <li class="rounded-xl border border-stone-200 bg-white p-4"><strong class="text-zodiac-ink">Tiger + Horse:</strong> <span class="text-stone-600">An adventurous, high-energy duo. Both love freedom and action, making them natural partners in exploration.</span></li>
-            <li class="rounded-xl border border-stone-200 bg-white p-4"><strong class="text-zodiac-ink">Dragon + Rooster:</strong> <span class="text-stone-600">A confident and successful pair. The Dragon dreams big and the Rooster handles the details — a perfect execution team.</span></li>
-            <li class="rounded-xl border border-stone-200 bg-white p-4"><strong class="text-zodiac-ink">Rabbit + Goat:</strong> <span class="text-stone-600">A gentle, artistic match. Both value harmony and beauty, creating a peaceful and nurturing home together.</span></li>
+            <li class="rounded-xl border border-zodiac-gold/25 bg-white p-4 shadow-sm shadow-red-900/5"><strong class="text-zodiac-ink">Rat + Dragon:</strong> <span class="text-stone-600">An ambitious power couple. Both are confident and driven, building success together through mutual respect and shared goals.</span></li>
+            <li class="rounded-xl border border-zodiac-gold/25 bg-white p-4 shadow-sm shadow-red-900/5"><strong class="text-zodiac-ink">Rat + Monkey:</strong> <span class="text-stone-600">A playful, intellectually stimulating pair. Their clever banter and shared wit keep the relationship fresh and exciting.</span></li>
+            <li class="rounded-xl border border-zodiac-gold/25 bg-white p-4 shadow-sm shadow-red-900/5"><strong class="text-zodiac-ink">Ox + Snake:</strong> <span class="text-stone-600">A calm, deeply loyal match. The Ox provides stability while the Snake offers wisdom and strategic thinking.</span></li>
+            <li class="rounded-xl border border-zodiac-gold/25 bg-white p-4 shadow-sm shadow-red-900/5"><strong class="text-zodiac-ink">Tiger + Horse:</strong> <span class="text-stone-600">An adventurous, high-energy duo. Both love freedom and action, making them natural partners in exploration.</span></li>
+            <li class="rounded-xl border border-zodiac-gold/25 bg-white p-4 shadow-sm shadow-red-900/5"><strong class="text-zodiac-ink">Dragon + Rooster:</strong> <span class="text-stone-600">A confident and successful pair. The Dragon dreams big and the Rooster handles the details — a perfect execution team.</span></li>
+            <li class="rounded-xl border border-zodiac-gold/25 bg-white p-4 shadow-sm shadow-red-900/5"><strong class="text-zodiac-ink">Rabbit + Goat:</strong> <span class="text-stone-600">A gentle, artistic match. Both value harmony and beauty, creating a peaceful and nurturing home together.</span></li>
           </ul>
         </div>
         <div>
           <h3 class="text-xl font-semibold text-zodiac-ink flex items-center gap-2"><span class="text-2xl">&#x26A0;</span> Challenging Matches</h3>
           <p class="mt-1 text-sm text-stone-500">These pairings face natural friction but can succeed with understanding and compromise.</p>
           <ul class="mt-4 space-y-3">
-            <li class="rounded-xl border border-stone-200 bg-white p-4"><strong class="text-zodiac-ink">Rat + Horse:</strong> <span class="text-stone-600">The Rat is cautious and detail-oriented while the Horse is impulsive and freedom-loving. Their pacing and priorities often clash.</span></li>
-            <li class="rounded-xl border border-stone-200 bg-white p-4"><strong class="text-zodiac-ink">Ox + Goat:</strong> <span class="text-stone-600">The Ox values routine and blunt honesty, while the Goat is sensitive and artistic. Misunderstandings arise from their different emotional languages.</span></li>
-            <li class="rounded-xl border border-stone-200 bg-white p-4"><strong class="text-zodiac-ink">Tiger + Monkey:</strong> <span class="text-stone-600">Both are clever and competitive, but their strong personalities can lead to power struggles and a battle of wills.</span></li>
-            <li class="rounded-xl border border-stone-200 bg-white p-4"><strong class="text-zodiac-ink">Rabbit + Rooster:</strong> <span class="text-stone-600">The Rabbit craves peace and quiet while the Rooster is direct and critical. Their communication styles are fundamentally different.</span></li>
-            <li class="rounded-xl border border-stone-200 bg-white p-4"><strong class="text-zodiac-ink">Dragon + Dog:</strong> <span class="text-stone-600">The Dragon is bold and visionary, the Dog is loyal and practical. The Dragon may seem arrogant to the Dog, while the Dog seems pessimistic to the Dragon.</span></li>
-            <li class="rounded-xl border border-stone-200 bg-white p-4"><strong class="text-zodiac-ink">Snake + Pig:</strong> <span class="text-stone-600">The Snake is private and analytical, the Pig is open and trusting. Their contrasting approaches to intimacy can create distance.</span></li>
+            <li class="rounded-xl border border-zodiac-gold/25 bg-white p-4 shadow-sm shadow-red-900/5"><strong class="text-zodiac-ink">Rat + Horse:</strong> <span class="text-stone-600">The Rat is cautious and detail-oriented while the Horse is impulsive and freedom-loving. Their pacing and priorities often clash.</span></li>
+            <li class="rounded-xl border border-zodiac-gold/25 bg-white p-4 shadow-sm shadow-red-900/5"><strong class="text-zodiac-ink">Ox + Goat:</strong> <span class="text-stone-600">The Ox values routine and blunt honesty, while the Goat is sensitive and artistic. Misunderstandings arise from their different emotional languages.</span></li>
+            <li class="rounded-xl border border-zodiac-gold/25 bg-white p-4 shadow-sm shadow-red-900/5"><strong class="text-zodiac-ink">Tiger + Monkey:</strong> <span class="text-stone-600">Both are clever and competitive, but their strong personalities can lead to power struggles and a battle of wills.</span></li>
+            <li class="rounded-xl border border-zodiac-gold/25 bg-white p-4 shadow-sm shadow-red-900/5"><strong class="text-zodiac-ink">Rabbit + Rooster:</strong> <span class="text-stone-600">The Rabbit craves peace and quiet while the Rooster is direct and critical. Their communication styles are fundamentally different.</span></li>
+            <li class="rounded-xl border border-zodiac-gold/25 bg-white p-4 shadow-sm shadow-red-900/5"><strong class="text-zodiac-ink">Dragon + Dog:</strong> <span class="text-stone-600">The Dragon is bold and visionary, the Dog is loyal and practical. The Dragon may seem arrogant to the Dog, while the Dog seems pessimistic to the Dragon.</span></li>
+            <li class="rounded-xl border border-zodiac-gold/25 bg-white p-4 shadow-sm shadow-red-900/5"><strong class="text-zodiac-ink">Snake + Pig:</strong> <span class="text-stone-600">The Snake is private and analytical, the Pig is open and trusting. Their contrasting approaches to intimacy can create distance.</span></li>
           </ul>
         </div>
       </div>
@@ -146,13 +159,13 @@ const faqs = [
       <p class="mt-2 text-center text-stone-600">Detailed pairing insights for every zodiac sign — best matches and challenging matches with explanations</p>
       <div class="mt-10 space-y-6">
         {compatGuide.map((s) => (
-          <div class="rounded-2xl border border-stone-200 bg-white p-6 shadow-sm">
+          <div class="rounded-2xl border border-zodiac-gold/25 bg-white p-6 shadow-md shadow-red-900/10">
             <div class="mb-4 flex items-center gap-3">
               <span class="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-zodiac-cream text-2xl">{s.chinese}</span>
               <h3 class="text-xl font-semibold capitalize text-zodiac-ink">{s.id} Compatibility</h3>
             </div>
             <div class="grid gap-4 md:grid-cols-2">
-              <div class="rounded-xl border border-stone-200 bg-green-50/50 p-4 dark:border-stone-700 dark:bg-green-900/10">
+              <div class="rounded-xl border border-zodiac-gold/30 bg-amber-50/50 p-4 dark:border-zodiac-gold/20 dark:bg-amber-900/10">
                 <h4 class="mb-3 text-xs font-semibold uppercase tracking-widest text-green-700 dark:text-green-400">Best Matches</h4>
                 <ul class="space-y-3">
                   {s.bestPairs.map((p) => (
@@ -162,7 +175,7 @@ const faqs = [
                   ))}
                 </ul>
               </div>
-              <div class="rounded-xl border border-stone-200 bg-red-50/50 p-4 dark:border-stone-700 dark:bg-red-900/10">
+              <div class="rounded-xl border border-zodiac-red/20 bg-red-50/50 p-4 dark:border-zodiac-red/20 dark:bg-red-900/10">
                 <h4 class="mb-3 text-xs font-semibold uppercase tracking-widest text-red-600 dark:text-red-400">Challenging Matches</h4>
                 <ul class="space-y-3">
                   {s.worstPairs.map((p) => (
@@ -179,12 +192,12 @@ const faqs = [
     </div>
   </section>
 
-  <section class="bg-stone-50">
+  <section class="bg-zodiac-cream/70">
     <div class="mx-auto max-w-[800px] px-4 py-16 lg:px-6">
       <h2 class="text-3xl font-bold tracking-tight text-zodiac-ink text-center">Frequently Asked Questions</h2>
       <div class="mt-8 space-y-4">
         {faqs.map((faq) => (
-          <details class="group cursor-pointer rounded-xl border border-stone-200 bg-white p-6">
+          <details class="group cursor-pointer rounded-xl border border-zodiac-gold/25 bg-white p-6 shadow-sm shadow-red-900/5">
             <summary class="flex items-center justify-between text-lg font-semibold text-zodiac-ink [&::-webkit-details-marker]:hidden">
               {faq.q}
               <svg class="h-5 w-5 text-stone-400 transition-transform group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>

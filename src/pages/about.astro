@@ -7,8 +7,17 @@ import BaseLayout from "../layouts/BaseLayout.astro";
   description="Learn about Chinese-Zodiac-Calculator.com, the free Chinese zodiac calculator. Discover how our tools work, how content is verified and updated, and the sources behind our zodiac guides."
   breadcrumbs={[{ label: "Home", href: "/" }, { label: "About", href: "/about" }]}
 >
-  <section class="mx-auto max-w-[800px] px-4 py-12 lg:px-6 lg:py-16">
-    <h1 class="mb-6 text-3xl font-bold tracking-tight text-stone-900 dark:text-stone-100 sm:text-4xl">About <span class="text-[#DC2626]">Chinese-Zodiac-Calculator.com</span></h1>
+  <section class="relative mx-auto max-w-[800px] px-4 py-12 lg:px-6 lg:py-16">
+    <div class="pointer-events-none absolute inset-x-0 top-0 h-[3px] bg-gradient-to-r from-transparent via-zodiac-gold/70 to-transparent" aria-hidden="true"></div>
+    <header class="mb-10 text-center">
+      <div class="mb-6 flex items-center justify-center gap-3">
+        <span class="h-px w-10 bg-gradient-to-r from-transparent to-zodiac-gold/70"></span>
+        <span class="inline-flex items-center justify-center rounded-[5px] bg-zodiac-red px-2 py-1 text-xs font-bold tracking-widest text-white shadow-md shadow-red-900/20" style="font-family: var(--font-cn)">关于</span>
+        <span class="hidden text-[11px] font-semibold uppercase tracking-[0.35em] text-zodiac-gold sm:inline">Guānyú</span>
+        <span class="h-px w-10 bg-gradient-to-l from-transparent to-zodiac-gold/70"></span>
+      </div>
+      <h1 class="font-display text-3xl font-bold tracking-tight text-zodiac-ink dark:text-stone-100 sm:text-4xl">About <span class="bg-gradient-to-r from-zodiac-deep via-zodiac-red to-zodiac-bronze bg-clip-text pb-1 text-transparent">Chinese-Zodiac-Calculator.com</span></h1>
+    </header>
 
     <div class="prose prose-stone max-w-none dark:prose-invert">
       <p class="text-base leading-relaxed text-stone-600 dark:text-stone-400">Chinese-Zodiac-Calculator.com is a free online tool that helps you discover your Chinese zodiac animal sign, element, personality traits, compatibility, and more — all based on your birth date. The site is built for casual readers and serious learners alike: one-minute answers for the curious, and referenced detail for anyone who wants to dig deeper.</p>
@@ -22,10 +31,10 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       <h2 class="mt-8 text-xl font-semibold text-stone-900 dark:text-stone-100">Editorial &amp; Accuracy Standards</h2>
       <p class="text-base leading-relaxed text-stone-600 dark:text-stone-400">Every page on this site is written and reviewed by our editorial team before publishing. Our content standards:</p>
       <ul class="mt-2 space-y-2 text-stone-600 dark:text-stone-400">
-        <li class="flex items-start gap-2 text-sm"><span class="text-[#DC2626]">&#10003;</span> <span><strong class="text-stone-900 dark:text-stone-100">Lunar dates are computed</strong>, not guessed — every zodiac year range on the site is tied to the actual Chinese New Year date.</span></li>
-        <li class="flex items-start gap-2 text-sm"><span class="text-[#DC2626]">&#10003;</span> <span><strong class="text-stone-900 dark:text-stone-100">Cultural claims are checked</strong> against publicly available references, including <a href="https://www.britannica.com/topic/Chinese-zodiac" rel="noopener" class="font-medium text-zodiac-red underline-offset-2 hover:underline">Encyclopaedia Britannica</a> and academic sources on Chinese calendar tradition.</span></li>
-        <li class="flex items-start gap-2 text-sm"><span class="text-[#DC2626]">&#10003;</span> <span><strong class="text-stone-900 dark:text-stone-100">Structure is data-driven</strong> — the 12 sign pages, compatibility matrix, and year charts are generated from one shared dataset, so facts never contradict each other across pages.</span></li>
-        <li class="flex items-start gap-2 text-sm"><span class="text-[#DC2626]">&#10003;</span> <span><strong class="text-stone-900 dark:text-stone-100">Mistakes get fixed fast</strong> — we review reader feedback and correct factual errors with a visible update date on the page.</span></li>
+        <li class="flex items-start gap-2 text-sm"><span class="text-zodiac-red">&#10003;</span> <span><strong class="text-stone-900 dark:text-stone-100">Lunar dates are computed</strong>, not guessed — every zodiac year range on the site is tied to the actual Chinese New Year date.</span></li>
+        <li class="flex items-start gap-2 text-sm"><span class="text-zodiac-red">&#10003;</span> <span><strong class="text-stone-900 dark:text-stone-100">Cultural claims are checked</strong> against publicly available references, including <a href="https://www.britannica.com/topic/Chinese-zodiac" rel="noopener" class="font-medium text-zodiac-red underline-offset-2 hover:underline">Encyclopaedia Britannica</a> and academic sources on Chinese calendar tradition.</span></li>
+        <li class="flex items-start gap-2 text-sm"><span class="text-zodiac-red">&#10003;</span> <span><strong class="text-stone-900 dark:text-stone-100">Structure is data-driven</strong> — the 12 sign pages, compatibility matrix, and year charts are generated from one shared dataset, so facts never contradict each other across pages.</span></li>
+        <li class="flex items-start gap-2 text-sm"><span class="text-zodiac-red">&#10003;</span> <span><strong class="text-stone-900 dark:text-stone-100">Mistakes get fixed fast</strong> — we review reader feedback and correct factual errors with a visible update date on the page.</span></li>
       </ul>
 
       <h2 class="mt-8 text-xl font-semibold text-stone-900 dark:text-stone-100">Content Updates</h2>
@@ -33,13 +42,13 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
       <h2 class="mt-8 text-xl font-semibold text-stone-900 dark:text-stone-100">What We Offer</h2>
       <ul class="mt-2 space-y-2 text-stone-600 dark:text-stone-400">
-        <li class="flex items-start gap-2 text-sm"><span class="text-[#DC2626]">&#10003;</span> <span><strong class="text-stone-900 dark:text-stone-100"><a href="/" class="font-medium text-zodiac-red underline-offset-2 hover:underline">Zodiac Calculator</a></strong> — instantly find your animal sign and element from your birth date.</span></li>
-        <li class="flex items-start gap-2 text-sm"><span class="text-[#DC2626]">&#10003;</span> <span><strong class="text-stone-900 dark:text-stone-100"><a href="/compatibility" class="font-medium text-zodiac-red underline-offset-2 hover:underline">Compatibility Checker</a></strong> — see how any two signs match in love and friendship.</span></li>
-        <li class="flex items-start gap-2 text-sm"><span class="text-[#DC2626]">&#10003;</span> <span><strong class="text-stone-900 dark:text-stone-100"><a href="/elements" class="font-medium text-zodiac-red underline-offset-2 hover:underline">Element Guide</a></strong> — learn about the five elements and how your birth year element refines your sign.</span></li>
-        <li class="flex items-start gap-2 text-sm"><span class="text-[#DC2626]">&#10003;</span> <span><strong class="text-stone-900 dark:text-stone-100"><a href="/year-chart" class="font-medium text-zodiac-red underline-offset-2 hover:underline">Year Chart</a></strong> — the full lunar-year-to-animal reference table.</span></li>
-        <li class="flex items-start gap-2 text-sm"><span class="text-[#DC2626]">&#10003;</span> <span><strong class="text-stone-900 dark:text-stone-100"><a href="/bazi-calculator" class="font-medium text-zodiac-red underline-offset-2 hover:underline">BaZi Calculator</a></strong> — a Four Pillars reading built on your complete birth date and time.</span></li>
-        <li class="flex items-start gap-2 text-sm"><span class="text-[#DC2626]">&#10003;</span> <span><strong class="text-stone-900 dark:text-stone-100"><a href="/yearly-horoscope" class="font-medium text-zodiac-red underline-offset-2 hover:underline">Yearly Horoscopes</a></strong> — annual predictions for all 12 signs.</span></li>
-        <li class="flex items-start gap-2 text-sm"><span class="text-[#DC2626]">&#10003;</span> <span><strong class="text-stone-900 dark:text-stone-100"><a href="/feng-shui-tips" class="font-medium text-zodiac-red underline-offset-2 hover:underline">Feng Shui Tips</a></strong> — practical ways to harmonize your space by element.</span></li>
+        <li class="flex items-start gap-2 text-sm"><span class="text-zodiac-red">&#10003;</span> <span><strong class="text-stone-900 dark:text-stone-100"><a href="/" class="font-medium text-zodiac-red underline-offset-2 hover:underline">Zodiac Calculator</a></strong> — instantly find your animal sign and element from your birth date.</span></li>
+        <li class="flex items-start gap-2 text-sm"><span class="text-zodiac-red">&#10003;</span> <span><strong class="text-stone-900 dark:text-stone-100"><a href="/compatibility" class="font-medium text-zodiac-red underline-offset-2 hover:underline">Compatibility Checker</a></strong> — see how any two signs match in love and friendship.</span></li>
+        <li class="flex items-start gap-2 text-sm"><span class="text-zodiac-red">&#10003;</span> <span><strong class="text-stone-900 dark:text-stone-100"><a href="/elements" class="font-medium text-zodiac-red underline-offset-2 hover:underline">Element Guide</a></strong> — learn about the five elements and how your birth year element refines your sign.</span></li>
+        <li class="flex items-start gap-2 text-sm"><span class="text-zodiac-red">&#10003;</span> <span><strong class="text-stone-900 dark:text-stone-100"><a href="/year-chart" class="font-medium text-zodiac-red underline-offset-2 hover:underline">Year Chart</a></strong> — the full lunar-year-to-animal reference table.</span></li>
+        <li class="flex items-start gap-2 text-sm"><span class="text-zodiac-red">&#10003;</span> <span><strong class="text-stone-900 dark:text-stone-100"><a href="/bazi-calculator" class="font-medium text-zodiac-red underline-offset-2 hover:underline">BaZi Calculator</a></strong> — a Four Pillars reading built on your complete birth date and time.</span></li>
+        <li class="flex items-start gap-2 text-sm"><span class="text-zodiac-red">&#10003;</span> <span><strong class="text-stone-900 dark:text-stone-100"><a href="/yearly-horoscope" class="font-medium text-zodiac-red underline-offset-2 hover:underline">Yearly Horoscopes</a></strong> — annual predictions for all 12 signs.</span></li>
+        <li class="flex items-start gap-2 text-sm"><span class="text-zodiac-red">&#10003;</span> <span><strong class="text-stone-900 dark:text-stone-100"><a href="/feng-shui-tips" class="font-medium text-zodiac-red underline-offset-2 hover:underline">Feng Shui Tips</a></strong> — practical ways to harmonize your space by element.</span></li>
       </ul>
 
       <h2 class="mt-8 text-xl font-semibold text-stone-900 dark:text-stone-100">References</h2>

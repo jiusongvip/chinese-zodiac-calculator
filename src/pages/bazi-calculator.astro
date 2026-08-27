@@ -9,10 +9,21 @@ import BaseLayout from "../layouts/BaseLayout.astro";
   breadcrumbs={[{label:"Home",href:"/"},{label:"BaZi Calculator",href:"/bazi-calculator"}]}
   articleSchema={true}
 >
-  <section class="bg-gradient-to-br from-red-50 to-stone-100 px-4 py-16 dark:from-red-950/20 dark:to-stone-950">
-    <div class="mx-auto max-w-[900px] text-center">
-      <h1 class="mb-4 text-4xl font-bold tracking-tight text-stone-900 dark:text-stone-100 sm:text-5xl">
-        BaZi Calculator <span class="text-zodiac-red">(Four Pillars of Destiny)</span>
+  <section class="relative overflow-hidden bg-zodiac-cream px-4 py-16 dark:bg-stone-950">
+    <div class="pointer-events-none absolute inset-0" aria-hidden="true">
+      <div class="absolute inset-x-0 top-0 h-[3px] bg-gradient-to-r from-transparent via-zodiac-gold/70 to-transparent"></div>
+      <div class="absolute -left-44 -top-44 h-[26rem] w-[26rem] rounded-full bg-zodiac-red/10 blur-3xl dark:bg-zodiac-red/10"></div>
+      <div class="absolute -bottom-52 -right-52 h-[30rem] w-[30rem] rounded-full bg-zodiac-gold/15 blur-3xl dark:bg-zodiac-gold/10"></div>
+    </div>
+    <div class="relative mx-auto max-w-[900px] text-center">
+      <div class="mb-6 flex items-center justify-center gap-3">
+        <span class="h-px w-10 bg-gradient-to-r from-transparent to-zodiac-gold/70"></span>
+        <span class="inline-flex items-center justify-center rounded-[5px] bg-zodiac-red px-2 py-1 text-xs font-bold tracking-widest text-white shadow-md shadow-red-900/20" style="font-family: var(--font-cn)">八字</span>
+        <span class="hidden text-[11px] font-semibold uppercase tracking-[0.35em] text-zodiac-gold sm:inline">Bāzì</span>
+        <span class="h-px w-10 bg-gradient-to-l from-transparent to-zodiac-gold/70"></span>
+      </div>
+      <h1 class="font-display text-4xl font-bold tracking-tight text-zodiac-ink dark:text-stone-100 sm:text-5xl">
+        BaZi Calculator <span class="bg-gradient-to-r from-zodiac-deep via-zodiac-red to-zodiac-bronze bg-clip-text pb-1 text-transparent">(Four Pillars of Destiny)</span>
       </h1>
       <p class="mx-auto max-w-[650px] text-lg text-stone-600 dark:text-stone-400">
         Enter your complete birth information for a deeper Chinese astrology reading
@@ -22,15 +33,15 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
   <section class="px-4 py-12" id="calculator">
     <div class="mx-auto max-w-[700px]">
-      <div class="rounded-2xl border border-stone-200 bg-white p-6 shadow-sm dark:border-stone-800 dark:bg-stone-900 sm:p-10">
+      <div class="rounded-2xl border border-zodiac-gold/25 bg-white p-6 shadow-md shadow-red-900/10 dark:border-zodiac-gold/20 dark:bg-stone-900 sm:p-10">
         <div class="mb-8 grid gap-4 sm:grid-cols-3">
           <div>
             <label for="bazi-year" class="mb-1 block text-sm font-medium text-stone-700 dark:text-stone-300">Birth Year</label>
-            <input type="number" id="bazi-year" min="1900" max="2100" value="1990" class="w-full rounded-lg border border-stone-300 bg-stone-50 px-4 py-2.5 text-sm focus:border-zodiac-red focus:outline-none focus:ring-2 focus:ring-red-200 dark:border-stone-600 dark:bg-stone-800 dark:text-stone-200" />
+            <input type="number" id="bazi-year" min="1900" max="2100" value="1990" class="w-full rounded-lg border border-zodiac-gold/25 bg-zodiac-cream/50 px-4 py-2.5 text-sm focus:border-zodiac-red focus:outline-none focus:ring-2 focus:ring-red-200 dark:border-stone-600 dark:bg-stone-800 dark:text-stone-200" />
           </div>
           <div>
             <label for="bazi-month" class="mb-1 block text-sm font-medium text-stone-700 dark:text-stone-300">Birth Month</label>
-            <select id="bazi-month" class="w-full rounded-lg border border-stone-300 bg-stone-50 px-4 py-2.5 text-sm focus:border-zodiac-red focus:outline-none focus:ring-2 focus:ring-red-200 dark:border-stone-600 dark:bg-stone-800 dark:text-stone-200">
+            <select id="bazi-month" class="w-full rounded-lg border border-zodiac-gold/25 bg-zodiac-cream/50 px-4 py-2.5 text-sm focus:border-zodiac-red focus:outline-none focus:ring-2 focus:ring-red-200 dark:border-stone-600 dark:bg-stone-800 dark:text-stone-200">
               <option value="1">January</option><option value="2">February</option><option value="3">March</option>
               <option value="4">April</option><option value="5">May</option><option value="6">June</option>
               <option value="7">July</option><option value="8">August</option><option value="9">September</option>
@@ -39,13 +50,13 @@ import BaseLayout from "../layouts/BaseLayout.astro";
           </div>
           <div>
             <label for="bazi-day" class="mb-1 block text-sm font-medium text-stone-700 dark:text-stone-300">Birth Day</label>
-            <input type="number" id="bazi-day" min="1" max="31" value="15" class="w-full rounded-lg border border-stone-300 bg-stone-50 px-4 py-2.5 text-sm focus:border-zodiac-red focus:outline-none focus:ring-2 focus:ring-red-200 dark:border-stone-600 dark:bg-stone-800 dark:text-stone-200" />
+            <input type="number" id="bazi-day" min="1" max="31" value="15" class="w-full rounded-lg border border-zodiac-gold/25 bg-zodiac-cream/50 px-4 py-2.5 text-sm focus:border-zodiac-red focus:outline-none focus:ring-2 focus:ring-red-200 dark:border-stone-600 dark:bg-stone-800 dark:text-stone-200" />
           </div>
         </div>
         <div class="mb-6 grid gap-4 sm:grid-cols-2">
           <div>
             <label for="bazi-hour" class="mb-1 block text-sm font-medium text-stone-700 dark:text-stone-300">Birth Hour</label>
-            <select id="bazi-hour" class="w-full rounded-lg border border-stone-300 bg-stone-50 px-4 py-2.5 text-sm focus:border-zodiac-red focus:outline-none focus:ring-2 focus:ring-red-200 dark:border-stone-600 dark:bg-stone-800 dark:text-stone-200">
+            <select id="bazi-hour" class="w-full rounded-lg border border-zodiac-gold/25 bg-zodiac-cream/50 px-4 py-2.5 text-sm focus:border-zodiac-red focus:outline-none focus:ring-2 focus:ring-red-200 dark:border-stone-600 dark:bg-stone-800 dark:text-stone-200">
               <option value="0">23:00–00:59 – Rat Hour (Zi)</option>
               <option value="1">01:00–02:59 – Ox Hour (Chou)</option>
               <option value="2">03:00–04:59 – Tiger Hour (Yin)</option>
@@ -62,7 +73,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
           </div>
           <div>
             <label for="bazi-tz" class="mb-1 block text-sm font-medium text-stone-700 dark:text-stone-300">Timezone</label>
-            <select id="bazi-tz" class="w-full rounded-lg border border-stone-300 bg-stone-50 px-4 py-2.5 text-sm focus:border-zodiac-red focus:outline-none focus:ring-2 focus:ring-red-200 dark:border-stone-600 dark:bg-stone-800 dark:text-stone-200">
+            <select id="bazi-tz" class="w-full rounded-lg border border-zodiac-gold/25 bg-zodiac-cream/50 px-4 py-2.5 text-sm focus:border-zodiac-red focus:outline-none focus:ring-2 focus:ring-red-200 dark:border-stone-600 dark:bg-stone-800 dark:text-stone-200">
               <option value="-12">UTC-12</option><option value="-11">UTC-11</option><option value="-10">UTC-10</option>
               <option value="-9">UTC-9</option><option value="-8">UTC-8</option><option value="-7">UTC-7</option>
               <option value="-6">UTC-6</option><option value="-5">UTC-5</option><option value="-4">UTC-4</option>
@@ -83,25 +94,25 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       <div id="bazi-result" class="mt-8 hidden">
         <h2 class="mb-6 text-center text-2xl font-bold text-stone-900 dark:text-stone-100">Your Four Pillars</h2>
         <div class="grid gap-4 sm:grid-cols-4">
-          <div class="rounded-xl border border-stone-200 bg-white p-5 text-center shadow-sm dark:border-stone-800 dark:bg-stone-900">
+          <div class="rounded-xl border border-zodiac-gold/25 bg-white p-5 text-center shadow-md shadow-red-900/10 dark:border-zodiac-gold/15 dark:bg-stone-900">
             <span class="text-xs font-semibold uppercase tracking-widest text-zodiac-red">Year Pillar</span>
             <div class="mt-3 text-4xl" id="p-year-icon"></div>
             <p class="mt-2 text-lg font-bold text-stone-900 dark:text-stone-100" id="p-year-name"></p>
             <p class="text-sm text-stone-500 dark:text-stone-400" id="p-year-element"></p>
           </div>
-          <div class="rounded-xl border border-stone-200 bg-white p-5 text-center shadow-sm dark:border-stone-800 dark:bg-stone-900">
+          <div class="rounded-xl border border-zodiac-gold/25 bg-white p-5 text-center shadow-md shadow-red-900/10 dark:border-zodiac-gold/15 dark:bg-stone-900">
             <span class="text-xs font-semibold uppercase tracking-widest text-zodiac-red">Month Pillar</span>
             <div class="mt-3 text-4xl" id="p-month-icon"></div>
             <p class="mt-2 text-lg font-bold text-stone-900 dark:text-stone-100" id="p-month-name"></p>
             <p class="text-sm text-stone-500 dark:text-stone-400" id="p-month-element"></p>
           </div>
-          <div class="rounded-xl border border-stone-200 bg-white p-5 text-center shadow-sm dark:border-stone-800 dark:bg-stone-900">
+          <div class="rounded-xl border border-zodiac-gold/25 bg-white p-5 text-center shadow-md shadow-red-900/10 dark:border-zodiac-gold/15 dark:bg-stone-900">
             <span class="text-xs font-semibold uppercase tracking-widest text-zodiac-red">Day Pillar</span>
             <div class="mt-3 text-4xl" id="p-day-icon"></div>
             <p class="mt-2 text-lg font-bold text-stone-900 dark:text-stone-100" id="p-day-name"></p>
             <p class="text-sm text-stone-500 dark:text-stone-400" id="p-day-element"></p>
           </div>
-          <div class="rounded-xl border border-stone-200 bg-white p-5 text-center shadow-sm dark:border-stone-800 dark:bg-stone-900">
+          <div class="rounded-xl border border-zodiac-gold/25 bg-white p-5 text-center shadow-md shadow-red-900/10 dark:border-zodiac-gold/15 dark:bg-stone-900">
             <span class="text-xs font-semibold uppercase tracking-widest text-zodiac-red">Hour Pillar</span>
             <div class="mt-3 text-4xl" id="p-hour-icon"></div>
             <p class="mt-2 text-lg font-bold text-stone-900 dark:text-stone-100" id="p-hour-name"></p>
@@ -115,7 +126,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     </div>
   </section>
 
-  <section class="bg-stone-50 px-4 py-16 dark:bg-stone-950">
+  <section class="bg-zodiac-cream/70 px-4 py-16 dark:bg-stone-950">
     <div class="mx-auto max-w-[800px]">
       <h2 class="mb-8 text-center text-3xl font-bold text-stone-900 dark:text-stone-100">What Is BaZi?</h2>
       <div class="space-y-4 text-stone-600 dark:text-stone-400 leading-relaxed">
@@ -139,7 +150,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     <div class="mx-auto max-w-[800px]">
       <h2 class="mb-8 text-center text-3xl font-bold text-stone-900 dark:text-stone-100">Frequently Asked Questions</h2>
       <div class="space-y-4">
-        <details class="group rounded-xl border border-stone-200 bg-white p-5 dark:border-stone-800 dark:bg-stone-900">
+        <details class="group rounded-xl border border-zodiac-gold/25 bg-white p-5 shadow-sm shadow-red-900/5 dark:border-zodiac-gold/15 dark:bg-stone-900">
           <summary class="flex cursor-pointer items-center justify-between font-medium text-stone-900 dark:text-stone-100">
             What is the difference between BaZi and the regular Chinese zodiac?
             <svg class="h-5 w-5 shrink-0 text-stone-400 transition-transform group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
@@ -148,7 +159,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
             The regular Chinese zodiac only tells you your birth-year animal. BaZi goes much deeper&mdash;it analyzes four pillars (Year, Month, Day, Hour) to reveal interactions between the Five Elements, giving a far more detailed and personalized reading.
           </p>
         </details>
-        <details class="group rounded-xl border border-stone-200 bg-white p-5 dark:border-stone-800 dark:bg-stone-900">
+        <details class="group rounded-xl border border-zodiac-gold/25 bg-white p-5 shadow-sm shadow-red-900/5 dark:border-zodiac-gold/15 dark:bg-stone-900">
           <summary class="flex cursor-pointer items-center justify-between font-medium text-stone-900 dark:text-stone-100">
             Do I need my exact birth time?
             <svg class="h-5 w-5 shrink-0 text-stone-400 transition-transform group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
@@ -157,7 +168,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
             The Hour Pillar refines your chart significantly. Without it, you still get three pillars (about 75% of the reading). If you don&rsquo;t know your birth hour, select an approximate time or leave it at the default.
           </p>
         </details>
-        <details class="group rounded-xl border border-stone-200 bg-white p-5 dark:border-stone-800 dark:bg-stone-900">
+        <details class="group rounded-xl border border-zodiac-gold/25 bg-white p-5 shadow-sm shadow-red-900/5 dark:border-zodiac-gold/15 dark:bg-stone-900">
           <summary class="flex cursor-pointer items-center justify-between font-medium text-stone-900 dark:text-stone-100">
             Why does the timezone matter?
             <svg class="h-5 w-5 shrink-0 text-stone-400 transition-transform group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
@@ -166,7 +177,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
             BaZi is calculated using local solar time. If you were born in a timezone far from UTC+8 (China standard), adjusting the timezone helps align your birth moment with the correct celestial positions used in traditional calculations.
           </p>
         </details>
-        <details class="group rounded-xl border border-stone-200 bg-white p-5 dark:border-stone-800 dark:bg-stone-900">
+        <details class="group rounded-xl border border-zodiac-gold/25 bg-white p-5 shadow-sm shadow-red-900/5 dark:border-zodiac-gold/15 dark:bg-stone-900">
           <summary class="flex cursor-pointer items-center justify-between font-medium text-stone-900 dark:text-stone-100">
             Can BaZi predict my future?
             <svg class="h-5 w-5 shrink-0 text-stone-400 transition-transform group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
@@ -175,7 +186,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
             BaZi is a tool for self-awareness, not deterministic fortune-telling. It highlights your innate tendencies, strengths, and cycles&mdash;helping you make informed decisions. Your choices and efforts remain the most important factors in shaping your life.
           </p>
         </details>
-        <details class="group rounded-xl border border-stone-200 bg-white p-5 dark:border-stone-800 dark:bg-stone-900">
+        <details class="group rounded-xl border border-zodiac-gold/25 bg-white p-5 shadow-sm shadow-red-900/5 dark:border-zodiac-gold/15 dark:bg-stone-900">
           <summary class="flex cursor-pointer items-center justify-between font-medium text-stone-900 dark:text-stone-100">
             How accurate is this simplified calculator?
             <svg class="h-5 w-5 shrink-0 text-stone-400 transition-transform group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>

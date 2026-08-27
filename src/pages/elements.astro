@@ -12,11 +12,18 @@ const breadcrumbs = [
 ---
 
 <BaseLayout {title} {description} {breadcrumbs} articleSchema={true}>
-  <article class="mx-auto max-w-[1000px] px-4 py-10 lg:px-6 lg:py-16">
+  <article class="relative mx-auto max-w-[1000px] px-4 py-10 lg:px-6 lg:py-16">
+    <div class="pointer-events-none absolute inset-x-0 top-0 h-[3px] bg-gradient-to-r from-transparent via-zodiac-gold/70 to-transparent" aria-hidden="true"></div>
     <!-- Hero -->
     <header class="text-center">
-      <h1 class="text-3xl font-bold tracking-tight text-zodiac-ink md:text-4xl dark:text-stone-100">
-        Chinese Zodiac Elements Calculator
+      <div class="mb-6 flex items-center justify-center gap-3">
+        <span class="h-px w-10 bg-gradient-to-r from-transparent to-zodiac-gold/70"></span>
+        <span class="inline-flex items-center justify-center rounded-[5px] bg-zodiac-red px-2 py-1 text-xs font-bold tracking-widest text-white shadow-md shadow-red-900/20" style="font-family: var(--font-cn)">五行</span>
+        <span class="hidden text-[11px] font-semibold uppercase tracking-[0.35em] text-zodiac-gold sm:inline">Wǔxíng</span>
+        <span class="h-px w-10 bg-gradient-to-l from-transparent to-zodiac-gold/70"></span>
+      </div>
+      <h1 class="font-display text-3xl font-bold tracking-tight text-zodiac-ink md:text-4xl dark:text-stone-100">
+        Chinese Zodiac <span class="bg-gradient-to-r from-zodiac-deep via-zodiac-red to-zodiac-bronze bg-clip-text pb-1 text-transparent">Elements</span> Calculator
       </h1>
       <p class="mt-3 text-lg text-stone-500 dark:text-stone-400">
         Enter your birth year to discover your element
@@ -24,7 +31,7 @@ const breadcrumbs = [
     </header>
 
     <!-- Calculator -->
-    <section class="mx-auto mt-10 max-w-md rounded-2xl border border-stone-200 bg-white p-6 shadow-sm dark:border-stone-700 dark:bg-stone-800">
+    <section class="mx-auto mt-10 max-w-md rounded-2xl border border-zodiac-gold/25 bg-white p-6 shadow-md shadow-red-900/10 dark:border-zodiac-gold/20 dark:bg-stone-800">
       <div class="flex gap-3">
         <input
           id="year-input"
@@ -42,7 +49,7 @@ const breadcrumbs = [
         </button>
       </div>
       <div id="result" class="mt-5 hidden">
-        <div class="rounded-xl border border-stone-200 bg-stone-50 p-5 dark:border-stone-600 dark:bg-stone-700/50">
+        <div class="rounded-xl border border-zodiac-gold/15 bg-zodiac-cream/60 p-5 dark:border-zodiac-gold/10 dark:bg-stone-700/50">
           <div class="flex items-center gap-3">
             <span id="result-badge" class="inline-block rounded-full px-3.5 py-1 text-sm font-semibold text-white"></span>
             <span class="text-xs text-stone-400 dark:text-stone-500">Element</span>
@@ -54,13 +61,13 @@ const breadcrumbs = [
     </section>
 
     <!-- Five Elements -->
-    <section class="mt-16 rounded-2xl bg-stone-50 p-6 pb-10 md:p-10 dark:bg-stone-800/50">
-      <h2 class="text-2xl font-semibold tracking-tight text-zodiac-ink dark:text-stone-100">The Five Elements</h2>
+    <section class="mt-16 rounded-2xl bg-zodiac-cream/70 p-6 pb-10 md:p-10 dark:bg-stone-800/50">
+      <h2 class="font-display text-2xl font-semibold tracking-tight text-zodiac-ink dark:text-stone-100">The Five Elements</h2>
       <p class="mt-1 text-sm text-stone-500 dark:text-stone-400">
         Each element governs specific birth years and brings unique personality traits.
       </p>
       <div class="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-        <div class="rounded-xl border border-stone-200 bg-white p-5 shadow-sm dark:border-stone-700 dark:bg-stone-800">
+        <div class="rounded-xl border border-zodiac-gold/25 bg-white p-5 shadow-sm shadow-red-900/5 dark:border-zodiac-gold/15 dark:bg-stone-800">
           <div class="mb-3 h-2 w-full rounded-full" style="background-color:#5B8C5A"></div>
           <h3 class="text-lg font-semibold text-zodiac-ink dark:text-stone-100">Wood</h3>
           <p class="mt-1 text-xs text-stone-400 dark:text-stone-500">Years: 1954, 1955, 1964, 1965, 1974, 1975, 1984, 1985, 1994, 1995, 2004, 2005, 2014, 2015, 2024, 2025</p>
@@ -71,7 +78,7 @@ const breadcrumbs = [
             <p><strong class="text-zodiac-ink dark:text-stone-200">Overcomes:</strong> Earth</p>
           </div>
         </div>
-        <div class="rounded-xl border border-stone-200 bg-white p-5 shadow-sm dark:border-stone-700 dark:bg-stone-800">
+        <div class="rounded-xl border border-zodiac-gold/25 bg-white p-5 shadow-sm shadow-red-900/5 dark:border-zodiac-gold/15 dark:bg-stone-800">
           <div class="mb-3 h-2 w-full rounded-full" style="background-color:#DC2626"></div>
           <h3 class="text-lg font-semibold text-zodiac-ink dark:text-stone-100">Fire</h3>
           <p class="mt-1 text-xs text-stone-400 dark:text-stone-500">Years: 1956, 1957, 1966, 1967, 1976, 1977, 1986, 1987, 1996, 1997, 2006, 2007, 2016, 2017, 2026, 2027</p>
@@ -82,7 +89,7 @@ const breadcrumbs = [
             <p><strong class="text-zodiac-ink dark:text-stone-200">Overcomes:</strong> Metal</p>
           </div>
         </div>
-        <div class="rounded-xl border border-stone-200 bg-white p-5 shadow-sm dark:border-stone-700 dark:bg-stone-800">
+        <div class="rounded-xl border border-zodiac-gold/25 bg-white p-5 shadow-sm shadow-red-900/5 dark:border-zodiac-gold/15 dark:bg-stone-800">
           <div class="mb-3 h-2 w-full rounded-full" style="background-color:#C4A46C"></div>
           <h3 class="text-lg font-semibold text-zodiac-ink dark:text-stone-100">Earth</h3>
           <p class="mt-1 text-xs text-stone-400 dark:text-stone-500">Years: 1958, 1959, 1968, 1969, 1978, 1979, 1988, 1989, 1998, 1999, 2008, 2009, 2018, 2019, 2028, 2029</p>
@@ -93,7 +100,7 @@ const breadcrumbs = [
             <p><strong class="text-zodiac-ink dark:text-stone-200">Overcomes:</strong> Water</p>
           </div>
         </div>
-        <div class="rounded-xl border border-stone-200 bg-white p-5 shadow-sm dark:border-stone-700 dark:bg-stone-800">
+        <div class="rounded-xl border border-zodiac-gold/25 bg-white p-5 shadow-sm shadow-red-900/5 dark:border-zodiac-gold/15 dark:bg-stone-800">
           <div class="mb-3 h-2 w-full rounded-full" style="background-color:#E8D5B7"></div>
           <h3 class="text-lg font-semibold text-zodiac-ink dark:text-stone-100">Metal</h3>
           <p class="mt-1 text-xs text-stone-400 dark:text-stone-500">Years: 1960, 1961, 1970, 1971, 1980, 1981, 1990, 1991, 2000, 2001, 2010, 2011, 2020, 2021</p>
@@ -104,7 +111,7 @@ const breadcrumbs = [
             <p><strong class="text-zodiac-ink dark:text-stone-200">Overcomes:</strong> Wood</p>
           </div>
         </div>
-        <div class="rounded-xl border border-stone-200 bg-white p-5 shadow-sm dark:border-stone-700 dark:bg-stone-800">
+        <div class="rounded-xl border border-zodiac-gold/25 bg-white p-5 shadow-sm shadow-red-900/5 dark:border-zodiac-gold/15 dark:bg-stone-800">
           <div class="mb-3 h-2 w-full rounded-full" style="background-color:#4A90D9"></div>
           <h3 class="text-lg font-semibold text-zodiac-ink dark:text-stone-100">Water</h3>
           <p class="mt-1 text-xs text-stone-400 dark:text-stone-500">Years: 1952, 1953, 1962, 1963, 1972, 1973, 1982, 1983, 1992, 1993, 2002, 2003, 2012, 2013, 2022, 2023</p>
@@ -124,7 +131,7 @@ const breadcrumbs = [
         The five elements interact through two fundamental cycles.
       </p>
       <div class="mt-8 grid gap-6 md:grid-cols-2">
-        <div class="rounded-xl border border-stone-200 bg-white p-6 shadow-sm dark:border-stone-700 dark:bg-stone-800">
+        <div class="rounded-xl border border-zodiac-gold/25 bg-white p-6 shadow-md shadow-red-900/10 dark:border-zodiac-gold/15 dark:bg-stone-800">
           <h3 class="flex items-center gap-2 text-lg font-semibold text-zodiac-ink dark:text-stone-100">
             <span class="inline-block h-3 w-3 rounded-full bg-green-500"></span>
             Generating Cycle
@@ -149,7 +156,7 @@ const breadcrumbs = [
             Wood fuels Fire &#183; Fire creates ash (Earth) &#183; Earth bears Metal &#183; Metal melts to liquid (Water) &#183; Water nourishes Wood
           </p>
         </div>
-        <div class="rounded-xl border border-stone-200 bg-white p-6 shadow-sm dark:border-stone-700 dark:bg-stone-800">
+        <div class="rounded-xl border border-zodiac-gold/25 bg-white p-6 shadow-md shadow-red-900/10 dark:border-zodiac-gold/15 dark:bg-stone-800">
           <h3 class="flex items-center gap-2 text-lg font-semibold text-zodiac-ink dark:text-stone-100">
             <span class="inline-block h-3 w-3 rounded-full bg-red-500"></span>
             Overcoming Cycle
@@ -181,72 +188,72 @@ const breadcrumbs = [
       <h2 class="text-2xl font-semibold tracking-tight text-zodiac-ink dark:text-stone-100">Frequently Asked Questions</h2>
 
       <div class="mt-8 space-y-4">
-        <details class="group rounded-xl border border-stone-200 bg-white transition open:border-zodiac-red/30 dark:border-stone-700 dark:bg-stone-800 dark:open:border-zodiac-red/40">
+        <details class="group rounded-xl border border-zodiac-gold/25 bg-white transition open:border-zodiac-red/40 dark:border-zodiac-gold/15 dark:bg-stone-800 dark:open:border-zodiac-red/40">
           <summary class="flex cursor-pointer items-center justify-between px-5 py-4 text-sm font-medium text-zodiac-ink dark:text-stone-100 [&::-webkit-details-marker]:hidden">
             What are the five Chinese zodiac elements?
             <svg class="h-4 w-4 shrink-0 text-stone-400 transition group-open:rotate-180" viewBox="0 0 16 16" fill="none"><path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
           </summary>
-          <div class="border-t border-stone-200 px-5 pb-4 pt-3 dark:border-stone-700">
+          <div class="border-t border-zodiac-gold/15 px-5 pb-4 pt-3 dark:border-zodiac-gold/10">
             <p class="text-sm leading-relaxed text-stone-600 dark:text-stone-300">
               The five elements are <strong>Wood, Fire, Earth, Metal, and Water</strong>. They form the foundation of Chinese metaphysics and cycle through a 10-year repeating pattern. Each element is associated with specific birth years and influences personality, relationships, and destiny.
             </p>
           </div>
         </details>
 
-        <details class="group rounded-xl border border-stone-200 bg-white transition open:border-zodiac-red/30 dark:border-stone-700 dark:bg-stone-800 dark:open:border-zodiac-red/40">
+        <details class="group rounded-xl border border-zodiac-gold/25 bg-white transition open:border-zodiac-red/40 dark:border-zodiac-gold/15 dark:bg-stone-800 dark:open:border-zodiac-red/40">
           <summary class="flex cursor-pointer items-center justify-between px-5 py-4 text-sm font-medium text-zodiac-ink dark:text-stone-100 [&::-webkit-details-marker]:hidden">
             How do I calculate my Chinese zodiac element?
             <svg class="h-4 w-4 shrink-0 text-stone-400 transition group-open:rotate-180" viewBox="0 0 16 16" fill="none"><path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
           </summary>
-          <div class="border-t border-stone-200 px-5 pb-4 pt-3 dark:border-stone-700">
+          <div class="border-t border-zodiac-gold/15 px-5 pb-4 pt-3 dark:border-zodiac-gold/10">
             <p class="text-sm leading-relaxed text-stone-600 dark:text-stone-300">
               Your element is determined by the last digit of your birth year. The Heavenly Stem cycle assigns elements in pairs: years ending in 4 or 5 are Wood, 6 or 7 are Fire, 8 or 9 are Earth, 0 or 1 are Metal, and 2 or 3 are Water. Use the calculator above to find yours instantly.
             </p>
           </div>
         </details>
 
-        <details class="group rounded-xl border border-stone-200 bg-white transition open:border-zodiac-red/30 dark:border-stone-700 dark:bg-stone-800 dark:open:border-zodiac-red/40">
+        <details class="group rounded-xl border border-zodiac-gold/25 bg-white transition open:border-zodiac-red/40 dark:border-zodiac-gold/15 dark:bg-stone-800 dark:open:border-zodiac-red/40">
           <summary class="flex cursor-pointer items-center justify-between px-5 py-4 text-sm font-medium text-zodiac-ink dark:text-stone-100 [&::-webkit-details-marker]:hidden">
             What does the Generating Cycle mean?
             <svg class="h-4 w-4 shrink-0 text-stone-400 transition group-open:rotate-180" viewBox="0 0 16 16" fill="none"><path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
           </summary>
-          <div class="border-t border-stone-200 px-5 pb-4 pt-3 dark:border-stone-700">
+          <div class="border-t border-zodiac-gold/15 px-5 pb-4 pt-3 dark:border-zodiac-gold/10">
             <p class="text-sm leading-relaxed text-stone-600 dark:text-stone-300">
               The Generating Cycle (Sheng Cycle) describes how each element nourishes and creates the next one: Wood feeds Fire, Fire creates Earth (ash), Earth bears Metal, Metal carries Water, and Water nourishes Wood. This cycle represents support, growth, and harmonious relationships between elements.
             </p>
           </div>
         </details>
 
-        <details class="group rounded-xl border border-stone-200 bg-white transition open:border-zodiac-red/30 dark:border-stone-700 dark:bg-stone-800 dark:open:border-zodiac-red/40">
+        <details class="group rounded-xl border border-zodiac-gold/25 bg-white transition open:border-zodiac-red/40 dark:border-zodiac-gold/15 dark:bg-stone-800 dark:open:border-zodiac-red/40">
           <summary class="flex cursor-pointer items-center justify-between px-5 py-4 text-sm font-medium text-zodiac-ink dark:text-stone-100 [&::-webkit-details-marker]:hidden">
             What does the Overcoming Cycle mean?
             <svg class="h-4 w-4 shrink-0 text-stone-400 transition group-open:rotate-180" viewBox="0 0 16 16" fill="none"><path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
           </summary>
-          <div class="border-t border-stone-200 px-5 pb-4 pt-3 dark:border-stone-700">
+          <div class="border-t border-zodiac-gold/15 px-5 pb-4 pt-3 dark:border-zodiac-gold/10">
             <p class="text-sm leading-relaxed text-stone-600 dark:text-stone-300">
               The Overcoming Cycle (Ke Cycle) describes how each element controls another: Wood consumes Earth, Earth absorbs Water, Water extinguishes Fire, Fire melts Metal, and Metal chops Wood. This cycle represents checks and balances that maintain harmony in nature and in human relationships.
             </p>
           </div>
         </details>
 
-        <details class="group rounded-xl border border-stone-200 bg-white transition open:border-zodiac-red/30 dark:border-stone-700 dark:bg-stone-800 dark:open:border-zodiac-red/40">
+        <details class="group rounded-xl border border-zodiac-gold/25 bg-white transition open:border-zodiac-red/40 dark:border-zodiac-gold/15 dark:bg-stone-800 dark:open:border-zodiac-red/40">
           <summary class="flex cursor-pointer items-center justify-between px-5 py-4 text-sm font-medium text-zodiac-ink dark:text-stone-100 [&::-webkit-details-marker]:hidden">
             Does my element change with each Chinese New Year?
             <svg class="h-4 w-4 shrink-0 text-stone-400 transition group-open:rotate-180" viewBox="0 0 16 16" fill="none"><path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
           </summary>
-          <div class="border-t border-stone-200 px-5 pb-4 pt-3 dark:border-stone-700">
+          <div class="border-t border-zodiac-gold/15 px-5 pb-4 pt-3 dark:border-zodiac-gold/10">
             <p class="text-sm leading-relaxed text-stone-600 dark:text-stone-300">
               Your birth element is fixed for life. While yearly elements change with the Chinese calendar and may influence your annual fortune, the element assigned to your birth year stays with you permanently and represents your core personality traits.
             </p>
           </div>
         </details>
 
-        <details class="group rounded-xl border border-stone-200 bg-white transition open:border-zodiac-red/30 dark:border-stone-700 dark:bg-stone-800 dark:open:border-zodiac-red/40">
+        <details class="group rounded-xl border border-zodiac-gold/25 bg-white transition open:border-zodiac-red/40 dark:border-zodiac-gold/15 dark:bg-stone-800 dark:open:border-zodiac-red/40">
           <summary class="flex cursor-pointer items-center justify-between px-5 py-4 text-sm font-medium text-zodiac-ink dark:text-stone-100 [&::-webkit-details-marker]:hidden">
             Can two people with conflicting elements get along?
             <svg class="h-4 w-4 shrink-0 text-stone-400 transition group-open:rotate-180" viewBox="0 0 16 16" fill="none"><path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
           </summary>
-          <div class="border-t border-stone-200 px-5 pb-4 pt-3 dark:border-stone-700">
+          <div class="border-t border-zodiac-gold/15 px-5 pb-4 pt-3 dark:border-zodiac-gold/10">
             <p class="text-sm leading-relaxed text-stone-600 dark:text-stone-300">
               Absolutely. While traditional Chinese metaphysics suggests that certain element combinations face more friction, all relationships require understanding and compromise. The Overcoming Cycle actually shows how elements balance each other out &#8212; differences can lead to growth when both parties respect each other&#8217;s strengths.
             </p>

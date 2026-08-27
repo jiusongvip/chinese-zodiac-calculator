@@ -7,26 +7,33 @@ import BaseLayout from "../layouts/BaseLayout.astro";
   description="Have a question about Chinese zodiac signs, compatibility, or our calculator? Get in touch with the Chinese-Zodiac-Calculator.com team and we will respond within 24 hours."
   breadcrumbs={[{ label: "Home", href: "/" }, { label: "Contact", href: "/contact" }]}
 >
-  <section class="mx-auto max-w-[640px] px-4 py-12 lg:px-6 lg:py-16">
+  <section class="relative mx-auto max-w-[640px] px-4 py-12 lg:px-6 lg:py-16">
+    <div class="pointer-events-none absolute inset-x-0 top-0 h-[3px] bg-gradient-to-r from-transparent via-zodiac-gold/70 to-transparent" aria-hidden="true"></div>
     <div class="mb-8 text-center">
-      <h1 class="mb-3 text-3xl font-bold tracking-tight text-stone-900 dark:text-stone-100 sm:text-4xl">Contact <span class="text-[#DC2626]">Us</span></h1>
+      <div class="mb-6 flex items-center justify-center gap-3">
+        <span class="h-px w-10 bg-gradient-to-r from-transparent to-zodiac-gold/70"></span>
+        <span class="inline-flex items-center justify-center rounded-[5px] bg-zodiac-red px-2 py-1 text-xs font-bold tracking-widest text-white shadow-md shadow-red-900/20" style="font-family: var(--font-cn)">联系</span>
+        <span class="hidden text-[11px] font-semibold uppercase tracking-[0.35em] text-zodiac-gold sm:inline">Liánxì</span>
+        <span class="h-px w-10 bg-gradient-to-l from-transparent to-zodiac-gold/70"></span>
+      </div>
+      <h1 class="mb-3 font-display text-3xl font-bold tracking-tight text-zodiac-ink dark:text-stone-100 sm:text-4xl">Contact <span class="bg-gradient-to-r from-zodiac-deep via-zodiac-red to-zodiac-bronze bg-clip-text pb-1 text-transparent">Us</span></h1>
       <p class="text-base text-stone-600 dark:text-stone-400">Have a question, suggestion, or feedback? We&#8217;d love to hear from you. Use the form below and we&#8217;ll get back to you within 24 hours — or email us directly at <a href="mailto:hello@chinese-zodiac-calculator.com" class="font-medium text-zodiac-red underline-offset-2 hover:underline">hello@chinese-zodiac-calculator.com</a>.</p>
     </div>
 
-    <form id="contact-form" class="space-y-5">
+    <form id="contact-form" class="space-y-5 rounded-2xl border border-zodiac-gold/25 bg-white p-6 shadow-md shadow-red-900/10 dark:border-zodiac-gold/15 dark:bg-stone-900 sm:p-8">
       <div>
         <label for="name" class="mb-1 block text-sm font-medium text-stone-700 dark:text-stone-300">Name</label>
-        <input type="text" id="name" name="name" required class="w-full rounded-lg border border-stone-300 bg-white px-4 py-2.5 text-sm text-stone-900 placeholder-stone-400 outline-none transition-colors focus:border-[#DC2626] focus:ring-2 focus:ring-[#DC2626]/20 dark:border-stone-600 dark:bg-stone-800 dark:text-stone-100 dark:placeholder-stone-500" placeholder="Your name" />
+        <input type="text" id="name" name="name" required class="w-full rounded-lg border border-stone-300 bg-white px-4 py-2.5 text-sm text-stone-900 placeholder-stone-400 outline-none transition-colors focus:border-zodiac-red focus:ring-2 focus:ring-zodiac-red/20 dark:border-stone-600 dark:bg-stone-800 dark:text-stone-100 dark:placeholder-stone-500" placeholder="Your name" />
       </div>
       <div>
         <label for="email" class="mb-1 block text-sm font-medium text-stone-700 dark:text-stone-300">Email</label>
-        <input type="email" id="email" name="email" required class="w-full rounded-lg border border-stone-300 bg-white px-4 py-2.5 text-sm text-stone-900 placeholder-stone-400 outline-none transition-colors focus:border-[#DC2626] focus:ring-2 focus:ring-[#DC2626]/20 dark:border-stone-600 dark:bg-stone-800 dark:text-stone-100 dark:placeholder-stone-500" placeholder="you@example.com" />
+        <input type="email" id="email" name="email" required class="w-full rounded-lg border border-stone-300 bg-white px-4 py-2.5 text-sm text-stone-900 placeholder-stone-400 outline-none transition-colors focus:border-zodiac-red focus:ring-2 focus:ring-zodiac-red/20 dark:border-stone-600 dark:bg-stone-800 dark:text-stone-100 dark:placeholder-stone-500" placeholder="you@example.com" />
       </div>
       <div>
         <label for="message" class="mb-1 block text-sm font-medium text-stone-700 dark:text-stone-300">Message</label>
-        <textarea id="message" name="message" rows="5" required class="w-full rounded-lg border border-stone-300 bg-white px-4 py-2.5 text-sm text-stone-900 placeholder-stone-400 outline-none transition-colors focus:border-[#DC2626] focus:ring-2 focus:ring-[#DC2626]/20 dark:border-stone-600 dark:bg-stone-800 dark:text-stone-100 dark:placeholder-stone-500" placeholder="How can we help you?"></textarea>
+        <textarea id="message" name="message" rows="5" required class="w-full rounded-lg border border-stone-300 bg-white px-4 py-2.5 text-sm text-stone-900 placeholder-stone-400 outline-none transition-colors focus:border-zodiac-red focus:ring-2 focus:ring-zodiac-red/20 dark:border-stone-600 dark:bg-stone-800 dark:text-stone-100 dark:placeholder-stone-500" placeholder="How can we help you?"></textarea>
       </div>
-      <button type="submit" class="w-full rounded-lg bg-[#DC2626] px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#B91C1C] focus:outline-none focus:ring-2 focus:ring-[#DC2626]/40">Send Message</button>
+      <button type="submit" class="w-full rounded-lg bg-zodiac-red px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-zodiac-deep focus:outline-none focus:ring-2 focus:ring-zodiac-red/40">Send Message</button>
     </form>
 
     <p class="mt-4 text-center text-xs text-stone-500 dark:text-stone-500">

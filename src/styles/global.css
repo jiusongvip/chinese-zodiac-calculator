@@ -4,15 +4,22 @@
 @import "@fontsource/geist-sans/700.css";
 @import "@fontsource/geist-mono/400.css";
 @import "@fontsource/geist-mono/500.css";
+@import "@fontsource/playfair-display/600.css";
+@import "@fontsource/playfair-display/700.css";
+@import "@fontsource/playfair-display/800.css";
 @import "tailwindcss";
 
 @theme {
   --font-sans: "Geist Sans", "sans-serif";
   --font-mono: "Geist Mono", "monospace";
+  --font-display: "Playfair Display", Georgia, "Times New Roman", serif;
+  --font-cn: "Microsoft YaHei", "PingFang SC", "Noto Sans SC", "Hiragino Sans GB", sans-serif;
   --color-zodiac-red: #DC2626;
   --color-zodiac-gold: #B8860B;
   --color-zodiac-cream: #FDF8F0;
   --color-zodiac-ink: #1A1410;
+  --color-zodiac-deep: #7F1D1D;
+  --color-zodiac-bronze: #A16207;
 }
 
 @custom-variant dark (&:where(.dark, .dark *));
