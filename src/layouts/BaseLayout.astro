@@ -17,7 +17,9 @@ export interface Props {
 }
 
 const { title, description, breadcrumbs, noindex, schema, articleSchema, websiteSchema, faqSchema, webApp, datePublished, dateModified, ogImage } = Astro.props;
-const canonicalUrl = `https://www.chinese-zodiac-calculator.com${Astro.url.pathname}`;
+const canonicalUrl = Astro.url.pathname === "/"
+  ? "https://www.chinese-zodiac-calculator.com"
+  : `https://www.chinese-zodiac-calculator.com${Astro.url.pathname}`;
 const ogImageInput = ogImage || "/og/home.png";
 const ogImageUrl = ogImageInput.startsWith("http") ? ogImageInput : `https://www.chinese-zodiac-calculator.com${ogImageInput}`;
 const year = new Date().getFullYear();
@@ -160,30 +162,30 @@ const articleSchemaObj = articleSchema ? {
           <div class="relative group">
             <button class="text-sm font-medium text-stone-600 transition-colors hover:text-zodiac-red dark:text-stone-400 dark:hover:text-zodiac-red cursor-pointer flex items-center gap-1">Zodiac Signs <svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button>
             <div class="absolute top-full left-0 mt-1 w-48 rounded-lg border border-stone-200 bg-white shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all dark:border-stone-700 dark:bg-stone-900 z-50">
-              <a href="/signs/rat" class="block px-4 py-2 text-sm text-stone-600 hover:bg-red-50 hover:text-zodiac-red dark:text-stone-400 dark:hover:bg-red-900/20 dark:hover:text-zodiac-red rounded-t-lg">Rat</a>
-              <a href="/signs/ox" class="block px-4 py-2 text-sm text-stone-600 hover:bg-red-50 hover:text-zodiac-red dark:text-stone-400 dark:hover:bg-red-900/20 dark:hover:text-zodiac-red">Ox</a>
-              <a href="/signs/tiger" class="block px-4 py-2 text-sm text-stone-600 hover:bg-red-50 hover:text-zodiac-red dark:text-stone-400 dark:hover:bg-red-900/20 dark:hover:text-zodiac-red">Tiger</a>
-              <a href="/signs/rabbit" class="block px-4 py-2 text-sm text-stone-600 hover:bg-red-50 hover:text-zodiac-red dark:text-stone-400 dark:hover:bg-red-900/20 dark:hover:text-zodiac-red">Rabbit</a>
-              <a href="/signs/dragon" class="block px-4 py-2 text-sm text-stone-600 hover:bg-red-50 hover:text-zodiac-red dark:text-stone-400 dark:hover:bg-red-900/20 dark:hover:text-zodiac-red">Dragon</a>
-              <a href="/signs/snake" class="block px-4 py-2 text-sm text-stone-600 hover:bg-red-50 hover:text-zodiac-red dark:text-stone-400 dark:hover:bg-red-900/20 dark:hover:text-zodiac-red">Snake</a>
-              <a href="/signs/horse" class="block px-4 py-2 text-sm text-stone-600 hover:bg-red-50 hover:text-zodiac-red dark:text-stone-400 dark:hover:bg-red-900/20 dark:hover:text-zodiac-red">Horse</a>
-              <a href="/signs/goat" class="block px-4 py-2 text-sm text-stone-600 hover:bg-red-50 hover:text-zodiac-red dark:text-stone-400 dark:hover:bg-red-900/20 dark:hover:text-zodiac-red">Goat</a>
-              <a href="/signs/monkey" class="block px-4 py-2 text-sm text-stone-600 hover:bg-red-50 hover:text-zodiac-red dark:text-stone-400 dark:hover:bg-red-900/20 dark:hover:text-zodiac-red">Monkey</a>
-              <a href="/signs/rooster" class="block px-4 py-2 text-sm text-stone-600 hover:bg-red-50 hover:text-zodiac-red dark:text-stone-400 dark:hover:bg-red-900/20 dark:hover:text-zodiac-red">Rooster</a>
-              <a href="/signs/dog" class="block px-4 py-2 text-sm text-stone-600 hover:bg-red-50 hover:text-zodiac-red dark:text-stone-400 dark:hover:bg-red-900/20 dark:hover:text-zodiac-red">Dog</a>
-              <a href="/signs/pig" class="block px-4 py-2 text-sm text-stone-600 hover:bg-red-50 hover:text-zodiac-red dark:text-stone-400 dark:hover:bg-red-900/20 dark:hover:text-zodiac-red rounded-b-lg">Pig</a>
+              <a href="/signs/rat/" class="block px-4 py-2 text-sm text-stone-600 hover:bg-red-50 hover:text-zodiac-red dark:text-stone-400 dark:hover:bg-red-900/20 dark:hover:text-zodiac-red rounded-t-lg">Rat</a>
+              <a href="/signs/ox/" class="block px-4 py-2 text-sm text-stone-600 hover:bg-red-50 hover:text-zodiac-red dark:text-stone-400 dark:hover:bg-red-900/20 dark:hover:text-zodiac-red">Ox</a>
+              <a href="/signs/tiger/" class="block px-4 py-2 text-sm text-stone-600 hover:bg-red-50 hover:text-zodiac-red dark:text-stone-400 dark:hover:bg-red-900/20 dark:hover:text-zodiac-red">Tiger</a>
+              <a href="/signs/rabbit/" class="block px-4 py-2 text-sm text-stone-600 hover:bg-red-50 hover:text-zodiac-red dark:text-stone-400 dark:hover:bg-red-900/20 dark:hover:text-zodiac-red">Rabbit</a>
+              <a href="/signs/dragon/" class="block px-4 py-2 text-sm text-stone-600 hover:bg-red-50 hover:text-zodiac-red dark:text-stone-400 dark:hover:bg-red-900/20 dark:hover:text-zodiac-red">Dragon</a>
+              <a href="/signs/snake/" class="block px-4 py-2 text-sm text-stone-600 hover:bg-red-50 hover:text-zodiac-red dark:text-stone-400 dark:hover:bg-red-900/20 dark:hover:text-zodiac-red">Snake</a>
+              <a href="/signs/horse/" class="block px-4 py-2 text-sm text-stone-600 hover:bg-red-50 hover:text-zodiac-red dark:text-stone-400 dark:hover:bg-red-900/20 dark:hover:text-zodiac-red">Horse</a>
+              <a href="/signs/goat/" class="block px-4 py-2 text-sm text-stone-600 hover:bg-red-50 hover:text-zodiac-red dark:text-stone-400 dark:hover:bg-red-900/20 dark:hover:text-zodiac-red">Goat</a>
+              <a href="/signs/monkey/" class="block px-4 py-2 text-sm text-stone-600 hover:bg-red-50 hover:text-zodiac-red dark:text-stone-400 dark:hover:bg-red-900/20 dark:hover:text-zodiac-red">Monkey</a>
+              <a href="/signs/rooster/" class="block px-4 py-2 text-sm text-stone-600 hover:bg-red-50 hover:text-zodiac-red dark:text-stone-400 dark:hover:bg-red-900/20 dark:hover:text-zodiac-red">Rooster</a>
+              <a href="/signs/dog/" class="block px-4 py-2 text-sm text-stone-600 hover:bg-red-50 hover:text-zodiac-red dark:text-stone-400 dark:hover:bg-red-900/20 dark:hover:text-zodiac-red">Dog</a>
+              <a href="/signs/pig/" class="block px-4 py-2 text-sm text-stone-600 hover:bg-red-50 hover:text-zodiac-red dark:text-stone-400 dark:hover:bg-red-900/20 dark:hover:text-zodiac-red rounded-b-lg">Pig</a>
             </div>
           </div>
-          <a href="/compatibility" class="text-sm font-medium text-stone-600 transition-colors hover:text-zodiac-red dark:text-stone-400 dark:hover:text-zodiac-red">Compatibility</a>
-          <a href="/elements" class="text-sm font-medium text-stone-600 transition-colors hover:text-zodiac-red dark:text-stone-400 dark:hover:text-zodiac-red">Elements</a>
-          <a href="/yearly-horoscope" class="text-sm font-medium text-stone-600 transition-colors hover:text-zodiac-red dark:text-stone-400 dark:hover:text-zodiac-red">Horoscope</a>
+          <a href="/compatibility/" class="text-sm font-medium text-stone-600 transition-colors hover:text-zodiac-red dark:text-stone-400 dark:hover:text-zodiac-red">Compatibility</a>
+          <a href="/elements/" class="text-sm font-medium text-stone-600 transition-colors hover:text-zodiac-red dark:text-stone-400 dark:hover:text-zodiac-red">Elements</a>
+          <a href="/yearly-horoscope/" class="text-sm font-medium text-stone-600 transition-colors hover:text-zodiac-red dark:text-stone-400 dark:hover:text-zodiac-red">Horoscope</a>
           <div class="relative group">
             <button class="text-sm font-medium text-stone-600 transition-colors hover:text-zodiac-red dark:text-stone-400 dark:hover:text-zodiac-red cursor-pointer flex items-center gap-1">Learn <svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button>
             <div class="absolute top-full left-0 mt-1 w-52 rounded-lg border border-stone-200 bg-white shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all dark:border-stone-700 dark:bg-stone-900 z-50">
-              <a href="/zodiac-origin" class="block px-4 py-2 text-sm text-stone-600 hover:bg-red-50 hover:text-zodiac-red dark:text-stone-400 dark:hover:bg-red-900/20 dark:hover:text-zodiac-red rounded-t-lg">Zodiac Origin</a>
-              <a href="/ben-ming-nian" class="block px-4 py-2 text-sm text-stone-600 hover:bg-red-50 hover:text-zodiac-red dark:text-stone-400 dark:hover:bg-red-900/20 dark:hover:text-zodiac-red">Ben Ming Nian</a>
-              <a href="/tai-sui" class="block px-4 py-2 text-sm text-stone-600 hover:bg-red-50 hover:text-zodiac-red dark:text-stone-400 dark:hover:bg-red-900/20 dark:hover:text-zodiac-red">Tai Sui</a>
-              <a href="/feng-shui-tips" class="block px-4 py-2 text-sm text-stone-600 hover:bg-red-50 hover:text-zodiac-red dark:text-stone-400 dark:hover:bg-red-900/20 dark:hover:text-zodiac-red rounded-b-lg">Feng Shui Tips</a>
+              <a href="/zodiac-origin/" class="block px-4 py-2 text-sm text-stone-600 hover:bg-red-50 hover:text-zodiac-red dark:text-stone-400 dark:hover:bg-red-900/20 dark:hover:text-zodiac-red rounded-t-lg">Zodiac Origin</a>
+              <a href="/ben-ming-nian/" class="block px-4 py-2 text-sm text-stone-600 hover:bg-red-50 hover:text-zodiac-red dark:text-stone-400 dark:hover:bg-red-900/20 dark:hover:text-zodiac-red">Ben Ming Nian</a>
+              <a href="/tai-sui/" class="block px-4 py-2 text-sm text-stone-600 hover:bg-red-50 hover:text-zodiac-red dark:text-stone-400 dark:hover:bg-red-900/20 dark:hover:text-zodiac-red">Tai Sui</a>
+              <a href="/feng-shui-tips/" class="block px-4 py-2 text-sm text-stone-600 hover:bg-red-50 hover:text-zodiac-red dark:text-stone-400 dark:hover:bg-red-900/20 dark:hover:text-zodiac-red rounded-b-lg">Feng Shui Tips</a>
             </div>
           </div>
         </div>
@@ -194,29 +196,29 @@ const articleSchemaObj = articleSchema ? {
         <div class="py-2 border-b border-stone-100 dark:border-stone-800">
           <span class="text-xs font-semibold uppercase tracking-widest text-stone-400">Zodiac Signs</span>
           <div class="mt-1 grid grid-cols-2 gap-1">
-            <a href="/signs/rat" class="block py-1.5 text-sm text-stone-600 dark:text-stone-400">Rat</a>
-            <a href="/signs/ox" class="block py-1.5 text-sm text-stone-600 dark:text-stone-400">Ox</a>
-            <a href="/signs/tiger" class="block py-1.5 text-sm text-stone-600 dark:text-stone-400">Tiger</a>
-            <a href="/signs/rabbit" class="block py-1.5 text-sm text-stone-600 dark:text-stone-400">Rabbit</a>
-            <a href="/signs/dragon" class="block py-1.5 text-sm text-stone-600 dark:text-stone-400">Dragon</a>
-            <a href="/signs/snake" class="block py-1.5 text-sm text-stone-600 dark:text-stone-400">Snake</a>
-            <a href="/signs/horse" class="block py-1.5 text-sm text-stone-600 dark:text-stone-400">Horse</a>
-            <a href="/signs/goat" class="block py-1.5 text-sm text-stone-600 dark:text-stone-400">Goat</a>
-            <a href="/signs/monkey" class="block py-1.5 text-sm text-stone-600 dark:text-stone-400">Monkey</a>
-            <a href="/signs/rooster" class="block py-1.5 text-sm text-stone-600 dark:text-stone-400">Rooster</a>
-            <a href="/signs/dog" class="block py-1.5 text-sm text-stone-600 dark:text-stone-400">Dog</a>
-            <a href="/signs/pig" class="block py-1.5 text-sm text-stone-600 dark:text-stone-400">Pig</a>
+            <a href="/signs/rat/" class="block py-1.5 text-sm text-stone-600 dark:text-stone-400">Rat</a>
+            <a href="/signs/ox/" class="block py-1.5 text-sm text-stone-600 dark:text-stone-400">Ox</a>
+            <a href="/signs/tiger/" class="block py-1.5 text-sm text-stone-600 dark:text-stone-400">Tiger</a>
+            <a href="/signs/rabbit/" class="block py-1.5 text-sm text-stone-600 dark:text-stone-400">Rabbit</a>
+            <a href="/signs/dragon/" class="block py-1.5 text-sm text-stone-600 dark:text-stone-400">Dragon</a>
+            <a href="/signs/snake/" class="block py-1.5 text-sm text-stone-600 dark:text-stone-400">Snake</a>
+            <a href="/signs/horse/" class="block py-1.5 text-sm text-stone-600 dark:text-stone-400">Horse</a>
+            <a href="/signs/goat/" class="block py-1.5 text-sm text-stone-600 dark:text-stone-400">Goat</a>
+            <a href="/signs/monkey/" class="block py-1.5 text-sm text-stone-600 dark:text-stone-400">Monkey</a>
+            <a href="/signs/rooster/" class="block py-1.5 text-sm text-stone-600 dark:text-stone-400">Rooster</a>
+            <a href="/signs/dog/" class="block py-1.5 text-sm text-stone-600 dark:text-stone-400">Dog</a>
+            <a href="/signs/pig/" class="block py-1.5 text-sm text-stone-600 dark:text-stone-400">Pig</a>
           </div>
         </div>
-        <a href="/compatibility" class="block py-2 text-sm text-stone-600 dark:text-stone-400">Compatibility</a>
-        <a href="/elements" class="block py-2 text-sm text-stone-600 dark:text-stone-400">Elements</a>
-        <a href="/year-chart" class="block py-2 text-sm text-stone-600 dark:text-stone-400">Year Chart</a>
-        <a href="/yearly-horoscope" class="block py-2 text-sm text-stone-600 dark:text-stone-400">Horoscope</a>
-        <a href="/feng-shui-tips" class="block py-2 text-sm text-stone-600 dark:text-stone-400">Feng Shui</a>
-        <a href="/zodiac-origin" class="block py-2 text-sm text-stone-600 dark:text-stone-400">Zodiac Origin</a>
-        <a href="/ben-ming-nian" class="block py-2 text-sm text-stone-600 dark:text-stone-400">Ben Ming Nian</a>
-        <a href="/tai-sui" class="block py-2 text-sm text-stone-600 dark:text-stone-400">Tai Sui</a>
-        <a href="/about" class="block py-2 text-sm text-stone-600 dark:text-stone-400">About</a>
+        <a href="/compatibility/" class="block py-2 text-sm text-stone-600 dark:text-stone-400">Compatibility</a>
+        <a href="/elements/" class="block py-2 text-sm text-stone-600 dark:text-stone-400">Elements</a>
+        <a href="/year-chart/" class="block py-2 text-sm text-stone-600 dark:text-stone-400">Year Chart</a>
+        <a href="/yearly-horoscope/" class="block py-2 text-sm text-stone-600 dark:text-stone-400">Horoscope</a>
+        <a href="/feng-shui-tips/" class="block py-2 text-sm text-stone-600 dark:text-stone-400">Feng Shui</a>
+        <a href="/zodiac-origin/" class="block py-2 text-sm text-stone-600 dark:text-stone-400">Zodiac Origin</a>
+        <a href="/ben-ming-nian/" class="block py-2 text-sm text-stone-600 dark:text-stone-400">Ben Ming Nian</a>
+        <a href="/tai-sui/" class="block py-2 text-sm text-stone-600 dark:text-stone-400">Tai Sui</a>
+        <a href="/about/" class="block py-2 text-sm text-stone-600 dark:text-stone-400">About</a>
       </div>
     </nav>
     <script is:inline>
@@ -261,40 +263,40 @@ const articleSchemaObj = articleSchema ? {
             <h4 class="mb-3 text-xs font-semibold uppercase tracking-widest text-stone-500 dark:text-stone-400">Tools</h4>
             <ul class="space-y-2">
               <li><a href="/" class="text-sm text-stone-600 transition-colors hover:text-zodiac-red dark:text-stone-400 dark:hover:text-zodiac-red">Zodiac Calculator</a></li>
-              <li><a href="/compatibility" class="text-sm text-stone-600 transition-colors hover:text-zodiac-red dark:text-stone-400 dark:hover:text-zodiac-red">Compatibility</a></li>
-              <li><a href="/elements" class="text-sm text-stone-600 transition-colors hover:text-zodiac-red dark:text-stone-400 dark:hover:text-zodiac-red">Elements</a></li>
-              <li><a href="/year-chart" class="text-sm text-stone-600 transition-colors hover:text-zodiac-red dark:text-stone-400 dark:hover:text-zodiac-red">Year Chart</a></li>
-              <li><a href="/bazi-calculator" class="text-sm text-stone-600 transition-colors hover:text-zodiac-red dark:text-stone-400 dark:hover:text-zodiac-red">BaZi Calculator</a></li>
+              <li><a href="/compatibility/" class="text-sm text-stone-600 transition-colors hover:text-zodiac-red dark:text-stone-400 dark:hover:text-zodiac-red">Compatibility</a></li>
+              <li><a href="/elements/" class="text-sm text-stone-600 transition-colors hover:text-zodiac-red dark:text-stone-400 dark:hover:text-zodiac-red">Elements</a></li>
+              <li><a href="/year-chart/" class="text-sm text-stone-600 transition-colors hover:text-zodiac-red dark:text-stone-400 dark:hover:text-zodiac-red">Year Chart</a></li>
+              <li><a href="/bazi-calculator/" class="text-sm text-stone-600 transition-colors hover:text-zodiac-red dark:text-stone-400 dark:hover:text-zodiac-red">BaZi Calculator</a></li>
             </ul>
           </div>
           <div>
             <h4 class="mb-3 text-xs font-semibold uppercase tracking-widest text-stone-500 dark:text-stone-400">Zodiac Signs</h4>
             <ul class="space-y-2">
-              <li><a href="/signs/rat" class="text-sm text-stone-600 transition-colors hover:text-zodiac-red dark:text-stone-400 dark:hover:text-zodiac-red">Rat</a></li>
-              <li><a href="/signs/ox" class="text-sm text-stone-600 transition-colors hover:text-zodiac-red dark:text-stone-400 dark:hover:text-zodiac-red">Ox</a></li>
-              <li><a href="/signs/tiger" class="text-sm text-stone-600 transition-colors hover:text-zodiac-red dark:text-stone-400 dark:hover:text-zodiac-red">Tiger</a></li>
-              <li><a href="/signs/rabbit" class="text-sm text-stone-600 transition-colors hover:text-zodiac-red dark:text-stone-400 dark:hover:text-zodiac-red">Rabbit</a></li>
-              <li><a href="/signs/dragon" class="text-sm text-stone-600 transition-colors hover:text-zodiac-red dark:text-stone-400 dark:hover:text-zodiac-red">Dragon</a></li>
-              <li><a href="/signs/snake" class="text-sm text-stone-600 transition-colors hover:text-zodiac-red dark:text-stone-400 dark:hover:text-zodiac-red">Snake</a></li>
-              <li><a href="/signs/horse" class="text-sm text-stone-600 transition-colors hover:text-zodiac-red dark:text-stone-400 dark:hover:text-zodiac-red">Horse</a></li>
-              <li><a href="/signs/goat" class="text-sm text-stone-600 transition-colors hover:text-zodiac-red dark:text-stone-400 dark:hover:text-zodiac-red">Goat</a></li>
-              <li><a href="/signs/monkey" class="text-sm text-stone-600 transition-colors hover:text-zodiac-red dark:text-stone-400 dark:hover:text-zodiac-red">Monkey</a></li>
-              <li><a href="/signs/rooster" class="text-sm text-stone-600 transition-colors hover:text-zodiac-red dark:text-stone-400 dark:hover:text-zodiac-red">Rooster</a></li>
-              <li><a href="/signs/dog" class="text-sm text-stone-600 transition-colors hover:text-zodiac-red dark:text-stone-400 dark:hover:text-zodiac-red">Dog</a></li>
-              <li><a href="/signs/pig" class="text-sm text-stone-600 transition-colors hover:text-zodiac-red dark:text-stone-400 dark:hover:text-zodiac-red">Pig</a></li>
+              <li><a href="/signs/rat/" class="text-sm text-stone-600 transition-colors hover:text-zodiac-red dark:text-stone-400 dark:hover:text-zodiac-red">Rat</a></li>
+              <li><a href="/signs/ox/" class="text-sm text-stone-600 transition-colors hover:text-zodiac-red dark:text-stone-400 dark:hover:text-zodiac-red">Ox</a></li>
+              <li><a href="/signs/tiger/" class="text-sm text-stone-600 transition-colors hover:text-zodiac-red dark:text-stone-400 dark:hover:text-zodiac-red">Tiger</a></li>
+              <li><a href="/signs/rabbit/" class="text-sm text-stone-600 transition-colors hover:text-zodiac-red dark:text-stone-400 dark:hover:text-zodiac-red">Rabbit</a></li>
+              <li><a href="/signs/dragon/" class="text-sm text-stone-600 transition-colors hover:text-zodiac-red dark:text-stone-400 dark:hover:text-zodiac-red">Dragon</a></li>
+              <li><a href="/signs/snake/" class="text-sm text-stone-600 transition-colors hover:text-zodiac-red dark:text-stone-400 dark:hover:text-zodiac-red">Snake</a></li>
+              <li><a href="/signs/horse/" class="text-sm text-stone-600 transition-colors hover:text-zodiac-red dark:text-stone-400 dark:hover:text-zodiac-red">Horse</a></li>
+              <li><a href="/signs/goat/" class="text-sm text-stone-600 transition-colors hover:text-zodiac-red dark:text-stone-400 dark:hover:text-zodiac-red">Goat</a></li>
+              <li><a href="/signs/monkey/" class="text-sm text-stone-600 transition-colors hover:text-zodiac-red dark:text-stone-400 dark:hover:text-zodiac-red">Monkey</a></li>
+              <li><a href="/signs/rooster/" class="text-sm text-stone-600 transition-colors hover:text-zodiac-red dark:text-stone-400 dark:hover:text-zodiac-red">Rooster</a></li>
+              <li><a href="/signs/dog/" class="text-sm text-stone-600 transition-colors hover:text-zodiac-red dark:text-stone-400 dark:hover:text-zodiac-red">Dog</a></li>
+              <li><a href="/signs/pig/" class="text-sm text-stone-600 transition-colors hover:text-zodiac-red dark:text-stone-400 dark:hover:text-zodiac-red">Pig</a></li>
             </ul>
           </div>
           <div>
             <h4 class="mb-3 text-xs font-semibold uppercase tracking-widest text-stone-500 dark:text-stone-400">More</h4>
             <ul class="space-y-2">
-              <li><a href="/yearly-horoscope" class="text-sm text-stone-600 transition-colors hover:text-zodiac-red dark:text-stone-400 dark:hover:text-zodiac-red">Yearly Horoscope</a></li>
-              <li><a href="/feng-shui-tips" class="text-sm text-stone-600 transition-colors hover:text-zodiac-red dark:text-stone-400 dark:hover:text-zodiac-red">Feng Shui Tips</a></li>
-              <li><a href="/zodiac-origin" class="text-sm text-stone-600 transition-colors hover:text-zodiac-red dark:text-stone-400 dark:hover:text-zodiac-red">Zodiac Origin</a></li>
-              <li><a href="/ben-ming-nian" class="text-sm text-stone-600 transition-colors hover:text-zodiac-red dark:text-stone-400 dark:hover:text-zodiac-red">Ben Ming Nian</a></li>
-              <li><a href="/tai-sui" class="text-sm text-stone-600 transition-colors hover:text-zodiac-red dark:text-stone-400 dark:hover:text-zodiac-red">Tai Sui</a></li>
-              <li><a href="/about" class="text-sm text-stone-600 transition-colors hover:text-zodiac-red dark:text-stone-400 dark:hover:text-zodiac-red">About</a></li>
-              <li><a href="/contact" class="text-sm text-stone-600 transition-colors hover:text-zodiac-red dark:text-stone-400 dark:hover:text-zodiac-red">Contact</a></li>
-              <li><a href="/privacy-policy" class="text-sm text-stone-600 transition-colors hover:text-zodiac-red dark:text-stone-400 dark:hover:text-zodiac-red">Privacy</a></li>
+              <li><a href="/yearly-horoscope/" class="text-sm text-stone-600 transition-colors hover:text-zodiac-red dark:text-stone-400 dark:hover:text-zodiac-red">Yearly Horoscope</a></li>
+              <li><a href="/feng-shui-tips/" class="text-sm text-stone-600 transition-colors hover:text-zodiac-red dark:text-stone-400 dark:hover:text-zodiac-red">Feng Shui Tips</a></li>
+              <li><a href="/zodiac-origin/" class="text-sm text-stone-600 transition-colors hover:text-zodiac-red dark:text-stone-400 dark:hover:text-zodiac-red">Zodiac Origin</a></li>
+              <li><a href="/ben-ming-nian/" class="text-sm text-stone-600 transition-colors hover:text-zodiac-red dark:text-stone-400 dark:hover:text-zodiac-red">Ben Ming Nian</a></li>
+              <li><a href="/tai-sui/" class="text-sm text-stone-600 transition-colors hover:text-zodiac-red dark:text-stone-400 dark:hover:text-zodiac-red">Tai Sui</a></li>
+              <li><a href="/about/" class="text-sm text-stone-600 transition-colors hover:text-zodiac-red dark:text-stone-400 dark:hover:text-zodiac-red">About</a></li>
+              <li><a href="/contact/" class="text-sm text-stone-600 transition-colors hover:text-zodiac-red dark:text-stone-400 dark:hover:text-zodiac-red">Contact</a></li>
+              <li><a href="/privacy-policy/" class="text-sm text-stone-600 transition-colors hover:text-zodiac-red dark:text-stone-400 dark:hover:text-zodiac-red">Privacy</a></li>
             </ul>
           </div>
         </div>

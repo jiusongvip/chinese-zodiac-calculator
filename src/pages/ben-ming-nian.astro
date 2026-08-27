@@ -29,7 +29,7 @@ const faqs = [
   { q: "Is Ben Ming Nian really unlucky?", a: "Traditional belief says the year brings more ups and downs than usual — greater highs but also greater lows, plus more interference from Tai Sui (the Grand Duke of the year). Modern interpretations add that the \"self-referencing\" energy of your own sign can amplify existing personality traits. The practical view: Ben Ming Nian is not doomed, but it rewards extra care with finances, health, and major decisions." },
   { q: "When does Ben Ming Nian start and end?", a: "Ben Ming Nian follows the lunar calendar, not the Gregorian one. It begins on Chinese New Year's Eve — traditionally the most important moment for putting on red clothing — and runs until the next Chinese New Year's Eve. For 2026 Horse-year people, the period runs from February 16, 2026 (eve) through February 5, 2027." },
   { q: "Why do people wear red during Ben Ming Nian?", a: "In Chinese culture, red symbolizes fire, vitality, and the ability to repel evil spirits (a demon named Nian was said to fear the color red). During a zodiac year when your sign's energy is unsettled, red items — belts, socks, underwear, and strings — act as a visible and personal shield, keeping misfortune away and protecting your health and fortune." },
-  { q: "How is Ben Ming Nian related to Tai Sui?", a: "Ben Ming Nian is the most common form of offending Tai Sui (犯太岁): when your sign is the same as the year's sign, you are said to \"stand in front of\" (值) the Grand Duke. The other forms are clashing (冲), harming (害), and breaking (破) the year's energy. See our <a href=\"/tai-sui\" class=\"font-medium text-zodiac-red underline-offset-2 hover:underline\">Tai Sui guide</a> to check which form applies to your sign in 2026." },
+  { q: "How is Ben Ming Nian related to Tai Sui?", a: "Ben Ming Nian is the most common form of offending Tai Sui (犯太岁): when your sign is the same as the year's sign, you are said to \"stand in front of\" (值) the Grand Duke. The other forms are clashing (冲), harming (害), and breaking (破) the year's energy. See our <a href=\"/tai-sui/\" class=\"font-medium text-zodiac-red underline-offset-2 hover:underline\">Tai Sui guide</a> to check which form applies to your sign in 2026." },
   { q: "What should I avoid in my Ben Ming Nian?", a: "Traditional advice for the year: avoid impulsive investments and gambling, postpone unnecessary surgery if possible, drive carefully (travel safety is a recurring theme), avoid major conflicts with authority figures, and keep your health checkups regular. None of these are prohibitions — they are reminders that the year rewards caution and planning." },
 ];
 
@@ -42,7 +42,7 @@ const zodiacEntries = ZODIAC_ANIMALS.map((a) => {
 <BaseLayout
   title="Ben Ming Nian (本命年) — Your Zodiac Year of Birth: Meaning, Traditions & Advice"
   description="What is Ben Ming Nian (本命年)? Learn the meaning of your zodiac year of birth, when it starts, why people wear red, and practical advice for navigating the year."
-  breadcrumbs={[{ label: "Home", href: "/" }, { label: "Ben Ming Nian", href: "/ben-ming-nian" }]}
+  breadcrumbs={[{ label: "Home", href: "/" }, { label: "Ben Ming Nian", href: "/ben-ming-nian/" }]}
   articleSchema={true}
   faqSchema={faqs}
   dateModified="2026-08-19"
@@ -97,7 +97,7 @@ const zodiacEntries = ZODIAC_ANIMALS.map((a) => {
     <section class="mt-12">
       <h2 class="text-2xl font-semibold tracking-tight text-zodiac-ink dark:text-stone-100">Your Ben Ming Nian Years &amp; What to Expect</h2>
       <p class="mt-2 text-sm text-stone-500 dark:text-stone-400">
-        Find your sign below, or jump straight to your <a href="/signs/rat" class="font-medium text-zodiac-red underline-offset-2 hover:underline">sign profile</a> for the full picture.
+        Find your sign below, or jump straight to your <a href="/signs/rat/" class="font-medium text-zodiac-red underline-offset-2 hover:underline">sign profile</a> for the full picture.
       </p>
       <div class="mt-6 space-y-4">
         {zodiacEntries.map((entry) => (
@@ -108,7 +108,7 @@ const zodiacEntries = ZODIAC_ANIMALS.map((a) => {
             </div>
             <p class="mt-3 text-sm leading-relaxed text-stone-600 dark:text-stone-300">{benMingNianDescriptions[entry.id]}</p>
             <p class="mt-3 text-xs text-stone-400 dark:text-stone-500">
-              All Ben Ming Nian years: {entry.years.join(", ")} · <a href={`/signs/${entry.id}`} class="font-medium text-zodiac-red underline-offset-2 hover:underline">Full {entry.id} profile &rarr;</a>
+              All Ben Ming Nian years: {entry.years.join(", ")} · <a href={`/signs/${entry.id}/`} class="font-medium text-zodiac-red underline-offset-2 hover:underline">Full {entry.id} profile &rarr;</a>
             </p>
           </div>
         ))}
@@ -161,15 +161,15 @@ const zodiacEntries = ZODIAC_ANIMALS.map((a) => {
     <section class="mt-12">
       <h2 class="text-2xl font-semibold tracking-tight text-zodiac-ink dark:text-stone-100">Dive Deeper</h2>
       <div class="mt-4 grid gap-4 sm:grid-cols-3">
-        <a href="/tai-sui" class="group rounded-xl border border-zodiac-gold/25 bg-white p-5 shadow-sm transition-all hover:-translate-y-0.5 hover:border-zodiac-red/40 hover:shadow-md dark:border-zodiac-gold/15 dark:bg-stone-800">
+        <a href="/tai-sui/" class="group rounded-xl border border-zodiac-gold/25 bg-white p-5 shadow-sm transition-all hover:-translate-y-0.5 hover:border-zodiac-red/40 hover:shadow-md dark:border-zodiac-gold/15 dark:bg-stone-800">
           <h3 class="text-sm font-semibold text-zodiac-ink transition-colors group-hover:text-zodiac-red dark:text-stone-100">Tai Sui Guide</h3>
           <p class="mt-2 text-xs leading-relaxed text-stone-500 dark:text-stone-400">Which signs offend the Grand Duke in 2026, and how to reconcile with him.</p>
         </a>
-        <a href="/yearly-horoscope" class="group rounded-xl border border-zodiac-gold/25 bg-white p-5 shadow-sm transition-all hover:-translate-y-0.5 hover:border-zodiac-red/40 hover:shadow-md dark:border-zodiac-gold/15 dark:bg-stone-800">
+        <a href="/yearly-horoscope/" class="group rounded-xl border border-zodiac-gold/25 bg-white p-5 shadow-sm transition-all hover:-translate-y-0.5 hover:border-zodiac-red/40 hover:shadow-md dark:border-zodiac-gold/15 dark:bg-stone-800">
           <h3 class="text-sm font-semibold text-zodiac-ink transition-colors group-hover:text-zodiac-red dark:text-stone-100">2026 Horoscopes</h3>
           <p class="mt-2 text-xs leading-relaxed text-stone-500 dark:text-stone-400">Annual predictions for all 12 signs in the Fire Horse year.</p>
         </a>
-        <a href="/year-chart" class="group rounded-xl border border-zodiac-gold/25 bg-white p-5 shadow-sm transition-all hover:-translate-y-0.5 hover:border-zodiac-red/40 hover:shadow-md dark:border-zodiac-gold/15 dark:bg-stone-800">
+        <a href="/year-chart/" class="group rounded-xl border border-zodiac-gold/25 bg-white p-5 shadow-sm transition-all hover:-translate-y-0.5 hover:border-zodiac-red/40 hover:shadow-md dark:border-zodiac-gold/15 dark:bg-stone-800">
           <h3 class="text-sm font-semibold text-zodiac-ink transition-colors group-hover:text-zodiac-red dark:text-stone-100">Year Chart</h3>
           <p class="mt-2 text-xs leading-relaxed text-stone-500 dark:text-stone-400">Every zodiac year from 1900 to 2043 with exact lunar ranges.</p>
         </a>

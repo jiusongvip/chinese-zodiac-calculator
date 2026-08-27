@@ -24,7 +24,7 @@ const faqs = [
 <BaseLayout
   title="2026 Chinese Zodiac Horoscope Guide"
   description="Read your 2026 Chinese zodiac horoscope with free annual predictions for all 12 signs covering career, love, health, and wealth. Plan your year ahead."
-  breadcrumbs={[{ label: "Home", href: "/" }, { label: "Horoscope", href: "/yearly-horoscope" }]}
+  breadcrumbs={[{ label: "Home", href: "/" }, { label: "Horoscope", href: "/yearly-horoscope/" }]}
   articleSchema={true}
   faqSchema={faqs}
   dateModified="2026-08-19"
@@ -61,7 +61,7 @@ const faqs = [
                 </div>
               ))}
             </dl>
-            <a href={`/signs/${animal.id}`} class="mt-auto inline-flex items-center gap-1 text-sm font-medium text-zodiac-red hover:underline">Read full profile &rarr;</a>
+            <a href={`/signs/${animal.id}/`} class="mt-auto inline-flex items-center gap-1 text-sm font-medium text-zodiac-red hover:underline">Read full profile &rarr;</a>
           </article>
         );
       })}

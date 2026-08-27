@@ -17,14 +17,14 @@ const faqs = [
   { q: "Which signs are most compatible?", a: "The most compatible pairings are signs that are four years apart in the zodiac cycle. These are called the \"secret friends\" or \"best match\" pairs. The classic best matches include Rat with Dragon and Monkey, Ox with Snake and Rooster, and Tiger with Horse and Dog. These pairs share complementary traits and balanced elemental energies that create natural harmony. The full matrix above shows how every sign relates to every other sign." },
   { q: "Can incompatible signs have a good relationship?", a: "Absolutely. Chinese zodiac compatibility is a guide, not a rule. Every relationship is unique and shaped by individual personalities, life experiences, and mutual effort. Signs that are considered \"challenging\" can build deeply rewarding relationships by understanding their differences and working through them. In fact, some of the strongest partnerships are formed between signs that push each other to grow. Use compatibility as a tool for self-awareness, not a limitation." },
   { q: "What is the difference between best, neutral, and challenging matches?", a: "Best matches (also called secret friends) are signs that naturally harmonize — usually four years apart in the cycle — and share complementary traits. Neutral matches have no strong conflicts but need conscious effort to deepen understanding. Challenging matches face natural friction from clashing personalities or clashing elements, but can still succeed with patience, communication, and compromise." },
-  { q: "Which signs clash in the 2026 Fire Horse year?", a: "In 2026, the Horse year creates friction with three signs: Rat (opposition, zi-wu clash), Ox (harm, chou-wu), and Rabbit (breakage, mao-wu). People born under these signs traditionally take extra care with major decisions during 2026 — see our <a href=\"/tai-sui\" class=\"font-medium text-zodiac-red underline-offset-2 hover:underline\">Tai Sui guide</a> for details and remedies." },
+  { q: "Which signs clash in the 2026 Fire Horse year?", a: "In 2026, the Horse year creates friction with three signs: Rat (opposition, zi-wu clash), Ox (harm, chou-wu), and Rabbit (breakage, mao-wu). People born under these signs traditionally take extra care with major decisions during 2026 — see our <a href=\"/tai-sui/\" class=\"font-medium text-zodiac-red underline-offset-2 hover:underline\">Tai Sui guide</a> for details and remedies." },
 ];
 ---
 
 <BaseLayout
   title="Chinese Zodiac Compatibility Guide"
   description="Check the compatibility between any two Chinese zodiac signs. Discover the best love matches, clashing pairs, and relationship tips from our guide."
-  breadcrumbs={[{label:"Home",href:"/"},{label:"Compatibility",href:"/compatibility"}]}
+  breadcrumbs={[{label:"Home",href:"/"},{label:"Compatibility",href:"/compatibility/"}]}
   articleSchema={true}
   faqSchema={faqs}
   dateModified="2026-08-19"
@@ -170,7 +170,7 @@ const faqs = [
                 <ul class="space-y-3">
                   {s.bestPairs.map((p) => (
                     <li class="text-sm leading-relaxed text-stone-600 dark:text-stone-400">
-                      <a href={`/signs/${p.partner}`} class="font-semibold capitalize text-zodiac-ink no-underline transition-colors hover:text-zodiac-red dark:text-stone-200 dark:hover:text-zodiac-red">{s.id} + {p.partner}</a> — {p.text}
+                      <a href={`/signs/${p.partner}/`} class="font-semibold capitalize text-zodiac-ink no-underline transition-colors hover:text-zodiac-red dark:text-stone-200 dark:hover:text-zodiac-red">{s.id} + {p.partner}</a> — {p.text}
                     </li>
                   ))}
                 </ul>
@@ -180,7 +180,7 @@ const faqs = [
                 <ul class="space-y-3">
                   {s.worstPairs.map((p) => (
                     <li class="text-sm leading-relaxed text-stone-600 dark:text-stone-400">
-                      <a href={`/signs/${p.partner}`} class="font-semibold capitalize text-zodiac-ink no-underline transition-colors hover:text-zodiac-red dark:text-stone-200 dark:hover:text-zodiac-red">{s.id} + {p.partner}</a> — {p.text}
+                      <a href={`/signs/${p.partner}/`} class="font-semibold capitalize text-zodiac-ink no-underline transition-colors hover:text-zodiac-red dark:text-stone-200 dark:hover:text-zodiac-red">{s.id} + {p.partner}</a> — {p.text}
                     </li>
                   ))}
                 </ul>

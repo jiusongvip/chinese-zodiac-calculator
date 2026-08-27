@@ -44,7 +44,7 @@ const historyPoints = [
 <BaseLayout
   title="The Origin & Story of the Chinese Zodiac — The Great Race, History & 12 Animals"
   description="Where does the Chinese zodiac come from? Discover the Great Race legend, why the Rat came first, why the Cat is missing, and the real history from ancient bamboo slips."
-  breadcrumbs={[{ label: "Home", href: "/" }, { label: "Zodiac Origin", href: "/zodiac-origin" }]}
+  breadcrumbs={[{ label: "Home", href: "/" }, { label: "Zodiac Origin", href: "/zodiac-origin/" }]}
   articleSchema={true}
   faqSchema={faqs}
   dateModified="2026-08-19"
@@ -113,7 +113,7 @@ const historyPoints = [
                 <tr class="border-b border-zodiac-gold/15 last:border-b-0 transition-colors hover:bg-zodiac-cream/60 dark:border-zodiac-gold/10 dark:hover:bg-stone-800/50">
                   <td class="px-4 py-3 font-medium text-zodiac-red">{i + 1}</td>
                   <td class="px-4 py-3 capitalize">
-                    <a href={`/signs/${animal.id}`} class="font-medium text-zodiac-ink no-underline transition-colors hover:text-zodiac-red dark:text-stone-200 dark:hover:text-zodiac-red">{animal.chinese} {e.animal}</a>
+                    <a href={`/signs/${animal.id}/`} class="font-medium text-zodiac-ink no-underline transition-colors hover:text-zodiac-red dark:text-stone-200 dark:hover:text-zodiac-red">{animal.chinese} {e.animal}</a>
                   </td>
                   <td class="px-4 py-3 text-stone-600 dark:text-stone-400">{e.branch}</td>
                   <td class="px-4 py-3 text-stone-500 dark:text-stone-400">{animal.id === "rat" ? "2020, 2032" : animal.id === "ox" ? "2021, 2033" : animal.id === "tiger" ? "2022, 2034" : animal.id === "rabbit" ? "2023, 2035" : animal.id === "dragon" ? "2024, 2036" : animal.id === "snake" ? "2025, 2037" : animal.id === "horse" ? "2026, 2038" : animal.id === "goat" ? "2027, 2039" : animal.id === "monkey" ? "2028, 2040" : animal.id === "rooster" ? "2029, 2041" : animal.id === "dog" ? "2030, 2042" : "2031, 2043"}</td>
@@ -178,7 +178,7 @@ const historyPoints = [
       <h2 class="text-2xl font-semibold tracking-tight text-zodiac-ink dark:text-stone-100">Explore Each Animal's Profile</h2>
       <div class="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
         {ZODIAC_ANIMALS.map((a) => (
-          <a href={`/signs/${a.id}`} class="group flex items-center gap-3 rounded-xl border border-zodiac-gold/25 bg-white px-4 py-3 shadow-sm transition-all hover:-translate-y-0.5 hover:border-zodiac-red/40 hover:shadow-md dark:border-zodiac-gold/15 dark:bg-stone-900">
+          <a href={`/signs/${a.id}/`} class="group flex items-center gap-3 rounded-xl border border-zodiac-gold/25 bg-white px-4 py-3 shadow-sm transition-all hover:-translate-y-0.5 hover:border-zodiac-red/40 hover:shadow-md dark:border-zodiac-gold/15 dark:bg-stone-900">
             <span class="text-xl">{a.chinese}</span>
             <span class="text-sm font-medium capitalize text-zodiac-ink transition-colors group-hover:text-zodiac-red dark:text-stone-100">{a.id}</span>
           </a>

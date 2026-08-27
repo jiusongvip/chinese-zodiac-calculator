@@ -443,51 +443,51 @@ export function getCompatibility(sign1, sign2) {
  */
 export const SIGN_META = {
   rat: {
-    metaDescription: 'Rat Chinese zodiac sign: quick-witted, charming, and ambitious. Explore Rat personality, love matches, lucky numbers, birth years (2020, 2032), and the 2026 horoscope.',
+    metaDescription: 'Rat Chinese zodiac: quick-witted, charming, ambitious. Personality, love matches, lucky numbers, birth years 2020 & 2032, and the 2026 horoscope.',
     h1Tagline: 'The Quick-Witted First Sign',
   },
   ox: {
-    metaDescription: 'Ox Chinese zodiac sign: diligent, patient, and determined. Explore Ox personality, love compatibility, lucky items, birth years (2021, 2033), and the 2026 Fire Horse horoscope.',
+    metaDescription: 'Ox Chinese zodiac: diligent, patient, determined. Personality, love compatibility, lucky items, birth years 2021 & 2033, and the 2026 horoscope.',
     h1Tagline: 'The Diligent Second Sign',
   },
   tiger: {
-    metaDescription: 'Tiger Chinese zodiac sign: bold, charismatic, and adventurous. Explore Tiger personality, best love matches, lucky numbers, birth years (2022, 2034), and the 2026 horoscope.',
+    metaDescription: 'Tiger Chinese zodiac: bold, charismatic, adventurous. Personality, love matches, lucky numbers, birth years 2022 & 2034, and the 2026 horoscope.',
     h1Tagline: 'The Courageous Third Sign',
   },
   rabbit: {
-    metaDescription: 'Rabbit Chinese zodiac sign: gentle, intuitive, and artistic. Explore Rabbit personality, love compatibility, lucky colors, birth years (2023, 2035), and the 2026 horoscope.',
+    metaDescription: 'Rabbit Chinese zodiac: gentle, intuitive, artistic. Personality, love compatibility, lucky colors, birth years 2023 & 2035, and the 2026 horoscope.',
     h1Tagline: 'The Gentle Fourth Sign',
   },
   dragon: {
-    metaDescription: 'Dragon Chinese zodiac sign: confident, visionary, and energetic — the only mythical animal of the cycle. Explore Dragon personality, matches, birth years (2024, 2036), and the 2026 horoscope.',
+    metaDescription: 'Dragon Chinese zodiac: confident, visionary, energetic. Personality, love matches, lucky items, birth years 2024 & 2036, and the 2026 horoscope.',
     h1Tagline: 'The Legendary Fifth Sign',
   },
   snake: {
-    metaDescription: 'Snake Chinese zodiac sign: wise, elegant, and strategic. Explore Snake personality, love matches, lucky numbers, birth years (2025, 2037), and the 2026 Fire Horse horoscope.',
+    metaDescription: 'Snake Chinese zodiac: wise, elegant, strategic. Personality, love matches, lucky numbers, birth years 2025 & 2037, and the 2026 horoscope.',
     h1Tagline: 'The Wise Sixth Sign',
   },
   horse: {
-    metaDescription: 'Horse Chinese zodiac sign: energetic, independent, and warm-hearted. 2026 is the Fire Horse year — explore Horse personality, matches, birth years (2026, 2038), and horoscope.',
+    metaDescription: 'Horse Chinese zodiac: energetic, independent, warm-hearted. Personality, matches, lucky items, birth years 2026 & 2038, and the 2026 horoscope.',
     h1Tagline: 'The Spirited Seventh Sign',
   },
   goat: {
-    metaDescription: 'Goat Chinese zodiac sign: gentle, creative, and empathetic. Explore Goat personality, love compatibility, lucky items, birth years (2027, 2039), and the 2026 horoscope.',
+    metaDescription: 'Goat Chinese zodiac: gentle, creative, empathetic. Personality, love compatibility, lucky items, birth years 2027 & 2039, and the 2026 horoscope.',
     h1Tagline: 'The Creative Eighth Sign',
   },
   monkey: {
-    metaDescription: 'Monkey Chinese zodiac sign: clever, playful, and innovative. Explore Monkey personality, best matches, lucky numbers, birth years (2028, 2040), and the 2026 horoscope.',
+    metaDescription: 'Monkey Chinese zodiac: clever, playful, innovative. Personality, best matches, lucky numbers, birth years 2028 & 2040, and the 2026 horoscope.',
     h1Tagline: 'The Clever Ninth Sign',
   },
   rooster: {
-    metaDescription: 'Rooster Chinese zodiac sign: observant, confident, and hardworking. Explore Rooster personality, matches, lucky colors, birth years (2029, 2041), and the 2026 horoscope.',
+    metaDescription: 'Rooster Chinese zodiac: observant, confident, hardworking. Personality, matches, lucky colors, birth years 2029 & 2041, and 2026 horoscope.',
     h1Tagline: 'The Punctual Tenth Sign',
   },
   dog: {
-    metaDescription: 'Dog Chinese zodiac sign: loyal, honest, and protective. Explore Dog personality, love compatibility, lucky items, birth years (2030, 2042), and the 2026 horoscope.',
+    metaDescription: 'Dog Chinese zodiac: loyal, honest, protective. Personality, love compatibility, lucky items, birth years 2030 & 2042, and the 2026 horoscope.',
     h1Tagline: 'The Loyal Eleventh Sign',
   },
   pig: {
-    metaDescription: 'Pig Chinese zodiac sign: generous, sincere, and patient. Explore Pig personality, love matches, lucky numbers, birth years (2031, 2043), and the 2026 horoscope.',
+    metaDescription: 'Pig Chinese zodiac: generous, sincere, patient. Personality, love matches, lucky numbers, birth years 2031 & 2043, and the 2026 horoscope.',
     h1Tagline: 'The Generous Twelfth Sign',
   },
 };
