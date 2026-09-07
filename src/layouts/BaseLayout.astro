@@ -1,5 +1,7 @@
 ---
 import "../styles/global.css";
+import playfairDisplay700Url from "@fontsource/playfair-display/files/playfair-display-latin-700-normal.woff2?url";
+import geistSans400Url from "@fontsource/geist-sans/files/geist-sans-latin-400-normal.woff2?url";
 
 export interface Props {
   title: string;
@@ -112,18 +114,20 @@ const articleSchemaObj = articleSchema ? {
     </script>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="preload" href={geistSans400Url} as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href={playfairDisplay700Url} as="font" type="font/woff2" crossorigin />
     <link rel="icon" href="/favicon.ico" sizes="32x32" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <title>{title} | Chinese-Zodiac-Calculator.com</title>
+    <title>{title} | ZodiacCalc</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonicalUrl} />
-    <meta property="og:title" content={`${title} | Chinese-Zodiac-Calculator.com`} />
+    <meta property="og:title" content={`${title} | ZodiacCalc`} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalUrl} />
     <meta property="og:type" content="website" />
     <meta property="og:image" content={ogImageUrl} />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content={`${title} | Chinese-Zodiac-Calculator.com`} />
+    <meta name="twitter:title" content={`${title} | ZodiacCalc`} />
     <meta name="twitter:description" content={description} />
     {noindex && <meta name="robots" content="noindex" />}
     <script type="application/ld+json">

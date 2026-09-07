@@ -3,8 +3,8 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
 <BaseLayout
-  title="Contact the Chinese-Zodiac-Calculator.com Team"
-  description="Have a question about Chinese zodiac signs, compatibility, or our calculator? Get in touch with the Chinese-Zodiac-Calculator.com team and we will respond within 24 hours."
+  title="Contact Us — Chinese Zodiac Calculator Team"
+  description="Questions about Chinese zodiac signs, compatibility, or the calculator? Contact the Chinese-Zodiac-Calculator.com team — we reply within 24 hours."
   breadcrumbs={[{ label: "Home", href: "/" }, { label: "Contact", href: "/contact/" }]}
 >
   <section class="relative mx-auto max-w-[640px] px-4 py-12 lg:px-6 lg:py-16">
@@ -21,6 +21,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     </div>
 
     <form id="contact-form" class="space-y-5 rounded-2xl border border-zodiac-gold/25 bg-white p-6 shadow-md shadow-red-900/10 dark:border-zodiac-gold/15 dark:bg-stone-900 sm:p-8">
+      <h2 class="text-xl font-semibold text-stone-900 dark:text-stone-100">Send Us a Message</h2>
       <div>
         <label for="name" class="mb-1 block text-sm font-medium text-stone-700 dark:text-stone-300">Name</label>
         <input type="text" id="name" name="name" required class="w-full rounded-lg border border-stone-300 bg-white px-4 py-2.5 text-sm text-stone-900 placeholder-stone-400 outline-none transition-colors focus:border-zodiac-red focus:ring-2 focus:ring-zodiac-red/20 dark:border-stone-600 dark:bg-stone-800 dark:text-stone-100 dark:placeholder-stone-500" placeholder="Your name" />
@@ -35,6 +36,17 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       </div>
       <button type="submit" class="w-full rounded-lg bg-zodiac-red px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-zodiac-deep focus:outline-none focus:ring-2 focus:ring-zodiac-red/40">Send Message</button>
     </form>
+
+    <div class="mt-10 grid gap-4 sm:grid-cols-2">
+      <div class="rounded-2xl border border-zodiac-gold/25 bg-white p-6 shadow-sm dark:border-zodiac-gold/15 dark:bg-stone-900">
+        <h2 class="mb-2 text-lg font-semibold text-stone-900 dark:text-stone-100">What to Include</h2>
+        <p class="text-sm leading-relaxed text-stone-600 dark:text-stone-400">Mention your zodiac question, the birth date involved (if any), and the page you were using — it helps us answer faster and more accurately.</p>
+      </div>
+      <div class="rounded-2xl border border-zodiac-gold/25 bg-white p-6 shadow-sm dark:border-zodiac-gold/15 dark:bg-stone-900">
+        <h2 class="mb-2 text-lg font-semibold text-stone-900 dark:text-stone-100">Response Time</h2>
+        <p class="text-sm leading-relaxed text-stone-600 dark:text-stone-400">We read every message and typically reply within 24 hours, Monday to Friday. Feature requests and content corrections are always welcome.</p>
+      </div>
+    </div>
 
     <p class="mt-4 text-center text-xs text-stone-500 dark:text-stone-500">
       Submitting opens your email app with the message pre-filled — no data is stored on our server. We typically respond within 24 hours.
