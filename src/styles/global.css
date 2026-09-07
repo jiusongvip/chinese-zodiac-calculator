@@ -1,13 +1,16 @@
-@import "@fontsource/geist-sans/400.css";
-@import "@fontsource/geist-sans/500.css";
-@import "@fontsource/geist-sans/600.css";
-@import "@fontsource/geist-sans/700.css";
-@import "@fontsource/geist-mono/400.css";
-@import "@fontsource/geist-mono/500.css";
 @import "@fontsource/playfair-display/600.css";
 @import "@fontsource/playfair-display/700.css";
-@import "@fontsource/playfair-display/800.css";
 @import "tailwindcss";
+
+/* Geist Sans variable font (OFL) — single file covers weights 100-900,
+   replacing 4 static @fontsource weights + 2 unused Geist Mono weights */
+@font-face {
+  font-family: "Geist Sans";
+  src: url("/fonts/Geist-Variable.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
 
 @theme {
   --font-sans: "Geist Sans", "sans-serif";

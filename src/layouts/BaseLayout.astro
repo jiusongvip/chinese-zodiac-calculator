@@ -1,7 +1,6 @@
 ---
 import "../styles/global.css";
 import playfairDisplay700Url from "@fontsource/playfair-display/files/playfair-display-latin-700-normal.woff2?url";
-import geistSans400Url from "@fontsource/geist-sans/files/geist-sans-latin-400-normal.woff2?url";
 
 export interface Props {
   title: string;
@@ -141,7 +140,7 @@ const articleSchemaObj = articleSchema ? {
     </script>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="preload" href={geistSans400Url} as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/Geist-Variable.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href={playfairDisplay700Url} as="font" type="font/woff2" crossorigin />
     <link rel="icon" href="/favicon.ico" sizes="32x32" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
