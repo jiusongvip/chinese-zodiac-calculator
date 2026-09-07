@@ -1,32 +1,42 @@
-# Chinese-Zodiac-Calculator.com
-> Free Chinese Zodiac Calculator
+# ZodiacCalc — Chinese Zodiac Calculator
+
+> Free Chinese zodiac calculator: find your Chinese zodiac sign by birth year or exact birthday, check compatibility between signs, explore the five elements, BaZi, Tai Sui, and yearly horoscopes. Based on the lunar calendar with exact Chinese New Year dates from 1900 to 2035.
+
+Use this file to understand the site's purpose and available pages. All pages are in English and free to access.
 
 ## Core Tools
-- Chinese Zodiac Calculator: https://www.chinese-zodiac-calculator.com
-- Compatibility Calculator: https://www.chinese-zodiac-calculator.com/compatibility/
-- Elements Calculator: https://www.chinese-zodiac-calculator.com/elements/
-- BaZi Calculator: https://www.chinese-zodiac-calculator.com/bazi-calculator/
-- Year Chart: https://www.chinese-zodiac-calculator.com/year-chart/
+
+- [Chinese Zodiac Calculator](https://www.chinese-zodiac-calculator.com/): Find your Chinese zodiac sign by birth year or birthday, with lunar calendar accuracy
+- [Zodiac Compatibility Calculator](https://www.chinese-zodiac-calculator.com/compatibility/): Check compatibility scores and analysis between any two zodiac signs
+- [Five Elements Calculator](https://www.chinese-zodiac-calculator.com/elements/): Determine your Wu Xing element (Wood, Fire, Earth, Metal, Water) and its meaning
+- [BaZi Calculator](https://www.chinese-zodiac-calculator.com/bazi-calculator/): Generate your Four Pillars of Destiny chart (year, month, day, hour pillars)
+- [Zodiac Year Chart](https://www.chinese-zodiac-calculator.com/year-chart/): Complete reference table of Chinese zodiac years from 1900 to 2035
 
 ## Zodiac Signs
-- Rat: https://www.chinese-zodiac-calculator.com/signs/rat/
-- Ox: https://www.chinese-zodiac-calculator.com/signs/ox/
-- Tiger: https://www.chinese-zodiac-calculator.com/signs/tiger/
-- Rabbit: https://www.chinese-zodiac-calculator.com/signs/rabbit/
-- Dragon: https://www.chinese-zodiac-calculator.com/signs/dragon/
-- Snake: https://www.chinese-zodiac-calculator.com/signs/snake/
-- Horse: https://www.chinese-zodiac-calculator.com/signs/horse/
-- Goat: https://www.chinese-zodiac-calculator.com/signs/goat/
-- Monkey: https://www.chinese-zodiac-calculator.com/signs/monkey/
-- Rooster: https://www.chinese-zodiac-calculator.com/signs/rooster/
-- Dog: https://www.chinese-zodiac-calculator.com/signs/dog/
-- Pig: https://www.chinese-zodiac-calculator.com/signs/pig/
 
-## Horoscopes & Guides
-- 2026 Yearly Horoscope: https://www.chinese-zodiac-calculator.com/yearly-horoscope/
-- Feng Shui Tips: https://www.chinese-zodiac-calculator.com/feng-shui-tips/
+- [Rat 鼠](https://www.chinese-zodiac-calculator.com/signs/rat/): Sign #1 — Water, Yang; personality traits, years, and compatibility
+- [Ox 牛](https://www.chinese-zodiac-calculator.com/signs/ox/): Sign #2 — Earth, Yin; personality traits, years, and compatibility
+- [Tiger 虎](https://www.chinese-zodiac-calculator.com/signs/tiger/): Sign #3 — Wood, Yang; personality traits, years, and compatibility
+- [Rabbit 兔](https://www.chinese-zodiac-calculator.com/signs/rabbit/): Sign #4 — Wood, Yin; personality traits, years, and compatibility
+- [Dragon 龙](https://www.chinese-zodiac-calculator.com/signs/dragon/): Sign #5 — Earth, Yang; personality traits, years, and compatibility
+- [Snake 蛇](https://www.chinese-zodiac-calculator.com/signs/snake/): Sign #6 — Fire, Yin; personality traits, years, and compatibility
+- [Horse 马](https://www.chinese-zodiac-calculator.com/signs/horse/): Sign #7 — Fire, Yang; personality traits, years, and compatibility
+- [Goat 羊](https://www.chinese-zodiac-calculator.com/signs/goat/): Sign #8 — Earth, Yin; personality traits, years, and compatibility
+- [Monkey 猴](https://www.chinese-zodiac-calculator.com/signs/monkey/): Sign #9 — Metal, Yang; personality traits, years, and compatibility
+- [Rooster 鸡](https://www.chinese-zodiac-calculator.com/signs/rooster/): Sign #10 — Metal, Yin; personality traits, years, and compatibility
+- [Dog 狗](https://www.chinese-zodiac-calculator.com/signs/dog/): Sign #11 — Earth, Yang; personality traits, years, and compatibility
+- [Pig 猪](https://www.chinese-zodiac-calculator.com/signs/pig/): Sign #12 — Water, Yin; personality traits, years, and compatibility
+
+## Guides & Culture
+
+- [2026 Yearly Horoscope](https://www.chinese-zodiac-calculator.com/yearly-horoscope/): Chinese zodiac forecasts for all 12 signs in the Year of the Fire Horse
+- [Ben Ming Nian 本命年](https://www.chinese-zodiac-calculator.com/ben-ming-nian/): Your zodiac birth year — traditions, red accessories, and what to expect
+- [Tai Sui 太岁](https://www.chinese-zodiac-calculator.com/tai-sui/): Which signs offend the Grand Duke in 2026 and how to resolve it
+- [Feng Shui Tips](https://www.chinese-zodiac-calculator.com/feng-shui-tips/): Zodiac-based feng shui guidance for home, luck, and wealth
+- [Origin of the Chinese Zodiac](https://www.chinese-zodiac-calculator.com/zodiac-origin/): History and legends behind the 12-animal cycle, from the Great Race to the Lunheng
 
 ## About
-- About Us: https://www.chinese-zodiac-calculator.com/about/
-- Contact: https://www.chinese-zodiac-calculator.com/contact/
-- Privacy Policy: https://www.chinese-zodiac-calculator.com/privacy-policy/
+
+- [About Us](https://www.chinese-zodiac-calculator.com/about/): Who runs ZodiacCalc and our editorial standards
+- [Contact](https://www.chinese-zodiac-calculator.com/contact/): Get in touch with the ZodiacCalc team
+- [Privacy Policy](https://www.chinese-zodiac-calculator.com/privacy-policy/): How we handle data and cookies
