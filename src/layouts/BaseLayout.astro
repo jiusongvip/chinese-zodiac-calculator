@@ -117,14 +117,27 @@ const articleSchemaObj = articleSchema ? {
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
   <head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QTKLZK42V2"></script>
+    <!-- Google tag (gtag.js) - deferred until after page load -->
     <script is:inline>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-
       gtag('config', 'G-QTKLZK42V2');
+      (function() {
+        function loadGa() {
+          var s = document.createElement('script');
+          s.async = true;
+          s.src = 'https://www.googletagmanager.com/gtag/js?id=G-QTKLZK42V2';
+          document.head.appendChild(s);
+        }
+        if ('requestIdleCallback' in window) {
+          requestIdleCallback(loadGa, { timeout: 4000 });
+        } else if (document.readyState === 'complete') {
+          loadGa();
+        } else {
+          window.addEventListener('load', loadGa);
+        }
+      })();
     </script>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />

@@ -5,6 +5,9 @@ import tailwindcss from '@tailwindcss/vite';
 export default defineConfig({
   site: 'https://www.chinese-zodiac-calculator.com',
   trailingSlash: 'always',
+  build: {
+    inlineStylesheets: 'always',
+  },
   integrations: [sitemap({
     lastmod: new Date(),
     changefreq: 'weekly',
