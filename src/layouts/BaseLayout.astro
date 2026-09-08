@@ -116,28 +116,6 @@ const articleSchemaObj = articleSchema ? {
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
   <head>
-    <!-- Google tag (gtag.js) - deferred until after page load -->
-    <script is:inline>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-QTKLZK42V2');
-      (function() {
-        function loadGa() {
-          var s = document.createElement('script');
-          s.async = true;
-          s.src = 'https://www.googletagmanager.com/gtag/js?id=G-QTKLZK42V2';
-          document.head.appendChild(s);
-        }
-        if ('requestIdleCallback' in window) {
-          requestIdleCallback(loadGa, { timeout: 4000 });
-        } else if (document.readyState === 'complete') {
-          loadGa();
-        } else {
-          window.addEventListener('load', loadGa);
-        }
-      })();
-    </script>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="preload" href="/fonts/Geist-Variable.woff2" as="font" type="font/woff2" crossorigin />
@@ -182,7 +160,7 @@ const articleSchemaObj = articleSchema ? {
     <link rel="alternate" type="application/rss+xml" title="Chinese-Zodiac-Calculator.com — Chinese Zodiac Guide" href="/rss.xml" />
   </head>
   <body>
-    <nav class="sticky top-0 z-50 border-b border-zodiac-gold/30 bg-white/95 backdrop-blur-sm dark:border-stone-800 dark:bg-stone-950/95">
+    <nav class="sticky top-0 z-50 border-b border-zodiac-gold/30 bg-white dark:border-stone-800 dark:bg-stone-950">
       <div class="mx-auto flex h-16 max-w-[1200px] items-center justify-between px-4 lg:px-6">
         <a href="/" class="inline-flex items-center gap-2 no-underline hover:opacity-80 transition-opacity" aria-label="Chinese-Zodiac-Calculator.com home">
           <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -343,5 +321,33 @@ const articleSchemaObj = articleSchema ? {
         </div>
       </div>
     </footer>
+  <!-- Google tag (gtag.js) - queued after all critical resources -->
+  <script is:inline>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-QTKLZK42V2');
+    (function() {
+      function loadGa() {
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=G-QTKLZK42V2';
+        s.crossOrigin = 'anonymous';
+        document.body.appendChild(s);
+      }
+      function initAnalytics() {
+        if ('requestIdleCallback' in window) {
+          requestIdleCallback(loadGa, { timeout: 8000 });
+        } else {
+          setTimeout(loadGa, 1500);
+        }
+      }
+      if (document.readyState === 'complete') {
+        initAnalytics();
+      } else {
+        window.addEventListener('load', initAnalytics);
+      }
+    })();
+  </script>
   </body>
 </html>

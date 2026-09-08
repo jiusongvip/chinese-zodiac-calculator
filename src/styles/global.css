@@ -60,3 +60,10 @@ article h2 {
 strong {
   font-weight: 600;
 }
+
+/* Skip layout/paint of below-fold sections until they scroll near the viewport.
+   Big mobile rendering win (Speed Index / TBT); browsers remember rendered size. */
+.cv-auto {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 600px;
+}
