@@ -55,8 +55,8 @@ function capitalize(s: string) {
 ---
 
 <BaseLayout
-  title="Free Chinese Zodiac Calculator"
-  description="Free Chinese Zodiac Calculator. Enter your birth date to find your animal sign, element, and lucky items. Accurate lunar calendar results from 1900 to 2035."
+  title="Chinese Zodiac Calculator - Find Your Sign, Element & Compatibility"
+  description="Free Chinese Zodiac Calculator. Enter your birth date to discover your animal sign, element (Wood/Fire/Earth/Metal/Water), yin/yang, personality traits, and compatibility. Accurate lunar calendar from 1900-2035."
   breadcrumbs={[{ label: "Home", href: "/" }]}
   websiteSchema={true}
   webApp={true}
@@ -417,6 +417,47 @@ function capitalize(s: string) {
       <p class="mt-8 text-center">
         <a href="/yearly-horoscope/" class="inline-flex items-center gap-1 rounded-lg bg-zodiac-red px-6 py-3 text-sm font-semibold text-white shadow-md transition-all hover:bg-red-700 hover:shadow-lg active:scale-[0.97]">Read All 2026 Horoscopes &rarr;</a>
       </p>
+    </div>
+  </section>
+
+  <!-- ===== ELEMENT CALCULATOR PROMO ===== -->
+  <section class="cv-auto border-t border-zodiac-gold/15 bg-gradient-to-br from-zodiac-cream via-white to-zodiac-cream px-4 py-16 dark:border-stone-800 dark:from-stone-900 dark:via-stone-950 dark:to-stone-900">
+    <div class="mx-auto max-w-[900px] text-center">
+      <div class="mb-6 flex items-center justify-center gap-3">
+        <span class="h-px w-8 bg-gradient-to-r from-transparent to-zodiac-gold/60"></span>
+        <span class="inline-flex items-center justify-center rounded-[5px] bg-zodiac-red px-2 py-1 text-xs font-bold tracking-widest text-white shadow-md shadow-red-900/20" style="font-family: var(--font-cn)">五行</span>
+        <span class="text-[11px] font-semibold uppercase tracking-[0.3em] text-zodiac-bronze dark:text-zodiac-gold">Five Elements</span>
+        <span class="h-px w-8 bg-gradient-to-l from-transparent to-zodiac-gold/60"></span>
+      </div>
+      <h2 class="font-display text-3xl font-bold tracking-tight text-zodiac-ink dark:text-stone-100 sm:text-4xl">What Is Your Chinese Zodiac <span class="text-zodiac-red">Element</span>?</h2>
+      <p class="mx-auto mt-4 max-w-[600px] text-lg text-stone-600 dark:text-stone-400">
+        Your element — Wood, Fire, Earth, Metal, or Water — shapes your personality alongside your animal sign. Find yours with our Element Calculator.
+      </p>
+      <div class="mt-8 flex flex-wrap items-center justify-center gap-4">
+        <a href="/elements/" class="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-zodiac-deep via-zodiac-red to-zodiac-deep px-8 py-4 text-base font-semibold text-white shadow-lg shadow-red-900/25 transition-all hover:shadow-xl hover:brightness-110 active:scale-[0.97]">
+          Element Calculator &rarr;
+        </a>
+        <a href="/year-chart/" class="inline-flex items-center gap-2 rounded-xl border-2 border-zodiac-gold/40 bg-white px-8 py-4 text-base font-semibold text-zodiac-ink shadow-sm transition-all hover:border-zodiac-red hover:shadow-md dark:border-zodiac-gold/30 dark:bg-stone-800 dark:text-stone-100">
+          Year Chart &rarr;
+        </a>
+      </div>
+      <div class="mt-8 flex flex-wrap items-center justify-center gap-3">
+        <span class="inline-flex items-center gap-1.5 rounded-full bg-green-100 px-3 py-1.5 text-sm font-medium text-green-800 dark:bg-green-900/30 dark:text-green-400">
+          <span class="h-2 w-2 rounded-full bg-green-500"></span> Wood
+        </span>
+        <span class="inline-flex items-center gap-1.5 rounded-full bg-red-100 px-3 py-1.5 text-sm font-medium text-red-800 dark:bg-red-900/30 dark:text-red-400">
+          <span class="h-2 w-2 rounded-full bg-red-500"></span> Fire
+        </span>
+        <span class="inline-flex items-center gap-1.5 rounded-full bg-amber-100 px-3 py-1.5 text-sm font-medium text-amber-800 dark:bg-amber-900/30 dark:text-amber-400">
+          <span class="h-2 w-2 rounded-full bg-amber-500"></span> Earth
+        </span>
+        <span class="inline-flex items-center gap-1.5 rounded-full bg-stone-200 px-3 py-1.5 text-sm font-medium text-stone-800 dark:bg-stone-600 dark:text-stone-200">
+          <span class="h-2 w-2 rounded-full bg-stone-400"></span> Metal
+        </span>
+        <span class="inline-flex items-center gap-1.5 rounded-full bg-blue-100 px-3 py-1.5 text-sm font-medium text-blue-800 dark:bg-blue-900/30 dark:text-blue-400">
+          <span class="h-2 w-2 rounded-full bg-blue-500"></span> Water
+        </span>
+      </div>
     </div>
   </section>
 

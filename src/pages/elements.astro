@@ -2,16 +2,34 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 
 
-const title = "Chinese Zodiac Elements Guide";
+const title = "Chinese Zodiac Element Calculator - Find Your Element & Heavenly Stem";
 const description =
-  "Discover your Chinese zodiac element (Wood, Fire, Earth, Metal, Water) with our calculator and learn how the five elements shape your personality.";
+  "Free Chinese Zodiac Element Calculator. Enter your birth date to discover your element (Wood, Fire, Earth, Metal, Water), Yin/Yang, Heavenly Stem, and personality traits. Accurate lunar calendar from 1900-2035.";
 const breadcrumbs = [
   { label: "Home", href: "/" },
   { label: "Elements", href: "/elements/" },
 ];
+
+const currentYear = new Date().getFullYear();
+const minYear = 1900;
+const maxYear = 2035;
+const yearList = Array.from({ length: maxYear - minYear + 1 }, (_, i) => maxYear - i);
+const days = Array.from({ length: 31 }, (_, i) => i + 1);
+const months = [
+  "January", "February", "March", "April", "May", "June",
+  "July", "August", "September", "October", "November", "December",
+];
+
+const faqs = [
+  { q: "What are the five Chinese zodiac elements?", a: "The five elements are <strong>Wood, Fire, Earth, Metal, and Water</strong>. They form the foundation of Chinese metaphysics and cycle through a 10-year repeating pattern. Each element is associated with specific birth years and influences personality, relationships, and destiny." },
+  { q: "How do I calculate my Chinese zodiac element?", a: "Your element is determined by the Heavenly Stem cycle, which assigns elements in pairs based on the last digit of your birth year: years ending in 4 or 5 are Wood, 6 or 7 are Fire, 8 or 9 are Earth, 0 or 1 are Metal, and 2 or 3 are Water. Use the calculator above to find yours instantly with your full birth date." },
+  { q: "What is the difference between element and zodiac sign?", a: "Your zodiac sign (Rat, Ox, Tiger, etc.) is determined by the 12-year animal cycle based on your birth year. Your element (Wood, Fire, Earth, Metal, Water) follows a separate 10-year Heavenly Stem cycle. Together, your animal and element create a more detailed personality profile. For example, a Wood Rat differs from a Fire Rat." },
+  { q: "Does my element change with each Chinese New Year?", a: "Your birth element is fixed for life. While yearly elements change with the Chinese calendar and may influence your annual fortune, the element assigned to your birth year stays with you permanently and represents your core personality traits." },
+  { q: "What is a Heavenly Stem?", a: "Heavenly Stems (天干, Tiāngān) are one of the oldest Chinese cyclical codes, consisting of 10 stems that cycle through the five elements in Yin/Yang pairs. Each stem corresponds to a specific element: Jia/Yi = Wood, Bing/Ding = Fire, Wu/Ji = Earth, Geng/Xin = Metal, Ren/Gui = Water." },
+];
 ---
 
-<BaseLayout {title} {description} {breadcrumbs} articleSchema={true}>
+<BaseLayout {title} {description} {breadcrumbs} articleSchema={true} faqSchema={faqs}>
   <article class="relative mx-auto max-w-[1000px] px-4 py-10 lg:px-6 lg:py-16">
     <div class="pointer-events-none absolute inset-x-0 top-0 h-[3px] bg-gradient-to-r from-transparent via-zodiac-gold/70 to-transparent" aria-hidden="true"></div>
     <!-- Hero -->
@@ -23,38 +41,65 @@ const breadcrumbs = [
         <span class="h-px w-10 bg-gradient-to-l from-transparent to-zodiac-gold/70"></span>
       </div>
       <h1 class="font-display text-3xl font-bold tracking-tight text-zodiac-ink md:text-4xl dark:text-stone-100">
-        Chinese Zodiac <span class="bg-gradient-to-r from-zodiac-deep via-zodiac-red to-zodiac-bronze bg-clip-text pb-1 text-transparent">Elements</span> Calculator
+        Chinese Zodiac <span class="bg-gradient-to-r from-zodiac-deep via-zodiac-red to-zodiac-bronze bg-clip-text pb-1 text-transparent">Element</span> Calculator
       </h1>
       <p class="mt-3 text-lg text-stone-500 dark:text-stone-400">
-        Enter your birth year to discover your element
+        Enter your birth date to discover your element, yin/yang, and heavenly stem
       </p>
     </header>
 
     <!-- Calculator -->
-    <section class="mx-auto mt-10 max-w-md rounded-2xl border border-zodiac-gold/25 bg-white p-6 shadow-md shadow-red-900/10 dark:border-zodiac-gold/20 dark:bg-stone-800">
-      <div class="flex gap-3">
-        <input
-          id="year-input"
-          type="number"
-          min="1900"
-          max="2030"
-          placeholder="e.g. 1990"
-          class="min-w-0 flex-1 rounded-lg border border-stone-300 px-4 py-2.5 text-sm text-zodiac-ink outline-none transition focus:border-zodiac-red focus:ring-2 focus:ring-zodiac-red/20 dark:border-stone-600 dark:bg-stone-700 dark:text-stone-100 dark:focus:border-zodiac-red"
-        />
-        <button
-          id="calc-btn"
-          class="shrink-0 cursor-pointer rounded-lg bg-zodiac-red px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-red-700 active:scale-[0.97]"
-        >
-          Find My Element
-        </button>
+    <section class="mx-auto mt-10 max-w-lg rounded-2xl border border-zodiac-gold/25 bg-white p-6 shadow-md shadow-red-900/10 dark:border-zodiac-gold/20 dark:bg-stone-800">
+      <div class="grid gap-4 sm:grid-cols-3">
+        <div>
+          <label for="calc-month" class="mb-1 block text-left text-sm font-medium text-stone-700 dark:text-stone-300">Month</label>
+          <select id="calc-month" class="w-full rounded-lg border border-stone-300 px-3 py-2.5 text-sm text-zodiac-ink focus:border-zodiac-red focus:outline-none focus:ring-2 focus:ring-zodiac-red/20 dark:border-stone-600 dark:bg-stone-700 dark:text-stone-200">
+            {months.map((m, i) => (
+              <option value={i + 1}>{m}</option>
+            ))}
+          </select>
+        </div>
+        <div>
+          <label for="calc-day" class="mb-1 block text-left text-sm font-medium text-stone-700 dark:text-stone-300">Day</label>
+          <select id="calc-day" class="w-full rounded-lg border border-stone-300 px-3 py-2.5 text-sm text-zodiac-ink focus:border-zodiac-red focus:outline-none focus:ring-2 focus:ring-zodiac-red/20 dark:border-stone-600 dark:bg-stone-700 dark:text-stone-200">
+            {days.map((d) => (
+              <option value={d}>{d}</option>
+            ))}
+          </select>
+        </div>
+        <div>
+          <label for="calc-year" class="mb-1 block text-left text-sm font-medium text-stone-700 dark:text-stone-300">Year</label>
+          <select id="calc-year" class="w-full rounded-lg border border-stone-300 px-3 py-2.5 text-sm text-zodiac-ink focus:border-zodiac-red focus:outline-none focus:ring-2 focus:ring-zodiac-red/20 dark:border-stone-600 dark:bg-stone-700 dark:text-stone-200">
+            {yearList.map((y) => (
+              <option value={y} selected={y === currentYear - 20}>{y}</option>
+            ))}
+          </select>
+        </div>
       </div>
-      <div id="result" class="mt-5 hidden">
+      <p class="mt-3 text-xs text-stone-600 dark:text-stone-400">
+        People born before Chinese New Year belong to the previous year's sign.
+      </p>
+      <button
+        id="calc-btn"
+        class="mt-5 w-full cursor-pointer rounded-xl bg-gradient-to-r from-zodiac-deep via-zodiac-red to-zodiac-deep px-6 py-3.5 text-base font-semibold text-white shadow-lg shadow-red-900/25 transition-all hover:shadow-xl hover:brightness-110 active:scale-[0.97]"
+      >
+        Find My Element &rarr;
+      </button>
+
+      <div id="result" class="mt-6 hidden">
         <div class="rounded-xl border border-zodiac-gold/15 bg-zodiac-cream/60 p-5 dark:border-zodiac-gold/10 dark:bg-stone-700/50">
-          <div class="flex items-center gap-3">
-            <span id="result-badge" class="inline-block rounded-full px-3.5 py-1 text-sm font-semibold text-white"></span>
-            <span class="text-xs text-stone-600 dark:text-stone-400">Element</span>
+          <div class="flex flex-col items-center gap-4 text-center sm:flex-row sm:text-left">
+            <div id="result-icon" class="flex h-20 w-20 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-zodiac-cream to-amber-50 text-4xl ring-2 ring-zodiac-gold/40 dark:from-stone-800 dark:to-stone-800"></div>
+            <div class="flex-1">
+              <div class="flex flex-wrap items-center justify-center gap-2 sm:justify-start">
+                <span id="result-element" class="inline-block rounded-full px-3.5 py-1 text-sm font-semibold text-white"></span>
+                <span id="result-yinyang" class="inline-block rounded-full bg-amber-50 px-3.5 py-1 text-sm font-medium text-amber-700 dark:bg-amber-900/20 dark:text-amber-400"></span>
+              </div>
+              <p id="result-stem" class="mt-2 text-sm text-stone-600 dark:text-stone-400"></p>
+              <p id="result-animal" class="mt-1 text-sm text-stone-600 dark:text-stone-400"></p>
+              <p id="result-traits" class="mt-3 text-sm leading-relaxed text-stone-600 dark:text-stone-300"></p>
+            </div>
           </div>
-          <p id="result-traits" class="mt-3 text-sm leading-relaxed text-stone-600 dark:text-stone-300"></p>
         </div>
       </div>
       <p id="error-msg" class="mt-3 hidden text-sm text-zodiac-red"></p>
@@ -264,55 +309,139 @@ const breadcrumbs = [
   </article>
   <script is:inline>
     (function () {
-      var input = document.getElementById("year-input");
       var btn = document.getElementById("calc-btn");
       var result = document.getElementById("result");
-      var badge = document.getElementById("result-badge");
-      var traits = document.getElementById("result-traits");
+      var icon = document.getElementById("result-icon");
+      var elementBadge = document.getElementById("result-element");
+      var yinyangBadge = document.getElementById("result-yinyang");
+      var stemText = document.getElementById("result-stem");
+      var animalText = document.getElementById("result-animal");
+      var traitsText = document.getElementById("result-traits");
       var error = document.getElementById("error-msg");
 
-      var elements = {
-        Wood: { color: "#5B8C5A", desc: "Wood: Creative, generous, and idealistic. You are a natural leader who values growth, harmony, and nurturing others. You thrive when you can plant new ideas and watch them grow." },
-        Fire: { color: "#DC2626", desc: "Fire: Passionate, energetic, and adventurous. You bring warmth and excitement to every situation. Your enthusiasm is contagious, but you benefit from learning patience and moderation." },
-        Earth: { color: "#C4A46C", desc: "Earth: Practical, stable, and nurturing. You are the reliable foundation that others depend on. Your grounded nature brings security, and you excel at turning ideas into lasting results." },
-        Metal: { color: "#E8D5B7", desc: "Metal: Strong, determined, and independent. You have an unyielding will and sharp intellect. Your discipline and focus help you achieve great things, but remember to stay flexible." },
-        Water: { color: "#4A90D9", desc: "Water: Intuitive, flexible, and persuasive. You adapt effortlessly and understand others on a deep level. Your emotional intelligence is your superpower, and you flow around obstacles with ease." },
+      var ANIMALS = [
+        { id: "rat", chinese: "鼠", element: "Water", yinYang: "Yang" },
+        { id: "ox", chinese: "牛", element: "Earth", yinYang: "Yin" },
+        { id: "tiger", chinese: "虎", element: "Wood", yinYang: "Yang" },
+        { id: "rabbit", chinese: "兔", element: "Wood", yinYang: "Yin" },
+        { id: "dragon", chinese: "龙", element: "Earth", yinYang: "Yang" },
+        { id: "snake", chinese: "蛇", element: "Fire", yinYang: "Yin" },
+        { id: "horse", chinese: "马", element: "Fire", yinYang: "Yang" },
+        { id: "goat", chinese: "羊", element: "Earth", yinYang: "Yin" },
+        { id: "monkey", chinese: "猴", element: "Metal", yinYang: "Yang" },
+        { id: "rooster", chinese: "鸡", element: "Metal", yinYang: "Yin" },
+        { id: "dog", chinese: "狗", element: "Earth", yinYang: "Yang" },
+        { id: "pig", chinese: "猪", element: "Water", yinYang: "Yin" },
+      ];
+
+      var EMOJI = {
+        rat: "🐀", ox: "🐂", tiger: "🐅", rabbit: "🐇",
+        dragon: "🐉", snake: "🐍", horse: "🐴", goat: "🐐",
+        monkey: "🐒", rooster: "🐓", dog: "🐕", pig: "🐖"
       };
+
+      var elements = {
+        Wood: { color: "#5B8C5A", desc: "Wood people are creative, generous, and idealistic. Like a tree, you grow steadily, nurturing others and planting new ideas. Your challenge is rigidity — staying flexible lets you bend with the wind instead of breaking." },
+        Fire: { color: "#DC2626", desc: "Fire people are passionate, energetic, and adventurous. You bring warmth and excitement wherever you go, inspiring everyone around you. Your challenge is burnout — channeling your intensity into focus turns sparks into a lasting flame." },
+        Earth: { color: "#C4A46C", desc: "Earth people are practical, stable, and nurturing. You are the reliable foundation others depend on, turning ideas into lasting results. Your challenge is stagnation — welcoming change keeps your steady strength from becoming immovable." },
+        Metal: { color: "#E8D5B7", desc: "Metal people are strong, determined, and independent. You possess an unyielding will and a sharp intellect that cuts through problems precisely. Your challenge is isolation — softening your edges invites collaboration that multiplies your strength." },
+        Water: { color: "#4A90D9", desc: "Water people are intuitive, flexible, and persuasive. You adapt effortlessly and understand others deeply, flowing around obstacles with ease. Your challenge is direction — committing to clear goals channels your depth into decisive action." },
+      };
+
+      var heavenlyStems = [
+        { name: "Jia (甲)", element: "Wood", yinYang: "Yang" },
+        { name: "Yi (乙)", element: "Wood", yinYang: "Yin" },
+        { name: "Bing (丙)", element: "Fire", yinYang: "Yang" },
+        { name: "Ding (丁)", element: "Fire", yinYang: "Yin" },
+        { name: "Wu (戊)", element: "Earth", yinYang: "Yang" },
+        { name: "Ji (己)", element: "Earth", yinYang: "Yin" },
+        { name: "Geng (庚)", element: "Metal", yinYang: "Yang" },
+        { name: "Xin (辛)", element: "Metal", yinYang: "Yin" },
+        { name: "Ren (壬)", element: "Water", yinYang: "Yang" },
+        { name: "Gui (癸)", element: "Water", yinYang: "Yin" },
+      ];
+
+      var lunarDates = {
+        2035:[2,8],2034:[2,19],2033:[1,31],2032:[2,11],2031:[1,23],2030:[2,3],
+        2029:[2,13],2028:[1,26],2027:[2,6],2026:[2,17],2025:[1,29],2024:[2,10],
+        2023:[1,22],2022:[2,1],2021:[2,12],2020:[1,25],2019:[2,5],2018:[2,16],
+        2017:[1,28],2016:[2,8],2015:[2,19],2014:[1,31],2013:[2,10],2012:[1,23],
+        2011:[2,3],2010:[2,14],2009:[1,26],2008:[2,7],2007:[2,18],2006:[1,29],
+        2005:[2,9],2004:[1,22],2003:[2,1],2002:[2,12],2001:[1,24],2000:[2,5],
+        1999:[2,16],1998:[1,28],1997:[2,7],1996:[2,19],1995:[1,31],1994:[2,10],
+        1993:[1,23],1992:[2,4],1991:[2,15],1990:[1,27],1989:[2,6],1988:[2,17],
+        1987:[1,29],1986:[2,9],1985:[2,20],1984:[2,2],1983:[2,13],1982:[1,25],
+        1981:[2,5],1980:[2,16],1979:[1,28],1978:[2,7],1977:[2,18],1976:[1,31],
+        1975:[2,11],1974:[1,23],1973:[2,3],1972:[2,15],1971:[1,27],1970:[2,6],
+        1969:[2,17],1968:[1,30],1967:[2,9],1966:[1,21],1965:[2,2],1964:[2,13],
+        1963:[1,25],1962:[2,5],1961:[2,15],1960:[1,28],1959:[2,8],1958:[2,18],
+        1957:[1,31],1956:[2,12],1955:[1,24],1954:[2,3],1953:[2,14],1952:[1,27],
+        1951:[2,6],1950:[2,17],1949:[1,29],1948:[2,10],1947:[1,22],1946:[2,2],
+        1945:[2,13],1944:[1,25],1943:[2,5],1942:[2,15],1941:[1,27],1940:[2,8],
+        1939:[2,19],1938:[1,31],1937:[2,11],1936:[1,24],1935:[2,4],1934:[2,14],
+        1933:[1,26],1932:[2,6],1931:[2,17],1930:[1,30],1929:[2,10],1928:[1,23],
+        1927:[2,2],1926:[2,13],1925:[1,24],1924:[2,5],1923:[2,16],1922:[2,18],
+        1921:[2,8],1920:[2,20],1919:[2,1],1918:[2,11],1917:[1,23],1916:[2,3],
+        1915:[2,14],1914:[1,26],1913:[2,6],1912:[2,18],1911:[1,30],1910:[2,10],
+        1909:[1,22],1908:[2,2],1907:[2,13],1906:[1,25],1905:[2,4],1904:[2,16],
+        1903:[1,29],1902:[2,8],1901:[2,19],1900:[1,31],
+      };
+
+      function getAnimalIndex(year, month, day) {
+        var idx = (year - 4) % 12;
+        if (idx < 0) idx += 12;
+        if (lunarDates[year]) {
+          var ld = lunarDates[year];
+          if (month < ld[0] || (month === ld[0] && day < ld[1])) {
+            idx = (idx - 1 + 12) % 12;
+          }
+        }
+        return idx;
+      }
 
       function getElementKey(year) {
         var stemIndex = (year - 4) % 10;
         if (stemIndex < 0) stemIndex += 10;
-        return ["Wood", "Wood", "Fire", "Fire", "Earth", "Earth", "Metal", "Metal", "Water", "Water"][stemIndex];
+        return ["Wood","Wood","Fire","Fire","Earth","Earth","Metal","Metal","Water","Water"][stemIndex];
+      }
+
+      function getStemIndex(year) {
+        var stemIndex = (year - 4) % 10;
+        if (stemIndex < 0) stemIndex += 10;
+        return stemIndex;
       }
 
       function calculate() {
         error.classList.add("hidden");
-        var val = input.value.trim();
-        if (!val) {
-          error.textContent = "Please enter a birth year.";
+        var month = parseInt(document.getElementById("calc-month").value, 10);
+        var day = parseInt(document.getElementById("calc-day").value, 10);
+        var year = parseInt(document.getElementById("calc-year").value, 10);
+
+        if (isNaN(year) || year < 1900 || year > 2035) {
+          error.textContent = "Please select a valid year between 1900 and 2035.";
           error.classList.remove("hidden");
           result.classList.add("hidden");
           return;
         }
-        var year = parseInt(val, 10);
-        if (isNaN(year) || year < 1900 || year > 2030) {
-          error.textContent = "Please enter a valid year between 1900 and 2030.";
-          error.classList.remove("hidden");
-          result.classList.add("hidden");
-          return;
-        }
-        var key = getElementKey(year);
-        var info = elements[key];
-        badge.textContent = key;
-        badge.style.backgroundColor = info.color;
-        traits.textContent = info.desc;
+
+        var animalIdx = getAnimalIndex(year, month, day);
+        var animal = ANIMALS[animalIdx];
+        var elementKey = getElementKey(year);
+        var elementInfo = elements[elementKey];
+        var stemIdx = getStemIndex(year);
+        var stem = heavenlyStems[stemIdx];
+
+        icon.textContent = EMOJI[animal.id] + " " + animal.chinese;
+        elementBadge.textContent = elementKey;
+        elementBadge.style.backgroundColor = elementInfo.color;
+        yinyangBadge.textContent = stem.yinYang;
+        stemText.textContent = "Heavenly Stem: " + stem.name;
+        animalText.textContent = "Zodiac Sign: " + animal.id.charAt(0).toUpperCase() + animal.id.slice(1) + " (" + animal.chinese + ")";
+        traitsText.textContent = elementInfo.desc;
         result.classList.remove("hidden");
       }
 
       btn.addEventListener("click", calculate);
-      input.addEventListener("keydown", function (e) {
-        if (e.key === "Enter") calculate();
-      });
     })();
   </script>
 </BaseLayout>
